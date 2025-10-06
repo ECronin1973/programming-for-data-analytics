@@ -33,6 +33,12 @@ python .\projected_births.py
 
 ---
 
+### Example output
+![Projected births example](generated_charts/{{LATEST_PROJECTED_BIRTHS}})
+
+Caption: Historical births (points), fitted line (dotted) and linear projection (solid). Output filename is timestamped.
+
+
 ## Assignment 2 — Population by age (Galway)
 
 Files:
@@ -51,6 +57,30 @@ Run:
 cd my-work/code
 python .\cso_populationbyage_galway.py
 ```
+
+---
+
+### Galway population by age — main chart
+![Galway population by age](generated_charts/{{LATEST_CSOPOP}})
+
+Caption: Population by single-year age for Galway (Galway City Council + Galway County Council). Bars are coloured by age; annotations appear every 10 years and a dashed trend line summarises the age-related slope.
+
+### Galway population — highlighted dip (ages 20–40)
+![Galway highlighted dip](generated_charts/{{LATEST_CSOPOP_HIGHLIGHT}})
+
+Caption: Same data with ages 20–40 shaded to emphasise the dip in counts in that band; a small ledger reports summary statistics for the shaded range.
+
+#### Notebook numeric output (Top 5 ages)
+
+Example Top 5 single-year ages (most populous) produced by the Galway notebook. Run the notebook to refresh these numbers.
+
+| Age | Population |
+|-----:|-----------:|
+| 42 | 4,570 |
+| 41 | 4,562 |
+| 40 | 4,489 |
+| 39 | 4,332 |
+| 43 | 4,294 |
 
 ---
 
@@ -99,42 +129,6 @@ The repository saves a few illustrative PNG images under `my-work/generated_char
 - `cso-populationbyage_galway_highlight_YYYY-MM-DD_HHMMSS.png` — the same chart with ages 20–40 shaded and a short ledger summarising the relative drop.
 
 These files are produced by the scripts and by the notebook when run.
-
----
-
-## Notebook outputs (examples)
-
-Below are example outputs produced by the notebooks and scripts. The images are stored in `my-work/generated_charts/` and are shown here inline for quick review. Filenames are timestamped when generated; example names below match the files produced during recent runs.
-
-### Galway population by age — main chart
-![Galway population by age](generated_charts/cso-populationbyage_galway_highlight_2025-10-06_124832.png)
-
-Caption: Population by single-year age for Galway (Galway City Council + Galway County Council). Bars are coloured by age; annotations appear every 10 years and a dashed trend line summarises the age-related slope.
-
-### Galway population — highlighted dip (ages 20–40)
-![Galway highlighted dip](generated_charts/cso-populationbyage_galway_highlight_2025-10-06_124832.png)
-
-Caption: Same data with ages 20–40 shaded to emphasise the dip in counts; a small ledger reports summary statistics for the shaded range.
-
-### Projected births (example)
-![Projected births example](generated_charts/projected_births_2025-10-06_115647.png)
-
-Caption: Historical births (points), fitted line (dotted) and linear projection (solid). Output filename is timestamped.
-
-### Notebook numeric output (Top 5 ages)
-
-The Galway notebook prints summary tables when run. Example Top 5 single-year ages (most populous) observed in a recent run:
-
-| Age | Population |
-|-----:|-----------:|
-| 42 | 4,570 |
-| 41 | 4,562 |
-| 40 | 4,489 |
-| 39 | 4,332 |
-| 43 | 4,294 |
-
-These numbers are shown by the notebook cell that computes `top5` and are useful for quick checks of which single-year ages dominate the local population.
-
 
 ## Understanding the outputs
 
