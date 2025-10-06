@@ -34,7 +34,7 @@ python .\projected_births.py
 ---
 
 ### Example output
-![Projected births example](generated_charts/{{LATEST_PROJECTED_BIRTHS}})
+![Projected births example](generated_charts/projected_births_2025-10-06_115647.png)
 
 Caption: Historical births (points), fitted line (dotted) and linear projection (solid). Output filename is timestamped.
 
@@ -61,12 +61,12 @@ python .\cso_populationbyage_galway.py
 ---
 
 ### Galway population by age — main chart
-![Galway population by age](generated_charts/{{LATEST_CSOPOP}})
+![Galway population by age](generated_charts/cso-populationbyage_galway_highlight_2025-10-06_124832.png)
 
 Caption: Population by single-year age for Galway (Galway City Council + Galway County Council). Bars are coloured by age; annotations appear every 10 years and a dashed trend line summarises the age-related slope.
 
 ### Galway population — highlighted dip (ages 20–40)
-![Galway highlighted dip](generated_charts/{{LATEST_CSOPOP_HIGHLIGHT}})
+![Galway highlighted dip](generated_charts/cso-populationbyage_galway_highlight_2025-10-06_124832.png)
 
 Caption: Same data with ages 20–40 shaded to emphasise the dip in counts in that band; a small ledger reports summary statistics for the shaded range.
 
