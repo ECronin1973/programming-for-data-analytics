@@ -17,7 +17,9 @@ Welcome to Edward Cronin's repository for the Programming For Data Analytics Mod
 
 [Assignment 2 (Part B): Bank holidays unique to Northern Ireland](#assignment-2-bank-holidays-unique-to-northern-ireland)
 
-[Assignment 3 domains](TO BE ADDED)
+[Assignment 3 domains](#assignment-3-domains)
+
+[Assignment 3 Pie Chart Image](#assignment-3-pie-chart-output)
 
 ## Overview
 
@@ -257,13 +259,22 @@ To help complete assignment 02 Part A and Part B, I used the following resources
 
 ---
 
-## Assignment 3: Email Domain Analysis (Pie Chart)
+## Assignment 3: domains
+
+### Overview
+This assignment involves creating a Jupyter notebook that analyzes a dataset of 1,000 people to extract and visualize the most common email domains. The notebook reads a CSV file containing personal information, extracts the domain names from email addresses, counts their occurrences, and generates a pie chart to display the distribution of the top email domains. Less frequent domains are grouped into an "Others" category for clarity.
+
+Objectives:
+- **Data Extraction:** Extract email domains from a dataset of 1,000 people downloaded from the web.
+- **Frequency Counting:** Count the occurrences of each email domain.
+- **Visualisation:** Create a pie chart to visualise the distribution of the top email domains.
+- **Image Output:** Save the pie chart as a high-resolution image file (JPG).
 
 ### Files
 - `assignments/notebooks/assignment03-pie.ipynb`  
-  Jupyter notebook that reads `people.csv`, extracts email domains, counts their frequency, and generates a styled pie chart of the top domains. Lower-frequency domains are grouped into an "Others" slice for readability.
+  This Jupyter notebook reads `people.csv`, extracts email domains, counts their frequency, and generates a styled pie chart of the top domains. Lower-frequency domains are grouped into an "Others" slice for readability.
 - `assignments/data/people.csv`  
-  Dataset of 1,000 individuals. The `Email` column is used to extract domain names.
+  Downloaded dataset of 1,000 individuals. The `Email` column is used to extract domain names.
 
 ### How It Works
 - Loads `people.csv` into a pandas DataFrame.
@@ -305,7 +316,11 @@ The pie chart below visualizes the distribution of the top email domains found i
 
 ### References
 
-### References
+- ATU Lecture: Acquiring data
+  I watched the lecture in [25-26: 4369 -- Programming For Data Analytics](https://vlegalwaymayo.atu.ie/course/view.php?id=12815) to understand how to acquire data from various sources, including downloading datasets from the web. This helped me understand the importance of data acquisition in data analytics.
+
+  - ATU Assignment 3 domains Instructions
+  I followed the assignment instructions provided in [Assignment 3 domains](https://vlegalwaymayo.atu.ie/mod/page/view.php?id=1204040) to complete the task of extracting email domains and visualizing them using a pie chart. The instructions guided me through the steps of data extraction, processing, and visualisation.
 
 - [`assignment03-pie.ipynb`](assignments/notebooks/assignment03-pie.ipynb)  
   Main notebook for Assignment 3. It loads the dataset, extracts email domains, counts them, and creates a pie chart.
@@ -314,13 +329,12 @@ The pie chart below visualizes the distribution of the top email domains found i
   Dataset of 1,000 people. The `Email` column is used to extract domain names for analysis.
 
 - [pandas](https://pandas.pydata.org/)  
-  Used for reading the CSV file (`read_csv`), splitting email strings (`str.split`), and counting domain frequency (`value_counts`).
+  Used to load the dataset (`read_csv`), extract email domains from strings (`str.split`), and count how often each domain appears (`value_counts`).
 
 - [matplotlib](https://matplotlib.org/)  
-  Used to plot and save the pie chart (`plot.pie`, `savefig`, `tight_layout`, `show`).
+  Used to create and customize the pie chart (`plot.pie`), adjust layout (`tight_layout`), display the chart (`show`), and save it as an image file (`savefig`).
 
 - [seaborn](https://seaborn.pydata.org/)  
-  Used to apply a pastel color palette for the pie chart (`color_palette`).
-
+  Used to apply a pastel color palette for the pie chart (`color_palette`) to improve visual clarity and style.
 
 # END
