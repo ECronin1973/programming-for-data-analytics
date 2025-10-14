@@ -1,7 +1,8 @@
-# assignment02-bankholdiays.py
+# assignment02-bankholidays.py
 # Author: Edward Cronin
 
 # Import the requests library to make HTTP requests
+# https://pypi.org/project/requests/
 import requests
 
 # Define the URL for the UK government bank holidays JSON feed
@@ -20,5 +21,6 @@ ni_events = data['northern-ireland']['events']
 print("Bank Holiday Dates in Northern Ireland:")
 for event in ni_events:
     print(event['date'])
+
     
     
