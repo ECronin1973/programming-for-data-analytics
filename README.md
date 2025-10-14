@@ -264,7 +264,7 @@ To help complete assignment 02 Part A and Part B, I used the following resources
 ### Overview
 This assignment involves creating a Jupyter notebook that analyzes a dataset of 1,000 people to extract and visualize the most common email domains. The notebook reads a CSV file containing personal information, extracts the domain names from email addresses, counts their occurrences, and generates a pie chart to display the distribution of the top email domains. Less frequent domains are grouped into an "Others" category for clarity.
 
-Objectives:
+### Objectives:
 - **Data Extraction:** Extract email domains from a dataset of 1,000 people downloaded from the web.
 - **Frequency Counting:** Count the occurrences of each email domain.
 - **Visualisation:** Create a pie chart to visualise the distribution of the top email domains.
