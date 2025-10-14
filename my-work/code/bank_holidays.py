@@ -1,15 +1,23 @@
 # bank_holidays.py
-
 # Author: Edward Cronin
 
-import requests 
- 
-url =" https://www.gov.uk/bank-holidays.json" 
-response = requests.get(url) 
-data = response.json() 
+# Import the requests library to handle HTTP requests
+import requests
+
+# Define the URL of the UK government bank holidays API
+url = "https://www.gov.uk/bank-holidays.json"
+
+# Send a GET request to the API and store the response
+response = requests.get(url)
+
+# Parse the response content as JSON and store it in a Python dictionary
+data = response.json()
+
+# Uncomment the line below to inspect the full JSON structure (useful for debugging or exploration)
 # print(data)
 
-# program modified to only print the first holiday in northern ireland
+# Access the 'northern-ireland' section of the data
+# Retrieve and print the first holiday event listed for Northern Ireland
 print(data['northern-ireland']['events'][0])
 
 
