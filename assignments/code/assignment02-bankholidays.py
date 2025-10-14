@@ -17,10 +17,12 @@ data = response.json()
 # Access the list of holiday events for Northern Ireland
 ni_events = data['northern-ireland']['events']
 
-# Loop through each event and print only the date
-print("Bank Holiday Dates in Northern Ireland:")
+# Loop through each event and print the name and date
+print("Bank Holidays in Northern Ireland:")
 for event in ni_events:
-    print(event['date'])
+    name = event['title']
+    date = event['date']
+    print(f"{date} - {name}")
 
     
     
