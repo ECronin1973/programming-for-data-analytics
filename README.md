@@ -106,7 +106,7 @@ python assignment02bankholdiays.py
 
 When the script is executed, it prints the dates of upcoming Northern Ireland bank holidays to the terminal. The output shown below is a truncated version created by the student for demonstration purposes:
 
-
+'''
 Bank Holiday Dates in Northern Ireland:
 2025-12-25
 2025-12-26
@@ -130,6 +130,7 @@ Bank Holiday Dates in Northern Ireland:
 2027-08-30
 2027-12-27
 2027-12-28
+'''
 
 ## Further Reading and References
 
