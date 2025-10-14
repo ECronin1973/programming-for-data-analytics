@@ -131,4 +131,7 @@ The reader starts directly from the first data row.
 Each line is a dictionary like {'id': 1, 'age': 20, 'name': 'Joe'}.
 No need to skip the header manually.
 Therefore, count reflects the actual number of data rows — no adjustment needed.
+
+Sources: https://www.w3schools.com/python/ref_module_csv.asp
+         https://realpython.com/python-csv/
 '''
