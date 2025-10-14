@@ -49,7 +49,7 @@ A code of conduct governs the use of this repository and has been uploaded withi
 
 ## Contents
 
-### Assignment 2: Northern bank holidays (Part A)
+## Assignment 2: Northern bank holidays (Part A)
 
 ### Overview
 This assignment involves creating a Python script that connects to the UK government's public API to get a list of bank holidays. It uses the requests library to send a GET request and then reads the JSON data returned. The script focuses on holidays listed under Northern Ireland, but some of these dates may also be shared with other UK regions like England, Wales, or Scotland.
@@ -61,7 +61,7 @@ This assignment involves creating a Python script that connects to the UK govern
 - **Output Display:** Present the extracted dates clearly in the terminal.
 - **Output Formatting:** Ensure the output is clean, readable, and user-friendly, with each date printed on a separate line.
 
-# Code Used To Complete Part A
+### Code Used To Complete Part A
 
 **The following code is used to complete Part A**
 
@@ -129,7 +129,7 @@ Bank Holiday Dates in Northern Ireland:
 
 ```
 
-### Assignment 2: Northern bank holidays (Part B)
+## Assignment 2: Northern bank holidays (Part B)
 
 This part of the assignment involves enhancing the initial script to identify and display bank holidays that are unique to Northern Ireland, meaning they are not observed in England, Wales, or Scotland. This requires comparing the holiday titles across the different regions and filtering out any that are shared.
 
@@ -139,7 +139,7 @@ This part of the assignment involves enhancing the initial script to identify an
 - **Output Clarity:** Ensure the output clearly indicates which holidays are unique to Northern Ireland, along with their dates.
 
 
-# Code Used To Complete Part B
+### Code Used To Complete Part B
 
 **The following code is used to complete Part B**
 
@@ -238,8 +238,6 @@ To help complete assignment 02 Part A and Part B, I used the following resources
 
 - **Real Python – API Guide**  
   I read [Real Python’s API guide](https://realpython.com/api-integration-in-python/) to learn good practices for working with APIs, including how to handle errors, validate responses, and format output clearly. This was especially helpful in making the script more robust and readable for both parts of the assignment.
-
-
 
 ## References
 
