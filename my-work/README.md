@@ -5,6 +5,7 @@ This README documents the student work inside the `my-work/` folder for the Prog
 ## Contents
 - Assignment 1: Projected births
 - Assignment 2: Population by age (Galway)
+- Lab 4: Regular expressions and log/quiz parsing
 - How to run
 - Data sources and assumptions
 - Dependencies
@@ -151,6 +152,55 @@ Tips:
 - If you want to inspect the underlying numbers, run the notebook cells to produce `top5` and `decade_df` tables or open the CSV inputs in a spreadsheet.
 - For reproducible outputs, run the scripts from `my-work/code/` so the CSV search heuristics find the correct data files.
 
+
+## Lab 4 — Regular expressions and log/quiz parsing
+
+This lab focuses on using Python's regular expressions to search, extract, and transform text in log and sample files. It includes small utilities for testing patterns, anonymising IP addresses, and extracting specific components like timestamps.
+
+Files:
+- `code/lab04_anonymise_ip.py` — anonymises the last two octets of IPv4 addresses in `../data/access.log.txt` by replacing them with `XXX.XXX`; writes output to `../data/lab04_anonymisedIPs.txt`.
+- `code/lab04_regex_tests.py` — runs a set of regex patterns over `../data/access.log.txt` to demonstrate matching numbers, IPs, timestamps, query params, etc., and prints sample matches.
+- `code/lab04_smalleraccess.py` — extracts date/time tokens like `[15/Feb/2021:18:44:39]` from `../data/access.log.txt` and prints them.
+- `code/lab04_quiz.py` — prints lines from `../data/sample-files/quiz.txt` that start with `Hello ` followed by a capital letter.
+- `code/lab04_quiz_test.py` — iterates over a list of regex patterns (a–l), prints matches with line numbers from `../data/sample-files/quiz.txt`, and saves results to `../data/quiz_results.txt`.
+- `code/lab04_test_regex.py` — sanity-check for the pattern `\d+$` (digits at end of line) on `../data/access.log.txt` with a few diagnostics.
+- `code/lab04_test_file.py` — utility to verify file presence/size and preview content of `../data/access.log.txt`.
+
+How it works (brief):
+- Uses Python's `re` module: `search`, `findall`, and `sub` to locate or replace patterns.
+- Demonstrates anchors (`^`, `$`), character classes (`\d`, `\w`), quantifiers (`*`, `+`, `?`, `{m,n}`), grouping `()`, and character escaping.
+- IP anonymisation uses a capturing group for the first two octets and replaces the last two with placeholders:
+	- Pattern: `(\d{1,3}\.\d{1,3}\.)\d{1,3}\.\d{1,3}`
+	- Replacement: `\1XXX.XXX`
+- Paths are relative to the script location or repository layout; prefer running from `my-work/code/` for consistency.
+
+Run:
+```powershell
+cd my-work/code
+python .\lab04_anonymise_ip.py     # writes ../data/lab04_anonymisedIPs.txt
+python .\lab04_regex_tests.py      # prints sample matches for multiple patterns
+python .\lab04_smalleraccess.py    # prints extracted [date/time] tokens
+python .\lab04_quiz.py             # prints matching lines from quiz.txt
+python .\lab04_quiz_test.py        # writes ../data/quiz_results.txt
+```
+
+Data files used:
+- `my-work/data/access.log.txt`
+- `my-work/data/sample-files/quiz.txt`
+
+Where outputs are saved (Lab 4):
+- `my-work/data/lab04_anonymisedIPs.txt` — anonymised copy of `access.log.txt`.
+- `my-work/data/quiz_results.txt` — collated regex matches from `quiz.txt`.
+
+References and sources:
+- W3Schools — Python RegEx: https://www.w3schools.com/python/python_regex.asp
+- W3Schools — Python File Handling: https://www.w3schools.com/python/python_file_open.asp
+- Lab 4 instructions — ATU course handout/brief ([see Moodle/Blackboard for the specific PDF/URL](https://vlegalwaymayo.atu.ie/pluginfile.php/1590532/mod_resource/content/4/Lab%2004.01%20regex.pdf))
+- YouTube — Python regex tutorial: https://www.youtube.com/watch?v=sa-TUpSx1JA
+
+Notes:
+- If relative paths fail, use `os.path.join(os.path.dirname(__file__), ...)` as shown in `lab04_quiz_test.py`.
+- Remember that regex is case-sensitive by default; use character classes or `re.IGNORECASE` as needed.
 
 ## Notes and future improvements
 - Add CLI flags to control projection horizon, output folder, and filename format.
