@@ -58,7 +58,7 @@ A code of conduct governs the use of this repository and has been uploaded withi
 ### Overview
 This assignment involves creating a Python script that connects to the UK government's public API to get a list of bank holidays. It uses the requests library to send a GET request and then reads the JSON data returned. The script focuses on holidays listed under Northern Ireland, but some of these dates may also be shared with other UK regions like England, Wales, or Scotland.
 
-#### Objectives
+### Objectives
 
 - **API Interaction:** Demonstrate how to interact with a RESTful API in Python by making GET requests and parsing JSON responses.
 - **Data Extraction:** Extract specific fields from the JSON payload—namely, the dates of bank holidays in Northern Ireland.
@@ -137,9 +137,10 @@ Bank Holidays in Northern Ireland:
 
 ### Assignment 2: Bank holidays unique to Northern Ireland (Part B)
 
+### Overview
 This part of the assignment involves enhancing the initial script to identify and display bank holidays that are unique to Northern Ireland, meaning they are not observed in England, Wales, or Scotland. This requires comparing the holiday titles across the different regions and filtering out any that are shared.
 
-#### Objectives
+### Objectives
 - **Data Comparison:** Compare holiday titles across Northern Ireland, England/Wales, and Scotland to identify unique holidays.
 - **Conditional Logic:** Implement logic to filter out shared holidays and retain only those unique to Northern Ireland.
 - **Output Clarity:** Ensure the output clearly indicates which holidays are unique to Northern Ireland, along with their dates.
@@ -227,6 +228,9 @@ To help complete assignment 02 Part A and Part B, I used the following resources
 - **ATU Lecture: Representing Data**  
   I watched the lecture in [25-26: 4369 -- Programming For Data Analytics](https://vlegalwaymayo.atu.ie/course/view.php?id=12815) to understand how data like JSON is used in programming and how APIs provide structured data. This helped with both retrieving the data (Part A) and comparing it across regions (Part B).
 
+- ATU Assignment 2 Instructions
+  I followed the assignment instructions provided in [Assignment 2](https://vlegalwaymayo.atu.ie/mod/page/view.php?id=1204016) to complete the task of extracting bank holidays for Northern Ireland and comparing them with those in England/Wales and Scotland.
+
 - **ATU Lab: Topic 01 – Representing Data**  
   I followed the lab exercises in [Lab 01 Datarepresentation.pdf](https://vlegalwaymayo.atu.ie/pluginfile.php/1590492/mod_url/intro/Lab%2001%20Datarepresentation.pdf?time=1759329869806), which showed how to read JSON from the internet using Python. This was useful for accessing and printing data in Part A, and for understanding how to loop through and filter data in Part B.
 
@@ -264,7 +268,7 @@ To help complete assignment 02 Part A and Part B, I used the following resources
 ### Overview
 This assignment involves creating a Jupyter notebook that analyzes a dataset of 1,000 people to extract and visualize the most common email domains. The notebook reads a CSV file containing personal information, extracts the domain names from email addresses, counts their occurrences, and generates a pie chart to display the distribution of the top email domains. Less frequent domains are grouped into an "Others" category for clarity.
 
-### Objectives:
+### Objectives
 - **Data Extraction:** Extract email domains from a dataset of 1,000 people downloaded from the web.
 - **Frequency Counting:** Count the occurrences of each email domain.
 - **Visualisation:** Create a pie chart to visualise the distribution of the top email domains.
@@ -318,9 +322,9 @@ The pie chart below visualizes the distribution of the top email domains found i
 
 - ATU Lecture: Acquiring data
   I watched the lecture in [25-26: 4369 -- Programming For Data Analytics](https://vlegalwaymayo.atu.ie/course/view.php?id=12815) to understand how to acquire data from various sources, including downloading datasets from the web. This helped me understand the importance of data acquisition in data analytics.
-
-  - ATU Assignment 3 domains Instructions
-  I followed the assignment instructions provided in [Assignment 3 domains](https://vlegalwaymayo.atu.ie/mod/page/view.php?id=1204040) to complete the task of extracting email domains and visualizing them using a pie chart. The instructions guided me through the steps of data extraction, processing, and visualisation.
+  
+- ATU Assignment 3 Instructions
+  I followed the assignment instructions provided in [Assignment 3](https://vlegalwaymayo.atu.ie/mod/page/view.php?id=1204040) to complete the task of extracting email domains and visualizing them using a pie chart. The instructions guided me through the steps of data extraction, processing, and visualisation.
 
 - [`assignment03-pie.ipynb`](assignments/notebooks/assignment03-pie.ipynb)  
   Main notebook for Assignment 3. It loads the dataset, extracts email domains, counts them, and creates a pie chart.
