@@ -1,4 +1,6 @@
-# This program anonymises the sub domains of IP addresses in access.log.txt
+# lab04_anonymise_ips.py
+
+# This program anonymises the octets of IP addresses in access.log.txt
 # It Xs out the last two triplets of each IP address and writes the result to a new file
 # Author: Edward Cronin
 
