@@ -1,0 +1,58 @@
+
+a. Pattern: 'hello'
+--------------------------------------------------
+Line 1: hello
+
+b. Pattern: 'Hello'
+--------------------------------------------------
+Line 2: Hello
+Line 3: Hello World
+Line 5:        Hello mary
+
+c. Pattern: '^Hello'
+--------------------------------------------------
+Line 2: Hello
+Line 3: Hello World
+
+d. Pattern: '^Hell*o'
+--------------------------------------------------
+Line 2: Hello
+Line 3: Hello World
+Line 4: Helo John
+Line 6: Helllllllllllo Anamaniacs
+
+e. Pattern: '^Hell+o'
+--------------------------------------------------
+Line 2: Hello
+Line 3: Hello World
+Line 6: Helllllllllllo Anamaniacs
+
+f. Pattern: '^Hell?o'
+--------------------------------------------------
+Line 2: Hello
+Line 3: Hello World
+Line 4: Helo John
+
+g. Pattern: '^hello [A-Z]'
+--------------------------------------------------
+(No matches)
+
+h. Pattern: '^Hello [A-Z]'
+--------------------------------------------------
+Line 3: Hello World
+
+i. Pattern: '='
+--------------------------------------------------
+Line 7: var = 123
+
+j. Pattern: '#'
+--------------------------------------------------
+Line 8: change this #this will change
+
+k. Pattern: '\['
+--------------------------------------------------
+Line 9: what [about] this.
+
+l. Pattern: '^$'
+--------------------------------------------------
+(No matches)
