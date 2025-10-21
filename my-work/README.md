@@ -157,14 +157,99 @@ Tips:
 
 This lab focuses on using Python's regular expressions to search, extract, and transform text in log and sample files. It includes small utilities for testing patterns, anonymising IP addresses, and extracting specific components like timestamps.
 
+
+Quiz regex patterns (a–l):
+
+What lines will be printed out for the following regular expressions? Note that regular expressions in python are case sensitive: 
+
+```
+# List of regex patterns to test
+patterns = [
+    ("a", "hello"),
+    ("b", "Hello"),
+    ("c", "^Hello"),
+    ("d", "^Hell*o"),
+    ("e", "^Hell+o"),
+    ("f", "^Hell?o"),
+    ("g", "^hello [A-Z]"),
+    ("h", "^Hello [A-Z]"),
+    ("i", "="),
+    ("j", "#"),
+    ("k", r"\["),
+    ("l", "^$")
+]
+```
+
+### Output lines depend on the content of `quiz.txt` in `my-work/data/sample-files/`.
+
+```
+a. Pattern: 'hello'
+--------------------------------------------------
+Line 1: hello
+
+b. Pattern: 'Hello'
+--------------------------------------------------
+Line 2: Hello
+Line 3: Hello World
+Line 5:        Hello mary
+
+c. Pattern: '^Hello'
+--------------------------------------------------
+Line 2: Hello
+Line 3: Hello World
+
+d. Pattern: '^Hell*o'
+--------------------------------------------------
+Line 2: Hello
+Line 3: Hello World
+Line 4: Helo John
+Line 6: Helllllllllllo Anamaniacs
+
+e. Pattern: '^Hell+o'
+--------------------------------------------------
+Line 2: Hello
+Line 3: Hello World
+Line 6: Helllllllllllo Anamaniacs
+
+f. Pattern: '^Hell?o'
+--------------------------------------------------
+Line 2: Hello
+Line 3: Hello World
+Line 4: Helo John
+
+g. Pattern: '^hello [A-Z]'
+--------------------------------------------------
+(No matches)
+
+h. Pattern: '^Hello [A-Z]'
+--------------------------------------------------
+Line 3: Hello World
+
+i. Pattern: '='
+--------------------------------------------------
+Line 7: var = 123
+
+j. Pattern: '#'
+--------------------------------------------------
+Line 8: change this #this will change
+
+k. Pattern: '\['
+--------------------------------------------------
+Line 9: what [about] this.
+
+l. Pattern: '^$'
+--------------------------------------------------
+(No matches)
+```
+
 Files:
-- `code/lab04_anonymise_ip.py` — anonymises the last two octets of IPv4 addresses in `../data/access.log.txt` by replacing them with `XXX.XXX`; writes output to `../data/lab04_anonymisedIPs.txt`.
+- `code/lab04_anonymise_ips.py` — anonymises the last two octets of IPv4 addresses in `../data/access.log.txt` by replacing them with `XXX.XXX`; writes output to `../data/lab04_anonymisedIPs.txt`.
 - `code/lab04_regex_tests.py` — runs a set of regex patterns over `../data/access.log.txt` to demonstrate matching numbers, IPs, timestamps, query params, etc., and prints sample matches.
-- `code/lab04_smalleraccess.py` — extracts date/time tokens like `[15/Feb/2021:18:44:39]` from `../data/access.log.txt` and prints them.
-- `code/lab04_quiz.py` — prints lines from `../data/sample-files/quiz.txt` that start with `Hello ` followed by a capital letter.
-- `code/lab04_quiz_test.py` — iterates over a list of regex patterns (a–l), prints matches with line numbers from `../data/sample-files/quiz.txt`, and saves results to `../data/quiz_results.txt`.
-- `code/lab04_test_regex.py` — sanity-check for the pattern `\d+$` (digits at end of line) on `../data/access.log.txt` with a few diagnostics.
-- `code/lab04_test_file.py` — utility to verify file presence/size and preview content of `../data/access.log.txt`.
+- `code/lab04_access_timestamps.py` — extracts date/time tokens like `[15/Feb/2021:18:44:39]` from `../data/access.log.txt` and prints them.
+- `code/lab04_quiz_hello_capital.py` — prints lines from `../data/sample-files/quiz.txt` that start with `Hello ` followed by a capital letter.
+- `code/lab04_quiz_patterns_test.py` — iterates over a list of regex patterns (a–l), prints matches with line numbers from `../data/sample-files/quiz.txt`, and saves results to `../data/lab04_quiz_results.txt`.
+- `code/lab04_test_trailing_digits_regex.py` — sanity-check for the pattern `\d+$` (digits at end of line) on `../data/access.log.txt` with a few diagnostics.
+- `code/lab04_access_file_inspect.py` — utility to verify file presence/size and preview content of `../data/access.log.txt`.
 
 How it works (brief):
 - Uses Python's `re` module: `search`, `findall`, and `sub` to locate or replace patterns.
@@ -177,11 +262,11 @@ How it works (brief):
 Run:
 ```powershell
 cd my-work/code
-python .\lab04_anonymise_ip.py     # writes ../data/lab04_anonymisedIPs.txt
-python .\lab04_regex_tests.py      # prints sample matches for multiple patterns
-python .\lab04_smalleraccess.py    # prints extracted [date/time] tokens
-python .\lab04_quiz.py             # prints matching lines from quiz.txt
-python .\lab04_quiz_test.py        # writes ../data/quiz_results.txt
+python .\lab04_anonymise_ips.py              # writes ../data/lab04_anonymisedIPs.txt
+python .\lab04_regex_tests.py                # prints sample matches for multiple patterns
+python .\lab04_access_timestamps.py          # prints extracted [date/time] tokens
+python .\lab04_quiz_hello_capital.py         # prints matching lines from quiz.txt
+python .\lab04_quiz_patterns_test.py         # writes ../data/lab04_quiz_results.txt
 ```
 
 Data files used:
@@ -190,7 +275,7 @@ Data files used:
 
 Where outputs are saved (Lab 4):
 - `my-work/data/lab04_anonymisedIPs.txt` — anonymised copy of `access.log.txt`.
-- `my-work/data/quiz_results.txt` — collated regex matches from `quiz.txt`.
+- `my-work/data/lab04_quiz_results.txt` — collated regex matches from `quiz.txt`.
 
 References and sources:
 - W3Schools — Python RegEx: https://www.w3schools.com/python/python_regex.asp
@@ -201,11 +286,6 @@ References and sources:
 Notes:
 - If relative paths fail, use `os.path.join(os.path.dirname(__file__), ...)` as shown in `lab04_quiz_test.py`.
 - Remember that regex is case-sensitive by default; use character classes or `re.IGNORECASE` as needed.
-
-## Notes and future improvements
-- Add CLI flags to control projection horizon, output folder, and filename format.
-- Export CSV summaries for each analysis.
-- Add more detailed demographic modelling for robust projections.
 
 ---
 
