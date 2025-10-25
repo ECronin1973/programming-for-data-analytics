@@ -1,3 +1,4 @@
+
 # Programming For Data Analytics — my-work
 
 This README documents the student work inside the `my-work/` folder for the Programming For Data Analytics module. It summarises assignments, code, data, and generated charts, and explains how to reproduce results.
@@ -5,8 +6,6 @@ This README documents the student work inside the `my-work/` folder for the Prog
 ## Contents
 - Assignment 1: Projected births
 - Assignment 2: Population by age (Galway)
-- Lab 4: Regular expressions and log/quiz parsing
-- Lab 5: Weighted descriptive statistics
 - How to run
 - Data sources and assumptions
 - Dependencies
@@ -40,6 +39,7 @@ python .\projected_births.py
 
 Caption: Historical births (points), fitted line (dotted) and linear projection (solid). Output filename is timestamped.
 
+---
 
 ## Assignment 2 — Population by age (Galway)
 
@@ -132,27 +132,41 @@ These files are produced by the scripts and by the notebook when run.
 Short guidance to interpret the generated images:
 
 - Projected births plot (`projected_births_...png`):
-	- Blue points are historical observed values (annual totals).
-	- A dotted blue fitted line shows the model fit over the historical years.
-	- A solid contrasting line shows the linear projection into the future.
-	- Axis limits are chosen to include both historical and projected values; check the legend and title for the projection horizon.
+  - Blue points are historical observed values (annual totals).
+  - A dotted blue fitted line shows the model fit over the historical years.
+  - A solid contrasting line shows the linear projection into the future.
+  - Axis limits are chosen to include both historical and projected values; check the legend and title for the projection horizon.
 
 - Galway population by age (`cso-populationbyage_galway_...png`):
-	- X axis: single-year ages (0, 1, 2, ...). 'Under 1 year' is shown at age 0.
-	- Y axis: population counts for each age (Galway City + County combined, both sexes).
-	- Bars are coloured by age (a continuous colormap) and a vertical colorbar shows the age mapping.
-	- Numeric annotations are shown above bars every 10 years (0, 10, 20, ...).
-	- A dashed red trend line shows a simple linear fit across ages; the legend lists the slope in population per year of age.
-	- A small ledger box shows the total population, approximate median age, and the top 5 single-year ages by population.
+  - X axis: single-year ages (0, 1, 2, ...). 'Under 1 year' is shown at age 0.
+  - Y axis: population counts for each age (Galway City + County combined, both sexes).
+  - Bars are coloured by age (a continuous colormap) and a vertical colorbar shows the age mapping.
+  - Numeric annotations are shown above bars every 10 years (0, 10, 20, ...).
+  - A dashed red trend line shows a simple linear fit across ages; the legend lists the slope in population per year of age.
+  - A small ledger box shows the total population, approximate median age, and the top 5 single-year ages by population.
 
 - Highlighted dip image (`cso-populationbyage_galway_highlight_...png`):
-	- The ages 20–40 are shaded to emphasise the observed dip in counts in that band.
-	- A small annotation box reports the total population in that range and a simple relative-drop metric compared with neighbouring age bands.
+  - The ages 20–40 are shaded to emphasise the observed dip in counts in that band.
+  - A small annotation box reports the total population in that range and a simple relative-drop metric compared with neighbouring age bands.
 
 Tips:
 - If you want to inspect the underlying numbers, run the notebook cells to produce `top5` and `decade_df` tables or open the CSV inputs in a spreadsheet.
 - For reproducible outputs, run the scripts from `my-work/code/` so the CSV search heuristics find the correct data files.
 
+---
+
+## Contact
+If you need clarifications on the code or data, contact the author (Edward Cronin) at g00425645@atu.ie.
+
+**APIs**
+
+Free Open-Source Weather API | Open-Meteo.com https://open-meteo.com/
+GitHub REST API documentation - GitHub Docs https://docs.github.com/en/rest
+cso.ie https://www.cso.ie/en/index/
+Data.gov.ie https://data.gov.ie/
+Big List of Free and Open Public APIs (No Auth Needed) [2025] https://public-apis.io/
+
+---
 
 ## Lab 4 — Regular expressions and log/quiz parsing
 
@@ -288,6 +302,32 @@ Notes:
 - If relative paths fail, use `os.path.join(os.path.dirname(__file__), ...)` as shown in `lab04_quiz_test.py`.
 - Remember that regex is case-sensitive by default; use character classes or `re.IGNORECASE` as needed.
 
+**Lecture Topic 04 Regular Expressions Related Documentation**
+
+**Cleaning data**
+Pythonic Data Cleaning With pandas and NumPy – Real Python: https://realpython.com/python-data-cleaning-numpy-pandas/
+Pandas - Cleaning Data (w3schools): https://www.w3schools.com/python/pandas_cleaning.asp
+
+**Regex Resources**
+Documentation
+https://www.regular-expressions.info/refcharacters.html
+https://docs.python.org/3/library/re.html
+
+**Tutorials**
+Python RegEx (w3schools.com): https://www.w3schools.com/python/python_regex.asp
+Regular Expressions: Regexes in Python (Part 1) – Real Python: https://realpython.com/regex-python/
+Regular Expressions: Regexes in Python (Part 2) – Real Python: https://realpython.com/regex-python-part-2/
+https://www.guru99.com/python-regular-expressions-complete-tutorial.html
+https://www.dataquest.io/blog/regular-expressions-data-scientists/
+https://www.youtube.com/watch?v=sa-TUpSx1JA
+https://medium.com/@kennymiyasato/regular-expressions-tutorial-with-jupyter-notebooks-6d7df2429695
+
+**Cheat Sheet**
+Regular_Expressions_Cheat_Sheet.pdf (datacamp.com): https://images.datacamp.com/image/upload/v1665049611/Marketing/Blog/
+
+**Other links**
+Python String Methods (w3schools.com): https://www.w3schools.com/python/python_strings_methods.asp
+
 ---
 
 ## Lab 5 — Weighted descriptive statistics
@@ -387,6 +427,23 @@ Notes:
 - The notebook uses `pandas.pivot_table()` to reshape data for easier county-by-county analysis.
 - Weighted statistics are essential when each observation represents different frequencies (e.g., population counts).
 - The cumulative sum method for weighted median is a common approach in demographic analysis.
+
+**Lecture Topic 05 Analysis and some stats Related Documentation**
+
+pandas.DataFrame.mean — pandas 2.3.3 documentation :
+(https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.mean.html)
+Statistical functions (scipy.stats) — SciPy v1.16.2 Manual: https://docs.scipy.org/doc/scipy/reference/stats.html
+
+**Python and statistics**
+
+https://snakebear.science/
+8.1. Descriptive Statistics — The Python and Pandas Field Guide: https://snakebear.science/python-pandas-field-guide/stats/descriptive-statistics.html
+125book/source at 0a78dbfb48ba5851d8e4ff0b9f792c08584ac904 · CS-DS-125/125book
+Python Statistics Fundamentals: How to Describe Your Data – Real Python: https://ethanweed.github.io/pythonbook/03.01-descriptives.html
+
+**Statistics with Python**
+
+Introduction to Statistics with Python (DTU): https://02402.compute.dtu.dk/enotes/book-IntroStatistics-Python.pdf
 
 ---
 
