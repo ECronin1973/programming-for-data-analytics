@@ -296,17 +296,19 @@ This lab explores weighted statistical measures applied to population data for I
 
 Files:
 - `notebooks/week05_weighted-stats.ipynb` — interactive notebook that loads CSO population data by age and county, calculates weighted mean, weighted median, and weighted standard deviation, and exports a pivot table for analysis.
+- `code/week05_weighted_standard_dev.py` — Python script that reads the pivot table CSV and calculates weighted mean and weighted standard deviation for a selected county using NumPy.
 
 How it works (brief):
 - Fetches population data from the CSO API (`FY006A` dataset) containing population counts by age, sex, and administrative county.
 - Filters to "Both sexes" data (removes separate Male/Female rows) and cleans the 'Single Year of Age' column.
 - Drops unnecessary columns and converts age and population values to integers.
-- Creates a pivot table with ages as rows and counties as columns, saves to `population_for_analysis.csv`.
+- Creates a pivot table with ages as rows and counties as columns, saves to `../data/population_for_analysis.csv`.
 - Calculates weighted statistics for a selected district/county:
   - **Weighted mean**: `sum(age × population) / sum(population)` — computed manually and using `np.average()` with weights.
   - **Weighted median**: finds the age where cumulative population reaches 50% of the total.
   - **Weighted standard deviation**: applies weights to the deviations from the weighted mean.
 - Demonstrates the difference between unweighted `.mean()`, `.median()`, `.std()` and their weighted counterparts.
+- The Python script (`week05_weighted_standard_dev.py`) reads the exported CSV and performs weighted calculations programmatically.
 
 Key concepts:
 - **Weighted mean** accounts for frequency/population at each age — more accurate than treating each age as equally represented.
@@ -323,12 +325,18 @@ Or use VS Code:
 - Open `week05_weighted-stats.ipynb` in VS Code.
 - Run cells sequentially to fetch data, clean, pivot, and compute weighted statistics.
 
+To run the Python script after generating the CSV:
+```powershell
+cd my-work/code
+python .\week05_weighted_standard_dev.py
+```
+
 Data source:
 - CSO API: `https://ws.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/FY006A/CSV/1.0/en`
 - Dataset: Population by single year of age, sex, and administrative county (Census 2022).
 
 Where outputs are saved (Lab 5):
-- `notebooks/population_for_analysis.csv` — pivot table with ages as rows and counties as columns; saved in the notebook directory.
+- `my-work/data/population_for_analysis.csv` — pivot table with ages as rows and counties as columns; saved in the data directory.
 
 Example weighted statistics output:
 - For a selected county (e.g., Carlow), the notebook computes:
@@ -336,10 +344,37 @@ Example weighted statistics output:
   - Weighted median age: ~39 years (example)
   - Weighted standard deviation: varies by county
 
+Script output (example for Carlow):
+```
+Index(['Carlow', 'Cavan', 'Clare', 'Cork', 'Donegal', 'Dublin', 'Galway',
+       'Kerry', 'Kildare', 'Kilkenny', 'Laois', 'Leitrim', 'Limerick',
+       'Longford', 'Louth', 'Mayo', 'Meath', 'Monaghan', 'Offaly',
+       'Roscommon', 'Sligo', 'Tipperary', 'Waterford', 'Westmeath',
+       'Wexford', 'Wicklow'],
+      dtype='object', name='Administrative Counties')
+count    61240.000000
+mean        40.894326
+std         23.394969
+min          5.000000
+25%         19.000000
+50%         41.000000
+75%         62.000000
+max         87.000000
+Name: Carlow, dtype: float64
+39.46686084066603
+23.34821986130662
+```
+
 Tips:
 - To analyse a different county, change the `district` variable to any column name from `df_anal.columns`.
 - Compare unweighted vs weighted results to see the impact of population distribution.
 - The pivot table CSV can be used for further analysis in other tools or scripts.
+- Run the notebook first to generate `population_for_analysis.csv`, then run the Python script to compute statistics programmatically.
+- The script outputs:
+  - List of available counties/districts
+  - Basic descriptive statistics (unweighted) using `.describe()`
+  - Weighted mean using `np.average()`
+  - Weighted standard deviation calculated from weighted variance
 
 References and sources:
 - W3Schools — Python Pandas: https://www.w3schools.com/python/pandas/default.asp
