@@ -6,6 +6,7 @@ This README documents the student work inside the `my-work/` folder for the Prog
 - Assignment 1: Projected births
 - Assignment 2: Population by age (Galway)
 - Lab 4: Regular expressions and log/quiz parsing
+- Lab 5: Weighted descriptive statistics
 - How to run
 - Data sources and assumptions
 - Dependencies
@@ -286,6 +287,71 @@ References and sources:
 Notes:
 - If relative paths fail, use `os.path.join(os.path.dirname(__file__), ...)` as shown in `lab04_quiz_test.py`.
 - Remember that regex is case-sensitive by default; use character classes or `re.IGNORECASE` as needed.
+
+---
+
+## Lab 5 — Weighted descriptive statistics
+
+This lab explores weighted statistical measures applied to population data for Irish counties. It demonstrates the difference between basic and weighted descriptive statistics (mean, median, standard deviation) when working with frequency-weighted data.
+
+Files:
+- `notebooks/week05_weighted-stats.ipynb` — interactive notebook that loads CSO population data by age and county, calculates weighted mean, weighted median, and weighted standard deviation, and exports a pivot table for analysis.
+
+How it works (brief):
+- Fetches population data from the CSO API (`FY006A` dataset) containing population counts by age, sex, and administrative county.
+- Filters to "Both sexes" data (removes separate Male/Female rows) and cleans the 'Single Year of Age' column.
+- Drops unnecessary columns and converts age and population values to integers.
+- Creates a pivot table with ages as rows and counties as columns, saves to `population_for_analysis.csv`.
+- Calculates weighted statistics for a selected district/county:
+  - **Weighted mean**: `sum(age × population) / sum(population)` — computed manually and using `np.average()` with weights.
+  - **Weighted median**: finds the age where cumulative population reaches 50% of the total.
+  - **Weighted standard deviation**: applies weights to the deviations from the weighted mean.
+- Demonstrates the difference between unweighted `.mean()`, `.median()`, `.std()` and their weighted counterparts.
+
+Key concepts:
+- **Weighted mean** accounts for frequency/population at each age — more accurate than treating each age as equally represented.
+- **Weighted median** is the age at which half the population is younger and half is older.
+- **Weighted standard deviation** measures variability while accounting for population size at each age.
+
+Run:
+```powershell
+cd my-work/notebooks
+# Open the notebook in VS Code or Jupyter and run cells interactively
+```
+
+Or use VS Code:
+- Open `week05_weighted-stats.ipynb` in VS Code.
+- Run cells sequentially to fetch data, clean, pivot, and compute weighted statistics.
+
+Data source:
+- CSO API: `https://ws.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/FY006A/CSV/1.0/en`
+- Dataset: Population by single year of age, sex, and administrative county (Census 2022).
+
+Where outputs are saved (Lab 5):
+- `notebooks/population_for_analysis.csv` — pivot table with ages as rows and counties as columns; saved in the notebook directory.
+
+Example weighted statistics output:
+- For a selected county (e.g., Carlow), the notebook computes:
+  - Weighted mean age: ~39.5 years (example)
+  - Weighted median age: ~39 years (example)
+  - Weighted standard deviation: varies by county
+
+Tips:
+- To analyse a different county, change the `district` variable to any column name from `df_anal.columns`.
+- Compare unweighted vs weighted results to see the impact of population distribution.
+- The pivot table CSV can be used for further analysis in other tools or scripts.
+
+References and sources:
+- W3Schools — Python Pandas: https://www.w3schools.com/python/pandas/default.asp
+- W3Schools — NumPy: https://www.w3schools.com/python/numpy/default.asp
+- CSO Ireland — Population datasets: https://data.cso.ie/
+- NumPy documentation — `numpy.average()`: https://numpy.org/doc/stable/reference/generated/numpy.average.html
+- Lab 5 instructions — ATU course handout/brief (see Moodle for the specific PDF/URL)
+
+Notes:
+- The notebook uses `pandas.pivot_table()` to reshape data for easier county-by-county analysis.
+- Weighted statistics are essential when each observation represents different frequencies (e.g., population counts).
+- The cumulative sum method for weighted median is a common approach in demographic analysis.
 
 ---
 
