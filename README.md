@@ -13,7 +13,6 @@ Welcome to Edward Cronin's repository for the Programming For Data Analytics Mod
   - [Part B — holidays unique to Northern Ireland](#assignment-2-bank-holidays-unique-to-northern-ireland)
 - [Assignment 3 — domains (pie chart)](#assignment-3-domains)
 - [Assignment 5 — Population by Age and Sex](#assignment-05-population-by-age-and-sex)
-- [References](#references)
 
 ## Overview
 
@@ -597,7 +596,7 @@ Notes for students and debugging tips:
 - The `sex_greater_age_difference` column contains `Male`, `Female`, or `Equal`.
 - After running this cell, open `assignments/data/age_difference_by_sex.csv` to inspect age-specific differences in a spreadsheet or with pandas.
 
-'''python
+```python
 # 🗃️ Create and save age_difference_by_sex.csv with columns: age, female, male, difference
 
 AGE_DIFF_FILENAME = "age_difference_by_sex.csv"
@@ -651,7 +650,7 @@ age,female,male,difference,sex_greater_age_difference
 2,1810,1889,79,Male
 3,1842,1937,95,Male
 4,1863,1980,117,Male
-``
+```
 
 ## References
 - [25-26: 4369 -- PROGRAMMING FOR DATA ANALYTICS MODULE](https://vlegalwaymayo.atu.ie/course/view.php?id=12815). This helped understand key concepts in data acquisition, cleaning, analysis, and visualisation.
