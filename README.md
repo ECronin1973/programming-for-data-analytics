@@ -3,23 +3,17 @@
 Welcome to Edward Cronin's repository for the Programming For Data Analytics Module 2025/2026. This repository contains the student's submissions for the module, including detailed tasks and a comprehensive project.
 
 ## Table of Contents
-[Overview](#overview)
-
-[Author](#author)
-
-[How to Download this Repository](#how-to-download-this-repository)
-
-[Code of Conduct](#code-of-conduct)
-
-[Contents](#contents)
-
-[Assignment 2 (Part A): Northern Ireland bank holidays](#assignment-2-northern-ireland-bank-holidays)
-
-[Assignment 2 (Part B): Bank holidays unique to Northern Ireland](#assignment-2-bank-holidays-unique-to-northern-ireland)
-
-[Assignment 3 domains](#assignment-3-domains)
-
-[Assignment 3 Pie Chart Image](#assignment-3-pie-chart-output)
+- [Overview](#overview)
+- [Author](#author)
+- [How to Download this Repository](#how-to-download-this-repository)
+- [Code of Conduct](#code-of-conduct)
+- [Contents](#contents)
+- Assignment 2: Northern Ireland bank holidays
+  - [Part A — list Northern Ireland bank holidays](#assignment-2-northern-ireland-bank-holidays)
+  - [Part B — holidays unique to Northern Ireland](#assignment-2-bank-holidays-unique-to-northern-ireland)
+- [Assignment 3 — domains (pie chart)](#assignment-3-domains)
+- [Assignment 5 — Population by Age and Sex](#assignment-05-population-by-age-and-sex)
+- [References](#references)
 
 ## Overview
 
@@ -314,31 +308,365 @@ Index,User Id,First Name,Last Name,Sex,Email,Phone,Date of birth,Job Title
 
 ### Pie Chart Output
 
-The pie chart below visualizes the distribution of the top email domains found in the dataset. There are only three email domains identified and represented.
+The pie chart below visualises the distribution of the top email domains found in the dataset. There are only three email domains identified and represented.
 
 ![Pie chart of email domains](assignments/data/assignment-03-pie-chart.jpg)
 
 ### References
 
-- ATU Lecture: Acquiring data
-  I watched the lecture in [25-26: 4369 -- Programming For Data Analytics](https://vlegalwaymayo.atu.ie/course/view.php?id=12815) to understand how to acquire data from various sources, including downloading datasets from the web. This helped me understand the importance of data acquisition in data analytics.
-  
-- ATU Assignment 3 Instructions
-  I followed the assignment instructions provided in [Assignment 3](https://vlegalwaymayo.atu.ie/mod/page/view.php?id=1204040) to complete the task of extracting email domains and visualizing them using a pie chart. The instructions guided me through the steps of data extraction, processing, and visualisation.
+References
+ATU Lecture: Acquiring data I watched the lecture in [25-26: 4369 -- Programming For Data Analytics](https://vlegalwaymayo.atu.ie/course/view.php?id=12815) to understand how to acquire data from various sources, including downloading datasets from the web. This helped me understand the importance of data acquisition in data analytics.
 
-- [`assignment03-pie.ipynb`](assignments/notebooks/assignment03-pie.ipynb)  
-  Main notebook for Assignment 3. It loads the dataset, extracts email domains, counts them, and creates a pie chart.
+ATU Assignment 3 Instructions I followed the assignment instructions provided in Assignment 3 to complete the task of extracting email domains and visualizing them using a pie chart. The instructions guided me through the steps of data extraction, processing, and visualisation.
 
-- [`people.csv`](assignments/data/people.csv)  
-  Dataset of 1,000 people. The `Email` column is used to extract domain names for analysis.
+[assignment03-pie.ipynb](assignments/notebooks/assignment03-pie.ipynb)
+Main notebook for Assignment 3. It loads the dataset, extracts email domains, counts them, and creates a pie chart.
 
-- [pandas](https://pandas.pydata.org/)  
-  Used to load the dataset (`read_csv`), extract email domains from strings (`str.split`), and count how often each domain appears (`value_counts`).
+[people.csv](assignments/data/people.csv)
+Dataset of 1,000 people. The Email column is used to extract domain names for analysis.
 
-- [matplotlib](https://matplotlib.org/)  
-  Used to create and customize the pie chart (`plot.pie`), adjust layout (`tight_layout`), display the chart (`show`), and save it as an image file (`savefig`).
+[pandas](https://pandas.pydata.org/)
+Used to load the dataset (read_csv), extract email domains from strings (str.split), and count how often each domain appears (value_counts).
 
-- [seaborn](https://seaborn.pydata.org/)  
-  Used to apply a pastel color palette for the pie chart (`color_palette`) to improve visual clarity and style.
+[matplotlib](https://matplotlib.org/)
+Used to create and customize the pie chart (plot.pie), adjust layout (tight_layout), display the chart (show), and save it as an image file (savefig).
+
+[seaborn](https://seaborn.pydata.org/)
+Used to apply a pastel color palette for the pie chart (color_palette) to improve visual clarity and style.
+
+END
+---
+
+# Assignment 05 Population by Age and Sex
+
+## Assignment Part 1 : Question
+Write a jupyter notebook that analyses the differences between the sexes by age in Ireland.
+- Weighted mean age (by sex)
+- The difference between the sexes by age
+**Note:** This part does not need to look at the regions.
+
+The following is an overview, objectives, how the notebook works, example outputs from key cells, and references. Use this section as a quick guide to run and inspect the analysis results in `assignments/data`.
+
+## Overview
+
+The notebook fetches a raw snapshot of the CSO FY006A population table, writes the raw CSV for provenance (`population_for_analysis.csv`), prepares a cleaned pivot table of single-year ages by sex (`weighted_stats_by_sex.csv`), computes weighted descriptive statistics (mean, median, std) by sex, visualises results, and exports a tidy per-age CSV (`age_difference_by_sex.csv`).
+
+## Objectives
+
+- Demonstrate downloading and persisting official data for reproducibility.
+- Clean and standardise single-year-of-age population counts.
+- Compute population-weighted mean, median and standard deviation by sex.
+- Produce two core visualisations: a weighted-mean bar chart and an age-by-age Male−Female difference line plot.
+- Export tidy CSVs for inspection and downstream analysis.
+
+## How the notebook works (step-by-step)
+
+1. Consolidated imports and path setup (defines `base_data_dir`, `DATADIR`, `FILENAME` and `FULLPATH`).
+2. Fetch raw CSO CSV from the FY006A endpoint and save it to `assignments/data/population_for_analysis.csv`.
+3. Read the saved CSV, drop non-data metadata columns, keep only `Sex` rows that are `Male` or `Female`, normalise age labels (replace `Under 1 year` → `0`), coerce ages and counts to numeric types.
+4. Pivot into `df_anal` with ages as the index and `Female`/`Male` as columns and save as `assignments/data/weighted_stats_by_sex.csv`.
+5. Compute weighted mean and weighted standard deviation per sex using NumPy's weighted average (saved to `weighted_mean_std_by_sex.csv`).
+6. Compute weighted median per sex using cumulative weights (saved to `weighted_median_std_by_sex.csv`).
+7. Create two visualisations: (a) bar chart of weighted means with value labels, (b) line chart of age-by-age Male−Female difference annotated with min/max.
+8. Export a tidy `age_difference_by_sex.csv` that includes `sex_greater_age_difference` (Male/Female/Equal) for each age.
+
+## 📊 Weighted Mean Age (By Sex)
+
+The weighted mean is a statistical measure that calculates the average of a set of values, where each value contributes proportionally to its assigned weight. Unlike the arithmetic mean, which treats all values equally, the weighted mean adjusts for the relative importance, frequency, or reliability of each observation.
+
+### 🧮 Formula
+
+$$
+\text{Weighted Mean} = \frac{\sum_{i=1}^{n} x_i \cdot w_i}{\sum_{i=1}^{n} w_i}
+$$
+
+Where:
+- \(x_i\) = value of the \(i\)-th data point  
+- \(w_i\) = weight of the \(i\)-th data point  
+- \(n\) = total number of data points
+
+### 🔗 References
+- [Pandas Documentation on Weighted Mean](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.mean.html)
+- [Numpy Documentation on Average](https://numpy.org/doc/stable/reference/generated/numpy.average.html)
+- [Pandas Documentation on Series](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html)
+
+```python
+# 📁 File path
+filepath = output_path
+
+# 📥 Load pivot table
+df_anal = pd.read_csv(filepath, index_col=0)
+
+# 🧮 Compute weighted mean and weighted std for each sex, save to CSV
+results = []
+for sex in df_anal.columns:
+    weights = df_anal[sex].fillna(0).astype(float)
+    ages = df_anal.index.astype(float)
+
+    if weights.sum() > 0:
+        wmean = float(np.average(ages, weights=weights))
+        wvar = float(np.average((ages - wmean) ** 2, weights=weights))
+        wstd = float(np.sqrt(wvar))
+        total = int(weights.sum())
+        print(f"{sex}: Weighted mean age = {wmean:.2f}, weighted std = {wstd:.2f}")
+    else:
+        wmean = float('nan')
+        wstd = float('nan')
+        total = 0
+        print(f"{sex}: No population data available")
+
+    results.append((sex, total, wmean, wstd))
+
+mean_std_df = pd.DataFrame(results, columns=['sex', 'total_population', 'weighted_mean_age', 'weighted_std_age']).set_index('sex')
+
+# Save to filename
+mean_std_filename = 'weighted_mean_std_by_sex.csv'
+mean_std_path = os.path.join(DATADIR, mean_std_filename)
+os.makedirs(DATADIR, exist_ok=True)
+mean_std_df.to_csv(mean_std_path)
+print('\nSaved weighted mean & std to', os.path.abspath(mean_std_path))
+
+# Display results
+mean_std_df
+```
+
+## Weighted Median (by Sex)
+
+The **weighted median** is the age at which half of the weighted population is younger and half is older. It accounts for the number of individuals at each age, making it more robust than the mean when data is skewed.
+
+### 📘 Definition
+
+Given:
+- \(x_i\): sorted age values  
+- \(w_i\): weights (e.g., population counts)
+
+The weighted median is the smallest age \(x_j\) such that:
+
+$$
+\sum_{i=1}^{j} w_i \geq \frac{\sum_{i=1}^{n} w_i}{2}
+$$
+
+If the cumulative weight equals exactly half the total at two adjacent ages, the median is the average of those two.
+
+### 🔗 References
+- [NumPy `average()` method](https://numpy.org/doc/stable/reference/generated/numpy.average.html)  
+  While NumPy does not directly support weighted medians, its `average()` method is commonly used for weighted means and forms the basis for computing weighted variance and standard deviation.
+
+- [Real Statistics: Weighted Median](https://real-statistics.com/descriptive-statistics/measures-central-tendency/weighted-mean-and-median/)  
+  Offers a clear explanation of how the weighted median is calculated, including step-by-step logic using cumulative weights and sorted values.
+
+- [pandas Series API](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html)  
+  pandas provides `.median()` for Series and DataFrames, but does not natively support weighted medians. Custom logic using cumulative weights is required.
+
+```python
+median_results = []
+
+for sex in df_anal.columns:
+    weight_series = df_anal[sex].fillna(0).astype(float)
+    age_index = df_anal.index.astype(float)
+
+    weight_values = weight_series.to_numpy()
+    age_values = age_index.to_numpy()
+
+    if weight_values.sum() > 0:
+        cutoff = weight_values.sum() / 2.0
+        cumsum = weight_series.cumsum()
+        mask = cumsum >= cutoff
+        if mask.any():
+            wmedian = float(age_index[mask][0])
+        else:
+            wmedian = np.nan
+    else:
+        wmedian = np.nan
+
+    median_results.append((sex, wmedian))
+
+# 📊 Create median DataFrame
+median_df = pd.DataFrame(median_results, columns=['sex', 'weighted_median_age']).set_index('sex')
+median_df
+
+```
+## Weighted Standard Deviation (by Sex)
+
+The **weighted standard deviation** measures how spread out the ages are, accounting for population size at each age.
+
+#### 📘 Formula
+
+Let \(\bar{x}_w\) represent the **weighted mean**, calculated as the average of values weighted by their respective frequencies or importance.
+
+$$
+\sigma_w = \sqrt{ \frac{ \sum w_i (x_i - \bar{x}_w)^2 }{ \sum w_i } }
+$$
+
+Where:
+- \(x_i\): age values  
+- \(w_i\): weights  
+- \(\bar{x}_w\): weighted mean age
+
+### 🔗 References for Weighted Standard Deviation
+
+- [NumPy `average()` method](https://numpy.org/doc/stable/reference/generated/numpy.average.html)  
+  Used to compute weighted means and intermediate steps for weighted variance and standard deviation. Supports the `weights` parameter for efficient calculation.
+
+- [Real Statistics: Weighted Mean and Standard Deviation](https://real-statistics.com/descriptive-statistics/measures-central-tendency/weighted-mean-and-median/)  
+  Provides formulas and examples for computing weighted standard deviation, including the use of weighted variance as a precursor.
+
+- [pandas Series API](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html)  
+  pandas supports `.std()` for standard deviation, but does not natively support weighted standard deviation. Custom logic using NumPy or manual weighting is required.
+
+```python
+# 🧮 Compute weighted standard deviation by sex
+std_results = []
+
+for sex in df_anal.columns:
+    weight_series = df_anal[sex].fillna(0).astype(float)
+    age_index = df_anal.index.astype(float)
+
+    weight_values = weight_series.to_numpy()
+    age_values = age_index.to_numpy()
+
+    if weight_values.sum() > 0:
+        wmean = np.average(age_values, weights=weight_values)
+        wstd = float(np.sqrt(np.average((age_values - wmean) ** 2, weights=weight_values)))
+    else:
+        wstd = np.nan
+
+    std_results.append((sex, wstd))
+
+# 📊 Create std DataFrame
+std_df = pd.DataFrame(std_results, columns=['sex', 'weighted_std_age']).set_index('sex')
+std_df
+```
+
+## Example outputs (extracted from generated CSV files)
+
+These snippets are taken directly from the CSV files produced when the notebook was executed in this workspace. They reflect the actual saved outputs in `assignments/data`.
+
+- Raw data download and save confirmation (notebook printout):
+
+```
+Fetching raw data from URL: https://ws.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/FY006A/CSV/1.0/en
+Saved raw population data to C:\Users\eCron\OneDrive\Documents\ATU_CourseWork\Programming For Data Analytics\programming-for-data-analytics\assignments\data\population_for_analysis.csv
+```
+
+- Pivot preview (`assignments/data/weighted_stats_by_sex.csv`) — first 6 rows:
+
+```
+Single Year of Age,Female,Male
+0,1761.625,1850.625
+1,1721.5625,1804.6875
+2,1810.875,1889.75
+3,1842.6875,1937.5625
+4,1863.6875,1980.375
+```
+
+- Weighted mean & std (`assignments/data/weighted_mean_std_by_sex.csv`):
+
+```
+sex,total_population,weighted_mean_age,weighted_std_age
+Female,162786,38.9397958987787,22.998989559036303
+Male,159034,37.7394477371039,22.67120435900202
+```
+
+- Weighted median & std (`assignments/data/weighted_median_std_by_sex.csv`):
+
+```
+sex,weighted_median_age,weighted_std_age
+Female,39.0,22.998989559036303
+Male,38.0,22.67120435900202
+```
+
+## Difference between sexes in Age Groups
+
+This generates a CSV (`age_difference_by_sex.csv`) with age-by-age population counts and the difference (Male − Female).
+
+How the cell works (summary):
+- It uses the in-memory pivot `df_anal` created earlier (run the pivot cell that produces `df_anal` before running this cell).
+- The pivot index is converted to numeric ages and rows are sorted by age.
+- `Male` and `Female` counts are extracted; missing sex columns are filled with zeros to avoid errors.
+- A tidy DataFrame is created with columns: `age`, `female`, `male`, `difference` (male − female), and `sex_greater_age_difference`.
+- The DataFrame is written to `assignments/data/age_difference_by_sex.csv` and a small preview is displayed.
+
+Inputs and outputs:
+- Input: `df_anal` (pivot table; index = single-year ages; expected columns include `Male` and `Female`).
+- Output: `assignments/data/age_difference_by_sex.csv` (tidy CSV with columns: `age`, `female`, `male`, `difference`, `sex_greater_age_difference`).
+
+Notes for students and debugging tips:
+- If you get a FileNotFoundError, run the pivot cell (the one that creates `df_anal`) first.
+- If one sex column is missing, the code uses zeros for that sex and the `difference` will show the imbalance accordingly.
+- The `sex_greater_age_difference` column contains `Male`, `Female`, or `Equal`.
+- After running this cell, open `assignments/data/age_difference_by_sex.csv` to inspect age-specific differences in a spreadsheet or with pandas.
+
+'''python
+# 🗃️ Create and save age_difference_by_sex.csv with columns: age, female, male, difference
+
+AGE_DIFF_FILENAME = "age_difference_by_sex.csv"
+
+# Simplified: always use the in-memory pivot `df_anal` created earlier.
+# This keeps the notebook straightforward for students and removes file-branch complexity.
+if 'df_anal' in globals():
+    pivot = df_anal.copy()
+else:
+    raise FileNotFoundError('df_anal not found in memory; run the pivot cell that creates df_anal before running this cell')
+
+# Ensure index is numeric and sorted (simple, robust conversion)
+pivot_index_numeric = pd.to_numeric(pivot.index.to_series(), errors='coerce').fillna(0).astype(int)
+pivot.index = pd.Index(pivot_index_numeric, name=pivot.index.name)
+pivot = pivot.sort_index()
+
+# Get Male/Female series or default zeros if missing
+male_series = pivot.get('Male', pd.Series(0, index=pivot.index)).fillna(0).astype(int)
+female_series = pivot.get('Female', pd.Series(0, index=pivot.index)).fillna(0).astype(int)
+
+# Build output dataframe
+df_out = pd.DataFrame({
+    'age': pivot.index.astype(int),
+    'female': female_series.values,
+    'male': male_series.values
+})
+df_out['difference'] = df_out['male'] - df_out['female']
+
+# Which sex is larger at each age
+df_out['sex_greater_age_difference'] = np.where(df_out['male'] > df_out['female'], 'Male', np.where(df_out['female'] > df_out['male'], 'Female', 'Equal'))
+
+# Save CSV
+age_diff_fp = os.path.join(DATADIR, AGE_DIFF_FILENAME)
+os.makedirs(DATADIR, exist_ok=True)
+df_out.to_csv(age_diff_fp, index=False)
+print('Saved age-difference CSV to', os.path.abspath(age_diff_fp))
+
+# Display preview
+try:
+    display(df_out.head())
+except Exception:
+    print('Saved age-difference CSV to', os.path.abspath(age_diff_fp))
+```
+
+Output preview (first 5 rows of `age_difference_by_sex.csv`):
+
+```
+age,female,male,difference,sex_greater_age_difference
+0,1761,1850,89,Male
+1,1721,1804,83,Male
+2,1810,1889,79,Male
+3,1842,1937,95,Male
+4,1863,1980,117,Male
+``
+
+## References
+- [25-26: 4369 -- PROGRAMMING FOR DATA ANALYTICS MODULE](https://vlegalwaymayo.atu.ie/course/view.php?id=12815). This helped understand key concepts in data acquisition, cleaning, analysis, and visualisation.
+- [ATU Assignment 5 Instructions](https://vlegalwaymayo.atu.ie/mod/page/view.php?id=1362128).  This helped understand the specific requirements for analysing population by age and sex.
+ - [CSO FY006A API (raw CSV endpoint)](https://ws.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/FY006A/CSV/1.0/en).  this is the source of the population data used in the analysis.
+ - [pandas — data analysis library (read_csv, DataFrame)](https://pandas.pydata.org/).  This helped with understanding how to manipulate and analyse tabular data.
+ - [pandas.DataFrame.pivot documentation](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.pivot.html).  This was useful for reshaping the data.
+ - [NumPy — numerical computing (average, sqrt)](https://numpy.org/).  This helped with performing numerical calculations, including weighted averages and standard deviations.
+ - [NumPy.average documentation](https://numpy.org/doc/stable/reference/generated/numpy.average.html).  This was essential for computing weighted means.
+ - [matplotlib — plotting library](https://matplotlib.org/).  This helped with creating visualisations of the analysis results.
+ - [matplotlib.pyplot documentation](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.html).  This was useful for understanding how to create and customise plots.
+ - [seaborn — statistical data visualization library](https://seaborn.pydata.org/).  This helped with enhancing the visual appeal of the plots.
+ - [IPython / Jupyter — display utilities and notebook environment](https://ipython.org/).  This was useful for displaying dataframes and visualisations within the notebook.
+ - [Weighted median explanation (Real Statistics)](https://real-statistics.com/descriptive-statistics/measures-central-tendency/weighted-mean-and-median/).  This provided a clear explanation of how to compute the weighted median.
+ - [pandas.read_csv documentation](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html).  This was useful for understanding how to read CSV files into pandas DataFrames.
 
 # END
+
