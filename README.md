@@ -405,14 +405,6 @@ The notebook also computes:
 
 This is exported to `age_difference_by_sex.csv` and supports further visualisation or reporting.
 
-## ✅ Reviewer Notes
-
-- All outputs are saved to disk for reproducibility
-- Data types are explicitly coerced before saving
-- Sanity checks are included after each major transformation
-- Comments are written to support user learning
-- Notebook structure is modular and easy to follow
-
 ## 📦 Output Files
 
 | Filename                              | Description                                      |
@@ -444,8 +436,6 @@ This notebook is designed to be:
 ### 📚 References and Learning Resources
 
 The following resources were consulted and integrated throughout the notebook to support implementation, conceptual understanding, and reviewer transparency:
-
----
 
 #### 🎓 ATU Learning Materials
 
