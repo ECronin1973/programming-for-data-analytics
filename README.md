@@ -330,7 +330,7 @@ This part does not need to look at the regions.
 
 ## 🎯 Learning Objectives
 
-This notebook will:
+This assignment part will:
 
 - Load and clean raw CSV data using pandas
 - Pivot data to compare population counts by sex across age groups
@@ -501,5 +501,90 @@ The following resources were consulted and integrated throughout the notebook to
 
 ---
 
+## 🧮 Assignment 05 – Part B: Age-Band Sex Comparison
+
+This section compares the population of males and females within a selected age band (e.g. ages 30–40) and produces both a visual and tabular summary.
+
+---
+
+### ⚙️ What This Cell Does
+
+- **Data Input**  
+  Loads a tidy age-by-sex table using `load_age_difference()`.  
+  - Prefers in-memory `df_out`  
+  - Falls back to: `assignments/data/age_difference_by_sex.csv`
+
+- **Filtering**  
+  Selects rows where `age` is within `[target_age − band, target_age + band]`.
+
+- **Aggregation**  
+  Sums `female` and `male` counts across the band.  
+  Calculates:
+  - Total population
+  - Difference (Male − Female)
+  - Percentage difference of band total
+
+- **Visual Output**  
+  Saves a compact bar chart comparing totals to:  
+  `assignments/data/age_group_{target_age}_sex_comparison.png`  
+  _(e.g. `age_group_35_sex_comparison.png`)_
+
+- **Tabular Output**  
+  Displays the filtered rows with a new column indicating which sex is more populous for each age.
+
+- **Text Output**  
+  Prints a concise summary:
+
+```plaintext
+Female = 25,901, Male = 23,996, Diff (M−F) = -1,905, % of Band = -3.82%
+```
+
+
+---
+
+### ▶️ How to Run
+
+1. Restart the notebook kernel and run all cells up to the one that creates `df_out`.
+2. Run the Part B cell.  
+ You can change `target_age = 35` to inspect other bands.
+
+---
+
+### 📊 Output Table
+
+### 📊 Output Table
+
+**Age-Band Sex Comparison Table (Ages 30–40)**
+
+| Age | Female | Male | Difference | Majority |
+|-----|--------|------|------------|----------|
+| 30  | 2,052  | 1,928 | -124       | Female   |
+| 31  | 2,106  | 2,014 | -92        | Female   |
+| 32  | 2,148  | 2,025 | -123       | Female   |
+| 33  | 2,155  | 1,993 | -162       | Female   |
+| 34  | 2,267  | 2,070 | -197       | Female   |
+| 35  | 2,371  | 2,168 | -203       | Female   |
+| 36  | 2,439  | 2,239 | -200       | Female   |
+| 37  | 2,449  | 2,276 | -173       | Female   |
+| 38  | 2,556  | 2,344 | -212       | Female   |
+| 39  | 2,662  | 2,421 | -241       | Female   |
+| 40  | 2,696  | 2,518 | -178       | Female   |
+
+---
+
+### 🧠 Interpretation Guidance
+
+> “Which sex has the larger population in the selected age band, and by how much?”
+
+In the age band 30–40, females have a larger population than males by a total of 1,905 people, which is approximately 3.82% of the age-band total.
+
+---
+
+### 📂 Files Produced
+
+- `assignments/data/age_group_{target_age}_sex_comparison.png` – bar chart
+- `assignments/data/age_difference_by_sex.csv` – tidy source data
+
+---
 # END
 
