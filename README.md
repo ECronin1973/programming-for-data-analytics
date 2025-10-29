@@ -97,6 +97,8 @@ Bank Holidays in Northern Ireland:
 2026-07-13 - Battle of the Boyne (Orangemen’s Day)
 ```
 
+## 🏛️ Assignment 02 – Bank Holidays Unique to Northern Ireland (Part B)
+
 This task builds on Part A by enhancing the script to identify bank holidays that are **exclusive to Northern Ireland** — those not observed in England, Wales, or Scotland. It demonstrates how to compare datasets across regions and apply conditional logic to filter unique entries.
 
 ---
@@ -315,7 +317,7 @@ END
 
 # 📊 Assignment 05 – Population Analysis by Sex and Age
 
-This notebook explores population data by sex and single year of age using official census statistics. It demonstrates how to clean, transform, and analyse demographic data using Python and pandas, with a strong emphasis on clarity, reproducibility, and pedagogical structure.
+This assignment explores population data by sex and single year of age using official census statistics. It demonstrates how to clean, transform, and analyse demographic data using Python and pandas, with a strong emphasis on clarity, reproducibility, and pedagogical structure.
 
 ## Task A: 
 Write a jupyter notebook that analyses the differences between the sexes by age in Ireland. 
@@ -326,7 +328,7 @@ This part does not need to look at the regions.
 
 ## 🎯 Learning Objectives
 
-By completing this notebook, users will learn to:
+This notebook will:
 
 - Load and clean raw CSV data using pandas
 - Pivot data to compare population counts by sex across age groups
