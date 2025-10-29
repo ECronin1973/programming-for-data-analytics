@@ -429,6 +429,17 @@ print('\nSaved weighted mean & std to', os.path.abspath(mean_std_path))
 mean_std_df
 ```
 
+## Probability Density Function
+
+$ f(x) = \frac{1}{\sqrt{2 \pi \sigma^2}} e^{-\frac{(x - \mu)^2}{2 \sigma^2}} $
+
+https://en.wikipedia.org/wiki/Normal_distribution
+
+
+
+
+
+
 ## Weighted Median (by Sex)
 
 The **weighted median** is the age at which half of the weighted population is younger and half is older. It accounts for the number of individuals at each age, making it more robust than the mean when data is skewed.
