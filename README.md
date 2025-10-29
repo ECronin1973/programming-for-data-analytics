@@ -338,6 +338,73 @@ This assignment part will:
 - Visualise distributions using parametric bell curves and kernel density estimation (KDE)
 - Export analysis-ready tables for downstream use or review
 
+
+## 🧰 Notebook Loader & Helper Functions
+
+This notebook uses a modular design with clearly separated helper blocks to support clarity, reusability, and reviewer understanding. These helpers are defined at the top of the notebook and are reused throughout the analysis cells below.
+
+---
+
+### 📤 Utility: Save and Display Plots
+
+- **Purpose**: Centralises logic for saving figures to disk and displaying them inline.
+- **Why it matters**: Ensures consistent output format, resolution, and reproducibility across all visualisations.
+- **Source**: [matplotlib.pyplot.savefig](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.savefig.html)
+
+---
+
+### 📁 I/O & Loader Helpers
+
+- **Purpose**: Handle robust file loading and saving using canonical paths (e.g. `DATA_DIR`).
+- **Why it matters**: Supports reproducibility and avoids hardcoded paths. These helpers also check for in-memory data before falling back to disk.
+- **Source**: [pathlib.Path](https://docs.python.org/3/library/pathlib.html), [pandas.read_csv](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html)
+
+---
+
+### 📐 Statistical Computation Helper
+
+- **Purpose**: Performs reusable statistical calculations (e.g. weighted mean, standard deviation).
+- **Why it matters**: Keeps analysis cells clean and focused on interpretation rather than computation.
+- **Source**: [pandas.DataFrame.apply](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.apply.html), [numpy.average](https://numpy.org/doc/stable/reference/generated/numpy.average.html)
+
+---
+
+### 📊 Plotting Helpers (Parametric and KDE)
+
+- **Purpose**: Generate consistent visualisations such as bar charts, KDE plots, and annotated summaries.
+- **Why it matters**: Promotes visual clarity and ensures all plots follow a consistent style and layout.
+- **Source**: [seaborn.kdeplot](https://seaborn.pydata.org/generated/seaborn.kdeplot.html), [matplotlib.pyplot.bar](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.bar.html)
+
+---
+
+### 📌 Display Helper: Show Top-N Ages by Sex
+
+- **Purpose**: Displays a compact preview of the top N age rows for each sex.
+- **Why it matters**: Keeps notebook outputs readable and helps reviewers quickly inspect key data slices.
+- **Source**: [pandas.DataFrame.sort_values](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sort_values.html), [pandas.DataFrame.head](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.head.html)
+
+---
+
+### 📥 Loader: Tidy Age-Difference CSV (Robust Path Handling)
+
+- **Purpose**: Loads the cleaned age-by-sex dataset from disk or memory, normalises column types, and ensures consistent structure.
+- **Why it matters**: Enables downstream analysis cells to work reliably without repeating cleaning logic.
+- **Source**: [pandas.read_csv](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html), [pandas.Series.astype](https://pandas.pydata.org/docs/reference/api/pandas.Series.astype.html)
+
+---
+
+### 🧠 Why This Structure?
+
+Separating helpers from analysis cells allows the notebook to be:
+
+- Easier to maintain and extend
+- More readable for students and reviewers
+- Reusable across multiple assignments or datasets
+
+Each analysis cell below calls these helpers to perform specific tasks (e.g. comparing sexes in an age band, plotting distributions, identifying regional differences), keeping the workflow modular and pedagogically clear.
+
+---
+
 ## 📁 Source File
 
 This notebook is located at:  
@@ -433,72 +500,6 @@ This notebook is designed to be:
 - **Reviewer-friendly**: Explicit validation steps, consistent formatting, and saved artefacts
 - **Future-proof**: Code blocks are reusable and adaptable for other datasets or assignments
 
-### 📚 References and Learning Resources
-
-The following resources were consulted and integrated throughout the notebook to support implementation, conceptual understanding, and reviewer transparency:
-
-#### 🎓 ATU Learning Materials
-
-- **ATU Lecture: Analysis and Some Stats**  
-  [25-26: 4369 – Programming For Data Analytics](https://vlegalwaymayo.atu.ie/course/view.php?id=12815)  
-  *Use:* This lecture provided foundational guidance on statistical analysis and visualisation techniques. It helped clarify the expectations for weighted measures and KDE plots, and informed the structure of the notebook.
-
-- **ATU Assignment 5 Instructions**  
-  [Assignment 5](https://vlegalwaymayo.atu.ie/mod/page/view.php?id=1362128)  
-  *Use:* The assignment brief outlined the required tasks: analysing differences between sexes by age in Ireland, computing weighted mean age (by sex), and calculating the difference between sexes by age. These instructions directly shaped the notebook’s modular design and output structure.
-
----
-
-#### 🐍 Python Libraries and Documentation
-
-- **pandas (Data Cleaning & Pivoting)**  
-  [pandas documentation](https://pandas.pydata.org/)  
-  *Use:* Referenced for loading CSVs, cleaning data, grouping by sex and age, pivoting tables, and exporting results. Enabled reproducible and reviewer-friendly data transformations.
-
-- **NumPy (Weighted Averages & Numerics)**  
-  [NumPy documentation](https://numpy.org/)  
-  *Use:* Used for computing weighted mean, variance, and standard deviation. Also supported array manipulations and numeric precision throughout the notebook.
-
-- **SciPy – `gaussian_kde`**  
-  [SciPy KDE documentation](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.gaussian_kde.html)  
-  *Use:* Practical reference for implementing weighted KDE. Informed how to supply weights and interpret bandwidth parameters.
-
-- **seaborn – `kdeplot`**  
-  [seaborn KDE documentation](https://seaborn.pydata.org/generated/seaborn.kdeplot.html)  
-  *Use:* Used to plot KDEs with custom bandwidth and style options. Helped visualise age distributions clearly and accessibly.
-
----
-
-#### 📊 Statistical Concepts and Visualisation
-
-- **Kernel Density Estimation (KDE)**  
-  [Wikipedia – KDE](https://en.wikipedia.org/wiki/Kernel_density_estimation)  
-  *Use:* Provided conceptual background for KDE plots. Explained why KDE is preferred over parametric fits for real-world age distributions.
-
-- **Normal Distribution (Definition & PDF)**  
-  [Wikipedia – Normal Distribution](https://en.wikipedia.org/wiki/Normal_distribution)  
-  *Use:* Supported the parametric bell-curve visualisation. Explained the probability density function (PDF), assumptions, and role of μ and σ.
-
-- **Weighted Mean & Variance (Formulas & Explanation)**  
-  [Wikipedia – Weighted Arithmetic Mean](https://en.wikipedia.org/wiki/Weighted_arithmetic_mean)  
-  *Use:* Referenced for computing weighted mean and variance. Ensured statistical accuracy and transparency in the notebook’s calculations.
-
-- **Weighted Median Explanation**  
-  [Real Statistics – Weighted Measures](https://real-statistics.com/descriptive-statistics/measures-central-tendency/weighted-mean-and-median/)  
-  *Use:* Provided conceptual steps for computing the weighted median using cumulative weights. Informed the logic used in the notebook’s median cell.
-
----
-
-#### 📈 Data Source and Teaching Aids
-
-- **CSO FY006A – Raw Population Dataset**  
-  [CSO API – FY006A CSV Endpoint](https://ws.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/FY006A/CSV/1.0/en)  
-  *Use:* Official source for the population data used in the notebook. Cited to ensure reproducibility and allow reviewers to re-download the exact dataset.
-
-- **XKCD Comic – Normal Distribution**  
-  [XKCD #221](https://xkcd.com/221/)  
-  *Use:* Embedded in the notebook as a light-hearted teaching aid. Highlights why real data often deviates from idealised bell curves.
-
 ---
 
 ## 🧮 Assignment 05 – Part B: Age-Band Sex Comparison
@@ -586,5 +587,72 @@ In the age band 30–40, females have a larger population than males by a total 
 - `assignments/data/age_difference_by_sex.csv` – tidy source data
 
 ---
+
+### 📚 References and Learning Resources
+
+The following resources were consulted and integrated throughout the notebook to support implementation, conceptual understanding, and reviewer transparency:
+
+#### 🎓 ATU Learning Materials
+
+- **ATU Lecture: Analysis and Some Stats**  
+  [25-26: 4369 – Programming For Data Analytics](https://vlegalwaymayo.atu.ie/course/view.php?id=12815)  
+  *Use:* This lecture provided foundational guidance on statistical analysis and visualisation techniques. It helped clarify the expectations for weighted measures and KDE plots, and informed the structure of the notebook.
+
+- **ATU Assignment 5 Instructions**  
+  [Assignment 5](https://vlegalwaymayo.atu.ie/mod/page/view.php?id=1362128)  
+  *Use:* The assignment brief outlined the required tasks: analysing differences between sexes by age in Ireland, computing weighted mean age (by sex), and calculating the difference between sexes by age. These instructions directly shaped the notebook’s modular design and output structure.
+
+---
+
+#### 🐍 Python Libraries and Documentation
+
+- **pandas (Data Cleaning & Pivoting)**  
+  [pandas documentation](https://pandas.pydata.org/)  
+  *Use:* Referenced for loading CSVs, cleaning data, grouping by sex and age, pivoting tables, and exporting results. Enabled reproducible and reviewer-friendly data transformations.
+
+- **NumPy (Weighted Averages & Numerics)**  
+  [NumPy documentation](https://numpy.org/)  
+  *Use:* Used for computing weighted mean, variance, and standard deviation. Also supported array manipulations and numeric precision throughout the notebook.
+
+- **SciPy – `gaussian_kde`**  
+  [SciPy KDE documentation](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.gaussian_kde.html)  
+  *Use:* Practical reference for implementing weighted KDE. Informed how to supply weights and interpret bandwidth parameters.
+
+- **seaborn – `kdeplot`**  
+  [seaborn KDE documentation](https://seaborn.pydata.org/generated/seaborn.kdeplot.html)  
+  *Use:* Used to plot KDEs with custom bandwidth and style options. Helped visualise age distributions clearly and accessibly.
+
+---
+
+#### 📊 Statistical Concepts and Visualisation
+
+- **Kernel Density Estimation (KDE)**  
+  [Wikipedia – KDE](https://en.wikipedia.org/wiki/Kernel_density_estimation)  
+  *Use:* Provided conceptual background for KDE plots. Explained why KDE is preferred over parametric fits for real-world age distributions.
+
+- **Normal Distribution (Definition & PDF)**  
+  [Wikipedia – Normal Distribution](https://en.wikipedia.org/wiki/Normal_distribution)  
+  *Use:* Supported the parametric bell-curve visualisation. Explained the probability density function (PDF), assumptions, and role of μ and σ.
+
+- **Weighted Mean & Variance (Formulas & Explanation)**  
+  [Wikipedia – Weighted Arithmetic Mean](https://en.wikipedia.org/wiki/Weighted_arithmetic_mean)  
+  *Use:* Referenced for computing weighted mean and variance. Ensured statistical accuracy and transparency in the notebook’s calculations.
+
+- **Weighted Median Explanation**  
+  [Real Statistics – Weighted Measures](https://real-statistics.com/descriptive-statistics/measures-central-tendency/weighted-mean-and-median/)  
+  *Use:* Provided conceptual steps for computing the weighted median using cumulative weights. Informed the logic used in the notebook’s median cell.
+
+---
+
+#### 📈 Data Source and Teaching Aids
+
+- **CSO FY006A – Raw Population Dataset**  
+  [CSO API – FY006A CSV Endpoint](https://ws.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/FY006A/CSV/1.0/en)  
+  *Use:* Official source for the population data used in the notebook. Cited to ensure reproducibility and allow reviewers to re-download the exact dataset.
+
+- **XKCD Comic – Normal Distribution**  
+  [XKCD #221](https://xkcd.com/221/)  
+  *Use:* Embedded in the notebook as a light-hearted teaching aid. Highlights why real data often deviates from idealised bell curves.
+
 # END
 
