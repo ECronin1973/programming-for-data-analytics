@@ -66,9 +66,9 @@ This repository follows established best practices for coding, documentation, an
 
 ---
 
-## 🏛️ Assignment 02 – Northern Ireland Bank Holidays
+## 🏛️ Assignment 02 – Northern Ireland Bank Holidays (Part A)
 
-### Part A – Display All Holidays
+### Display All Holidays
 
 This task involves writing a Python script that connects to the UK Government’s public API to retrieve a list of bank holidays. The script focuses on holidays listed under Northern Ireland, although some of these dates may also be shared with other UK regions such as England, Wales, or Scotland.
 
@@ -98,6 +98,8 @@ Bank Holidays in Northern Ireland:
 ```
 
 ## 🏛️ Assignment 02 – Bank Holidays Unique to Northern Ireland (Part B)
+
+### Display Unique Holidays to Northern Ireland
 
 This task builds on Part A by enhancing the script to identify bank holidays that are **exclusive to Northern Ireland** — those not observed in England, Wales, or Scotland. It demonstrates how to compare datasets across regions and apply conditional logic to filter unique entries.
 
