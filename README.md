@@ -538,8 +538,6 @@ This section compares the population of males and females within a selected age 
 ```plaintext
 Female = 25,901, Male = 23,996, Diff (M−F) = -1,905, % of Band = -3.82%
 ```
-
-
 ---
 
 ### ▶️ How to Run
@@ -550,7 +548,9 @@ Female = 25,901, Male = 23,996, Diff (M−F) = -1,905, % of Band = -3.82%
 
 ---
 
-### 📊 Output Table
+### 📊 Visual
+
+![Age-Band Sex Comparison (Ages 30–40)](assignments/data/age_group_35_sex_comparison.png)
 
 ### 📊 Output Table
 
