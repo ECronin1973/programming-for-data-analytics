@@ -1,95 +1,87 @@
-# Programming For Data Analytics Module
+## 🧮 Programming For Data Analytics Module – 2025/2026
 
-Welcome to Edward Cronin's repository for the Programming For Data Analytics Module 2025/2026. This repository contains the student's submissions for the module, including detailed tasks and a comprehensive project.
+Welcome to Edward Cronin’s repository for the Programming For Data Analytics module. This repository contains submissions for assigned tasks, a comprehensive final project, and additional practice work completed during the academic year.
 
-## Table of Contents
-- [Overview](#overview)
-- [Author](#author)
-- [How to Download this Repository](#how-to-download-this-repository)
-- [Code of Conduct](#code-of-conduct)
-- [Contents](#contents)
-- Assignment 2: Northern Ireland bank holidays
-  - [Part A — list Northern Ireland bank holidays](#assignment-2-northern-ireland-bank-holidays)
-  - [Part B — holidays unique to Northern Ireland](#assignment-2-bank-holidays-unique-to-northern-ireland)
-- [Assignment 3 — domains (pie chart)](#assignment-3-domains)
-- [Assignment 5 — Population by Age and Sex](#assignment-05-population-by-age-and-sex)
+---
 
-## Overview
+## 📁 Repository Structure
 
-This README file is structured into three main sections:
+This repository is organised into three main sections:
 
-Section 1: Programming For Data Analytics Assignments 2025/2026: This section includes various tasks assigned throughout the module, showcasing the student's understanding and application of Programming For Data Analytics.
+- **Assignments 2025/2026**  
+  Includes all formally assessed tasks from the module, demonstrating applied skills in data analysis, visualisation, and Python programming.
 
-Section 2: Programming For Data Analytics Project 2025/2026: This section presents the student's final project, which integrates the knowledge and skills acquired during the course.
+- **Final Project 2025/2026**  
+  Integrates concepts from across the module into a single, cohesive analysis project.
 
-Section 3: MyWork 2025/2026:  This section contains students practice work which is not part of the assessment but showcases work completed throughout the course.
+- **MyWork 2025/2026**  
+  Contains exploratory and practice notebooks not submitted for assessment, but useful for demonstrating progress and experimentation.
 
-Feel free to explore the repository to see the students' approaches and solutions to the tasks and project. Feedback is always welcome!
+---
 
-## Author
+## 👤 Author
 
-__Name:__ Edward Cronin
+- **Name:** Edward Cronin  
+- **Student ID:** g00425645  
+- **Email:** g00425645@atu.ie
 
-__Student ID:__ g00425645
+---
 
-__Email:__ g00425645@atu.ie
+## 📥 How to Download This Repository
 
-## How to download this repository
+To download and run the code:
 
-Logon to GitHub to locate the student's specific repository dedicated to this project located at [My repository for programming-for-data-analytics](https://github.com/ECronin1973/programming-for-data-analytics) on GitHub .
-- Click the download button.
-- To run the code, ensure that python is installed.
+1. Visit [Edward Cronin’s Programming For Data Analytics repository](https://github.com/ECronin1973/programming-for-data-analytics)
+2. Click the green **Code** button and select **Download ZIP**
+3. Extract the ZIP file locally
+4. Ensure Python is installed before running any scripts or notebooks
 
-## Code of Conduct
+---
 
-A code of conduct governs the use of this repository and has been uploaded within the repository for ease of reference.
+## 📜 Code of Conduct
 
-## Contents
+A code of conduct is included in the repository to guide respectful collaboration and responsible use. Reviewers and contributors are encouraged to follow its principles.
 
-### Assignment 2: Northern Ireland bank holidays (Part A)
+---
 
-### Overview
-This assignment involves creating a Python script that connects to the UK government's public API to get a list of bank holidays. It uses the requests library to send a GET request and then reads the JSON data returned. The script focuses on holidays listed under Northern Ireland, but some of these dates may also be shared with other UK regions like England, Wales, or Scotland.
+## 🧠 Coding Guidelines and References
 
-### Objectives
+This repository follows established best practices for coding, documentation, and reproducibility in computational notebooks:
 
-- **API Interaction:** Demonstrate how to interact with a RESTful API in Python by making GET requests and parsing JSON responses.
-- **Data Extraction:** Extract specific fields from the JSON payload—namely, the dates of bank holidays in Northern Ireland.
-- **Output Display:** Present the extracted dates clearly in the terminal.
-- **Output Formatting:** Ensure the output is clean, readable, and user-friendly, with each date printed on a separate line.
+- **Jupyter Best Practices**  
+  Narrative text explains the rationale behind each step, with references included where appropriate.  
+  🔗 [Jupyter.org/practices](https://jupyter.org/practices)
 
-#### Code Used To Complete Part A
+- **The Turing Way**  
+  Emphasises documenting *why* decisions were made, not just *what* was done.  
+  🔗 [The Turing Way](https://the-turing-way.netlify.app/reproducible-research/overview/overview.html)
 
-**The following code is used to complete Part A**
+- **Diátaxis Documentation Framework**  
+  Encourages separating conceptual documentation (why) from procedural steps (how), with background placed in README files.  
+  🔗 [Diátaxis](https://diataxis.fr/)
 
-```python
-# Import the requests library to make HTTP requests
-https://pypi.org/project/requests/
-import requests
+- **PEP 8 – Python Style Guide**  
+  Promotes clear, readable code and consistent commenting. Markdown cells in notebooks serve as the narrative layer.  
+  🔗 [PEP 8](https://peps.python.org/pep-0008/)
 
-# Define the URL for the UK government bank holidays JSON feed
-url = "https://www.gov.uk/bank-holidays.json"
+---
 
-# Send a GET request to the URL and store the response
-response = requests.get(url)
+## 🏛️ Assignment 02 – Northern Ireland Bank Holidays
 
-# Convert the response to a Python dictionary
-data = response.json()
+### Part A – Display All Holidays
 
-# Access the list of holiday events for Northern Ireland
-ni_events = data['northern-ireland']['events']
+This task involves writing a Python script that connects to the UK Government’s public API to retrieve a list of bank holidays. The script focuses on holidays listed under Northern Ireland, although some of these dates may also be shared with other UK regions such as England, Wales, or Scotland.
 
-# Loop through each event and print the name and date
-print("Bank Holidays in Northern Ireland:")
-for event in ni_events:
-    name = event['title']
-    date = event['date']
-    print(f"{date} - {name}")
+#### Learning Objectives
 
-```
-#### Save the assignment02-bankholidays.py program
+- Interact with a RESTful API using Python and the `requests` library
+- Parse JSON responses and extract structured data
+- Filter and display region-specific information
+- Format terminal output for clarity and readability
 
-Save the program as assignment02-bankholidays.py.
+#### Source File
+
+`assignment02-bankholidays.py`
 
 #### Run the program using Python:
 
@@ -97,100 +89,33 @@ Save the program as assignment02-bankholidays.py.
 python assignment02-bankholidays.py
 ```
 
-#### Expected Output
-
-When the script is executed, it prints the dates and names of upcoming Northern Ireland bank holidays to the terminal. The output shown below is a truncated version created by the student for demonstration purposes:
+#### Sample Output
 
 ```plaintext
 Bank Holidays in Northern Ireland:
-2025-12-25 - Christmas Day
-2025-12-26 - Boxing Day
-2026-01-01 - New Year’s Day
 2026-03-17 - St Patrick’s Day
-2026-04-03 - Good Friday
-2026-04-06 - Easter Monday
-2026-05-04 - Early May bank holiday
-2026-05-25 - Spring bank holiday
 2026-07-13 - Battle of the Boyne (Orangemen’s Day)
-2026-08-31 - Summer bank holiday
-2026-12-25 - Christmas Day
-2026-12-28 - Boxing Day
-2027-01-01 - New Year’s Day
-2027-03-17 - St Patrick’s Day
-2027-03-26 - Good Friday
-2027-03-29 - Easter Monday
-2027-05-03 - Early May bank holiday
-2027-05-31 - Spring bank holiday
-2027-07-12 - Battle of the Boyne (Orangemen’s Day)
-2027-08-30 - Summer bank holiday
-2027-12-27 - Christmas Day
-2027-12-28 - Boxing Day
-
 ```
 
-### Assignment 2: Bank holidays unique to Northern Ireland (Part B)
+This task builds on Part A by enhancing the script to identify bank holidays that are **exclusive to Northern Ireland** — those not observed in England, Wales, or Scotland. It demonstrates how to compare datasets across regions and apply conditional logic to filter unique entries.
 
-### Overview
-This part of the assignment involves enhancing the initial script to identify and display bank holidays that are unique to Northern Ireland, meaning they are not observed in England, Wales, or Scotland. This requires comparing the holiday titles across the different regions and filtering out any that are shared.
+---
 
-### Objectives
-- **Data Comparison:** Compare holiday titles across Northern Ireland, England/Wales, and Scotland to identify unique holidays.
-- **Conditional Logic:** Implement logic to filter out shared holidays and retain only those unique to Northern Ireland.
-- **Output Clarity:** Ensure the output clearly indicates which holidays are unique to Northern Ireland, along with their dates.
+## 🎯 Learning Objectives
 
+By completing this task, users will learn to:
 
-#### Code Used To Complete Part B
+- Compare structured data across multiple regions
+- Apply set logic to identify unique values
+- Implement conditional filtering in Python
+- Display filtered results clearly in the terminal
 
-**The following code is used to complete Part B**
+---
 
-```python
-# Import the requests library to make HTTP requests
-import requests
+## 📁 Source File
 
-# Define the URL for the UK government's bank holidays JSON feed
-url = "https://www.gov.uk/bank-holidays.json"
-
-# Send a GET request to the URL and store the response
-response = requests.get(url)
-
-# Check if the request was successful (status code 200 means OK)
-if response.status_code == 200:
-    # Convert the response content to a Python dictionary
-    data = response.json()
-
-    # Get the list of holiday events for Northern Ireland
-    ni_events = data['northern-ireland']['events']
-
-    # Create sets of holiday titles for England/Wales and Scotland
-    # These will be used to compare and find unique holidays
-    ew_titles = set(event['title'] for event in data['england-and-wales']['events'])
-    scot_titles = set(event['title'] for event in data['scotland']['events'])
-
-    # Print heading for output
-    print("Unique Bank Holidays in Northern Ireland:")
-
-    # Flag to check if any unique holidays are found
-    found = False
-
-    # Loop through each Northern Ireland holiday
-    for event in ni_events:
-        # If the holiday title is not found in England/Wales or Scotland, it's unique
-        if event['title'] not in ew_titles and event['title'] not in scot_titles:
-            # Print the date and title of the unique holiday
-            print(f"{event['date']} - {event['title']}")
-            found = True
-
-    # If no unique holidays were found, print a message
-    if not found:
-        print("No unique holidays found.")
-else:
-    # If the request failed, print the error status code
-    print("Error fetching data:", response.status_code)
-
-```
-#### Save the assignment02-bankholidays-ni.py program
-
-Save the program as assignment02-bankholidays-ni.py.
+This script is saved as:  
+`assignment02-bankholidays-ni.py`
 
 #### Run the program using Python:
 
@@ -198,7 +123,7 @@ Save the program as assignment02-bankholidays-ni.py.
 python assignment02-bankholidays-ni.py
 ```
 
-#### Expected Output
+#### Sample Output
 
 When the script is executed, it should print a list of unique bank holidays in Northern Ireland that are not observed in England/Wales or Scotland.
 
@@ -256,38 +181,90 @@ To help complete assignment 02 Part A and Part B, I used the following resources
 
 ---
 
-## Assignment 3: domains
+## 🏛️ Assignment 03 – Email Domain Analysis (Pie Chart)
 
-### Overview
-This assignment involves creating a Jupyter notebook that analyzes a dataset of 1,000 people to extract and visualize the most common email domains. The notebook reads a CSV file containing personal information, extracts the domain names from email addresses, counts their occurrences, and generates a pie chart to display the distribution of the top email domains. Less frequent domains are grouped into an "Others" category for clarity.
+This notebook explores a dataset of 1,000 individuals to identify and visualise the most common email domains. It demonstrates how to extract domain names from email addresses, compute frequency counts, and generate a pie chart using Python libraries. Less frequent domains are grouped into an “Others” category to improve readability and visual clarity.
 
-### Objectives
-- **Data Extraction:** Extract email domains from a dataset of 1,000 people downloaded from the web.
-- **Frequency Counting:** Count the occurrences of each email domain.
-- **Visualisation:** Create a pie chart to visualise the distribution of the top email domains.
-- **Image Output:** Save the pie chart as a high-resolution image file (JPG).
+---
 
-### Files
-- `assignments/notebooks/assignment03-pie.ipynb`  
-  This Jupyter notebook reads `people.csv`, extracts email domains, counts their frequency, and generates a styled pie chart of the top domains. Lower-frequency domains are grouped into an "Others" slice for readability.
-- `assignments/data/people.csv`  
-  Downloaded dataset of 1,000 individuals. The `Email` column is used to extract domain names.
+## 🎯 Learning Objectives
 
-### How It Works
-- Loads `people.csv` into a pandas DataFrame.
-- Extracts the domain from each email address using string splitting (`@`).
-- Computes domain frequencies using `value_counts()`.
-- Groups less frequent domains into an "Others" category.
-- Plots the top N domains as a pie chart using `matplotlib` and `seaborn`.
+By completing this notebook, users will learn to:
 
-### How to Run
+- Load and inspect structured CSV data using pandas
+- Extract domain names from email addresses using string operations
+- Count domain frequencies and group low-frequency entries
+- Generate and save a pie chart visualisation using matplotlib and seaborn
+
+---
+
+## 📁 Source Files
+
+| File Path | Description |
+|-----------|-------------|
+| `assignments/notebooks/assignment03-pie.ipynb` | Main notebook for Assignment 03. Loads the dataset, extracts email domains, counts them, and creates a pie chart. |
+| `assignments/data/people.csv` | Dataset of 1,000 individuals. The `Email` column is used to extract domain names. |
+
+---
+
+## 🧭 Implementation Approach
+
+The notebook is implemented in modular steps:
+
+---
+
+### 1. **Load Dataset**
+- Read `people.csv` into a pandas DataFrame
+- Confirm presence of the `Email` column
+
+**Why:**  
+Loading the dataset into a DataFrame enables efficient manipulation and analysis. Verifying structure ensures robustness before processing.  
+🔗 [pandas documentation](https://pandas.pydata.org/)
+
+---
+
+### 2. **Extract Email Domains**
+- Split each email address at the `@` symbol
+- Retain the domain portion (e.g. `example.org`)
+
+**Why:**  
+Domain extraction is a common string operation in data cleaning. It enables grouping by organisation or provider.  
+🔗 [Python string methods](https://docs.python.org/3/library/stdtypes.html#string-methods)
+
+---
+
+### 3. **Count Domain Frequencies**
+- Use `value_counts()` to tally domain occurrences
+- Identify top domains and group others
+
+**Why:**  
+Frequency counts reveal dominant providers. Grouping less frequent domains into “Others” improves visual clarity.  
+🔗 [pandas Series.value_counts](https://pandas.pydata.org/docs/reference/api/pandas.Series.value_counts.html)
+
+---
+
+### 4. **Generate Pie Chart**
+- Plot top domains using `matplotlib` and `seaborn`
+- Style chart for accessibility and save as JPG
+
+**Why:**  
+Pie charts are effective for showing proportional distribution. Saving the chart ensures reproducibility and supports reviewer access.  
+🔗 [matplotlib pie chart guide](https://matplotlib.org/stable/gallery/pie_and_polar_charts/pie_features.html)
+
+---
+
+### 5. **Run the Notebook**
+
+To execute the notebook:
+
 ```bash
 cd assignments/notebooks
 jupyter notebook assignment03-pie.ipynb
 ```
 
-Example output
-- Pie chart of the top email domains saved as a figure when the notebook is run. The notebook also prints the top domain counts.
+**Example output**
+
+- Below is a sample of the first 10 rows from people.csv:
 
 Sample of the data (`assignments/data/people.csv`) — first 10 rows (columns shown):
 
@@ -307,7 +284,7 @@ Index,User Id,First Name,Last Name,Sex,Email,Phone,Date of birth,Job Title
 
 ### Pie Chart Output
 
-The pie chart below visualises the distribution of the top email domains found in the dataset. There are only three email domains identified and represented.
+The pie chart below visualises the distribution of the top email domains found in the dataset. Less frequent domains are grouped into an “Others” slice.
 
 ![Pie chart of email domains](assignments/data/assignment-03-pie-chart.jpg)
 
@@ -336,347 +313,199 @@ Used to apply a pastel color palette for the pie chart (color_palette) to improv
 END
 ---
 
-# Assignment 05 Population by Age and Sex
+# 📊 Assignment 05 – Population Analysis by Sex and Age
 
-## Assignment Part 1 : Question
-Write a jupyter notebook that analyses the differences between the sexes by age in Ireland.
-- Weighted mean age (by sex)
-- The difference between the sexes by age
-**Note:** This part does not need to look at the regions.
+This notebook explores population data by sex and single year of age using official census statistics. It demonstrates how to clean, transform, and analyse demographic data using Python and pandas, with a strong emphasis on clarity, reproducibility, and pedagogical structure.
 
-The following is an overview, objectives, how the notebook works, example outputs from key cells, and references. Use this section as a quick guide to run and inspect the analysis results in `assignments/data`.
+## Task A: 
+Write a jupyter notebook that analyses the differences between the sexes by age in Ireland. 
+- Weighted mean age (by sex) 
+- The difference between the sexes by age 
 
-## Overview
+This part does not need to look at the regions.
 
-The notebook fetches a raw snapshot of the CSO FY006A population table, writes the raw CSV for provenance (`population_for_analysis.csv`), prepares a cleaned pivot table of single-year ages by sex (`weighted_stats_by_sex.csv`), computes weighted descriptive statistics (mean, median, std) by sex, visualises results, and exports a tidy per-age CSV (`age_difference_by_sex.csv`).
+## 🎯 Learning Objectives
 
-## Objectives
+By completing this notebook, users will learn to:
 
-- Demonstrate downloading and persisting official data for reproducibility.
-- Clean and standardise single-year-of-age population counts.
-- Compute population-weighted mean, median and standard deviation by sex.
-- Produce two core visualisations: a weighted-mean bar chart and an age-by-age Male−Female difference line plot.
-- Export tidy CSVs for inspection and downstream analysis.
+- Load and clean raw CSV data using pandas
+- Pivot data to compare population counts by sex across age groups
+- Compute weighted statistics (mean, median, standard deviation)
+- Visualise distributions using parametric bell curves and kernel density estimation (KDE)
+- Export analysis-ready tables for downstream use or review
 
-## How the notebook works (step-by-step)
+## 📁 Source File
 
-1. Consolidated imports and path setup (defines `base_data_dir`, `DATADIR`, `FILENAME` and `FULLPATH`).
-2. Fetch raw CSO CSV from the FY006A endpoint and save it to `assignments/data/population_for_analysis.csv`.
-3. Read the saved CSV, drop non-data metadata columns, keep only `Sex` rows that are `Male` or `Female`, normalise age labels (replace `Under 1 year` → `0`), coerce ages and counts to numeric types.
-4. Pivot into `df_anal` with ages as the index and `Female`/`Male` as columns and save as `assignments/data/weighted_stats_by_sex.csv`.
-5. Compute weighted mean and weighted standard deviation per sex using NumPy's weighted average (saved to `weighted_mean_std_by_sex.csv`).
-6. Compute weighted median per sex using cumulative weights (saved to `weighted_median_std_by_sex.csv`).
-7. Create two visualisations: (a) bar chart of weighted means with value labels, (b) line chart of age-by-age Male−Female difference annotated with min/max.
-8. Export a tidy `age_difference_by_sex.csv` that includes `sex_greater_age_difference` (Male/Female/Equal) for each age.
+This notebook is located at:  
+[assignment05-population.ipynb](https://github.com/ECronin1973/programming-for-data-analytics/blob/main/assignments/notebooks/assignment05-population.ipynb)
 
-## 📊 Weighted Mean Age (By Sex)
+## 🧹 Data Cleaning Steps
 
-The weighted mean is a statistical measure that calculates the average of a set of values, where each value contributes proportionally to its assigned weight. Unlike the arithmetic mean, which treats all values equally, the weighted mean adjusts for the relative importance, frequency, or reliability of each observation.
+The raw dataset is cleaned by:
 
-### 🧮 Formula
+- Dropping metadata columns not required for analysis
+- Filtering to retain only 'Male' and 'Female' rows
+- Standardising age labels (e.g. converting 'Under 1 year' to `0`)
+- Removing non-numeric age entries and converting types
+- Ensuring all population counts are integers
 
-$$
-\text{Weighted Mean} = \frac{\sum_{i=1}^{n} x_i \cdot w_i}{\sum_{i=1}^{n} w_i}
-$$
+## 📈 Pivot Table Creation
 
-Where:
-- \(x_i\) = value of the \(i\)-th data point  
-- \(w_i\) = weight of the \(i\)-th data point  
-- \(n\) = total number of data points
+A pivot table is created with:
 
-### 🔗 References
-- [Pandas Documentation on Weighted Mean](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.mean.html)
-- [Numpy Documentation on Average](https://numpy.org/doc/stable/reference/generated/numpy.average.html)
-- [Pandas Documentation on Series](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html)
+- Rows: Single year of age
+- Columns: Sex ('Male', 'Female')
+- Values: Population counts
 
-```python
-# 📁 File path
-filepath = output_path
+This structure allows for direct comparison of male and female population counts across age groups.
 
-# 📥 Load pivot table
-df_anal = pd.read_csv(filepath, index_col=0)
+## 🧮 Statistical Analysis
 
-# 🧮 Compute weighted mean and weighted std for each sex, save to CSV
-results = []
-for sex in df_anal.columns:
-    weights = df_anal[sex].fillna(0).astype(float)
-    ages = df_anal.index.astype(float)
+The notebook computes:
 
-    if weights.sum() > 0:
-        wmean = float(np.average(ages, weights=weights))
-        wvar = float(np.average((ages - wmean) ** 2, weights=weights))
-        wstd = float(np.sqrt(wvar))
-        total = int(weights.sum())
-        print(f"{sex}: Weighted mean age = {wmean:.2f}, weighted std = {wstd:.2f}")
-    else:
-        wmean = float('nan')
-        wstd = float('nan')
-        total = 0
-        print(f"{sex}: No population data available")
+- **Weighted Mean Age**: Average age weighted by population count
+- **Weighted Standard Deviation**: Spread of ages around the weighted mean
+- **Weighted Median Age**: Age at which half the population is younger and half is older
 
-    results.append((sex, total, wmean, wstd))
+Each statistic is calculated per sex and saved to CSV for reproducibility.
 
-mean_std_df = pd.DataFrame(results, columns=['sex', 'total_population', 'weighted_mean_age', 'weighted_std_age']).set_index('sex')
+## 🔍 KDE and Bell Curve Visualisation
 
-# Save to filename
-mean_std_filename = 'weighted_mean_std_by_sex.csv'
-mean_std_path = os.path.join(DATADIR, mean_std_filename)
-os.makedirs(DATADIR, exist_ok=True)
-mean_std_df.to_csv(mean_std_path)
-print('\nSaved weighted mean & std to', os.path.abspath(mean_std_path))
+Two visualisations are provided:
 
-# Display results
-mean_std_df
-```
+- **Parametric Bell Curve**: Approximates a normal distribution using weighted mean and standard deviation
+- **Kernel Density Estimate (KDE)**: Smoothed density based on actual age counts, without assuming normality
 
-## Probability Density Function
+Plots are saved as PNG files and designed for clarity and accessibility.
 
-$ f(x) = \frac{1}{\sqrt{2 \pi \sigma^2}} e^{-\frac{(x - \mu)^2}{2 \sigma^2}} $
+### Visual outputs
 
-https://en.wikipedia.org/wiki/Normal_distribution
+Below are the two main plot outputs produced by the notebook (also saved to `assignments/data/`). These images are embedded here so reviewers can see the results without opening the notebook.
 
+![Parametric bell curves (approx normal) - assignment 05](assignments/data/assignment-05-age-bell-curve.png)
 
+_Parametric bell curves generated using the weighted mean (μ) and weighted standard deviation (σ) for each sex. Useful for a concise, parametric comparison but assumes normality._
 
+![Weighted KDE of age by sex - assignment 05](assignments/data/assignment-05-age-kde.png)
 
+_Weighted KDE computed from the single-year age counts; this non-parametric curve reveals the actual shape of the distribution (skew, modes, tails) that a simple bell curve may miss._
 
+Interpretation (short): use the KDE as the primary visual check for the real distribution shape; use the bell-curve as a compact parametric summary. If the KDE shows strong skew or multiple peaks, prefer the KDE for interpretation and reporting.
 
-## Weighted Median (by Sex)
+## 📊 Age Difference Analysis
 
-The **weighted median** is the age at which half of the weighted population is younger and half is older. It accounts for the number of individuals at each age, making it more robust than the mean when data is skewed.
+The notebook also computes:
 
-### 📘 Definition
+- Absolute difference in population count between sexes at each age
+- Which sex has a greater count at each age ('Male', 'Female', or 'Equal')
 
-Given:
-- \(x_i\): sorted age values  
-- \(w_i\): weights (e.g., population counts)
+This is exported to `age_difference_by_sex.csv` and supports further visualisation or reporting.
 
-The weighted median is the smallest age \(x_j\) such that:
+## ✅ Reviewer Notes
 
-$$
-\sum_{i=1}^{j} w_i \geq \frac{\sum_{i=1}^{n} w_i}{2}
-$$
+- All outputs are saved to disk for reproducibility
+- Data types are explicitly coerced before saving
+- Sanity checks are included after each major transformation
+- Comments are written to support user learning
+- Notebook structure is modular and easy to follow
 
-If the cumulative weight equals exactly half the total at two adjacent ages, the median is the average of those two.
+## 📦 Output Files
 
-### 🔗 References
-- [NumPy `average()` method](https://numpy.org/doc/stable/reference/generated/numpy.average.html)  
-  While NumPy does not directly support weighted medians, its `average()` method is commonly used for weighted means and forms the basis for computing weighted variance and standard deviation.
+| Filename                              | Description                                      |
+|--------------------------------------|--------------------------------------------------|
+| `weighted_stats_by_sex.csv`          | Pivot table of population counts by age and sex |
+| `weighted_mean_std_by_sex.csv`       | Weighted mean and standard deviation by sex     |
+| `weighted_median_std_by_sex.csv`     | Weighted median and standard deviation by sex   |
+| `assignment-05-age-bell-curve.png`   | Bell curve visualisation                        |
+| `assignment-05-age-kde.png`          | KDE visualisation                               |
+| `age_difference_by_sex.csv`          | Age-wise population difference by sex           |
+| `assignment-05-mean-age-bar.png`     | Bar chart of weighted mean age by sex           |
 
-- [Real Statistics: Weighted Median](https://real-statistics.com/descriptive-statistics/measures-central-tendency/weighted-mean-and-median/)  
-  Offers a clear explanation of how the weighted median is calculated, including step-by-step logic using cumulative weights and sorted values.
+## 📚 Dependencies
 
-- [pandas Series API](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html)  
-  pandas provides `.median()` for Series and DataFrames, but does not natively support weighted medians. Custom logic using cumulative weights is required.
+- Python 3.x
+- pandas
+- numpy
+- matplotlib
+- seaborn
 
-```python
-median_results = []
+## 🧠 Pedagogical Design
 
-for sex in df_anal.columns:
-    weight_series = df_anal[sex].fillna(0).astype(float)
-    age_index = df_anal.index.astype(float)
+This notebook is designed to be:
 
-    weight_values = weight_series.to_numpy()
-    age_values = age_index.to_numpy()
+- **User-friendly**: Clear comments, modular structure, and reproducible outputs
+- **Reviewer-friendly**: Explicit validation steps, consistent formatting, and saved artefacts
+- **Future-proof**: Code blocks are reusable and adaptable for other datasets or assignments
 
-    if weight_values.sum() > 0:
-        cutoff = weight_values.sum() / 2.0
-        cumsum = weight_series.cumsum()
-        mask = cumsum >= cutoff
-        if mask.any():
-            wmedian = float(age_index[mask][0])
-        else:
-            wmedian = np.nan
-    else:
-        wmedian = np.nan
+### 📚 References and Learning Resources
 
-    median_results.append((sex, wmedian))
+The following resources were consulted and integrated throughout the notebook to support implementation, conceptual understanding, and reviewer transparency:
 
-# 📊 Create median DataFrame
-median_df = pd.DataFrame(median_results, columns=['sex', 'weighted_median_age']).set_index('sex')
-median_df
+---
 
-```
-## Weighted Standard Deviation (by Sex)
+#### 🎓 ATU Learning Materials
 
-The **weighted standard deviation** measures how spread out the ages are, accounting for population size at each age.
+- **ATU Lecture: Analysis and Some Stats**  
+  [25-26: 4369 – Programming For Data Analytics](https://vlegalwaymayo.atu.ie/course/view.php?id=12815)  
+  *Use:* This lecture provided foundational guidance on statistical analysis and visualisation techniques. It helped clarify the expectations for weighted measures and KDE plots, and informed the structure of the notebook.
 
-#### 📘 Formula
+- **ATU Assignment 5 Instructions**  
+  [Assignment 5](https://vlegalwaymayo.atu.ie/mod/page/view.php?id=1362128)  
+  *Use:* The assignment brief outlined the required tasks: analysing differences between sexes by age in Ireland, computing weighted mean age (by sex), and calculating the difference between sexes by age. These instructions directly shaped the notebook’s modular design and output structure.
 
-Let \(\bar{x}_w\) represent the **weighted mean**, calculated as the average of values weighted by their respective frequencies or importance.
+---
 
-$$
-\sigma_w = \sqrt{ \frac{ \sum w_i (x_i - \bar{x}_w)^2 }{ \sum w_i } }
-$$
+#### 🐍 Python Libraries and Documentation
 
-Where:
-- \(x_i\): age values  
-- \(w_i\): weights  
-- \(\bar{x}_w\): weighted mean age
+- **pandas (Data Cleaning & Pivoting)**  
+  [pandas documentation](https://pandas.pydata.org/)  
+  *Use:* Referenced for loading CSVs, cleaning data, grouping by sex and age, pivoting tables, and exporting results. Enabled reproducible and reviewer-friendly data transformations.
 
-### 🔗 References for Weighted Standard Deviation
+- **NumPy (Weighted Averages & Numerics)**  
+  [NumPy documentation](https://numpy.org/)  
+  *Use:* Used for computing weighted mean, variance, and standard deviation. Also supported array manipulations and numeric precision throughout the notebook.
 
-- [NumPy `average()` method](https://numpy.org/doc/stable/reference/generated/numpy.average.html)  
-  Used to compute weighted means and intermediate steps for weighted variance and standard deviation. Supports the `weights` parameter for efficient calculation.
+- **SciPy – `gaussian_kde`**  
+  [SciPy KDE documentation](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.gaussian_kde.html)  
+  *Use:* Practical reference for implementing weighted KDE. Informed how to supply weights and interpret bandwidth parameters.
 
-- [Real Statistics: Weighted Mean and Standard Deviation](https://real-statistics.com/descriptive-statistics/measures-central-tendency/weighted-mean-and-median/)  
-  Provides formulas and examples for computing weighted standard deviation, including the use of weighted variance as a precursor.
+- **seaborn – `kdeplot`**  
+  [seaborn KDE documentation](https://seaborn.pydata.org/generated/seaborn.kdeplot.html)  
+  *Use:* Used to plot KDEs with custom bandwidth and style options. Helped visualise age distributions clearly and accessibly.
 
-- [pandas Series API](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html)  
-  pandas supports `.std()` for standard deviation, but does not natively support weighted standard deviation. Custom logic using NumPy or manual weighting is required.
+---
 
-```python
-# 🧮 Compute weighted standard deviation by sex
-std_results = []
+#### 📊 Statistical Concepts and Visualisation
 
-for sex in df_anal.columns:
-    weight_series = df_anal[sex].fillna(0).astype(float)
-    age_index = df_anal.index.astype(float)
+- **Kernel Density Estimation (KDE)**  
+  [Wikipedia – KDE](https://en.wikipedia.org/wiki/Kernel_density_estimation)  
+  *Use:* Provided conceptual background for KDE plots. Explained why KDE is preferred over parametric fits for real-world age distributions.
 
-    weight_values = weight_series.to_numpy()
-    age_values = age_index.to_numpy()
+- **Normal Distribution (Definition & PDF)**  
+  [Wikipedia – Normal Distribution](https://en.wikipedia.org/wiki/Normal_distribution)  
+  *Use:* Supported the parametric bell-curve visualisation. Explained the probability density function (PDF), assumptions, and role of μ and σ.
 
-    if weight_values.sum() > 0:
-        wmean = np.average(age_values, weights=weight_values)
-        wstd = float(np.sqrt(np.average((age_values - wmean) ** 2, weights=weight_values)))
-    else:
-        wstd = np.nan
+- **Weighted Mean & Variance (Formulas & Explanation)**  
+  [Wikipedia – Weighted Arithmetic Mean](https://en.wikipedia.org/wiki/Weighted_arithmetic_mean)  
+  *Use:* Referenced for computing weighted mean and variance. Ensured statistical accuracy and transparency in the notebook’s calculations.
 
-    std_results.append((sex, wstd))
+- **Weighted Median Explanation**  
+  [Real Statistics – Weighted Measures](https://real-statistics.com/descriptive-statistics/measures-central-tendency/weighted-mean-and-median/)  
+  *Use:* Provided conceptual steps for computing the weighted median using cumulative weights. Informed the logic used in the notebook’s median cell.
 
-# 📊 Create std DataFrame
-std_df = pd.DataFrame(std_results, columns=['sex', 'weighted_std_age']).set_index('sex')
-std_df
-```
+---
 
-## Example outputs (extracted from generated CSV files)
+#### 📈 Data Source and Teaching Aids
 
-These snippets are taken directly from the CSV files produced when the notebook was executed in this workspace. They reflect the actual saved outputs in `assignments/data`.
+- **CSO FY006A – Raw Population Dataset**  
+  [CSO API – FY006A CSV Endpoint](https://ws.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/FY006A/CSV/1.0/en)  
+  *Use:* Official source for the population data used in the notebook. Cited to ensure reproducibility and allow reviewers to re-download the exact dataset.
 
-- Raw data download and save confirmation (notebook printout):
+- **XKCD Comic – Normal Distribution**  
+  [XKCD #221](https://xkcd.com/221/)  
+  *Use:* Embedded in the notebook as a light-hearted teaching aid. Highlights why real data often deviates from idealised bell curves.
 
-```
-Fetching raw data from URL: https://ws.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/FY006A/CSV/1.0/en
-Saved raw population data to C:\Users\eCron\OneDrive\Documents\ATU_CourseWork\Programming For Data Analytics\programming-for-data-analytics\assignments\data\population_for_analysis.csv
-```
-
-- Pivot preview (`assignments/data/weighted_stats_by_sex.csv`) — first 6 rows:
-
-```
-Single Year of Age,Female,Male
-0,1761.625,1850.625
-1,1721.5625,1804.6875
-2,1810.875,1889.75
-3,1842.6875,1937.5625
-4,1863.6875,1980.375
-```
-
-- Weighted mean & std (`assignments/data/weighted_mean_std_by_sex.csv`):
-
-```
-sex,total_population,weighted_mean_age,weighted_std_age
-Female,162786,38.9397958987787,22.998989559036303
-Male,159034,37.7394477371039,22.67120435900202
-```
-
-- Weighted median & std (`assignments/data/weighted_median_std_by_sex.csv`):
-
-```
-sex,weighted_median_age,weighted_std_age
-Female,39.0,22.998989559036303
-Male,38.0,22.67120435900202
-```
-
-## Difference between sexes in Age Groups
-
-This generates a CSV (`age_difference_by_sex.csv`) with age-by-age population counts and the difference (Male − Female).
-
-How the cell works (summary):
-- It uses the in-memory pivot `df_anal` created earlier (run the pivot cell that produces `df_anal` before running this cell).
-- The pivot index is converted to numeric ages and rows are sorted by age.
-- `Male` and `Female` counts are extracted; missing sex columns are filled with zeros to avoid errors.
-- A tidy DataFrame is created with columns: `age`, `female`, `male`, `difference` (male − female), and `sex_greater_age_difference`.
-- The DataFrame is written to `assignments/data/age_difference_by_sex.csv` and a small preview is displayed.
-
-Inputs and outputs:
-- Input: `df_anal` (pivot table; index = single-year ages; expected columns include `Male` and `Female`).
-- Output: `assignments/data/age_difference_by_sex.csv` (tidy CSV with columns: `age`, `female`, `male`, `difference`, `sex_greater_age_difference`).
-
-Notes for students and debugging tips:
-- If you get a FileNotFoundError, run the pivot cell (the one that creates `df_anal`) first.
-- If one sex column is missing, the code uses zeros for that sex and the `difference` will show the imbalance accordingly.
-- The `sex_greater_age_difference` column contains `Male`, `Female`, or `Equal`.
-- After running this cell, open `assignments/data/age_difference_by_sex.csv` to inspect age-specific differences in a spreadsheet or with pandas.
-
-```python
-# 🗃️ Create and save age_difference_by_sex.csv with columns: age, female, male, difference
-
-AGE_DIFF_FILENAME = "age_difference_by_sex.csv"
-
-# Simplified: always use the in-memory pivot `df_anal` created earlier.
-# This keeps the notebook straightforward for students and removes file-branch complexity.
-if 'df_anal' in globals():
-    pivot = df_anal.copy()
-else:
-    raise FileNotFoundError('df_anal not found in memory; run the pivot cell that creates df_anal before running this cell')
-
-# Ensure index is numeric and sorted (simple, robust conversion)
-pivot_index_numeric = pd.to_numeric(pivot.index.to_series(), errors='coerce').fillna(0).astype(int)
-pivot.index = pd.Index(pivot_index_numeric, name=pivot.index.name)
-pivot = pivot.sort_index()
-
-# Get Male/Female series or default zeros if missing
-male_series = pivot.get('Male', pd.Series(0, index=pivot.index)).fillna(0).astype(int)
-female_series = pivot.get('Female', pd.Series(0, index=pivot.index)).fillna(0).astype(int)
-
-# Build output dataframe
-df_out = pd.DataFrame({
-    'age': pivot.index.astype(int),
-    'female': female_series.values,
-    'male': male_series.values
-})
-df_out['difference'] = df_out['male'] - df_out['female']
-
-# Which sex is larger at each age
-df_out['sex_greater_age_difference'] = np.where(df_out['male'] > df_out['female'], 'Male', np.where(df_out['female'] > df_out['male'], 'Female', 'Equal'))
-
-# Save CSV
-age_diff_fp = os.path.join(DATADIR, AGE_DIFF_FILENAME)
-os.makedirs(DATADIR, exist_ok=True)
-df_out.to_csv(age_diff_fp, index=False)
-print('Saved age-difference CSV to', os.path.abspath(age_diff_fp))
-
-# Display preview
-try:
-    display(df_out.head())
-except Exception:
-    print('Saved age-difference CSV to', os.path.abspath(age_diff_fp))
-```
-
-Output preview (first 5 rows of `age_difference_by_sex.csv`):
-
-```
-age,female,male,difference,sex_greater_age_difference
-0,1761,1850,89,Male
-1,1721,1804,83,Male
-2,1810,1889,79,Male
-3,1842,1937,95,Male
-4,1863,1980,117,Male
-```
-
-## References
-- [25-26: 4369 -- PROGRAMMING FOR DATA ANALYTICS MODULE](https://vlegalwaymayo.atu.ie/course/view.php?id=12815). This helped understand key concepts in data acquisition, cleaning, analysis, and visualisation.
-- [ATU Assignment 5 Instructions](https://vlegalwaymayo.atu.ie/mod/page/view.php?id=1362128).  This helped understand the specific requirements for analysing population by age and sex.
- - [CSO FY006A API (raw CSV endpoint)](https://ws.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/FY006A/CSV/1.0/en).  this is the source of the population data used in the analysis.
- - [pandas — data analysis library (read_csv, DataFrame)](https://pandas.pydata.org/).  This helped with understanding how to manipulate and analyse tabular data.
- - [pandas.DataFrame.pivot documentation](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.pivot.html).  This was useful for reshaping the data.
- - [NumPy — numerical computing (average, sqrt)](https://numpy.org/).  This helped with performing numerical calculations, including weighted averages and standard deviations.
- - [NumPy.average documentation](https://numpy.org/doc/stable/reference/generated/numpy.average.html).  This was essential for computing weighted means.
- - [matplotlib — plotting library](https://matplotlib.org/).  This helped with creating visualisations of the analysis results.
- - [matplotlib.pyplot documentation](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.html).  This was useful for understanding how to create and customise plots.
- - [seaborn — statistical data visualization library](https://seaborn.pydata.org/).  This helped with enhancing the visual appeal of the plots.
- - [IPython / Jupyter — display utilities and notebook environment](https://ipython.org/).  This was useful for displaying dataframes and visualisations within the notebook.
- - [Weighted median explanation (Real Statistics)](https://real-statistics.com/descriptive-statistics/measures-central-tendency/weighted-mean-and-median/).  This provided a clear explanation of how to compute the weighted median.
- - [pandas.read_csv documentation](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html).  This was useful for understanding how to read CSV files into pandas DataFrames.
+---
 
 # END
 
