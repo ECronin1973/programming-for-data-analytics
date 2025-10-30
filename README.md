@@ -363,6 +363,12 @@ This notebook uses a modular design with clearly separated helper blocks to supp
 - **Why it matters**: Enables downstream analysis cells to work reliably without repeating cleaning logic.
 - **Source**: [pandas.read_csv](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html), [pandas.Series.astype](https://pandas.pydata.org/docs/reference/api/pandas.Series.astype.html)
 
+# 🗺️ Helper: build age-difference CSV including Administrative Counties
+
+- **Purpose**: Constructs a tidy CSV file showing population differences by age and sex, including administrative county breakdowns.
+- **Why it matters**: Provides a reusable dataset for further analysis or visualisation tasks.
+- **Source**: [pandas.DataFrame.to_csv](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_csv.html)
+
 
 ### 🧠 Why This Structure?
 
@@ -465,7 +471,7 @@ This is exported to `age_difference_by_sex.csv` and supports further visualisati
 
 ## 🧠 Pedagogical Design
 
-This notebook is designed to be:
+The notebook is designed to be:
 
 - **User-friendly**: Clear comments, modular structure, and reproducible outputs
 - **Reviewer-friendly**: Explicit validation steps, consistent formatting, and saved artefacts
@@ -544,7 +550,7 @@ Female = 25,901, Male = 23,996, Diff (M−F) = -1,905, % of Band = -3.82%
 
 ---
 
-### 🧠 Interpretation Guidance
+### 🧠 Interpretation Of Results
 
 > “Which sex has the larger population in the selected age band, and by how much?”
 
@@ -557,11 +563,84 @@ In the age band 30–40, females have a larger population than males by a total 
 - `assignments/data/age_group_{target_age}_sex_comparison.png` – bar chart
 - `assignments/data/age_difference_by_sex.csv` – tidy source data
 
+## 🧮 Assignment 05 – Part C: Regional Sex Difference Analysis
+
+This part performs a regional analysis to determine which **Administrative County** in Ireland has the **largest population difference between males and females** within a selected age band (e.g. ages 30–40).
+
+Here’s what the cell does step-by-step:
+
+1. **Loads** the cleaned dataset `age_difference_by_sex_with_region.csv`, which includes age, sex counts, and county-level data.  This file is created in an earlier cleaning step.
+2. **Filters** the data to the age band defined in Part B (e.g. ages 30–40).
+3. **Excludes** the national total ("Ireland") to focus only on county-level comparisons.
+4. **Aggregates** male and female counts by county.
+5. **Calculates** the signed and absolute difference between sexes.
+6. **Identifies** the county with the largest sex-based population gap.
+7. **Visualises** the top 10 counties using a colour-coded bar chart:
+   - 🔵 Blue = Male majority
+   - 🌸 Pink = Female majority
+   - 🔢 Each bar is labelled with the exact difference value
+   - 📅 Age band is displayed beneath the chart
+8. **Prints** a concise summary explaining which county had the largest difference and why.
+
+### ▶️How to run:
+1. Ensure all previous cells have been executed to create the necessary data files.
+2. Run the Part C cell to perform the regional analysis.
+
+### 📂 Files Produced
+
+- `assignments/data/age_group_35_region_sex_diff.png` – bar chart
+
+### 📊 Visual
+
+![Regional Sex Difference Analysis](assignments/data/age_group_35_region_sex_diff.png)
+
+### 📊 Output Table - Top 10 Counties by Population Difference (Female Majority)
+
+This table shows the top 10 Administrative Counties in Ireland with the largest female-majority population difference in the selected age band (30–40).
+
+| Administrative County                     | Male   | Female | Difference (M−F) | Majority |
+|-------------------------------------------|--------|--------|------------------|----------|
+| Fingal County Council                     | 26,150 | 29,092 | -2,942           | Female   |
+| Cork County Council                       | 23,706 | 26,545 | -2,839           | Female   |
+| South Dublin County Council               | 23,637 | 26,361 | -2,724           | Female   |
+| Kildare County Council                    | 18,671 | 20,602 | -1,931           | Female   |
+| Meath County Council                      | 15,981 | 17,715 | -1,734           | Female   |
+| Wicklow County Council                    | 10,338 | 11,943 | -1,605           | Female   |
+| Galway County Council                     | 12,421 | 13,904 | -1,483           | Female   |
+| Dún Laoghaire Rathdown County Council     | 17,074 | 18,450 | -1,376           | Female   |
+| Wexford County Council                    | 10,824 | 12,162 | -1,338           | Female   |
+| Kerry County Council                      | 9,957  | 11,125 | -1,168           | Female   |
+
+
+### 🧠 Interpretation Of Results
+
+📍 Administrative County with largest difference: Fingal County Council
+🧮 Male = 26,150, Female = 29,092, Diff (M−F) = -2,942, % of band population = 5.33%
+🧠 Reason: Fingal County Council has the largest difference because it has 2,942 more females than males in the selected age band.
+
+🎨 Color Legend:
+🔵 Blue bar = Male majority
+🌸 Pink bar = Female majority
+Each bar represents the absolute population difference in the selected age band.
+📍 Age Band: Ages 30–40 (Centre = 35)
+
+## Personal Issues Encountered
+
+I spent a considerable amount of time viewing lectures online, reviewing and adapting notebooks provided during the course, and consulting documentation for pandas, NumPy, matplotlib, and seaborn to understand how to implement the required analyses and visualisations.  In order to answer the three questions posed in the assignment, I went back of the notebooksupplied during the lecture and focused on adapting elements of the notebook and making it my own approach to solving the assignment task.  I had to learn more on how to compute weighted statistics, create KDE plots, and generate annotated bar charts, alot of which I had completed previously in other modules on my studies in ATU.  I also had to ensure that my code was clear and well-documented for reviewers.  I reviewed the materials related to the Applied Statistics Module I completed previously and focused assignments such as 'Flipping Coins' and also Normal Distribution lectures to understand the statistical concepts involved.  These helped me greatly in understanding further the concepts of weighted mean, median, standard deviation, and kernel density estimation.  To complete Part 3 I considered how to best visualise the differences between the sexes in the selected age band as it required the reintroduction of an additional analysis layer 'Administrative County'.  I considered modifying my initial generated file 'age_difference_by_sex.csv' to include the regional breakdown and then used this new file to perform the analysis required for Part C. This from my research would be consistent with my modular workflow: select → aggregate → visualise → interpret.  In the end, I chose to generate a new file with relevant columns which I then was able to perform analysis on.  
+
+Overall, I found this assignment the most challenging so far as I made it likely alot more detailed than it needed to be.  I would like to use this for future project approaches. In my notebook I wanted to ensure that I had a clear modular structure with helper functions to support clarity and reusability.  I also wanted to ensure that my visualisations were clear and accessible, with appropriate labels, legends, and colour schemes.  I found the process of cleaning and transforming the data to be time-consuming.  However, it was also engaging but rewarding as it allowed me to apply my knowledge of data analysis and visualisation in a practical context.
+
+## Acknowledgements
+ Github Copilot. "This work was partially supported by GitHub Copilot, an AI-powered code completion tool
+ developed by GitHub, which assisted in generating parts of the code."
+
 ---
 
 ### 📚 References and Learning Resources
 
 The following resources were consulted and integrated throughout the notebook to support implementation, conceptual understanding, and reviewer transparency:
+
+---
 
 #### 🎓 ATU Learning Materials
 
@@ -592,6 +671,10 @@ The following resources were consulted and integrated throughout the notebook to
 - **seaborn – `kdeplot`**  
   [seaborn KDE documentation](https://seaborn.pydata.org/generated/seaborn.kdeplot.html)  
   *Use:* Used to plot KDEs with custom bandwidth and style options. Helped visualise age distributions clearly and accessibly.
+
+- **matplotlib – Bar Charts and Legends**  
+  [matplotlib documentation](https://matplotlib.org/stable/contents.html)  
+  *Use:* Used to generate annotated bar charts for Part C. Supported custom colour coding, value labels, and legend creation for regional sex difference visualisation.
 
 ---
 
@@ -624,6 +707,9 @@ The following resources were consulted and integrated throughout the notebook to
 - **XKCD Comic – Normal Distribution**  
   [XKCD #221](https://xkcd.com/221/)  
   *Use:* Embedded in the notebook as a light-hearted teaching aid. Highlights why real data often deviates from idealised bell curves.
+
+- **GitHub Copilot**  
+[GitHub Copilot](https://github.com/features/copilot) – AI-powered code completion tool used during development.
 
 # END
 
