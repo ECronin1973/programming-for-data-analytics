@@ -103,8 +103,6 @@ Bank Holidays in Northern Ireland:
 
 This task builds on Part A by enhancing the script to identify bank holidays that are **exclusive to Northern Ireland** — those not observed in England, Wales, or Scotland. It demonstrates how to compare datasets across regions and apply conditional logic to filter unique entries.
 
----
-
 ## 🎯 Learning Objectives
 
 By completing this task, users will learn to:
@@ -113,8 +111,6 @@ By completing this task, users will learn to:
 - Apply set logic to identify unique values
 - Implement conditional filtering in Python
 - Display filtered results clearly in the terminal
-
----
 
 ## 📁 Source File
 
@@ -189,8 +185,6 @@ To help complete assignment 02 Part A and Part B, I used the following resources
 
 This notebook explores a dataset of 1,000 individuals to identify and visualise the most common email domains. It demonstrates how to extract domain names from email addresses, compute frequency counts, and generate a pie chart using Python libraries. Less frequent domains are grouped into an “Others” category to improve readability and visual clarity.
 
----
-
 ## 🎯 Learning Objectives
 
 By completing this notebook, users will learn to:
@@ -200,8 +194,6 @@ By completing this notebook, users will learn to:
 - Count domain frequencies and group low-frequency entries
 - Generate and save a pie chart visualisation using matplotlib and seaborn
 
----
-
 ## 📁 Source Files
 
 | File Path | Description |
@@ -209,13 +201,9 @@ By completing this notebook, users will learn to:
 | `assignments/notebooks/assignment03-pie.ipynb` | Main notebook for Assignment 03. Loads the dataset, extracts email domains, counts them, and creates a pie chart. |
 | `assignments/data/people.csv` | Dataset of 1,000 individuals. The `Email` column is used to extract domain names. |
 
----
-
 ## 🧭 Implementation Approach
 
 The notebook is implemented in modular steps:
-
----
 
 ### 1. **Load Dataset**
 - Read `people.csv` into a pandas DataFrame
@@ -225,7 +213,6 @@ The notebook is implemented in modular steps:
 Loading the dataset into a DataFrame enables efficient manipulation and analysis. Verifying structure ensures robustness before processing.  
 🔗 [pandas documentation](https://pandas.pydata.org/)
 
----
 
 ### 2. **Extract Email Domains**
 - Split each email address at the `@` symbol
@@ -235,7 +222,6 @@ Loading the dataset into a DataFrame enables efficient manipulation and analysis
 Domain extraction is a common string operation in data cleaning. It enables grouping by organisation or provider.  
 🔗 [Python string methods](https://docs.python.org/3/library/stdtypes.html#string-methods)
 
----
 
 ### 3. **Count Domain Frequencies**
 - Use `value_counts()` to tally domain occurrences
@@ -245,7 +231,6 @@ Domain extraction is a common string operation in data cleaning. It enables grou
 Frequency counts reveal dominant providers. Grouping less frequent domains into “Others” improves visual clarity.  
 🔗 [pandas Series.value_counts](https://pandas.pydata.org/docs/reference/api/pandas.Series.value_counts.html)
 
----
 
 ### 4. **Generate Pie Chart**
 - Plot top domains using `matplotlib` and `seaborn`
@@ -255,7 +240,6 @@ Frequency counts reveal dominant providers. Grouping less frequent domains into 
 Pie charts are effective for showing proportional distribution. Saving the chart ensures reproducibility and supports reviewer access.  
 🔗 [matplotlib pie chart guide](https://matplotlib.org/stable/gallery/pie_and_polar_charts/pie_features.html)
 
----
 
 ### 5. **Run the Notebook**
 
@@ -343,15 +327,11 @@ This assignment part will:
 
 This notebook uses a modular design with clearly separated helper blocks to support clarity, reusability, and reviewer understanding. These helpers are defined at the top of the notebook and are reused throughout the analysis cells below.
 
----
-
 ### 📤 Utility: Save and Display Plots
 
 - **Purpose**: Centralises logic for saving figures to disk and displaying them inline.
 - **Why it matters**: Ensures consistent output format, resolution, and reproducibility across all visualisations.
 - **Source**: [matplotlib.pyplot.savefig](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.savefig.html)
-
----
 
 ### 📁 I/O & Loader Helpers
 
@@ -359,15 +339,11 @@ This notebook uses a modular design with clearly separated helper blocks to supp
 - **Why it matters**: Supports reproducibility and avoids hardcoded paths. These helpers also check for in-memory data before falling back to disk.
 - **Source**: [pathlib.Path](https://docs.python.org/3/library/pathlib.html), [pandas.read_csv](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html)
 
----
-
 ### 📐 Statistical Computation Helper
 
 - **Purpose**: Performs reusable statistical calculations (e.g. weighted mean, standard deviation).
 - **Why it matters**: Keeps analysis cells clean and focused on interpretation rather than computation.
 - **Source**: [pandas.DataFrame.apply](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.apply.html), [numpy.average](https://numpy.org/doc/stable/reference/generated/numpy.average.html)
-
----
 
 ### 📊 Plotting Helpers (Parametric and KDE)
 
@@ -375,15 +351,11 @@ This notebook uses a modular design with clearly separated helper blocks to supp
 - **Why it matters**: Promotes visual clarity and ensures all plots follow a consistent style and layout.
 - **Source**: [seaborn.kdeplot](https://seaborn.pydata.org/generated/seaborn.kdeplot.html), [matplotlib.pyplot.bar](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.bar.html)
 
----
-
 ### 📌 Display Helper: Show Top-N Ages by Sex
 
 - **Purpose**: Displays a compact preview of the top N age rows for each sex.
 - **Why it matters**: Keeps notebook outputs readable and helps reviewers quickly inspect key data slices.
 - **Source**: [pandas.DataFrame.sort_values](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sort_values.html), [pandas.DataFrame.head](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.head.html)
-
----
 
 ### 📥 Loader: Tidy Age-Difference CSV (Robust Path Handling)
 
@@ -391,7 +363,6 @@ This notebook uses a modular design with clearly separated helper blocks to supp
 - **Why it matters**: Enables downstream analysis cells to work reliably without repeating cleaning logic.
 - **Source**: [pandas.read_csv](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html), [pandas.Series.astype](https://pandas.pydata.org/docs/reference/api/pandas.Series.astype.html)
 
----
 
 ### 🧠 Why This Structure?
 
