@@ -328,6 +328,13 @@ This assignment part will:
 
 This notebook uses a modular design with clearly separated helper blocks to support clarity, reusability, and reviewer understanding. These helpers are defined at the top of the notebook and are reused throughout the analysis cells below.
 
+Functions are described and documented inline in `notebooks/assignment05-population.ipynb`.
+
+> 📚 *“Functions help break our program into smaller and modular chunks.”* — [GeeksforGeeks](https://www.geeksforgeeks.org/python-functions/)  
+> 🧠 *“Functional decomposition improves clarity and supports reuse.”* — [Python.org](https://docs.python.org/3/howto/functional.html)  
+> 🛠️ *“Clean, idiomatic Python code often relies on small, focused helper functions.”* — *Python Cookbook*, 3rd Ed., O’Reilly
+
+
 ### 📤 Utility: Save and Display Plots
 
 - **Purpose**: Centralises logic for saving figures to disk and displaying them inline.
@@ -364,17 +371,11 @@ This notebook uses a modular design with clearly separated helper blocks to supp
 - **Why it matters**: Enables downstream analysis cells to work reliably without repeating cleaning logic.
 - **Source**: [pandas.read_csv](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html), [pandas.Series.astype](https://pandas.pydata.org/docs/reference/api/pandas.Series.astype.html)
 
-# 🗺️ Helper: build age-difference CSV including Administrative Counties
+### 🗺️ Helper: build age-difference CSV including Administrative Counties
 
 - **Purpose**: Constructs a tidy CSV file showing population differences by age and sex, including administrative county breakdowns.
 - **Why it matters**: Provides a reusable dataset for further analysis or visualisation tasks.
 - **Source**: [pandas.DataFrame.to_csv](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_csv.html)
-
-These are described and documented inline in `notebooks/assignment05-population.ipynb`.
-
-> 📚 *“Functions help break our program into smaller and modular chunks.”* — [GeeksforGeeks](https://www.geeksforgeeks.org/python-functions/)  
-> 🧠 *“Functional decomposition improves clarity and supports reuse.”* — [Python.org](https://docs.python.org/3/howto/functional.html)  
-> 🛠️ *“Clean, idiomatic Python code often relies on small, focused helper functions.”* — *Python Cookbook*, 3rd Ed., O’Reilly
 
 ---
 
