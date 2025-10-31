@@ -322,6 +322,7 @@ This assignment part will:
 - Visualise distributions using parametric bell curves and kernel density estimation (KDE)
 - Export analysis-ready tables for downstream use or review
 
+---
 
 ## 🧰 Notebook Loader & Helper Functions
 
@@ -369,6 +370,13 @@ This notebook uses a modular design with clearly separated helper blocks to supp
 - **Why it matters**: Provides a reusable dataset for further analysis or visualisation tasks.
 - **Source**: [pandas.DataFrame.to_csv](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_csv.html)
 
+These are described and documented inline in `notebooks/assignment05-population.ipynb`.
+
+> 📚 *“Functions help break our program into smaller and modular chunks.”* — [GeeksforGeeks](https://www.geeksforgeeks.org/python-functions/)  
+> 🧠 *“Functional decomposition improves clarity and supports reuse.”* — [Python.org](https://docs.python.org/3/howto/functional.html)  
+> 🛠️ *“Clean, idiomatic Python code often relies on small, focused helper functions.”* — *Python Cookbook*, 3rd Ed., O’Reilly
+
+---
 
 ### 🧠 Why This Structure?
 
