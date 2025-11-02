@@ -834,6 +834,48 @@ Finally, I calculated monthly mean temperatures for Winter (Dec 2024–Feb 2025)
 - [seaborn documentation](https://seaborn.pydata.org/)  
 - [ipywidgets documentation](https://ipywidgets.readthedocs.io/)
 
+### Windspeed analysis (wdsp)
+
+The hourly CSV also contains a `wdsp` column (Mean Wind Speed, knots). The notebook includes a dedicated workflow to produce daily and monthly wind summaries and to deal with missing values sensibly for the focus week 10/07/2025 — 16/07/2025.
+
+Outputs produced for windspeed (expected):
+
+- `assignments/data/climate_data_mean_daily_wind_custom_range.csv` — daily mean wind speed for 2025-07-10 → 2025-07-16 (with `count_obs`, `std_wdsp`, `min_wdsp`, `max_wdsp`).
+- `assignments/data/climate_data_mean_daily_wind_summer_2025.csv` — daily mean wind speed for Summer 2025.
+- `assignments/data/monthly_mean_wind_by_season_2025.csv` — monthly mean wind speed by season.
+- `assignments/plots/mean_daily_wind_custom_range.png` — daily means plot (custom range).
+- `assignments/plots/mean_daily_wind_summer_2025.png` — daily means plot (Summer 2025).
+- `assignments/plots/monthly_mean_wind_by_season_2025.png` — monthly mean wind by season.
+
+Missing-data strategy (wdsp)
+
+- Coerce the `wdsp` column to numeric (`pd.to_numeric(..., errors='coerce')`) so invalid tokens become NaN.
+- Produce diagnostics: a missingness heatmap (hours × dates) and a `count_obs` column (number of non-missing `wdsp` per day).
+- Apply a minimum-observation rule for daily means (recommended default: 18 valid hourly values per day, i.e. 75%). If `count_obs < min_obs`, mark the daily mean as NaN and add a `notes` value such as `insufficient_obs` in the CSV. This avoids reporting means that are based on very sparse data and therefore likely biased.
+- For plotting hourly series only, allow linear interpolation for short gaps (e.g. contiguous gaps ≤ 3 hours) so the diurnal shape is visible; do not interpolate large gaps.
+- Alternative approaches (for more advanced workflows): use climatology (hour-of-day long-term average), borrow data from a nearby station, or apply multiple imputation/model-based methods. These alter the dataset and must be explicitly documented when used.
+
+Why this approach?
+
+This strategy is conservative and transparent: it reports when daily means are reliable (enough observations) and provides visual diagnostics so a reviewer can decide whether to relax thresholds or impute. The approach follows general guidance on missing data — prefer reporting and transparent diagnostics first, then apply imputation only when justified and documented (see references below).
+
+Suggested CSV columns and metadata
+
+- `date`, `mean_wdsp`, `count_obs`, `std_wdsp`, `min_wdsp`, `max_wdsp`, `notes`  
+- Consider adding a small provenance JSON next to the raw CSV containing `download_url`, `download_timestamp`, and `header_line_index` so future runs can be audited.
+
+How this is used in the notebook (practical notes)
+
+- The custom-range cell filters the saved `assignments/data/climate_data.csv` to 2025-07-10 → 2025-07-16, computes the daily aggregates for `wdsp`, applies the `min_obs` rule, writes the CSV, and saves the plots indicated above.
+- The notebook also creates the missingness heatmap and prints the flagged days (if any) so you can inspect them interactively.
+
+References
+
+- Little, R. J. A., & Rubin, D. B. (2002). Statistical Analysis with Missing Data. Wiley.  
+- pandas.DataFrame.interpolate — https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.interpolate.html  
+- Met Éireann / CLI station feed (check station notes where available): https://cli.fusio.net/  
+- NOAA guidance on meteorological data handling: https://www.ncei.noaa.gov/
+
 END
 
 ---
