@@ -887,14 +887,14 @@ Steps:
 
 For the focus week (10–16 July 2025) the notebook:
 
-- **filters the cleaned dataset using `custom_start` / `custom_end`;**
+#### filters the cleaned dataset using `custom_start` / `custom_end`
 - **Purpose:** Focuses analysis on a specific time window (10–16 July 2025), enabling targeted investigation of wind behaviour during a known heatwave.
 
 Reference:
 
 - [pandas.DataFrame filtering — Boolean indexing](https://pandas.pydata.org/docs/user_guide/indexing.html#boolean-indexing) is the standard method for subsetting time series data in pandas.
 
-- **groups observations by hour and date and creates a pivot table for side‑by‑side daily comparison;**
+#### groups observations by hour and date and creates a pivot table for side‑by‑side daily comparison
 - **Purpose:** Restructures the data to compare hourly windspeed patterns across multiple days.
 
 Reference:
@@ -902,7 +902,7 @@ Reference:
 - [pandas.pivot_table](https://pandas.pydata.org/docs/reference/api/pandas.pivot_table.html) — Recommended for multi-dimensional aggregation and reshaping.
 - [Dataquest: Time Series Analysis with Pandas](https://www.dataquest.io/blog/tutorial-time-series-analysis-with-pandas/) — Demonstrates grouping by time components for comparative analysis.
 
-- **computes daily summaries (count of valid hourly observations, mean, std, min, max) and flags days with insufficient observations;**
+#### computes daily summaries (count of valid hourly observations, mean, std, min, max) and flags days with insufficient observations
 - **Purpose:** Ensures statistical summaries are based on sufficient data and flags incomplete days for transparency.
 
 Reference:
@@ -910,7 +910,7 @@ Reference:
 - Hyndman & Athanasopoulos (2018): “It is usually best to remove missing values before computing summary statistics, unless you have a principled method for imputation.” [Forecasting: Principles and Practice – Missing Values](https://otexts.com/fpp2/missing-outliers.html)
 - [pandas.DataFrame.agg](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.agg.html) — Used to compute count, mean, std, min, max across grouped data.
 
-#### plots hourly and daily trends to highlight patterns and anomalies.
+#### plots hourly and daily trends to highlight patterns and anomalies
 **Purpose:** Visualises diurnal wind patterns and helps detect anomalies or correlations with temperature.
 
 Reference:
