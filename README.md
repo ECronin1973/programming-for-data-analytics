@@ -834,49 +834,93 @@ Finally, I calculated monthly mean temperatures for Winter (Dec 2024–Feb 2025)
 - [seaborn documentation](https://seaborn.pydata.org/)  
 - [ipywidgets documentation](https://ipywidgets.readthedocs.io/)
 
-### Windspeed analysis (wdsp)
 
-The hourly CSV also contains a `wdsp` column (Mean Wind Speed, knots). The notebook includes a dedicated workflow to produce daily and monthly wind summaries and to deal with missing values sensibly for the focus week 10/07/2025 — 16/07/2025.
 
-Outputs produced for windspeed (expected):
+## Windspeed analysis at Knock Airport (Summer 2025)
 
-- `assignments/data/climate_data_mean_daily_wind_custom_range.csv` — daily mean wind speed for 2025-07-10 → 2025-07-16 (with `count_obs`, `std_wdsp`, `min_wdsp`, `max_wdsp`).
-- `assignments/data/climate_data_mean_daily_wind_summer_2025.csv` — daily mean wind speed for Summer 2025.
-- `assignments/data/monthly_mean_wind_by_season_2025.csv` — monthly mean wind speed by season.
-- `assignments/plots/mean_daily_wind_custom_range.png` — daily means plot (custom range).
-- `assignments/plots/mean_daily_wind_summer_2025.png` — daily means plot (Summer 2025).
-- `assignments/plots/monthly_mean_wind_by_season_2025.png` — monthly mean wind by season.
+### Overview
 
-Missing-data strategy (wdsp)
+This section prepares and analyses mean wind speed (column `wdsp`, units: knots) from Knock Airport, focusing on Summer 2025 and the period 10–16 July 2025. The workflow covers:
 
-- Coerce the `wdsp` column to numeric (`pd.to_numeric(..., errors='coerce')`) so invalid tokens become NaN.
-- Produce diagnostics: a missingness heatmap (hours × dates) and a `count_obs` column (number of non-missing `wdsp` per day).
-- Apply a minimum-observation rule for daily means (recommended default: 18 valid hourly values per day, i.e. 75%). If `count_obs < min_obs`, mark the daily mean as NaN and add a `notes` value such as `insufficient_obs` in the CSV. This avoids reporting means that are based on very sparse data and therefore likely biased.
-- For plotting hourly series only, allow linear interpolation for short gaps (e.g. contiguous gaps ≤ 3 hours) so the diurnal shape is visible; do not interpolate large gaps.
-- Alternative approaches (for more advanced workflows): use climatology (hour-of-day long-term average), borrow data from a nearby station, or apply multiple imputation/model-based methods. These alter the dataset and must be explicitly documented when used.
+- downloading and saving the raw CSV for reproducibility;
+- parsing and cleaning the dataset;
+- diagnosing and handling missing values; and
+- filtering and visualising hourly and daily windspeed patterns.
 
-Why this approach?
+The aim is to describe wind behaviour during the heatwave week and to provide reproducible, well‑documented outputs for reporting.
 
-This strategy is conservative and transparent: it reports when daily means are reliable (enough observations) and provides visual diagnostics so a reviewer can decide whether to relax thresholds or impute. The approach follows general guidance on missing data — prefer reporting and transparent diagnostics first, then apply imputation only when justified and documented (see references below).
+### Step 1 — preparing windspeed data
 
-Suggested CSV columns and metadata
+This step loads the saved Knock Airport CSV and prepares it for analysis:
 
-- `date`, `mean_wdsp`, `count_obs`, `std_wdsp`, `min_wdsp`, `max_wdsp`, `notes`  
-- Consider adding a small provenance JSON next to the raw CSV containing `download_url`, `download_timestamp`, and `header_line_index` so future runs can be audited.
+- Datetime parsing: the code attempts to detect a consistent datetime format from sample values and falls back to robust pandas parsing if required.
+- Windspeed cleaning: the `wdsp` column (mean wind speed, knots) is coerced to numeric with `pd.to_numeric(..., errors='coerce')`; invalid tokens become `NaN`.
+- Missing‑value handling: invalid or missing `wdsp` values are documented and excluded from summary statistics by default. See the missing‑data policy below.
+- Cleaned data is saved for reproducibility to: `assignments/data/windspeed_cleaned_summer_2025.csv`
 
-How this is used in the notebook (practical notes)
 
-- The custom-range cell filters the saved `assignments/data/climate_data.csv` to 2025-07-10 → 2025-07-16, computes the daily aggregates for `wdsp`, applies the `min_obs` rule, writes the CSV, and saves the plots indicated above.
-- The notebook also creates the missingness heatmap and prints the flagged days (if any) so you can inspect them interactively.
+### 🧼 Missing Data Strategy
+This project follows a conservative and traceable approach to handling missing values in weather datasets, specifically windspeed data from Knock Airport.
 
-References
+Steps:
 
-- Little, R. J. A., & Rubin, D. B. (2002). Statistical Analysis with Missing Data. Wiley.  
-- pandas.DataFrame.interpolate — https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.interpolate.html  
-- Met Éireann / CLI station feed (check station notes where available): https://cli.fusio.net/  
-- NOAA guidance on meteorological data handling: https://www.ncei.noaa.gov/
+- Coerce to numeric: Convert wdsp to numeric using errors='coerce' to expose invalid entries as NaN.
 
-END
+- Validate datetime: Detect and apply consistent datetime formats for reliable filtering and grouping.
 
+- Filter by season: Subset the data to Summer 2025 using predefined seasonal boundaries.
+
+- Drop missing values: Remove rows with missing windspeed values before analysis.
+
+- Save cleaned data: Export the cleaned dataset for reproducibility and downstream use.
+
+#### References:
+
+[Forecasting: Principles and Practice – Missing Values](https://otexts.com/fpp2/missing-outliers.html)
+
+[pandas.to_numeric](https://pandas.pydata.org/docs/reference/api/pandas.to_numeric.html)
+
+[Dataquest: Data Cleaning Best Practices](https://www.dataquest.io/tutorial/data-cleaning-project-walk-through/)
+
+
+### Step 2 — windspeed analysis (10–16 July 2025)
+
+For the focus week (10–16 July 2025) the notebook:
+
+- **filters the cleaned dataset using `custom_start` / `custom_end`;**
+- **Purpose:** Focuses analysis on a specific time window (10–16 July 2025), enabling targeted investigation of wind behaviour during a known heatwave.
+
+Reference:
+
+- [pandas.DataFrame filtering — Boolean indexing](https://pandas.pydata.org/docs/user_guide/indexing.html#boolean-indexing) is the standard method for subsetting time series data in pandas.
+
+- **groups observations by hour and date and creates a pivot table for side‑by‑side daily comparison;**
+- **Purpose:** Restructures the data to compare hourly windspeed patterns across multiple days.
+
+Reference:
+
+- [pandas.pivot_table](https://pandas.pydata.org/docs/reference/api/pandas.pivot_table.html) — Recommended for multi-dimensional aggregation and reshaping.
+- [Dataquest: Time Series Analysis with Pandas](https://www.dataquest.io/blog/tutorial-time-series-analysis-with-pandas/) — Demonstrates grouping by time components for comparative analysis.
+
+- **computes daily summaries (count of valid hourly observations, mean, std, min, max) and flags days with insufficient observations;**
+- **Purpose:** Ensures statistical summaries are based on sufficient data and flags incomplete days for transparency.
+
+Reference:
+
+- Hyndman & Athanasopoulos (2018): “It is usually best to remove missing values before computing summary statistics, unless you have a principled method for imputation.” [Forecasting: Principles and Practice – Missing Values](https://otexts.com/fpp2/missing-outliers.html)
+- [pandas.DataFrame.agg](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.agg.html) — Used to compute count, mean, std, min, max across grouped data.
+
+#### plots hourly and daily trends to highlight patterns and anomalies.
+**Purpose:** Visualises diurnal wind patterns and helps detect anomalies or correlations with temperature.
+
+Reference:
+- [matplotlib.pyplot](https://matplotlib.org/stable/users/index.html) — Industry-standard for time series plotting.
+- [Seaborn and matplotlib for time series](https://seaborn.pydata.org/examples/timeseries_facets.html) — Shows best practices for visualising temporal patterns.
+- [Data Cleaning Best Practices – Dataquest](https://www.dataquest.io/tutorial/data-cleaning-project-walk-through/) — Emphasises the importance of visual validation after cleaning.
+
+#### Generated plot (example):
+
+![Hourly windspeed breakdown (10–16 July 2025)](assignments/plots/windspeed_hourly_2025-07-10_to_2025-07-16.png)
 ---
 
+END
