@@ -918,9 +918,11 @@ Reference:
 - [Seaborn and matplotlib for time series](https://seaborn.pydata.org/examples/timeseries_facets.html) — Shows best practices for visualising temporal patterns.
 - [Data Cleaning Best Practices – Dataquest](https://www.dataquest.io/tutorial/data-cleaning-project-walk-through/) — Emphasises the importance of visual validation after cleaning.
 
-#### Generated plot (example):
+#### Generated plots (example):
 
 ![Hourly windspeed breakdown (10–16 July 2025)](assignments/plots/windspeed_hourly_2025-07-10_to_2025-07-16.png)
+
+![Screenshot of hourly mean windspeed](assignments/plots/hourly_mean_windspeed_img.png)
 ---
 
 END
