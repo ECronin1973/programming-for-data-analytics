@@ -536,10 +536,6 @@ Female = 25,901, Male = 23,996, Diff (M−F) = -1,905, % of Band = -3.82%
 
 ---
 
-### 📊 Visual
-
-![Age-Band Sex Comparison (Ages 30–40)](assignments/plots/age_group_35_sex_comparison.png)
-
 ### 📊 Output Table
 
 **Age-Band Sex Comparison Table (Ages 30–40)**
@@ -937,7 +933,7 @@ Hourly windspeed values are grouped and reshaped into a pivot table, allowing si
 - **CSV file**: `windspeed_hourly_table_<date>_to_<date>.csv` *hourly_table_2025-07-15_to_2025-07-15.csv* — hourly windspeed values
 - **Plot**: `windspeed_hourly_<date>_to_<date>.png` *windspeed_hourly_2025-07-15.png* — visual trend of windspeed over 24 hours
 
-[windspeed_hourly_2025-07-15.png](assignments/plots/windspeed_hourly_2025-07-15.png)
+![windspeed_hourly_2025-07-15.png](assignments/plots/windspeed_hourly_2025-07-15.png)
 
 
 ## 🌬️ Step 4: Daily Max Windspeed Analysis — 10–16 July 2025
