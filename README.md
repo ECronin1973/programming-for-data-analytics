@@ -274,7 +274,7 @@ Index,User Id,First Name,Last Name,Sex,Email,Phone,Date of birth,Job Title
 
 The pie chart below visualises the distribution of the top email domains found in the dataset. Less frequent domains are grouped into an “Others” slice.
 
-![Pie chart of email domains](assignments/data/assignment-03-pie-chart.jpg)
+![Pie chart of email domains](assignments/plots/assignment-03-pie-chart.jpg)
 
 ### References
 
@@ -437,13 +437,13 @@ Plots are saved as PNG files and designed for clarity and accessibility.
 
 ### Visual outputs
 
-Below are the two main plot outputs produced by the notebook (also saved to `assignments/data/`). These images are embedded here so reviewers can see the results without opening the notebook.
+Below are the two main plot outputs produced by the notebook (also saved to `assignments/plots/`). These images are embedded here so reviewers can see the results without opening the notebook.
 
-![Parametric bell curves (approx normal) - assignment 05](assignments/data/assignment-05-age-bell-curve.png)
+![Parametric bell curves (approx normal) - assignment 05](assignments/plots/assignment-05-age-bell-curve.png)
 
 _Parametric bell curves generated using the weighted mean (μ) and weighted standard deviation (σ) for each sex. Useful for a concise, parametric comparison but assumes normality._
 
-![Weighted KDE of age by sex - assignment 05](assignments/data/assignment-05-age-kde.png)
+![Weighted KDE of age by sex - assignment 05](assignments/plots/assignment-05-age-kde.png)
 
 _Weighted KDE computed from the single-year age counts; this non-parametric curve reveals the actual shape of the distribution (skew, modes, tails) that a simple bell curve may miss._
 
@@ -513,8 +513,9 @@ This section compares the population of males and females within a selected age 
 
 - **Visual Output**  
   Saves a compact bar chart comparing totals to:  
-  `assignments/data/age_group_{target_age}_sex_comparison.png`  
-  _(e.g. `age_group_35_sex_comparison.png`)_
+  `assignments/plots/age_group_{target_age}_sex_comparison.png`
+
+  [age_group_35_sex_comparison.png](assignments/plots/age_group_35_sex_comparison.png)
 
 - **Tabular Output**  
   Displays the filtered rows with a new column indicating which sex is more populous for each age.
@@ -537,7 +538,7 @@ Female = 25,901, Male = 23,996, Diff (M−F) = -1,905, % of Band = -3.82%
 
 ### 📊 Visual
 
-![Age-Band Sex Comparison (Ages 30–40)](assignments/data/age_group_35_sex_comparison.png)
+![Age-Band Sex Comparison (Ages 30–40)](assignments/plots/age_group_35_sex_comparison.png)
 
 ### 📊 Output Table
 
@@ -569,8 +570,9 @@ In the age band 30–40, females have a larger population than males by a total 
 
 ### 📂 Files Produced
 
-- `assignments/data/age_group_{target_age}_sex_comparison.png` – bar chart
-- `assignments/data/age_difference_by_sex.csv` – tidy source data
+- ![age_group_35_sex_comparison.png](assignments/plots/age_group_35_sex_comparison.png) – bar chart
+
+- `assignments/data/age_difference_by_sex.csv`
 
 ## 🧮 Assignment 05 – Part C: Regional Sex Difference Analysis
 
@@ -597,11 +599,11 @@ Here’s what the cell does step-by-step:
 
 ### 📂 Files Produced
 
-- `assignments/data/age_group_35_region_sex_diff.png` – bar chart
+- `assignments/plots/age_group_35_region_sex_diff.png` – bar chart
 
 ### 📊 Visual
 
-![Regional Sex Difference Analysis](assignments/data/age_group_35_region_sex_diff.png)
+![Regional Sex Difference Analysis](assignments/plots/age_group_35_region_sex_diff.png)
 
 ### 📊 Output Table - Top 10 Counties by Population Difference (Female Majority)
 
