@@ -951,4 +951,22 @@ This analysis helps pinpoint peak wind events and their timing, which is useful 
 
 ![Daily max windspeed (10–16 July 2025)](assignments/plots/daily_max_windspeed_line_10_16_July_2025.png)
 
+## 📊 Monthly Mean of Daily Max Windspeeds — July 2025
+
+This step calculates the average of daily peak windspeed values for the month of **July 2025**, using cleaned hourly data from Knock Airport. The dataset `windspeed_cleaned_summer_2025.csv` is filtered to include only July observations. For each day, the highest windspeed is extracted, and the mean of these daily maxima is computed to summarize wind intensity across the month.
+
+This metric provides insight into the overall wind conditions during July and supports comparisons with other months or seasonal patterns.
+
+### 📁 Outputs:
+- **CSV file**: `daily_max_windspeed_July_2025.csv` — daily peak windspeed values
+- **CSV file**: `monthly_mean_of_daily_max_windspeed_July_2025.csv` — single-row summary with monthly mean
+- **Plot**: `monthly_mean_of_daily_max_windspeed_July_2025.png` — bar chart of daily max windspeed values
+
+**Output Summary:**
+- ✅ Saved daily max windspeed: ..\data\daily_max_windspeed_July_2025.csv
+- ✅ Saved monthly mean of daily max windspeed: ..\data\monthly_mean_of_daily_max_windspeed_July_2025.csv
+- 📈 Monthly Mean of Daily Max Windspeed (July 2025): 12.68 knots
+
+![Monthly Mean of Daily Max Windspeeds - July 2025](assignments/plots/daily_max_windspeed_with_monthly_mean_July_2025.png)
+
 END
