@@ -925,4 +925,16 @@ Reference:
 ![Screenshot of hourly mean windspeed](assignments/plots/hourly_mean_windspeed_img.png)
 ---
 
+## Step 3🌬️  Rolling Windspeed Analysis — Single-Day Summary
+
+This analysis focuses on hourly windspeed patterns for a specific date during Summer 2025, using cleaned observational data. The code loads the dataset `windspeed_cleaned_summer_2025.csv`, which contains timestamped windspeed readings from Knock Airport. After parsing the `datetime` column, the data is filtered to include only the 24-hour period defined by `custom_start` and `custom_end`.  The date selected for this analysis is 15th July 2025, a day within the heatwave week, this can be modified to view other dates.
+
+Hourly windspeed values are grouped and reshaped into a pivot table, allowing side-by-side comparison across hours of the selected day. This table is saved as a CSV file for further analysis. A line plot is also generated to visualise windspeed fluctuations throughout the day, highlighting gusts, lulls, and diurnal trends.
+
+### 📁 Outputs:
+- **CSV file**: `windspeed_hourly_table_<date>_to_<date>.csv` *hourly_table_2025-07-15_to_2025-07-15.csv* — hourly windspeed values
+- **Plot**: `windspeed_hourly_<date>_to_<date>.png` *windspeed_hourly_2025-07-15.png* — visual trend of windspeed over 24 hours
+
+[windspeed_hourly_2025-07-15.png](assignments/plots/windspeed_hourly_2025-07-15.png)
+
 END
