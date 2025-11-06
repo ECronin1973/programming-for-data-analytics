@@ -849,7 +849,7 @@ This section prepares and analyses mean wind speed (column `wdsp`, units: knots)
 
 The aim is to describe wind behaviour during the heatwave week and to provide reproducible, well‑documented outputs for reporting.
 
-### Step 1 — preparing windspeed data
+## 🌬️ Step 1 — preparing windspeed data
 
 This step loads the saved Knock Airport CSV and prepares it for analysis:
 
@@ -883,7 +883,7 @@ Steps:
 [Dataquest: Data Cleaning Best Practices](https://www.dataquest.io/tutorial/data-cleaning-project-walk-through/)
 
 
-### Step 2 — windspeed analysis (10–16 July 2025)
+## 🌬️ Step 2 — windspeed analysis (10–16 July 2025)
 
 For the focus week (10–16 July 2025) the notebook:
 
@@ -925,7 +925,7 @@ Reference:
 ![Screenshot of hourly mean windspeed](assignments/plots/hourly_mean_windspeed_img.png)
 ---
 
-## Step 3🌬️  Rolling Windspeed Analysis — Single-Day Summary
+## 🌬️ Step 3: Rolling Windspeed Analysis — Single-Day Summary
 
 This analysis focuses on hourly windspeed patterns for a specific date during Summer 2025, using cleaned observational data. The code loads the dataset `windspeed_cleaned_summer_2025.csv`, which contains timestamped windspeed readings from Knock Airport. After parsing the `datetime` column, the data is filtered to include only the 24-hour period defined by `custom_start` and `custom_end`.  The date selected for this analysis is 15th July 2025, a day within the heatwave week, this can be modified to view other dates.
 
@@ -936,5 +936,19 @@ Hourly windspeed values are grouped and reshaped into a pivot table, allowing si
 - **Plot**: `windspeed_hourly_<date>_to_<date>.png` *windspeed_hourly_2025-07-15.png* — visual trend of windspeed over 24 hours
 
 [windspeed_hourly_2025-07-15.png](assignments/plots/windspeed_hourly_2025-07-15.png)
+
+
+## 🌬️ Step 4: Daily Max Windspeed Analysis — 10–16 July 2025
+
+This section calculates the highest windspeed recorded each day during the focus week (10–16 July 2025), using cleaned observational data from Knock Airport. The dataset `windspeed_cleaned_summer_2025.csv` is filtered to isolate the target date range. For each day, the code identifies the maximum windspeed and extracts the exact time it occurred.
+
+This analysis helps pinpoint peak wind events and their timing, which is useful for understanding gust patterns, validating sensor performance, and correlating with other weather phenomena.
+
+### 📁 Outputs:
+- **CSV file**: `daily_max_windspeed_with_time_10_16_July_2025.csv` — includes `date`, `max_windspeed`, and `time_of_max`
+- **Notebook table**: printed summary of daily peak windspeed events
+- **Plot**: `daily_max_windspeed_line_10_16_July_2025.png` — line plot of daily maximum windspeed
+
+![Daily max windspeed (10–16 July 2025)](assignments/plots/daily_max_windspeed_line_10_16_July_2025.png)
 
 END
