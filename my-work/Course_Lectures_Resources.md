@@ -174,7 +174,7 @@ The official Python 3 tutorial.
 
 Anaconda website where you can download it.
 
-[cmder](https://cmder.net/)
+[cmder](https://cmder.app/)
 
 cmder website where you can download it.
 

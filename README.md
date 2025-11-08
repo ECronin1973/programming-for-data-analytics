@@ -66,24 +66,30 @@ This repository follows established best practices for coding, documentation, an
 
 ---
 
-## 🏛️ Assignment 02 – Bank Holidays (Part A)
+## 🏛️ Assignment 02 – Bank Holidays
 
-### Display All Bank Holidays
+This repository contains two Python scripts that interact with the UK Government’s public API to retrieve and analyse bank holiday data, with a focus on Northern Ireland.
 
-This task involves writing a Python script that connects to the UK Government’s public API to retrieve a list of bank holidays. The script focuses on holidays listed under Northern Ireland, although some of these dates may also be shared with other UK regions such as England, Wales, or Scotland.
+### 📍 Part A: Display All Bank Holidays
 
-#### Learning Objectives
+This task involves writing a Python script that connects to the UK Government’s bank holidays API and displays all holidays listed under Northern Ireland. Some of these dates may also be shared with other UK regions such as England, Wales, or Scotland.
 
-- Interact with a RESTful API using Python and the `requests` library
+### 🎯 Learning Objectives
+
+- Interact with a RESTful API using Python and the requests library
+
 - Parse JSON responses and extract structured data
+
 - Filter and display region-specific information
+
 - Format terminal output for clarity and readability
 
-#### Source File
+### 📁 Source File
 
+This script is located in the `code` directory and is saved as:  
 `assignment02-bankholidays.py`
 
-#### Run the program using Python:
+### ▶️ Run the program from the `code` directory using Python:
 
 ```python
 python assignment02-bankholidays.py
@@ -97,30 +103,30 @@ Bank Holidays in Northern Ireland:
 2026-07-13 - Battle of the Boyne (Orangemen’s Day)
 ```
 
-## 🏛️ Assignment 02 – Bank Holidays (Part B)
+## 📍 Part B: Display Unique Bank Holidays in Northern Ireland
 
-### Display bank Holidays Unique to Northern Ireland
-
-This task builds on Part A by enhancing the script to identify bank holidays that are **exclusive to Northern Ireland** — those not observed in England, Wales, or Scotland. It demonstrates how to compare datasets across regions and apply conditional logic to filter unique entries.
+This task builds on Part A by enhancing the script to identify bank holidays that are exclusive to Northern Ireland — those not observed in England, Wales, or Scotland. It demonstrates how to compare datasets across regions and apply conditional logic to filter unique entries.
 
 ## 🎯 Learning Objectives
 
-By completing this task, users will learn to:
-
 - Compare structured data across multiple regions
+
 - Apply set logic to identify unique values
+
 - Implement conditional filtering in Python
+
 - Display filtered results clearly in the terminal
 
 ## 📁 Source File
 
-This script is saved as:  
+This script is located in the `code` directory and is saved as:  
 `assignment02-bankholidays-ni.py`
 
-#### Run the program using Python:
+#### Run the program from the `code` directory using Python:
 
 ```python
 python assignment02-bankholidays-ni.py
+
 ```
 
 #### Sample Output
@@ -139,43 +145,54 @@ Unique Bank Holidays in Northern Ireland:
 2027-07-12 - Battle of the Boyne (Orangemen's Day)
 ```
 
-## Further Reading and References
+### 📚 Resources for Completion of Assignment 02
 
-To help complete assignment 02 Part A and Part B, I used the following resources to learn how to work with JSON data and APIs in Python, and to compare data across multiple regions for identifying unique holidays (Part B):
+To successfully complete Assignment 02 (Parts A and B), I consulted a range of academic materials, technical documentation, and online tutorials. These resources supported my understanding of JSON data structures, API integration, and data comparison techniques across UK regions.
 
-- **ATU Lecture: Representing Data**  
-  I watched the lecture in [25-26: 4369 -- Programming For Data Analytics](https://vlegalwaymayo.atu.ie/course/view.php?id=12815) to understand how data like JSON is used in programming and how APIs provide structured data. This helped with both retrieving the data (Part A) and comparing it across regions (Part B).
+#### 🏫 Academic Materials from ATU
 
-- ATU Assignment 2 Instructions
-  I followed the assignment instructions provided in [Assignment 2](https://vlegalwaymayo.atu.ie/mod/page/view.php?id=1204016) to complete the task of extracting bank holidays for Northern Ireland and comparing them with those in England/Wales and Scotland.
+**Lecture: Representing Data**
 
-- **ATU Lab: Topic 01 – Representing Data**  
-  I followed the lab exercises in [Lab 01 Datarepresentation.pdf](https://vlegalwaymayo.atu.ie/pluginfile.php/1590492/mod_url/intro/Lab%2001%20Datarepresentation.pdf?time=1759329869806), which showed how to read JSON from the internet using Python. This was useful for accessing and printing data in Part A, and for understanding how to loop through and filter data in Part B.
+I attended the lecture in [Module 4369 – Programming for Data Analytics](https://vlegalwaymayo.atu.ie/course/view.php?id=12815) which introduced the concept of structured data formats such as JSON and explained how APIs are used to deliver real-time data. This was foundational for both retrieving and comparing bank holiday data.
 
-- **JSON Format – json.org**  
-  I used [json.org](https://www.json.org/json-en.html) to learn the basic structure of JSON, including how data is stored in key-value pairs and nested lists. This helped me understand how to navigate and compare JSON structures across different UK regions.
+**Assignment Brief**
 
-- **gov.uk Bank Holidays API**  
-  I explored the [gov.uk bank holidays JSON feed](https://www.gov.uk/bank-holidays.json) to see how the data is organized and where to find the holidays for Northern Ireland, England and Wales, and Scotland. This was essential for comparing holiday titles and identifying which ones are unique to Northern Ireland in Part B.
+I followed the instructions provided in Assignment 2, which outlined the tasks of extracting bank holidays for Northern Ireland and identifying those not shared with other UK regions.
 
-- **Python Requests Library**  
-  I read the [requests library documentation](https://pypi.org/project/requests/) to understand how to fetch data from a website using Python. This was used to retrieve the JSON data needed for both parts of the assignment.
+**Lab Exercise: Topic 01 – Representing Data**
 
-- **W3Schools – Python JSON Tutorial**  
-  I used [W3Schools](https://www.w3schools.com/python/python_json.asp) to learn how to convert JSON into Python dictionaries and loop through the data. This helped with extracting and comparing holiday titles across regions.
+I completed the lab activities in [Lab 02 Datarepresentation.pdf](https://vlegalwaymayo.atu.ie/pluginfile.php/1590492/mod_url/intro/Lab%2001%20Datarepresentation.pdf?time=1759329869806), which demonstrated how to fetch and process JSON data using Python. This was particularly helpful for implementing loops and filters in Part B.
 
-- **Real Python – API Guide**  
-  I read [Real Python’s API guide](https://realpython.com/api-integration-in-python/) to learn good practices for working with APIs, including how to handle errors, validate responses, and format output clearly. This was especially helpful in making the script more robust and readable for both parts of the assignment.
+#### 🌐 Online Tutorials and Best Practices
 
-## References
+[W3Schools – Python JSON Guide](https://www.w3schools.com/python/python_json.asp)
 
-- [25-26: 4369 -- PROGRAMMING FOR DATA ANALYTICS MODULE](https://vlegalwaymayo.atu.ie/course/view.php?id=12815)
-- [Lab 01 Datarepresentation.pdf](https://vlegalwaymayo.atu.ie/pluginfile.php/1590492/mod_url/intro/Lab%2001%20Datarepresentation.pdf?time=1759329869806)
-- [json.org](https://www.json.org/json-en.html)
-- [gov.uk bank holidays API](https://www.gov.uk/bank-holidays.json)
-- [requests library documentation](https://pypi.org/project/requests/)
-- [W3Schools Python JSON guide](https://www.w3schools.com/python/python_json.asp)
-- [Real Python’s guide to working with APIs](https://realpython.com/api-integration-in-python/)
+I used W3Schools to learn how to convert JSON into Python dictionaries and iterate through data. This supported my implementation of loops and conditional logic.
+
+[Real Python – API Integration Guide](https://realpython.com/python-requests/)
+
+I read Real Python’s tutorial to understand best practices for working with APIs, including error handling, response validation, and clean output formatting. These techniques improved the robustness and readability of my scripts.
+
+### 🧠 Summary of Learning Outcomes
+
+Through completing Assignment 02, I developed a practical understanding of how to work with public APIs and structured data formats such as JSON. Specifically, I learned to:
+
+- Use the requests library to retrieve live data from a RESTful API.
+
+- Parse and navigate nested JSON structures to extract relevant information.
+
+- Apply set logic and conditional filtering to compare datasets across multiple regions.
+
+- Structure Python scripts with clear functions, error handling, and readable output.
+
+- Follow best practices for code documentation, modular design, and terminal execution.
+
+- Reference and build upon official documentation and academic resources to support development.
+
+- Present technical work in a clear, well-organised format suitable for peer and expert review.
+
+These skills contribute to a broader foundation in data analytics and software development, particularly in handling real-world data sources and producing maintainable, user-friendly code.
+
 
 # END
 
