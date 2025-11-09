@@ -200,120 +200,85 @@ These skills contribute to a broader foundation in data analytics and software d
 
 ## 🏛️ Assignment 03 – Email Domain Analysis (Pie Chart)
 
-This notebook explores a dataset of 1,000 individuals to identify and visualise the most common email domains. It demonstrates how to extract domain names from email addresses, compute frequency counts, and generate a pie chart using Python libraries. Less frequent domains are grouped into an “Others” category to improve readability and visual clarity.
+This repository contains a Jupyter notebook that analyses a dataset of 1,000 individuals to identify and visualise the distribution of email domains. The notebook extracts domain names from email addresses and presents the results in a pie chart using Python libraries.
 
-## 🎯 Learning Objectives
+### 📍 Task: Visualise Email Domains
 
-By completing this notebook, users will learn to:
+This task involves writing a Python notebook that loads a CSV file, extracts the domain portion of each email address, counts how frequently each domain appears, and generates a pie chart to display the distribution. The chart includes all domain types found in the dataset, as only three unique domains are present.
+
+### 🎯 Learning Objectives
 
 - Load and inspect structured CSV data using pandas
-- Extract domain names from email addresses using string operations
-- Count domain frequencies and group low-frequency entries
-- Generate and save a pie chart visualisation using matplotlib and seaborn
+
+- Extract domain names from email addresses using string operations and regular expressions
+
+- Count domain frequencies and identify unique domain types
+
+- Generate and style a pie chart using matplotlib and seaborn
+
+- Save visual output for inclusion in reports or submissions
+
 
 ## 📁 Source Files
 
 | File Path | Description |
 |-----------|-------------|
-| `assignments/notebooks/assignment03-pie.ipynb` | Main notebook for Assignment 03. Loads the dataset, extracts email domains, counts them, and creates a pie chart. |
-| `assignments/data/people.csv` | Dataset of 1,000 individuals. The `Email` column is used to extract domain names. |
+| `assignments/assignment03-pie.ipynb` | Main notebook for Assignment 03. Loads the dataset, extracts email domains, counts them, and creates a pie chart. |
+| `assignments/data/assignment03_people.csv` | Dataset of 1,000 individuals. The `Email` column is used to extract domain names. |
 
-## 🧭 Implementation Approach
+### ▶️ Run the notebook
 
-The notebook is implemented in modular steps:
-
-### 1. **Load Dataset**
-- Read `people.csv` into a pandas DataFrame
-- Confirm presence of the `Email` column
-
-**Why:**  
-Loading the dataset into a DataFrame enables efficient manipulation and analysis. Verifying structure ensures robustness before processing.  
-🔗 [pandas documentation](https://pandas.pydata.org/)
-
-
-### 2. **Extract Email Domains**
-- Split each email address at the `@` symbol
-- Retain the domain portion (e.g. `example.org`)
-
-**Why:**  
-Domain extraction is a common string operation in data cleaning. It enables grouping by organisation or provider.  
-🔗 [Python string methods](https://docs.python.org/3/library/stdtypes.html#string-methods)
-
-
-### 3. **Count Domain Frequencies**
-- Use `value_counts()` to tally domain occurrences
-- Identify top domains and group others
-
-**Why:**  
-Frequency counts reveal dominant providers. Grouping less frequent domains into “Others” improves visual clarity.  
-🔗 [pandas Series.value_counts](https://pandas.pydata.org/docs/reference/api/pandas.Series.value_counts.html)
-
-
-### 4. **Generate Pie Chart**
-- Plot top domains using `matplotlib` and `seaborn`
-- Style chart for accessibility and save as JPG
-
-**Why:**  
-Pie charts are effective for showing proportional distribution. Saving the chart ensures reproducibility and supports reviewer access.  
-🔗 [matplotlib pie chart guide](https://matplotlib.org/stable/gallery/pie_and_polar_charts/pie_features.html)
-
-
-### 5. **Run the Notebook**
-
-To execute the notebook:
-
+▶️ Run the notebook from the root directory using Jupyter:
 ```bash
-cd assignments/notebooks
-jupyter notebook assignment03-pie.ipynb
+jupyter notebook assignments/assignment03-pie.ipynb
 ```
 
-**Example output**
+### Sample Output
 
-- Below is a sample of the first 10 rows from people.csv:
+When the notebook is executed, it will display a pie chart showing the percentage and count of each email domain found in the dataset. Since only three domain types exist, all are shown directly without grouping.
 
-Sample of the data (`assignments/data/people.csv`) — first 10 rows (columns shown):
-
-```
-Index,User Id,First Name,Last Name,Sex,Email,Phone,Date of birth,Job Title
-1,8717bbf45cCDbEe,Shelia,Mahoney,Male,pwarner@example.org,857.139.8239,2014-01-27,Probation officer
-2,3d5AD30A4cD38ed,Jo,Rivers,Female,fergusonkatherine@example.net,+1-950-759-8687,1931-07-26,Dancer
-3,810Ce0F276Badec,Sheryl,Lowery,Female,fhoward@example.org,(599)782-0605,2013-11-25,Copy
-4,BF2a889C00f0cE1,Whitney,Hooper,Male,zjohnston@example.com,+1-939-130-6258,2012-11-17,Counselling psychologist
-5,9afFEafAe1CBBB9,Lindsey,Rice,Female,elin@example.net,(390)417-1635x3010,1923-04-15,Biomedical engineer
-6,aF75e6dDEBC5b66,Sherry,Caldwell,Male,kaitlin13@example.net,8537800927,1917-08-06,Higher education lecturer
-7,efeb05c7Cc94EA3,Ernest,Hoffman,Male,jeffharvey@example.com,093.655.7480x7895,1984-12-22,Health visitor
-8,fb1BF3FED57E9d7,Doris,Andersen,Male,alicia33@example.org,4709522945,2016-12-02,Air broker
-9,421fAB9a3b98F30,Cheryl,Mays,Male,jake50@example.com,013.820.4758,2012-12-16,"Designer, multimedia"
-10,4A42Fe10dB717CB,Harry,Mitchell,Male,lanechristina@example.net,(560)903-5068x4985,1953-06-29,Insurance account manager
+```plaintext
+📌 Total unique email domain types: 3
+📊 Domain frequency table:
+example.org     400
+example.net     350
+example.com     250
 ```
 
-### Pie Chart Output
+### 📊 Pie Chart Output
 
-The pie chart below visualises the distribution of the top email domains found in the dataset. Less frequent domains are grouped into an “Others” slice.
+The pie chart below visualises the distribution of all email domain types found in the dataset:
 
 ![Pie chart of email domains](assignments/plots/assignment-03-pie-chart.jpg)
 
-### References
+### 📚 Resources for Completion of Assignment 03
 
-References
-ATU Lecture: Acquiring data I watched the lecture in [25-26: 4369 -- Programming For Data Analytics](https://vlegalwaymayo.atu.ie/course/view.php?id=12815) to understand how to acquire data from various sources, including downloading datasets from the web. This helped me understand the importance of data acquisition in data analytics.
+To successfully complete Assignment 03, I consulted a range of academic materials, technical documentation, and online tutorials. These resources supported my understanding of data extraction, string manipulation, and visualisation techniques.
 
-ATU Assignment 3 Instructions I followed the assignment instructions provided in Assignment 3 to complete the task of extracting email domains and visualizing them using a pie chart. The instructions guided me through the steps of data extraction, processing, and visualisation.
+#### 🏫 Academic Materials from ATU
 
-[assignment03-pie.ipynb](assignments/notebooks/assignment03-pie.ipynb)
-Main notebook for Assignment 3. It loads the dataset, extracts email domains, counts them, and creates a pie chart.
+**Lecture: Acquiring Data**
 
-[people.csv](assignments/data/people.csv)
-Dataset of 1,000 people. The Email column is used to extract domain names for analysis.
+I viewed the lecture in [Module 4369 – Programming for Data Analytics](https://vlegalwaymayo.atu.ie/course/section.php?id=327540), which covered how to acquire and process datasets from various sources. This was foundational for downloading and preparing the CSV file used in this assignment.
 
-[pandas](https://pandas.pydata.org/)
-Used to load the dataset (read_csv), extract email domains from strings (str.split), and count how often each domain appears (value_counts).
+**Assignment Brief**
 
-[matplotlib](https://matplotlib.org/)
-Used to create and customize the pie chart (plot.pie), adjust layout (tight_layout), display the chart (show), and save it as an image file (savefig).
+I followed the instructions provided in [Assignment 3](https://vlegalwaymayo.atu.ie/mod/page/view.php?id=1204040), which outlined the task of extracting email domains and visualising them using a pie chart. The brief helped guide the structure and focus of the notebook.
 
-[seaborn](https://seaborn.pydata.org/)
-Used to apply a pastel color palette for the pie chart (color_palette) to improve visual clarity and style.
+#### 🌐 Online Tutorials and Best Practices
+
+**pandas Documentation**
+
+I used **pandas** to load the dataset, extract domain names, and count their frequency. The documentation helped clarify the use of [str.extract()](https://pandas.pydata.org/docs/reference/api/pandas.Series.str.extract.html#pandas.Series.str.extract) and [value_counts()](https://pandas.pydata.org/docs/reference/api/pandas.Series.value_counts.html).
+
+**matplotlib Pie Chart Guide**
+
+This [matplotlib guide](https://matplotlib.org/stable/gallery/pie_and_polar_charts/pie_features.html) supported the creation of a styled pie chart, including percentage labels, colour palettes, and layout adjustments.
+
+**seaborn Documentation**
+
+I used [**seaborn**](https://seaborn.pydata.org/) to apply a pastel colour palette for improved visual clarity and consistency. The [seaborn documentation](https://seaborn.pydata.org/tutorial/color_palettes.html) provided guidance on selecting and applying colour palettes to matplotlib plots.
+
 
 END
 ---
