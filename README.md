@@ -86,10 +86,10 @@ This task involves writing a Python script that connects to the UK Government’
 
 ### 📁 Source File
 
-This script is located in the `code` directory and is saved as:  
+This script is located in the root directory of the repository and is saved as:  
 `assignment02-bankholidays.py`
 
-### ▶️ Run the program from the `code` directory using Python:
+### ▶️ Run the program from the root directory using Python:
 
 ```python
 python assignment02-bankholidays.py
@@ -119,10 +119,10 @@ This task builds on Part A by enhancing the script to identify bank holidays tha
 
 ## 📁 Source File
 
-This script is located in the `code` directory and is saved as:  
+This script is located in the root directory of the repository and is saved as:  
 `assignment02-bankholidays-ni.py`
 
-#### Run the program from the `code` directory using Python:
+#### Run the program from the root directory using Python:
 
 ```python
 python assignment02-bankholidays-ni.py
