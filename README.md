@@ -285,99 +285,101 @@ END
 
 # 📊 Assignment 05 – Population Analysis by Sex and Age
 
-This assignment explores population data by sex and single year of age using official census statistics. It demonstrates how to clean, transform, and analyse demographic data using Python and pandas, with a strong emphasis on clarity, reproducibility, and pedagogical structure.
-
-## Task A: 
-Write a jupyter notebook that analyses the differences between the sexes by age in Ireland. 
-- Weighted mean age (by sex) 
-- The difference between the sexes by age 
-
-This part does not need to look at the regions.
-
-## 🎯 Learning Objectives
-
-This assignment part will:
-
-- Load and clean raw CSV data using pandas
-- Pivot data to compare population counts by sex across age groups
-- Compute weighted statistics (mean, median, standard deviation)
-- Visualise distributions using parametric bell curves and kernel density estimation (KDE)
-- Export analysis-ready tables for downstream use or review
+This assignment explores population data by sex and single year of age using official census statistics. It demonstrates how to clean, transform, and analyse demographic data using Python and pandas, with a strong emphasis on clarity, reproducibility, and educational structure.
 
 ---
 
-## 🧰 Notebook Loader & Helper Functions
+## 🎯 Task A — Sex-Based Age Analysis (70%)
 
-This notebook uses a modular design with clearly separated helper blocks to support clarity, reusability, and reviewer understanding. These helpers are defined at the top of the notebook and are reused throughout the analysis cells below.
+Write a Jupyter notebook that analyses the differences between the sexes by age in Ireland:
 
-Functions are described and documented inline in `notebooks/assignment05-population.ipynb`.
+- Calculate the **weighted mean age** for each sex
+- Measure the **difference between sexes** across single-year age groups
 
-> 📚 *“Functions help break our program into smaller and modular chunks.”* — [GeeksforGeeks](https://www.geeksforgeeks.org/python-functions/)  
-> 🧠 *“Functional decomposition improves clarity and supports reuse.”* — [Python.org](https://docs.python.org/3/howto/functional.html)  
-> 🛠️ *“Clean, idiomatic Python code often relies on small, focused helper functions.”* — *Python Cookbook*, 3rd Ed., O’Reilly
+This part focuses solely on national-level data and does **not** require regional analysis.
 
+---
 
-### 📤 Utility: Save and Display Plots
+## 📚 Learning Objectives
 
-- **Purpose**: Centralises logic for saving figures to disk and displaying them inline.
-- **Why it matters**: Ensures consistent output format, resolution, and reproducibility across all visualisations.
-- **Source**: [matplotlib.pyplot.savefig](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.savefig.html)
+By completing this task, students will:
 
-### 📁 I/O & Loader Helpers
+- Load and clean raw CSV data using pandas
+- Pivot data to compare population counts by sex across age groups
+- Compute weighted statistics: mean, median, and standard deviation
+- Visualise distributions using parametric bell curves and kernel density estimation (KDE)
+- Export tidy, analysis-ready tables for further use or review
 
-- **Purpose**: Handle robust file loading and saving using canonical paths (e.g. `DATA_DIR`).
-- **Why it matters**: Supports reproducibility and avoids hardcoded paths. These helpers also check for in-memory data before falling back to disk.
-- **Source**: [pathlib.Path](https://docs.python.org/3/library/pathlib.html), [pandas.read_csv](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html)
+---
 
-### 📐 Statistical Computation Helper
+## 🧰 Notebook Structure and Helper Functions
 
-- **Purpose**: Performs reusable statistical calculations (e.g. weighted mean, standard deviation).
-- **Why it matters**: Keeps analysis cells clean and focused on interpretation rather than computation.
-- **Source**: [pandas.DataFrame.apply](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.apply.html), [numpy.average](https://numpy.org/doc/stable/reference/generated/numpy.average.html)
+The notebook follows a modular design with reusable helper blocks defined at the top. These support clarity, maintainability, and pedagogical transparency. Each helper is documented inline and used throughout the analysis cells.
 
-### 📊 Plotting Helpers (Parametric and KDE)
+### 🔧 Key Helpers
 
-- **Purpose**: Generate consistent visualisations such as bar charts, KDE plots, and annotated summaries.
-- **Why it matters**: Promotes visual clarity and ensures all plots follow a consistent style and layout.
-- **Source**: [seaborn.kdeplot](https://seaborn.pydata.org/generated/seaborn.kdeplot.html), [matplotlib.pyplot.bar](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.bar.html)
+- **Save and Display Plots**  
+  Centralises logic for saving figures and displaying them inline.  
+  Ensures consistent formatting and reproducibility.  
+  → [`matplotlib.pyplot.savefig`](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.savefig.html)
 
-### 📌 Display Helper: Show Top-N Ages by Sex
+- **I/O and Loader Helpers**  
+  Handle robust file loading and saving using canonical paths (e.g. `DATA_DIR`).  
+  Avoid hardcoded paths and support fallback to in-memory data.  
+  → [`pathlib.Path`](https://docs.python.org/3/library/pathlib.html), [`pandas.read_csv`](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html)
 
-- **Purpose**: Displays a compact preview of the top N age rows for each sex.
-- **Why it matters**: Keeps notebook outputs readable and helps reviewers quickly inspect key data slices.
-- **Source**: [pandas.DataFrame.sort_values](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sort_values.html), [pandas.DataFrame.head](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.head.html)
+- **Statistical Computation**  
+  Perform reusable calculations such as weighted mean and standard deviation.  
+  Keep analysis cells focused on interpretation.  
+  → [`numpy.average`](https://numpy.org/doc/stable/reference/generated/numpy.average.html)
 
-### 📥 Loader: Tidy Age-Difference CSV (Robust Path Handling)
+- **Plotting (Bell Curve and KDE)**  
+  Generate consistent visualisations with clear styling.  
+  → [`seaborn.kdeplot`](https://seaborn.pydata.org/generated/seaborn.kdeplot.html), [`matplotlib.pyplot.bar`](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.bar.html)
 
-- **Purpose**: Loads the cleaned age-by-sex dataset from disk or memory, normalises column types, and ensures consistent structure.
-- **Why it matters**: Enables downstream analysis cells to work reliably without repeating cleaning logic.
-- **Source**: [pandas.read_csv](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html), [pandas.Series.astype](https://pandas.pydata.org/docs/reference/api/pandas.Series.astype.html)
+- **Top-N Age Display**  
+  Show a compact preview of the top age rows for each sex.  
+  → [`pandas.DataFrame.sort_values`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sort_values.html)
 
-### 🗺️ Helper: build age-difference CSV including Administrative Counties
+- **Tidy Age-Difference Loader**  
+  Load cleaned age-by-sex data with normalised column types.  
+  → [`pandas.Series.astype`](https://pandas.pydata.org/docs/reference/api/pandas.Series.astype.html)
 
-- **Purpose**: Constructs a tidy CSV file showing population differences by age and sex, including administrative county breakdowns.
-- **Why it matters**: Provides a reusable dataset for further analysis or visualisation tasks.
-- **Source**: [pandas.DataFrame.to_csv](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_csv.html)
+- **Administrative County Builder**  
+  Construct a tidy CSV showing population differences by age and sex, including county breakdowns.  
+  → [`pandas.DataFrame.to_csv`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_csv.html)
 
 ---
 
 ### 🧠 Why This Structure?
 
-Separating helpers from analysis cells allows the notebook to be:
+Separating helper functions from analysis cells makes the notebook:
 
 - Easier to maintain and extend
 - More readable for students and reviewers
 - Reusable across multiple assignments or datasets
 
-Each analysis cell below calls these helpers to perform specific tasks (e.g. comparing sexes in an age band, plotting distributions, identifying regional differences), keeping the workflow modular and pedagogically clear.
+Each analysis cell calls these helpers to perform specific tasks (e.g. comparing sexes in an age band, plotting distributions, identifying regional differences), keeping the workflow modular and pedagogically clear.
 
 ---
 
 ## 📁 Source File
 
 This notebook is located at:  
-[assignment05-population.ipynb](https://github.com/ECronin1973/programming-for-data-analytics/blob/main/assignments/notebooks/assignment05-population.ipynb)
+[`assignment05-population.ipynb`](https://github.com/ECronin1973/programming-for-data-analytics/blob/main/assignment05-population.ipynb)
 
+---
+
+## How to run the notebook
+
+1. Ensure you have Python 3.x installed with the required libraries: `pandas`, `numpy`, `matplotlib`, and `seaborn`.
+2. Download the repository and navigate to the root directory.
+3. Run the notebook using Jupyter:
+```bash
+jupyter notebook assignment05-population.ipynb
+```
+
+---
 ## 🧹 Data Cleaning Steps
 
 The raw dataset is cleaned by:
@@ -386,141 +388,133 @@ The raw dataset is cleaned by:
 - Filtering to retain only 'Male' and 'Female' rows
 - Standardising age labels (e.g. converting 'Under 1 year' to `0`)
 - Removing non-numeric age entries and converting types
-- Ensuring all population counts are integers
+- Ensuring all population counts are stored as integers
+
+---
 
 ## 📈 Pivot Table Creation
 
-A pivot table is created with:
+A pivot table is constructed with:
 
-- Rows: Single year of age
-- Columns: Sex ('Male', 'Female')
-- Values: Population counts
+- **Rows**: Single year of age  
+- **Columns**: Sex ('Male', 'Female')  
+- **Values**: Population counts
 
-This structure allows for direct comparison of male and female population counts across age groups.
+This structure enables direct comparison of male and female population counts across age groups.
+
+---
 
 ## 🧮 Statistical Analysis
 
-The notebook computes:
+The notebook computes the following per sex:
 
-- **Weighted Mean Age**: Average age weighted by population count
-- **Weighted Standard Deviation**: Spread of ages around the weighted mean
-- **Weighted Median Age**: Age at which half the population is younger and half is older
+- **Weighted Mean Age** — average age weighted by population count  
+- **Weighted Standard Deviation** — spread of ages around the weighted mean  
+- **Weighted Median Age** — age at which half the population is younger and half is older
 
-Each statistic is calculated per sex and saved to CSV for reproducibility.
+Each statistic is saved to CSV for reproducibility and downstream use.
+
+---
 
 ## 🔍 KDE and Bell Curve Visualisation
 
 Two visualisations are provided:
 
-- **Parametric Bell Curve**: Approximates a normal distribution using weighted mean and standard deviation
-- **Kernel Density Estimate (KDE)**: Smoothed density based on actual age counts, without assuming normality
+- **Parametric Bell Curve** — approximates a normal distribution using weighted mean and standard deviation  
+- **Kernel Density Estimate (KDE)** — smoothed density based on actual age counts, without assuming normality
 
 Plots are saved as PNG files and designed for clarity and accessibility.
 
-### Visual outputs
+### 📸 Visual Outputs
 
-Below are the two main plot outputs produced by the notebook (also saved to `assignments/plots/`). These images are embedded here so reviewers can see the results without opening the notebook.
+These are the two main plot outputs produced by the notebook (saved to the root `plots/` folder):
 
-![Parametric bell curves (approx normal) - assignment 05](assignments/plots/assignment-05-age-bell-curve.png)
-
+![Parametric bell curves (approx normal) - assignment 05](assignments/plots/assignment05-age-bell-curve.png)
+  
 _Parametric bell curves generated using the weighted mean (μ) and weighted standard deviation (σ) for each sex. Useful for a concise, parametric comparison but assumes normality._
 
-![Weighted KDE of age by sex - assignment 05](assignments/plots/assignment-05-age-kde.png)
-
+![Weighted KDE of age by sex - assignment 05](assignments/plots/assignment05-age-kde.png)  
 _Weighted KDE computed from the single-year age counts; this non-parametric curve reveals the actual shape of the distribution (skew, modes, tails) that a simple bell curve may miss._
 
-Interpretation (short): use the KDE as the primary visual check for the real distribution shape; use the bell-curve as a compact parametric summary. If the KDE shows strong skew or multiple peaks, prefer the KDE for interpretation and reporting.
+**Interpretation**: Use the KDE as the primary visual check for the real distribution shape. Use the bell-curve as a compact parametric summary. If the KDE shows strong skew or multiple peaks, prefer the KDE for interpretation and reporting.
+
+---
 
 ## 📊 Age Difference Analysis
 
 The notebook also computes:
 
-- Absolute difference in population count between sexes at each age
+- Absolute difference in population count between sexes at each age  
 - Which sex has a greater count at each age ('Male', 'Female', or 'Equal')
 
-This is exported to `age_difference_by_sex.csv` and supports further visualisation or reporting.
+This is exported to `assignment05_age_difference_by_sex.csv` and supports further visualisation or reporting.
+
+---
 
 ## 📦 Output Files
 
-| Filename                              | Description                                      |
-|--------------------------------------|--------------------------------------------------|
-| `weighted_stats_by_sex.csv`          | Pivot table of population counts by age and sex |
-| `weighted_mean_std_by_sex.csv`       | Weighted mean and standard deviation by sex     |
-| `weighted_median_std_by_sex.csv`     | Weighted median and standard deviation by sex   |
-| `assignment-05-age-bell-curve.png`   | Bell curve visualisation                        |
-| `assignment-05-age-kde.png`          | KDE visualisation                               |
-| `age_difference_by_sex.csv`          | Age-wise population difference by sex           |
-| `assignment-05-mean-age-bar.png`     | Bar chart of weighted mean age by sex           |
+| Filename                                      | Description                                      |
+|----------------------------------------------|--------------------------------------------------|
+| `assignment05_weighted_stats_by_sex.csv`     | Pivot table of population counts by age and sex |
+| `assignment05_weighted_mean_std_by_sex.csv`  | Weighted mean and standard deviation by sex     |
+| `assignment05_weighted_median_by_sex.csv`    | Weighted median age by sex                      |
+| `assignment05-age-bell-curve.png`            | Bell curve visualisation                        |
+| `assignment05-age-kde.png`                   | KDE visualisation                               |
+| `assignment05_age_difference_by_sex.csv`     | Age-wise population difference by sex           |
+| `assignment05-age-mean-difference-bar.png`   | Bar chart of weighted mean age by sex           |
+
+---
+
+---
 
 ## 📚 Dependencies
 
-- Python 3.x
-- pandas
-- numpy
-- matplotlib
-- seaborn
+This notebook requires the following Python libraries:
+
+- `pandas` — for data manipulation  
+- `numpy` — for numerical operations  
+- `matplotlib` — for plotting  
+- `seaborn` — for KDE visualisation  
+- Python 3.x environment
+
+---
 
 ## 🧠 Pedagogical Design
 
 The notebook is designed to be:
 
-- **User-friendly**: Clear comments, modular structure, and reproducible outputs
-- **Reviewer-friendly**: Explicit validation steps, consistent formatting, and saved artefacts
-- **Future-proof**: Code blocks are reusable and adaptable for other datasets or assignments
+- **User-friendly** — clear comments, modular structure, and reproducible outputs  
+- **Reviewer-friendly** — explicit validation steps, consistent formatting, and saved artefacts  
+- **Future-proof** — reusable code blocks adaptable to other datasets or assignments
 
 ---
 
-## 🧮 Assignment 05 – Part B: Age-Band Sex Comparison
+## 🧮 Assignment 05 – Part B: Age-Band Sex Comparison (20%)
 
 This section compares the population of males and females within a selected age band (e.g. ages 30–40) and produces both a visual and tabular summary.
 
----
-
 ### ⚙️ What This Cell Does
 
-- **Data Input**  
-  Loads a tidy age-by-sex table using `load_age_difference()`.  
-  - Prefers in-memory `df_out`  
-  - Falls back to: `assignments/data/age_difference_by_sex.csv`
-
-- **Filtering**  
-  Selects rows where `age` is within `[target_age − band, target_age + band]`.
-
-- **Aggregation**  
-  Sums `female` and `male` counts across the band.  
-  Calculates:
+- Loads a tidy age-by-sex table from memory or from `assignment05_age_difference_by_sex.csv`
+- Filters rows where `age` is within `[target_age − 5, target_age + 5]`
+- Aggregates total counts for each sex and calculates:
   - Total population
   - Difference (Male − Female)
   - Percentage difference of band total
-
-- **Visual Output**  
-  Saves a compact bar chart comparing totals to:  
-  `assignments/plots/age_group_{target_age}_sex_comparison.png`
-
-  [age_group_35_sex_comparison.png](assignments/plots/age_group_35_sex_comparison.png)
-
-- **Tabular Output**  
-  Displays the filtered rows with a new column indicating which sex is more populous for each age.
-
-- **Text Output**  
-  Prints a concise summary:
-
-```plaintext
-Female = 25,901, Male = 23,996, Diff (M−F) = -1,905, % of Band = -3.82%
-```
----
+- Saves a bar chart to `assignment05-age-group-35-sex-comparison.png`
+- Displays a table with per-age breakdown and majority sex
+- Prints a concise summary of the result
 
 ### ▶️ How to Run
 
-1. Restart the notebook kernel and run all cells up to the one that creates `df_out`.
-2. Run the Part B cell.  
- You can change `target_age = 35` to inspect other bands.
+1. Restart the notebook kernel and run all cells from the top to ensure helper functions and data loading steps are executed.
+2. Run the Part B cell to perform the age-band comparison.  
+   You can change `target_age = 35` to inspect other age bands.
+3. Run the Part C cell to perform the regional analysis.  
+   Ensure the dataset `assignment05_age_difference_by_sex_with_region.csv` has been created or loaded.
 
----
 
-### 📊 Output Table
-
-**Age-Band Sex Comparison Table (Ages 30–40)**
+### 📊 Output Table — Ages 30–40
 
 | Age | Female | Male | Difference | Majority |
 |-----|--------|------|------------|----------|
@@ -536,56 +530,34 @@ Female = 25,901, Male = 23,996, Diff (M−F) = -1,905, % of Band = -3.82%
 | 39  | 2,662  | 2,421 | -241       | Female   |
 | 40  | 2,696  | 2,518 | -178       | Female   |
 
----
+### 🧠 Interpretation
 
-### 🧠 Interpretation Of Results
-
-> “Which sex has the larger population in the selected age band, and by how much?”
-
-In the age band 30–40, females have a larger population than males by a total of 1,905 people, which is approximately 3.82% of the age-band total.
-
----
+In the age band 30–40, females outnumber males by **1,905 people**, which is approximately **3.82%** of the total population in that band.
 
 ### 📂 Files Produced
 
-- ![age_group_35_sex_comparison.png](assignments/plots/age_group_35_sex_comparison.png) – bar chart
+- [Age Group Comparison](assignments/plots/assignment05-age-group-35-sex-comparison.png) - bar chart
 
-- `assignments/data/age_difference_by_sex.csv`
+- `assignment05_age_difference_by_sex.csv` — tidy age-by-sex table
 
-## 🧮 Assignment 05 – Part C: Regional Sex Difference Analysis
+---
 
-This part performs a regional analysis to determine which **Administrative County** in Ireland has the **largest population difference between males and females** within a selected age band (e.g. ages 30–40).
+## 🧮 Assignment 05 – Part C: Regional Sex Difference Analysis (10%)
 
-Here’s what the cell does step-by-step:
+This section identifies which **Administrative County** in Ireland has the **largest population difference between sexes** within the selected age band.
 
-1. **Loads** the cleaned dataset `age_difference_by_sex_with_region.csv`, which includes age, sex counts, and county-level data.  This file is created in an earlier cleaning step.
-2. **Filters** the data to the age band defined in Part B (e.g. ages 30–40).
-3. **Excludes** the national total ("Ireland") to focus only on county-level comparisons.
-4. **Aggregates** male and female counts by county.
-5. **Calculates** the signed and absolute difference between sexes.
-6. **Identifies** the county with the largest sex-based population gap.
-7. **Visualises** the top 10 counties using a colour-coded bar chart:
-   - 🔵 Blue = Male majority
-   - 🌸 Pink = Female majority
-   - 🔢 Each bar is labelled with the exact difference value
-   - 📅 Age band is displayed beneath the chart
-8. **Prints** a concise summary explaining which county had the largest difference and why.
+### ⚙️ What This Cell Does
 
-### ▶️How to run:
-1. Ensure all previous cells have been executed to create the necessary data files.
-2. Run the Part C cell to perform the regional analysis.
+1. Loads `assignment05_age_difference_by_sex_with_region.csv`  
+2. Filters to the selected age band (e.g. ages 30–40)  
+3. Excludes the national total ("Ireland")  
+4. Aggregates male and female counts by county  
+5. Calculates signed and absolute differences  
+6. Identifies the county with the largest gap  
+7. Visualises the top 10 counties using a colour-coded bar chart  
+8. Prints a summary of the result
 
-### 📂 Files Produced
-
-- `assignments/plots/age_group_35_region_sex_diff.png` – bar chart
-
-### 📊 Visual
-
-![Regional Sex Difference Analysis](assignments/plots/age_group_35_region_sex_diff.png)
-
-### 📊 Output Table - Top 10 Counties by Population Difference (Female Majority)
-
-This table shows the top 10 Administrative Counties in Ireland with the largest female-majority population difference in the selected age band (30–40).
+### 📊 Output Table — Top 10 Counties (Female Majority)
 
 | Administrative County                     | Male   | Female | Difference (M−F) | Majority |
 |-------------------------------------------|--------|--------|------------------|----------|
@@ -600,105 +572,76 @@ This table shows the top 10 Administrative Counties in Ireland with the largest 
 | Wexford County Council                    | 10,824 | 12,162 | -1,338           | Female   |
 | Kerry County Council                      | 9,957  | 11,125 | -1,168           | Female   |
 
+### 🧠 Interpretation
 
-### 🧠 Interpretation Of Results
+📍 **County with largest difference**: Fingal County Council  
+🧮 Male = 26,150, Female = 29,092, Diff (M−F) = −2,942, % of band = **5.33%**  
+🧠 Fingal has the largest gap because it has **2,942 more females than males** in the selected age band.
 
-📍 Administrative County with largest difference: Fingal County Council
-🧮 Male = 26,150, Female = 29,092, Diff (M−F) = -2,942, % of band population = 5.33%
-🧠 Reason: Fingal County Council has the largest difference because it has 2,942 more females than males in the selected age band.
-
-🎨 Color Legend:
-🔵 Blue bar = Male majority
-🌸 Pink bar = Female majority
-Each bar represents the absolute population difference in the selected age band.
+🎨 **Legend**  
+- 🔵 Blue = Male majority  
+- 🌸 Pink = Female majority  
+Each bar represents the absolute population difference in the selected age band.  
 📍 Age Band: Ages 30–40 (Centre = 35)
 
-## Personal Issues Encountered
+### 📂 Files Produced
 
-I spent a considerable amount of time viewing lectures online, reviewing and adapting notebooks provided during the course, and consulting documentation for pandas, NumPy, matplotlib, and seaborn to understand how to implement the required analyses and visualisations.  In order to answer the three questions posed in the assignment, I went back of the notebooksupplied during the lecture and focused on adapting elements of the notebook and making it my own approach to solving the assignment task.  I had to learn more on how to compute weighted statistics, create KDE plots, and generate annotated bar charts, alot of which I had completed previously in other modules on my studies in ATU.  I also had to ensure that my code was clear and well-documented for reviewers.  I reviewed the materials related to the Applied Statistics Module I completed previously and focused assignments such as 'Flipping Coins' and also Normal Distribution lectures to understand the statistical concepts involved.  These helped me greatly in understanding further the concepts of weighted mean, median, standard deviation, and kernel density estimation.  To complete Part 3 I considered how to best visualise the differences between the sexes in the selected age band as it required the reintroduction of an additional analysis layer 'Administrative County'.  I considered modifying my initial generated file 'age_difference_by_sex.csv' to include the regional breakdown and then used this new file to perform the analysis required for Part C. This from my research would be consistent with my modular workflow: select → aggregate → visualise → interpret.  In the end, I chose to generate a new file with relevant columns which I then was able to perform analysis on.  
-
-Overall, I found this assignment the most challenging so far as I made it likely alot more detailed than it needed to be.  I would like to use this for future project approaches. In my notebook I wanted to ensure that I had a clear modular structure with helper functions to support clarity and reusability.  I also wanted to ensure that my visualisations were clear and accessible, with appropriate labels, legends, and colour schemes.  I found the process of cleaning and transforming the data to be time-consuming.  However, it was also engaging but rewarding as it allowed me to apply my knowledge of data analysis and visualisation in a practical context.
-
-## Acknowledgements
- Github Copilot. "This work was partially supported by GitHub Copilot, an AI-powered code completion tool
- developed by GitHub, which assisted in generating parts of the code."
+- [assignment05-age-group-35-region-sex-diff.png](assignments/plots/assignment05-age-group-35-region-sex-diff.png) — bar chart
 
 ---
 
-### 📚 References and Learning Resources
+## 🧠 Personal Reflection
+
+This assignment was the most challenging so far, requiring me to revisit lectures, adapt course notebooks, and consult documentation to implement weighted statistics and KDE visualisations. I reviewed materials from previous modules to reinforce key concepts and applied a modular workflow: select → aggregate → visualise → interpret. Part C involved integrating regional data, which I addressed by generating a new dataset with county-level breakdowns. I also revised and simplified all code cells to improve clarity and make the notebook easier to understand.
+
+---
+
+## 🙏 Acknowledgements
+
+This work was partially supported by **GitHub Copilot**, an AI-powered code completion tool developed by GitHub, which assisted in generating parts of the code.
+
+---
+
+## 📚 References and Learning Resources
 
 The following resources were consulted and integrated throughout the notebook to support implementation, conceptual understanding, and reviewer transparency:
 
----
+### 🎓 ATU Learning Materials
 
-#### 🎓 ATU Learning Materials
+- **Lecture: Analysis and Some Stats**  
+  [Programming For Data Analytics](https://vlegalwaymayo.atu.ie/course/view.php?id=12815)  
+  Provided foundational guidance on statistical analysis and visualisation techniques.
 
-- **ATU Lecture: Analysis and Some Stats**  
-  [25-26: 4369 – Programming For Data Analytics](https://vlegalwaymayo.atu.ie/course/view.php?id=12815)  
-  *Use:* This lecture provided foundational guidance on statistical analysis and visualisation techniques. It helped clarify the expectations for weighted measures and KDE plots, and informed the structure of the notebook.
-
-- **ATU Assignment 5 Instructions**  
-  [Assignment 5](https://vlegalwaymayo.atu.ie/mod/page/view.php?id=1362128)  
-  *Use:* The assignment brief outlined the required tasks: analysing differences between sexes by age in Ireland, computing weighted mean age (by sex), and calculating the difference between sexes by age. These instructions directly shaped the notebook’s modular design and output structure.
+- **Assignment 05 Brief**  
+  [Assignment Instructions](https://vlegalwaymayo.atu.ie/mod/page/view.php?id=1362128)  
+  Defined the three-part structure and shaped the notebook’s modular design.
 
 ---
 
-#### 🐍 Python Libraries and Documentation
+### 🐍 Python Libraries and Documentation
 
-- **pandas (Data Cleaning & Pivoting)**  
-  [pandas documentation](https://pandas.pydata.org/)  
-  *Use:* Referenced for loading CSVs, cleaning data, grouping by sex and age, pivoting tables, and exporting results. Enabled reproducible and reviewer-friendly data transformations.
-
-- **NumPy (Weighted Averages & Numerics)**  
-  [NumPy documentation](https://numpy.org/)  
-  *Use:* Used for computing weighted mean, variance, and standard deviation. Also supported array manipulations and numeric precision throughout the notebook.
-
-- **SciPy – `gaussian_kde`**  
-  [SciPy KDE documentation](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.gaussian_kde.html)  
-  *Use:* Practical reference for implementing weighted KDE. Informed how to supply weights and interpret bandwidth parameters.
-
-- **seaborn – `kdeplot`**  
-  [seaborn KDE documentation](https://seaborn.pydata.org/generated/seaborn.kdeplot.html)  
-  *Use:* Used to plot KDEs with custom bandwidth and style options. Helped visualise age distributions clearly and accessibly.
-
-- **matplotlib – Bar Charts and Legends**  
-  [matplotlib documentation](https://matplotlib.org/stable/contents.html)  
-  *Use:* Used to generate annotated bar charts for Part C. Supported custom colour coding, value labels, and legend creation for regional sex difference visualisation.
+- [`pandas`](https://pandas.pydata.org/) — data cleaning, pivoting, and exporting  
+- [`NumPy`](https://numpy.org/) — weighted statistics and numeric operations  
+- [`SciPy`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.gaussian_kde.html) — KDE implementation  
+- [`seaborn`](https://seaborn.pydata.org/generated/seaborn.kdeplot.html) — KDE plotting  
+- [`matplotlib`](https://matplotlib.org/stable/contents.html) — bar charts and legends
 
 ---
 
-#### 📊 Statistical Concepts and Visualisation
+### 📊 Statistical Concepts and Visualisation
 
-- **Kernel Density Estimation (KDE)**  
-  [Wikipedia – KDE](https://en.wikipedia.org/wiki/Kernel_density_estimation)  
-  *Use:* Provided conceptual background for KDE plots. Explained why KDE is preferred over parametric fits for real-world age distributions.
-
-- **Normal Distribution (Definition & PDF)**  
-  [Wikipedia – Normal Distribution](https://en.wikipedia.org/wiki/Normal_distribution)  
-  *Use:* Supported the parametric bell-curve visualisation. Explained the probability density function (PDF), assumptions, and role of μ and σ.
-
-- **Weighted Mean & Variance (Formulas & Explanation)**  
-  [Wikipedia – Weighted Arithmetic Mean](https://en.wikipedia.org/wiki/Weighted_arithmetic_mean)  
-  *Use:* Referenced for computing weighted mean and variance. Ensured statistical accuracy and transparency in the notebook’s calculations.
-
-- **Weighted Median Explanation**  
-  [Real Statistics – Weighted Measures](https://real-statistics.com/descriptive-statistics/measures-central-tendency/weighted-mean-and-median/)  
-  *Use:* Provided conceptual steps for computing the weighted median using cumulative weights. Informed the logic used in the notebook’s median cell.
+- [Kernel Density Estimation (Wikipedia)](https://en.wikipedia.org/wiki/Kernel_density_estimation)  
+- [Normal Distribution (Wikipedia)](https://en.wikipedia.org/wiki/Normal_distribution)  
+- [Weighted Mean & Variance (Wikipedia)](https://en.wikipedia.org/wiki/Weighted_arithmetic_mean)  
+- [Weighted Median (Real Statistics)](https://real-statistics.com/descriptive-statistics/measures-central-tendency/weighted-mean-and-median/)
 
 ---
 
-#### 📈 Data Source and Teaching Aids
+### 📈 Data Source and Teaching Aids
 
-- **CSO FY006A – Raw Population Dataset**  
-  [CSO API – FY006A CSV Endpoint](https://ws.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/FY006A/CSV/1.0/en)  
-  *Use:* Official source for the population data used in the notebook. Cited to ensure reproducibility and allow reviewers to re-download the exact dataset.
-
-- **XKCD Comic – Normal Distribution**  
-  [XKCD #221](https://xkcd.com/221/)  
-  *Use:* Embedded in the notebook as a light-hearted teaching aid. Highlights why real data often deviates from idealised bell curves.
-
-- **GitHub Copilot**  
-[GitHub Copilot](https://github.com/features/copilot) – AI-powered code completion tool used during development.
+- [CSO FY006A – Population Dataset](https://ws.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/FY006A/CSV/1.0/en)  
+- [XKCD #221 – Normal Distribution Comic](https://xkcd.com/221/)  
+- [GitHub Copilot](https://github.com/features/copilot) — used during development
 
 # END
 
