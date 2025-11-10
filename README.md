@@ -640,7 +640,7 @@ The following resources were consulted and integrated throughout the notebook to
 ### 📈 Data Source and Teaching Aids
 
 - [CSO FY006A – Population Dataset](https://ws.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/FY006A/CSV/1.0/en)  
-- [XKCD #221 – Normal Distribution Comic](https://xkcd.com/221/)  
+- ![XKCD #221 – Normal Distribution Comic](https://xkcd.com/221/)  
 - [GitHub Copilot](https://github.com/features/copilot) — used during development
 
 # END
