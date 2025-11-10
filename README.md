@@ -536,7 +536,7 @@ In the age band 30–40, females outnumber males by **1,905 people**, which is a
 
 ### 📂 Files Produced
 
-- [Age Group Comparison](assignments/plots/assignment05-age-group-35-sex-comparison.png) - bar chart
+- ![Age Group Comparison](assignments/plots/assignment05-age-group-35-sex-comparison.png) - bar chart
 
 - `assignment05_age_difference_by_sex.csv` — tidy age-by-sex table
 
@@ -586,7 +586,7 @@ Each bar represents the absolute population difference in the selected age band.
 
 ### 📂 Files Produced
 
-- [assignment05-age-group-35-region-sex-diff.png](assignments/plots/assignment05-age-group-35-region-sex-diff.png) — bar chart
+- ![assignment05-age-group-35-region-sex-diff.png](assignments/plots/assignment05-age-group-35-region-sex-diff.png) — bar chart
 
 ---
 
