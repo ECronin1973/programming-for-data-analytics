@@ -361,6 +361,11 @@ Separating helper functions from analysis cells makes the notebook:
 
 Each analysis cell calls these helpers to perform specific tasks (e.g. comparing sexes in an age band, plotting distributions, identifying regional differences), keeping the workflow modular and pedagogically clear.
 
+#### 📖 References:  
+- [Real Python – Python Modules and Packages](https://realpython.com/python-modules-packages/)  
+- [GeeksforGeeks – Python Helper Functions](https://www.geeksforgeeks.org/python-helper-functions/)  
+- [Wikipedia – DRY Principle](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)
+
 ---
 
 ## 📁 Source File
@@ -655,7 +660,7 @@ This Jupyter notebook analyses hourly weather observations from Knock Airport (M
 
 ### 🎯 Learning Objectives
 
-By completing this assignment, students will:
+By completing this assignment, users will:
 - Download and store raw hourly weather data from Met Éireann.
 - Parse and clean real-world meteorological data.
 - Plot hourly temperature data for a selected day.
@@ -691,6 +696,50 @@ Met Éireann hourly weather data (Knock Airport): https://cli.fusio.net/cli/clim
   - **Daily means:** Grouped by date, calculating mean, count, and standard deviation. Results are saved and visualised.
   - **Monthly means:** Grouped by month within seasonal windows. Results are saved and plotted by season.
 - **Interactivity:** An interactive widget allows users to explore hourly temperatures for a selected date (requires Jupyter with `ipywidgets`).
+
+---
+### How to run notebook
+1. Open `assignments/notebooks/assignment_6_Weather.ipynb` in Jupyter or JupyterLab.  
+2. Run all cells from top to bottom. The notebook will:
+   - Download the raw CSV to `assignments/data/climate_data.csv`
+   - Generate cleaned CSV summaries
+   - Save plots to `assignments/plots/`
+3. To use the interactive widget for hourly temperatures, ensure `ipywidgets` is installed in your Jupyter environment (e.g. `%pip install ipywidgets`).
+
+---
+
+## 🧰 Helper Functions Overview
+
+This assignment includes a set of modular helper functions defined directly within the notebook and script. These functions simplify key tasks such as parsing dates, cleaning temperature data, and preparing seasonal weather insights. While they are not stored in a separate helper file, they are structured to deliver the same benefits: clarity, reusability, and maintainability.
+
+### 🔧 Functions Used in This Project
+
+| Function | Purpose | Benefit | Reference |
+|----------|---------|---------|-----------|
+| `detect_datetime_format(samples, formats, dayfirst=True)` | Identifies the most likely datetime format from sample strings. | Improves accuracy when parsing inconsistent or ambiguous date formats. | [pandas.to_datetime](https://pandas.pydata.org/docs/reference/api/pandas.to_datetime.html) |
+| `parse_datetime_column(df, date_col, candidate_formats, dayfirst=True)` | Parses a datetime column using detected formats or flexible fallback. | Ensures robust datetime conversion across varied input formats. | [pandas.to_datetime](https://pandas.pydata.org/docs/reference/api/pandas.to_datetime.html) |
+| `parse_temperature_column(df, col_name='temp')` | Converts temperature values to numeric and standardizes column name. | Prepares temperature data for analysis and avoids type errors. | [pandas.to_numeric](https://pandas.pydata.org/docs/reference/api/pandas.to_numeric.html) |
+| `load_cleaned_weather_data(filepath)` | Loads a cleaned weather dataset from a local CSV file. | Simplifies data access and ensures column names are stripped. | [pandas.read_csv](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html) |
+| `define_irish_seasons(year)` | Returns seasonal boundaries for Ireland based on calendar months. | Enables seasonal filtering and comparison of temperature trends. | [pandas.Timestamp](https://pandas.pydata.org/docs/reference/api/pandas.Timestamp.html) |
+| `prepare_temperature_data(df, start_date, end_date, season_bounds)` | Filters and enriches temperature data for a custom date range. | Supports time-based analysis and hourly breakdowns. | [pandas.DataFrame filtering](https://pandas.pydata.org/docs/user_guide/indexing.html) |
+| `get_custom_range(start_str, end_str)` | Converts user input strings into validated datetime range. | Ensures safe and logical date range selection for analysis. | [pandas.to_datetime](https://pandas.pydata.org/docs/reference/api/pandas.to_datetime.html) |
+
+### ✅ Benefits of Using Helper Functions
+
+These functions are designed to reflect the principles of modular programming, even though they are embedded directly in the main files:
+
+- **Reusability** – Functions are called multiple times across the workflow, reducing duplication  
+- **Readability** – Each function has a clear, single responsibility, making the code easier to follow  
+- **Maintainability** – Logic is isolated and easy to update without affecting unrelated parts  
+- **Scalability** – Functions can be moved to a helper file (e.g., `weather_utils.py`) for future reuse  
+- **Assessment Alignment** – Modular design supports structured problem-solving and clear documentation
+
+📖 References:  
+- [Real Python – Python Modules and Packages](https://realpython.com/python-modules-packages/)  
+- [GeeksforGeeks – Python Helper Functions](https://www.geeksforgeeks.org/python-helper-functions/)  
+- [Wikipedia – DRY Principle](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)
+
+---
 
 ## 📈 Student Approach: Plotting Hourly Temperatures
 
@@ -756,8 +805,6 @@ Finally, I calculated monthly mean temperatures for Winter (Dec 2024–Feb 2025)
 - [matplotlib documentation](https://matplotlib.org/)  
 - [seaborn documentation](https://seaborn.pydata.org/)  
 - [ipywidgets documentation](https://ipywidgets.readthedocs.io/)
-
-
 
 ## Windspeed analysis at Knock Airport (Summer 2025)
 
