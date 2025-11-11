@@ -721,15 +721,17 @@ jupyter notebook assignment06-weather.ipynb
 **Files Generated:**
 - `assignments/data/assignment06_climate_data.csv` — Raw climate data
 - `assignments/data/assignment06_temperature_range.csv` — Cleaned temperature data  
+
 **Plots Created:**
 Temperature Data Plot
-![Hourly Temperature](assignments\plots\assignment06_hourly_temperature_pivot_table_2025-07-10_to_2025-07-16.png)
+![Hourly Temperature](assignments/plots/assignment06_hourly_temperature_pivot_table_2025-07-10_to_2025-07-16.png)
 
 ### 📊 Hourly Temperature Widget - Interactive Daily Temperature Plot with Hourly Ledger
-An interactive widget was created to visualise hourly temperature data for each day from 10th to 16th July 2025. This allows users to explore temperature fluctuations throughout the day.  This widget provides a dynamic way to analyse temperature trends on an hourly basis but is not visible on Github, it must be downloaded and run locally to view the interactivity.
+An interactive widget was created to visualise hourly temperature data for each day from 10th to 16th July 2025. This allows users to explore temperature fluctuations throughout the day.  This widget provides a dynamic way to analyse temperature trends on an hourly basis but is not visible on Github, it must be downloaded and run locally to view the interactivity.  A static plot option is in notebook where a date can be manually selected to view the hourly temperature for that day and a plot generated.
 
 **Files Used:**
 - `assignments/data/assignment06_temperature_range.csv` — Hourly temperature data  
+
 **Plots Created:**
 ![Hourly Temperature 10.07.2025](assignments/plots/assignment06_hourly_temperature_2025-07-10.png)
 ![Hourly Temperature 11.07.2025](assignments/plots/assignment06_hourly_temperature_2025-07-11.png)
@@ -738,25 +740,25 @@ An interactive widget was created to visualise hourly temperature data for each 
 ![Hourly Temperature 14.07.2025](assignments/plots/assignment06_hourly_temperature_2025-07-14.png)
 ![Hourly Temperature 15.07.2025](assignments/plots/assignment06_hourly_temperature_2025-07-15.png)
 ![Hourly Temperature 16.07.2025](assignments/plots/assignment06_hourly_temperature_2025-07-16.png)
-
-*a static plot option is in notebook where a date can be manually selected to view the hourly temperature for that day.*
 ---
 
 ### 📊 The Mean Temperature Each Day
 **Files Generated:**
 - `assignments/data/assignment06_climate_data_mean_daily_summer_2025.csv` — Daily mean temperatures  
+
 **Plots Created:**
 Daily mean temperature plot
-![Daily Mean Temperature](assignments\plots\assignment06_mean_daily_custom_range.png)
+![Daily Mean Temperature](assignments/plots/assignment06_mean_daily_custom_range.png)
 
 ---
 
 ### 📊 The Mean Temperature Each Month
 **Files Generated:**
 - `assignments/data/assignment06_monthly_mean_by_season_2025.csv` — Monthly mean temperatures  
+
 **Plots Created:**
 Monthly mean temperature plot
-![Monthly Mean Temperature](assignments\plots\assignment06_monthly_mean_by_season_2025.png)
+![Monthly Mean Temperature](assignments/plots/assignment06_monthly_mean_by_season_2025.png)
 
 ---
 
@@ -774,14 +776,16 @@ Monthly mean temperature plot
 ### 📊 The Windspeed
 **Files Generated:**
 - `assignments/data/assignment06_windspeed_cleaned_summer_2025.csv` — Cleaned windspeed data  
+
 **Plots Created:**
-![Cleaned windspeed Plot](assignments\plots\assignment06_windspeed_hourly_2025-07-10_to_2025-07-16.png)
+![Cleaned windspeed Plot](assignments/plots/assignment06_windspeed_hourly_2025-07-10_to_2025-07-16.png)
 
 ---
 
 ### 📊 The Rolling 24-Hour Average Windspeed
 **Files Generated:**
 - `assignments/data/assignment06_windspeed_rolling_24hr_2025-07-10_to_2025-07-16.csv` — 24-hour rolling average  
+
 **Plots Created:**
 Rolling average windspeed plot
 ![Rolling Average Windspeed Plot](assignments/plots/assignment06_windspeed_rolling_24hr_2025-07-10_to_2025-07-16.png) 
@@ -791,9 +795,10 @@ Rolling average windspeed plot
 ### 📊 The Maximum Windspeed Each Day and Time
 **Files Generated:**
 - `assignments/data/assignment06_daily_max_windspeed_with_time_10_16_July_2025.csv` — Daily max windspeed with time  
+
 **Plots Created:**
 Daily max windspeed with time
-[Daily max windspeed with time plot](assignments/plots/assignment06_daily_max_windspeed_line_10_16_July_2025.png)
+![Daily max windspeed with time plot](assignments/plots/assignment06_daily_max_windspeed_line_10_16_July_2025.png)
 
 ---
 
@@ -801,6 +806,7 @@ Daily max windspeed with time
 **Files Generated:**
 - `assignments/data/assignment06_daily_max_windspeed_July_2025.csv` — Daily max windspeed for July
 - `assignments/data/assignment06_monthly_mean_of_daily_max_windspeed_July_2025.csv` — Monthly mean of daily max wind
+
 **Plots Created:**
 Monthly mean of daily max windspeed plot
 ![Monthly Mean of Daily Max Windspeed Plot](assignments/plots/assignment06_daily_max_windspeed_with_monthly_mean_July_2025.png)
