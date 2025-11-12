@@ -732,14 +732,8 @@ An interactive widget was created to visualise hourly temperature data for each 
 **Files Used:**
 - `assignments/data/assignment06_temperature_range.csv` — Hourly temperature data  
 
-**Plots Created:**
+**Plots Created:** (Plot Example for 10th July 2025, one created for each day)
 ![Hourly Temperature 10.07.2025](assignments/plots/assignment06_hourly_temperature_2025-07-10.png)
-![Hourly Temperature 11.07.2025](assignments/plots/assignment06_hourly_temperature_2025-07-11.png)
-![Hourly Temperature 12.07.2025](assignments/plots/assignment06_hourly_temperature_2025-07-12.png)
-![Hourly Temperature 13.07.2025](assignments/plots/assignment06_hourly_temperature_2025-07-13.png)
-![Hourly Temperature 14.07.2025](assignments/plots/assignment06_hourly_temperature_2025-07-14.png)
-![Hourly Temperature 15.07.2025](assignments/plots/assignment06_hourly_temperature_2025-07-15.png)
-![Hourly Temperature 16.07.2025](assignments/plots/assignment06_hourly_temperature_2025-07-16.png)
 ---
 
 ### 📊 The Mean Temperature Each Day
