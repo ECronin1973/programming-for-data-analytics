@@ -305,8 +305,6 @@ APIs
 **Other links**
 - [Python String Methods (w3schools.com)](https://www.w3schools.com/python/python_ref_string.asp)
 
-
-
 ### Analysing Data
 
 **Documentation**
@@ -374,3 +372,10 @@ APIs
 - [Linear Regression in Python – Real Python](https://realpython.com/linear-regression-in-python/)
 - [Estimating regression fits — seaborn 0.13.2 documentation](https://seaborn.pydata.org/tutorial/regression.html#regression-tutorial)
 
+### MYSQL
+- [MySQL Tutorial (W3Schools)](https://www.w3schools.com/mysql/)
+- [Python MySQL (w3Schools)](https://www.w3schools.com/python/python_mysql_getstarted.asp)
+- [WampServer, la plate-forme de développement Web sous Windows - Apache, MySQL, PHP](https://www.wampserver.com/en/)
+
+### SQLite
+- [sqlite3 — DB-API 2.0 interface for SQLite databases — Python 3.13.0 documentation](https://docs.python.org/3/library/sqlite3.html)
