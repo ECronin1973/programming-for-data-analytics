@@ -597,7 +597,9 @@ Each bar represents the absolute population difference in the selected age band.
 
 ## 🧠 Personal Reflection
 
-This assignment was the most challenging so far, requiring me to revisit lectures, adapt course notebooks, and consult documentation to implement weighted statistics and KDE visualisations. I reviewed materials from previous modules to reinforce key concepts and applied a modular workflow: select → aggregate → visualise → interpret. Part C involved integrating regional data, which I addressed by generating a new dataset with county-level breakdowns. I also revised and simplified all code cells to improve clarity and make the notebook easier to understand.
+TAssignment 05 was definitely the most challenging one so far. I had to go back through some of the modules I’d already completed earlier in the course to help me figure out how to apply weighted statistics and create KDE visualisations properly. I also leaned on the course notebooks and documentation quite a bit to get things working.
+
+I followed a modular approach throughout — selecting the data, aggregating it, visualising the results, and then interpreting what it all meant. Part C was tricky because it involved regional data, so I created a new dataset that broke things down by county to make it more manageable. I also spent time tidying up and simplifying the code cells so the notebook would be easier to follow and more readable overall.
 
 ---
 
@@ -809,11 +811,13 @@ Monthly mean of daily max windspeed plot
 
 ### 🧠 Personal Reflection
 
-This assignment was both technically rewarding and conceptually rich. It challenged me to apply a full data science workflow — from raw data acquisition to cleaning, aggregation, and visualisation — using real-world climate data from Knock Airport. I focused on the documented heatwave period (10–16 July 2025), which required careful filtering and contextual interpretation.  I learned from the previous assignment in using helper functions to modularise the code, making it easier to read and maintain.  I feel I adapted these well in this assignment to handle the various data transformations and visualisations required.
+This assignment was both challenging and rewarding. I got to use the full data science process — starting with collecting raw data, then cleaning it, organising it, and creating visualisations — all based on real climate data from Knock Airport. I focused on the heatwave that happened between 10–16 July 2025, which meant I had to carefully filter the data and understand it in context.
 
-I revisited course materials to reinforce my understanding of time series analysis, rolling averages, and seasonal aggregation. I also refined the notebook structure to align with the assessment objectives, ensuring each task was clearly explained, executed, and evidenced through saved outputs. Particular attention was given to handling missing windspeed data and producing meaningful plots that highlight trends and extremes.
+From my last assignment, I learned how to use helper functions to break the code into smaller parts. This made it easier to read and manage. I used that approach again here, and it helped me deal with the different steps needed to transform and visualise the data.
 
-I used Copilot to assist with some of the coding tasks, which hgave me a good structure to build upon and refine.  I did spend alot of time adapting the code to ensure it met the assignment requirements and was accurate.
+I went back over the course materials to refresh my knowledge of time series analysis, rolling averages, and seasonal patterns. I also improved the layout of my notebook to match the assessment goals, making sure each task was clearly explained, completed, and backed up with saved results. I paid special attention to missing windspeed data and worked on creating clear plots that showed important trends and extreme values.
+
+I used Copilot to help with some of the coding, which gave me a good starting point. I spent a lot of time adjusting the code to make sure it was accurate and met all the assignment requirements.
 
 ---
 
