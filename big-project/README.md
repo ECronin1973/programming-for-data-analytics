@@ -1,9 +1,11 @@
-# Flight Rerouting Analysis at Dublin Airport
+# ✈️ Flight Rerouting Analysis at Dublin Airport
 
-## Overview
-This project investigates flight rerouting events at Dublin Airport and their relationship to local weather conditions. The aim is to identify patterns in rerouting decisions, analyse contributing factors such as wind and rainfall, and forecast potential rerouting events using Met Éireann weather data.
+This README is for the **big-project** component of the repository. It focuses exclusively on the Dublin Airport rerouting analysis: aims, structure, setup, and how to run. Detailed methodology, visuals rationale, and assessment alignment are documented in `docs/methodology.md` within this project folder. The project aligns with the Programming for Data Analytics module brief and final project guidance.
 
-The notebook demonstrates data acquisition, cleaning, exploratory analysis, visualisation, and forecasting techniques. It is designed to be modular, well‑documented, and reviewer‑friendly.
+---
+
+## 📖 Overview
+The project investigates flight rerouting events at Dublin Airport and their relationship to local weather conditions. It identifies patterns in rerouting decisions, analyses contributing factors (e.g., wind and rainfall), and forecasts potential rerouting events using Met Éireann data. The notebook and supporting modules emphasise modularity, reproducibility, and reviewer‑friendly documentation.
 
 ---
 
@@ -13,7 +15,7 @@ The notebook demonstrates data acquisition, cleaning, exploratory analysis, visu
    - Download historical weather data from Met Éireann (wind, rain, temperature).
    - Collect forecast data for Dublin region for the upcoming week.
 
-2. **Data Cleaning & Normalization**
+2. **Data Cleaning & Normalisation**
    - Align flight events with nearest weather records.
    - Normalise units (wind speed, rainfall, temperature).
    - Standardise reroute reasons into categories (crosswind, tailwind, rain/wet, low visibility, ATC/traffic, other).
