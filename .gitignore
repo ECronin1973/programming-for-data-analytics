@@ -154,10 +154,14 @@ venv.bak/
 # mkdocs documentation
 /site
 
-# mypy
+# mypy cache and daemon state
 .mypy_cache/
 .dmypy.json
 dmypy.json
+
+# Dublin Airport data outputs (too large for repo upload)
+dub_arrival_history.json
+dub_departure_history.json
 
 # Pyre type checker
 .pyre/
