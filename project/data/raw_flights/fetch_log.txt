@@ -1,0 +1,948 @@
+Fetching flights from 2025-05-20 to 2025-11-18 for DUB...
+Fetching flights from 2025-05-20 to 2025-11-18 for DUB...
+Day 1/183: 2025-05-20
+✅ Arrival 2025-05-20: 703 records fetched
+Day 2/183: 2025-05-21
+✅ Arrival 2025-05-21: 702 records fetched
+Day 3/183: 2025-05-22
+✅ Arrival 2025-05-22: 735 records fetched
+Day 4/183: 2025-05-23
+✅ Arrival 2025-05-23: 752 records fetched
+Day 5/183: 2025-05-24
+✅ Arrival 2025-05-24: 669 records fetched
+Day 6/183: 2025-05-25
+✅ Arrival 2025-05-25: 724 records fetched
+Day 7/183: 2025-05-26
+✅ Arrival 2025-05-26: 712 records fetched
+Day 8/183: 2025-05-27
+✅ Arrival 2025-05-27: 715 records fetched
+Day 9/183: 2025-05-28
+✅ Arrival 2025-05-28: 713 records fetched
+Day 10/183: 2025-05-29
+✅ Arrival 2025-05-29: 743 records fetched
+Day 11/183: 2025-05-30
+✅ Arrival 2025-05-30: 739 records fetched
+Day 12/183: 2025-05-31
+✅ Arrival 2025-05-31: 664 records fetched
+Day 13/183: 2025-06-01
+✅ Arrival 2025-06-01: 720 records fetched
+Day 14/183: 2025-06-02
+✅ Arrival 2025-06-02: 725 records fetched
+Day 15/183: 2025-06-03
+✅ Arrival 2025-06-03: 724 records fetched
+Day 16/183: 2025-06-04
+✅ Arrival 2025-06-04: 708 records fetched
+Day 17/183: 2025-06-05
+✅ Arrival 2025-06-05: 745 records fetched
+Day 18/183: 2025-06-06
+✅ Arrival 2025-06-06: 751 records fetched
+Day 19/183: 2025-06-07
+✅ Arrival 2025-06-07: 683 records fetched
+Day 20/183: 2025-06-08
+✅ Arrival 2025-06-08: 736 records fetched
+Day 21/183: 2025-06-09
+✅ Arrival 2025-06-09: 742 records fetched
+Day 22/183: 2025-06-10
+✅ Arrival 2025-06-10: 732 records fetched
+Day 23/183: 2025-06-11
+✅ Arrival 2025-06-11: 725 records fetched
+Day 24/183: 2025-06-12
+✅ Arrival 2025-06-12: 753 records fetched
+Day 25/183: 2025-06-13
+✅ Arrival 2025-06-13: 761 records fetched
+Day 26/183: 2025-06-14
+⚠️ Error 500 on 2025-06-14 (attempt 1/3). Retrying in 1s...
+✅ Arrival 2025-06-14: 692 records fetched
+Day 27/183: 2025-06-15
+✅ Arrival 2025-06-15: 747 records fetched
+Day 28/183: 2025-06-16
+✅ Arrival 2025-06-16: 750 records fetched
+Day 29/183: 2025-06-17
+✅ Arrival 2025-06-17: 743 records fetched
+Day 30/183: 2025-06-18
+✅ Arrival 2025-06-18: 725 records fetched
+Day 31/183: 2025-06-19
+✅ Arrival 2025-06-19: 760 records fetched
+Day 32/183: 2025-06-20
+✅ Arrival 2025-06-20: 753 records fetched
+Day 33/183: 2025-06-21
+✅ Arrival 2025-06-21: 700 records fetched
+Day 34/183: 2025-06-22
+✅ Arrival 2025-06-22: 745 records fetched
+Day 35/183: 2025-06-23
+✅ Arrival 2025-06-23: 752 records fetched
+Day 36/183: 2025-06-24
+✅ Arrival 2025-06-24: 724 records fetched
+Day 37/183: 2025-06-25
+✅ Arrival 2025-06-25: 723 records fetched
+Day 38/183: 2025-06-26
+✅ Arrival 2025-06-26: 748 records fetched
+Day 39/183: 2025-06-27
+✅ Arrival 2025-06-27: 751 records fetched
+Day 40/183: 2025-06-28
+✅ Arrival 2025-06-28: 681 records fetched
+Day 41/183: 2025-06-29
+✅ Arrival 2025-06-29: 735 records fetched
+Day 42/183: 2025-06-30
+✅ Arrival 2025-06-30: 747 records fetched
+Day 43/183: 2025-07-01
+✅ Arrival 2025-07-01: 738 records fetched
+Day 44/183: 2025-07-02
+✅ Arrival 2025-07-02: 724 records fetched
+Day 45/183: 2025-07-03
+✅ Arrival 2025-07-03: 770 records fetched
+Day 46/183: 2025-07-04
+✅ Arrival 2025-07-04: 751 records fetched
+Day 47/183: 2025-07-05
+✅ Arrival 2025-07-05: 693 records fetched
+Day 48/183: 2025-07-06
+✅ Arrival 2025-07-06: 740 records fetched
+Day 49/183: 2025-07-07
+✅ Arrival 2025-07-07: 755 records fetched
+Day 50/183: 2025-07-08
+✅ Arrival 2025-07-08: 744 records fetched
+Day 51/183: 2025-07-09
+✅ Arrival 2025-07-09: 736 records fetched
+Day 52/183: 2025-07-10
+✅ Arrival 2025-07-10: 765 records fetched
+Day 53/183: 2025-07-11
+✅ Arrival 2025-07-11: 741 records fetched
+Day 54/183: 2025-07-12
+✅ Arrival 2025-07-12: 695 records fetched
+Day 55/183: 2025-07-13
+✅ Arrival 2025-07-13: 710 records fetched
+Day 56/183: 2025-07-14
+✅ Arrival 2025-07-14: 756 records fetched
+Day 57/183: 2025-07-15
+✅ Arrival 2025-07-15: 742 records fetched
+Day 58/183: 2025-07-16
+✅ Arrival 2025-07-16: 743 records fetched
+Day 59/183: 2025-07-17
+✅ Arrival 2025-07-17: 761 records fetched
+Day 60/183: 2025-07-18
+✅ Arrival 2025-07-18: 742 records fetched
+Day 61/183: 2025-07-19
+✅ Arrival 2025-07-19: 701 records fetched
+Day 62/183: 2025-07-20
+✅ Arrival 2025-07-20: 726 records fetched
+Day 63/183: 2025-07-21
+✅ Arrival 2025-07-21: 761 records fetched
+Day 64/183: 2025-07-22
+✅ Arrival 2025-07-22: 747 records fetched
+Day 65/183: 2025-07-23
+✅ Arrival 2025-07-23: 746 records fetched
+Day 66/183: 2025-07-24
+✅ Arrival 2025-07-24: 761 records fetched
+Day 67/183: 2025-07-25
+✅ Arrival 2025-07-25: 754 records fetched
+Day 68/183: 2025-07-26
+✅ Arrival 2025-07-26: 697 records fetched
+Day 69/183: 2025-07-27
+✅ Arrival 2025-07-27: 726 records fetched
+Day 70/183: 2025-07-28
+✅ Arrival 2025-07-28: 758 records fetched
+Day 71/183: 2025-07-29
+✅ Arrival 2025-07-29: 745 records fetched
+Day 72/183: 2025-07-30
+✅ Arrival 2025-07-30: 741 records fetched
+Day 73/183: 2025-07-31
+✅ Arrival 2025-07-31: 771 records fetched
+Day 74/183: 2025-08-01
+✅ Arrival 2025-08-01: 764 records fetched
+Day 75/183: 2025-08-02
+✅ Arrival 2025-08-02: 696 records fetched
+Day 76/183: 2025-08-03
+✅ Arrival 2025-08-03: 737 records fetched
+Day 77/183: 2025-08-04
+✅ Arrival 2025-08-04: 757 records fetched
+Day 78/183: 2025-08-05
+✅ Arrival 2025-08-05: 745 records fetched
+Day 79/183: 2025-08-06
+✅ Arrival 2025-08-06: 733 records fetched
+Day 80/183: 2025-08-07
+✅ Arrival 2025-08-07: 752 records fetched
+Day 81/183: 2025-08-08
+✅ Arrival 2025-08-08: 755 records fetched
+Day 82/183: 2025-08-09
+✅ Arrival 2025-08-09: 676 records fetched
+Day 83/183: 2025-08-10
+✅ Arrival 2025-08-10: 726 records fetched
+Day 84/183: 2025-08-11
+✅ Arrival 2025-08-11: 756 records fetched
+Day 85/183: 2025-08-12
+✅ Arrival 2025-08-12: 756 records fetched
+Day 86/183: 2025-08-13
+✅ Arrival 2025-08-13: 752 records fetched
+Day 87/183: 2025-08-14
+✅ Arrival 2025-08-14: 781 records fetched
+Day 88/183: 2025-08-15
+✅ Arrival 2025-08-15: 778 records fetched
+Day 89/183: 2025-08-16
+✅ Arrival 2025-08-16: 697 records fetched
+Day 90/183: 2025-08-17
+✅ Arrival 2025-08-17: 761 records fetched
+Day 91/183: 2025-08-18
+✅ Arrival 2025-08-18: 765 records fetched
+Day 92/183: 2025-08-19
+✅ Arrival 2025-08-19: 756 records fetched
+Day 93/183: 2025-08-20
+✅ Arrival 2025-08-20: 754 records fetched
+Day 94/183: 2025-08-21
+✅ Arrival 2025-08-21: 767 records fetched
+Day 95/183: 2025-08-22
+✅ Arrival 2025-08-22: 767 records fetched
+Day 96/183: 2025-08-23
+✅ Arrival 2025-08-23: 692 records fetched
+Day 97/183: 2025-08-24
+✅ Arrival 2025-08-24: 748 records fetched
+Day 98/183: 2025-08-25
+✅ Arrival 2025-08-25: 761 records fetched
+Day 99/183: 2025-08-26
+✅ Arrival 2025-08-26: 751 records fetched
+Day 100/183: 2025-08-27
+✅ Arrival 2025-08-27: 753 records fetched
+Day 101/183: 2025-08-28
+✅ Arrival 2025-08-28: 771 records fetched
+Fetching flights from 2025-05-20 to 2025-11-18 for DUB...
+Day 1/183: 2025-05-20
+✅ Arrival 2025-05-20: 703 records fetched
+Day 2/183: 2025-05-21
+⚠️ Error 404 on 2025-05-21 (attempt 1/3). Retrying in 1s...
+✅ Arrival 2025-05-21: 702 records fetched
+Day 3/183: 2025-05-22
+✅ Arrival 2025-05-22: 735 records fetched
+Day 4/183: 2025-05-23
+✅ Arrival 2025-05-23: 752 records fetched
+Day 5/183: 2025-05-24
+✅ Arrival 2025-05-24: 669 records fetched
+Day 6/183: 2025-05-25
+✅ Arrival 2025-05-25: 724 records fetched
+Day 7/183: 2025-05-26
+✅ Arrival 2025-05-26: 712 records fetched
+Day 8/183: 2025-05-27
+✅ Arrival 2025-05-27: 715 records fetched
+Day 9/183: 2025-05-28
+✅ Arrival 2025-05-28: 713 records fetched
+Day 10/183: 2025-05-29
+✅ Arrival 2025-05-29: 743 records fetched
+Day 11/183: 2025-05-30
+✅ Arrival 2025-05-30: 739 records fetched
+Day 12/183: 2025-05-31
+✅ Arrival 2025-05-31: 664 records fetched
+Day 13/183: 2025-06-01
+✅ Arrival 2025-06-01: 720 records fetched
+Day 14/183: 2025-06-02
+✅ Arrival 2025-06-02: 725 records fetched
+Day 15/183: 2025-06-03
+✅ Arrival 2025-06-03: 724 records fetched
+Day 16/183: 2025-06-04
+✅ Arrival 2025-06-04: 708 records fetched
+Day 17/183: 2025-06-05
+⚠️ Error 404 on 2025-06-05 (attempt 1/3). Retrying in 1s...
+✅ Arrival 2025-06-05: 745 records fetched
+Day 18/183: 2025-06-06
+✅ Arrival 2025-06-06: 751 records fetched
+Day 19/183: 2025-06-07
+✅ Arrival 2025-06-07: 683 records fetched
+Day 20/183: 2025-06-08
+✅ Arrival 2025-06-08: 736 records fetched
+Day 21/183: 2025-06-09
+✅ Arrival 2025-06-09: 742 records fetched
+Day 22/183: 2025-06-10
+✅ Arrival 2025-06-10: 732 records fetched
+Day 23/183: 2025-06-11
+✅ Arrival 2025-06-11: 725 records fetched
+Day 24/183: 2025-06-12
+✅ Arrival 2025-06-12: 753 records fetched
+Day 25/183: 2025-06-13
+✅ Arrival 2025-06-13: 761 records fetched
+Day 26/183: 2025-06-14
+⚠️ Error 404 on 2025-06-14 (attempt 1/3). Retrying in 1s...
+✅ Arrival 2025-06-14: 692 records fetched
+Day 27/183: 2025-06-15
+✅ Arrival 2025-06-15: 747 records fetched
+Day 28/183: 2025-06-16
+✅ Arrival 2025-06-16: 750 records fetched
+Day 29/183: 2025-06-17
+✅ Arrival 2025-06-17: 743 records fetched
+Day 30/183: 2025-06-18
+✅ Arrival 2025-06-18: 725 records fetched
+Day 31/183: 2025-06-19
+✅ Arrival 2025-06-19: 760 records fetched
+Day 32/183: 2025-06-20
+✅ Arrival 2025-06-20: 753 records fetched
+Day 33/183: 2025-06-21
+✅ Arrival 2025-06-21: 700 records fetched
+Day 34/183: 2025-06-22
+✅ Arrival 2025-06-22: 745 records fetched
+Day 35/183: 2025-06-23
+✅ Arrival 2025-06-23: 752 records fetched
+Day 36/183: 2025-06-24
+✅ Arrival 2025-06-24: 724 records fetched
+Day 37/183: 2025-06-25
+✅ Arrival 2025-06-25: 723 records fetched
+Day 38/183: 2025-06-26
+✅ Arrival 2025-06-26: 748 records fetched
+Day 39/183: 2025-06-27
+✅ Arrival 2025-06-27: 751 records fetched
+Day 40/183: 2025-06-28
+✅ Arrival 2025-06-28: 681 records fetched
+Day 41/183: 2025-06-29
+✅ Arrival 2025-06-29: 735 records fetched
+Day 42/183: 2025-06-30
+✅ Arrival 2025-06-30: 747 records fetched
+Day 43/183: 2025-07-01
+✅ Arrival 2025-07-01: 738 records fetched
+Day 44/183: 2025-07-02
+✅ Arrival 2025-07-02: 724 records fetched
+Day 45/183: 2025-07-03
+✅ Arrival 2025-07-03: 770 records fetched
+Day 46/183: 2025-07-04
+✅ Arrival 2025-07-04: 751 records fetched
+Day 47/183: 2025-07-05
+✅ Arrival 2025-07-05: 693 records fetched
+Day 48/183: 2025-07-06
+✅ Arrival 2025-07-06: 740 records fetched
+Day 49/183: 2025-07-07
+✅ Arrival 2025-07-07: 755 records fetched
+Day 50/183: 2025-07-08
+✅ Arrival 2025-07-08: 744 records fetched
+Day 51/183: 2025-07-09
+✅ Arrival 2025-07-09: 736 records fetched
+Day 52/183: 2025-07-10
+✅ Arrival 2025-07-10: 765 records fetched
+Day 53/183: 2025-07-11
+✅ Arrival 2025-07-11: 741 records fetched
+Day 54/183: 2025-07-12
+✅ Arrival 2025-07-12: 695 records fetched
+Day 55/183: 2025-07-13
+✅ Arrival 2025-07-13: 710 records fetched
+Day 56/183: 2025-07-14
+✅ Arrival 2025-07-14: 756 records fetched
+Day 57/183: 2025-07-15
+✅ Arrival 2025-07-15: 742 records fetched
+Day 58/183: 2025-07-16
+✅ Arrival 2025-07-16: 743 records fetched
+Day 59/183: 2025-07-17
+✅ Arrival 2025-07-17: 761 records fetched
+Day 60/183: 2025-07-18
+✅ Arrival 2025-07-18: 742 records fetched
+Day 61/183: 2025-07-19
+✅ Arrival 2025-07-19: 701 records fetched
+Day 62/183: 2025-07-20
+✅ Arrival 2025-07-20: 726 records fetched
+Day 63/183: 2025-07-21
+✅ Arrival 2025-07-21: 761 records fetched
+Day 64/183: 2025-07-22
+✅ Arrival 2025-07-22: 747 records fetched
+Day 65/183: 2025-07-23
+✅ Arrival 2025-07-23: 746 records fetched
+Day 66/183: 2025-07-24
+✅ Arrival 2025-07-24: 761 records fetched
+Day 67/183: 2025-07-25
+✅ Arrival 2025-07-25: 754 records fetched
+Day 68/183: 2025-07-26
+✅ Arrival 2025-07-26: 697 records fetched
+Day 69/183: 2025-07-27
+✅ Arrival 2025-07-27: 726 records fetched
+Day 70/183: 2025-07-28
+✅ Arrival 2025-07-28: 758 records fetched
+Day 71/183: 2025-07-29
+✅ Arrival 2025-07-29: 745 records fetched
+Day 72/183: 2025-07-30
+✅ Arrival 2025-07-30: 741 records fetched
+Day 73/183: 2025-07-31
+✅ Arrival 2025-07-31: 771 records fetched
+Day 74/183: 2025-08-01
+✅ Arrival 2025-08-01: 764 records fetched
+Day 75/183: 2025-08-02
+✅ Arrival 2025-08-02: 696 records fetched
+Day 76/183: 2025-08-03
+✅ Arrival 2025-08-03: 737 records fetched
+Day 77/183: 2025-08-04
+✅ Arrival 2025-08-04: 757 records fetched
+Day 78/183: 2025-08-05
+✅ Arrival 2025-08-05: 745 records fetched
+Day 79/183: 2025-08-06
+✅ Arrival 2025-08-06: 733 records fetched
+Day 80/183: 2025-08-07
+✅ Arrival 2025-08-07: 752 records fetched
+Day 81/183: 2025-08-08
+✅ Arrival 2025-08-08: 755 records fetched
+Day 82/183: 2025-08-09
+✅ Arrival 2025-08-09: 676 records fetched
+Day 83/183: 2025-08-10
+✅ Arrival 2025-08-10: 726 records fetched
+Day 84/183: 2025-08-11
+✅ Arrival 2025-08-11: 756 records fetched
+Day 85/183: 2025-08-12
+✅ Arrival 2025-08-12: 756 records fetched
+Day 86/183: 2025-08-13
+✅ Arrival 2025-08-13: 752 records fetched
+Day 87/183: 2025-08-14
+✅ Arrival 2025-08-14: 781 records fetched
+Day 88/183: 2025-08-15
+✅ Arrival 2025-08-15: 778 records fetched
+Day 89/183: 2025-08-16
+✅ Arrival 2025-08-16: 697 records fetched
+Day 90/183: 2025-08-17
+✅ Arrival 2025-08-17: 761 records fetched
+Day 91/183: 2025-08-18
+✅ Arrival 2025-08-18: 765 records fetched
+Day 92/183: 2025-08-19
+✅ Arrival 2025-08-19: 756 records fetched
+Day 93/183: 2025-08-20
+✅ Arrival 2025-08-20: 754 records fetched
+Day 94/183: 2025-08-21
+✅ Arrival 2025-08-21: 767 records fetched
+Day 95/183: 2025-08-22
+✅ Arrival 2025-08-22: 767 records fetched
+Day 96/183: 2025-08-23
+✅ Arrival 2025-08-23: 692 records fetched
+Day 97/183: 2025-08-24
+✅ Arrival 2025-08-24: 748 records fetched
+Day 98/183: 2025-08-25
+✅ Arrival 2025-08-25: 761 records fetched
+Day 99/183: 2025-08-26
+✅ Arrival 2025-08-26: 751 records fetched
+Day 100/183: 2025-08-27
+✅ Arrival 2025-08-27: 753 records fetched
+Day 101/183: 2025-08-28
+✅ Arrival 2025-08-28: 771 records fetched
+Day 102/183: 2025-08-29
+✅ Arrival 2025-08-29: 778 records fetched
+Day 103/183: 2025-08-30
+✅ Arrival 2025-08-30: 705 records fetched
+Day 104/183: 2025-08-31
+✅ Arrival 2025-08-31: 765 records fetched
+Day 105/183: 2025-09-01
+✅ Arrival 2025-09-01: 760 records fetched
+Day 106/183: 2025-09-02
+✅ Arrival 2025-09-02: 771 records fetched
+Day 107/183: 2025-09-03
+✅ Arrival 2025-09-03: 749 records fetched
+Day 108/183: 2025-09-04
+✅ Arrival 2025-09-04: 789 records fetched
+Day 109/183: 2025-09-05
+✅ Arrival 2025-09-05: 778 records fetched
+Day 110/183: 2025-09-06
+✅ Arrival 2025-09-06: 691 records fetched
+Day 111/183: 2025-09-07
+✅ Arrival 2025-09-07: 774 records fetched
+Day 112/183: 2025-09-08
+✅ Arrival 2025-09-08: 772 records fetched
+Day 113/183: 2025-09-09
+✅ Arrival 2025-09-09: 755 records fetched
+Day 114/183: 2025-09-10
+⚠️ Error 500 on 2025-09-10 (attempt 1/3). Retrying in 1s...
+✅ Arrival 2025-09-10: 754 records fetched
+Day 115/183: 2025-09-11
+✅ Arrival 2025-09-11: 785 records fetched
+Day 116/183: 2025-09-12
+✅ Arrival 2025-09-12: 788 records fetched
+Day 117/183: 2025-09-13
+✅ Arrival 2025-09-13: 702 records fetched
+Day 118/183: 2025-09-14
+✅ Arrival 2025-09-14: 760 records fetched
+Day 119/183: 2025-09-15
+✅ Arrival 2025-09-15: 753 records fetched
+✅ Arrival 2025-09-16: 759 records fetched
+Day 121/183: 2025-09-17
+✅ Arrival 2025-09-17: 748 records fetched
+Day 122/183: 2025-09-18
+⚠️ Error 404 on 2025-09-18 (attempt 1/3). Retrying in 1s...
+✅ Arrival 2025-09-18: 771 records fetched
+Day 123/183: 2025-09-19
+✅ Arrival 2025-09-19: 791 records fetched
+Day 124/183: 2025-09-20
+✅ Arrival 2025-09-20: 716 records fetched
+Day 125/183: 2025-09-21
+✅ Arrival 2025-09-21: 751 records fetched
+Day 126/183: 2025-09-22
+✅ Arrival 2025-09-22: 780 records fetched
+Day 127/183: 2025-09-23
+✅ Arrival 2025-09-23: 753 records fetched
+Day 128/183: 2025-09-24
+✅ Arrival 2025-09-24: 751 records fetched
+Day 129/183: 2025-09-25
+✅ Arrival 2025-09-25: 778 records fetched
+Day 130/183: 2025-09-26
+✅ Arrival 2025-09-26: 787 records fetched
+Day 131/183: 2025-09-27
+✅ Arrival 2025-09-27: 717 records fetched
+Day 132/183: 2025-09-28
+✅ Arrival 2025-09-28: 764 records fetched
+Day 133/183: 2025-09-29
+✅ Arrival 2025-09-29: 764 records fetched
+Day 134/183: 2025-09-30
+✅ Arrival 2025-09-30: 767 records fetched
+Day 135/183: 2025-10-01
+✅ Arrival 2025-10-01: 755 records fetched
+Day 136/183: 2025-10-02
+✅ Arrival 2025-10-02: 767 records fetched
+Day 137/183: 2025-10-03
+✅ Arrival 2025-10-03: 782 records fetched
+Day 138/183: 2025-10-04
+✅ Arrival 2025-10-04: 704 records fetched
+Day 139/183: 2025-10-05
+✅ Arrival 2025-10-05: 753 records fetched
+Day 140/183: 2025-10-06
+✅ Arrival 2025-10-06: 732 records fetched
+Day 141/183: 2025-10-07
+✅ Arrival 2025-10-07: 734 records fetched
+Day 142/183: 2025-10-08
+✅ Arrival 2025-10-08: 739 records fetched
+Day 143/183: 2025-10-09
+✅ Arrival 2025-10-09: 748 records fetched
+Day 144/183: 2025-10-10
+✅ Arrival 2025-10-10: 760 records fetched
+Day 145/183: 2025-10-11
+✅ Arrival 2025-10-11: 674 records fetched
+Day 146/183: 2025-10-12
+✅ Arrival 2025-10-12: 740 records fetched
+Day 147/183: 2025-10-13
+✅ Arrival 2025-10-13: 731 records fetched
+Day 148/183: 2025-10-14
+✅ Arrival 2025-10-14: 730 records fetched
+Day 149/183: 2025-10-15
+✅ Arrival 2025-10-15: 728 records fetched
+Day 150/183: 2025-10-16
+✅ Arrival 2025-10-16: 734 records fetched
+Day 151/183: 2025-10-17
+✅ Arrival 2025-10-17: 746 records fetched
+Day 152/183: 2025-10-18
+✅ Arrival 2025-10-18: 667 records fetched
+Day 153/183: 2025-10-19
+✅ Arrival 2025-10-19: 731 records fetched
+Day 154/183: 2025-10-20
+✅ Arrival 2025-10-20: 723 records fetched
+Day 155/183: 2025-10-21
+✅ Arrival 2025-10-21: 725 records fetched
+Day 156/183: 2025-10-22
+✅ Arrival 2025-10-22: 726 records fetched
+Day 157/183: 2025-10-23
+✅ Arrival 2025-10-23: 740 records fetched
+Day 158/183: 2025-10-24
+✅ Arrival 2025-10-24: 761 records fetched
+Day 159/183: 2025-10-25
+✅ Arrival 2025-10-25: 671 records fetched
+Day 160/183: 2025-10-26
+✅ Arrival 2025-10-26: 687 records fetched
+Day 161/183: 2025-10-27
+✅ Arrival 2025-10-27: 670 records fetched
+Day 162/183: 2025-10-28
+✅ Arrival 2025-10-28: 637 records fetched
+Day 163/183: 2025-10-29
+✅ Arrival 2025-10-29: 651 records fetched
+Day 164/183: 2025-10-30
+✅ Arrival 2025-10-30: 668 records fetched
+Day 165/183: 2025-10-31
+✅ Arrival 2025-10-31: 726 records fetched
+Day 166/183: 2025-11-01
+✅ Arrival 2025-11-01: 633 records fetched
+Day 167/183: 2025-11-02
+✅ Arrival 2025-11-02: 689 records fetched
+Day 168/183: 2025-11-03
+✅ Arrival 2025-11-03: 695 records fetched
+Day 169/183: 2025-11-04
+✅ Arrival 2025-11-04: 634 records fetched
+Day 170/183: 2025-11-05
+✅ Arrival 2025-11-05: 627 records fetched
+Day 171/183: 2025-11-06
+✅ Arrival 2025-11-06: 652 records fetched
+Day 172/183: 2025-11-07
+✅ Arrival 2025-11-07: 718 records fetched
+Day 173/183: 2025-11-08
+✅ Arrival 2025-11-08: 624 records fetched
+Day 174/183: 2025-11-09
+✅ Arrival 2025-11-09: 700 records fetched
+Day 175/183: 2025-11-10
+✅ Arrival 2025-11-10: 684 records fetched
+Day 176/183: 2025-11-11
+✅ Arrival 2025-11-11: 587 records fetched
+Day 177/183: 2025-11-12
+✅ Arrival 2025-11-12: 602 records fetched
+Day 178/183: 2025-11-13
+✅ Arrival 2025-11-13: 629 records fetched
+Day 179/183: 2025-11-14
+✅ Arrival 2025-11-14: 697 records fetched
+Day 180/183: 2025-11-15
+✅ Arrival 2025-11-15: 617 records fetched
+Day 181/183: 2025-11-16
+✅ Arrival 2025-11-16: 1 records fetched
+Day 182/183: 2025-11-17
+✅ Arrival 2025-11-17: 1 records fetched
+Day 183/183: 2025-11-18
+✅ Arrival 2025-11-18: 1 records fetched
+Day 1/183: 2025-05-20
+✅ Departure 2025-05-20: 739 records fetched
+Day 2/183: 2025-05-21
+✅ Departure 2025-05-21: 748 records fetched
+Day 3/183: 2025-05-22
+✅ Departure 2025-05-22: 759 records fetched
+Day 4/183: 2025-05-23
+✅ Departure 2025-05-23: 799 records fetched
+✅ Departure 2025-05-24: 715 records fetched
+Day 6/183: 2025-05-25
+✅ Departure 2025-05-25: 767 records fetched
+Day 7/183: 2025-05-26
+✅ Departure 2025-05-26: 749 records fetched
+Day 8/183: 2025-05-27
+✅ Departure 2025-05-27: 744 records fetched
+Day 9/183: 2025-05-28
+✅ Departure 2025-05-28: 753 records fetched
+Day 10/183: 2025-05-29
+✅ Departure 2025-05-29: 770 records fetched
+Day 11/183: 2025-05-30
+✅ Departure 2025-05-30: 787 records fetched
+Day 12/183: 2025-05-31
+✅ Departure 2025-05-31: 711 records fetched
+Day 13/183: 2025-06-01
+✅ Departure 2025-06-01: 758 records fetched
+Day 14/183: 2025-06-02
+✅ Departure 2025-06-02: 756 records fetched
+Day 15/183: 2025-06-03
+✅ Departure 2025-06-03: 750 records fetched
+Day 16/183: 2025-06-04
+✅ Departure 2025-06-04: 758 records fetched
+Day 17/183: 2025-06-05
+✅ Departure 2025-06-05: 766 records fetched
+Day 18/183: 2025-06-06
+✅ Departure 2025-06-06: 799 records fetched
+Day 19/183: 2025-06-07
+✅ Departure 2025-06-07: 723 records fetched
+Day 20/183: 2025-06-08
+✅ Departure 2025-06-08: 770 records fetched
+Day 21/183: 2025-06-09
+✅ Departure 2025-06-09: 776 records fetched
+Day 22/183: 2025-06-10
+✅ Departure 2025-06-10: 764 records fetched
+Day 23/183: 2025-06-11
+✅ Departure 2025-06-11: 767 records fetched
+Day 24/183: 2025-06-12
+✅ Departure 2025-06-12: 789 records fetched
+Day 25/183: 2025-06-13
+✅ Departure 2025-06-13: 801 records fetched
+Day 26/183: 2025-06-14
+✅ Departure 2025-06-14: 736 records fetched
+Day 27/183: 2025-06-15
+✅ Departure 2025-06-15: 782 records fetched
+Day 28/183: 2025-06-16
+✅ Departure 2025-06-16: 782 records fetched
+Day 29/183: 2025-06-17
+✅ Departure 2025-06-17: 774 records fetched
+Day 30/183: 2025-06-18
+✅ Departure 2025-06-18: 767 records fetched
+Day 31/183: 2025-06-19
+✅ Departure 2025-06-19: 797 records fetched
+Day 32/183: 2025-06-20
+✅ Departure 2025-06-20: 792 records fetched
+Day 33/183: 2025-06-21
+✅ Departure 2025-06-21: 739 records fetched
+Day 34/183: 2025-06-22
+✅ Departure 2025-06-22: 791 records fetched
+Day 35/183: 2025-06-23
+✅ Departure 2025-06-23: 781 records fetched
+Day 36/183: 2025-06-24
+✅ Departure 2025-06-24: 760 records fetched
+Day 37/183: 2025-06-25
+✅ Departure 2025-06-25: 768 records fetched
+Day 38/183: 2025-06-26
+✅ Departure 2025-06-26: 788 records fetched
+Day 39/183: 2025-06-27
+✅ Departure 2025-06-27: 784 records fetched
+Day 40/183: 2025-06-28
+✅ Departure 2025-06-28: 723 records fetched
+Day 41/183: 2025-06-29
+✅ Departure 2025-06-29: 772 records fetched
+Day 42/183: 2025-06-30
+✅ Departure 2025-06-30: 784 records fetched
+Day 43/183: 2025-07-01
+✅ Departure 2025-07-01: 767 records fetched
+Day 44/183: 2025-07-02
+✅ Departure 2025-07-02: 767 records fetched
+Day 45/183: 2025-07-03
+✅ Departure 2025-07-03: 801 records fetched
+Day 46/183: 2025-07-04
+✅ Departure 2025-07-04: 799 records fetched
+Day 47/183: 2025-07-05
+✅ Departure 2025-07-05: 719 records fetched
+Day 48/183: 2025-07-06
+✅ Departure 2025-07-06: 770 records fetched
+Day 49/183: 2025-07-07
+✅ Departure 2025-07-07: 787 records fetched
+Day 50/183: 2025-07-08
+✅ Departure 2025-07-08: 775 records fetched
+Day 51/183: 2025-07-09
+✅ Departure 2025-07-09: 766 records fetched
+Day 52/183: 2025-07-10
+✅ Departure 2025-07-10: 797 records fetched
+Day 53/183: 2025-07-11
+✅ Departure 2025-07-11: 792 records fetched
+Day 54/183: 2025-07-12
+✅ Departure 2025-07-12: 722 records fetched
+Day 55/183: 2025-07-13
+✅ Departure 2025-07-13: 753 records fetched
+Day 56/183: 2025-07-14
+✅ Departure 2025-07-14: 787 records fetched
+Day 57/183: 2025-07-15
+✅ Departure 2025-07-15: 771 records fetched
+Day 58/183: 2025-07-16
+✅ Departure 2025-07-16: 780 records fetched
+Day 59/183: 2025-07-17
+✅ Departure 2025-07-17: 794 records fetched
+Day 60/183: 2025-07-18
+✅ Departure 2025-07-18: 791 records fetched
+Day 61/183: 2025-07-19
+✅ Departure 2025-07-19: 724 records fetched
+Day 62/183: 2025-07-20
+✅ Departure 2025-07-20: 767 records fetched
+Day 63/183: 2025-07-21
+✅ Departure 2025-07-21: 797 records fetched
+Day 64/183: 2025-07-22
+✅ Departure 2025-07-22: 771 records fetched
+Day 65/183: 2025-07-23
+✅ Departure 2025-07-23: 783 records fetched
+Day 66/183: 2025-07-24
+✅ Departure 2025-07-24: 798 records fetched
+Day 67/183: 2025-07-25
+✅ Departure 2025-07-25: 800 records fetched
+Day 68/183: 2025-07-26
+✅ Departure 2025-07-26: 732 records fetched
+Day 69/183: 2025-07-27
+⚠️ Error 500 on 2025-07-27 (attempt 1/3). Retrying in 1s...
+✅ Departure 2025-07-27: 765 records fetched
+Day 70/183: 2025-07-28
+✅ Departure 2025-07-28: 784 records fetched
+Day 71/183: 2025-07-29
+✅ Departure 2025-07-29: 771 records fetched
+Day 72/183: 2025-07-30
+✅ Departure 2025-07-30: 778 records fetched
+Day 73/183: 2025-07-31
+✅ Departure 2025-07-31: 803 records fetched
+Day 74/183: 2025-08-01
+✅ Departure 2025-08-01: 810 records fetched
+Day 75/183: 2025-08-02
+✅ Departure 2025-08-02: 729 records fetched
+Day 76/183: 2025-08-03
+✅ Departure 2025-08-03: 777 records fetched
+Day 77/183: 2025-08-04
+✅ Departure 2025-08-04: 789 records fetched
+Day 78/183: 2025-08-05
+✅ Departure 2025-08-05: 776 records fetched
+Day 79/183: 2025-08-06
+✅ Departure 2025-08-06: 761 records fetched
+Day 80/183: 2025-08-07
+✅ Departure 2025-08-07: 783 records fetched
+Day 81/183: 2025-08-08
+✅ Departure 2025-08-08: 797 records fetched
+Day 82/183: 2025-08-09
+✅ Departure 2025-08-09: 714 records fetched
+Day 83/183: 2025-08-10
+✅ Departure 2025-08-10: 765 records fetched
+Day 84/183: 2025-08-11
+✅ Departure 2025-08-11: 796 records fetched
+Day 85/183: 2025-08-12
+✅ Departure 2025-08-12: 788 records fetched
+Day 86/183: 2025-08-13
+✅ Departure 2025-08-13: 784 records fetched
+Day 87/183: 2025-08-14
+✅ Departure 2025-08-14: 816 records fetched
+Day 88/183: 2025-08-15
+✅ Departure 2025-08-15: 822 records fetched
+Day 89/183: 2025-08-16
+✅ Departure 2025-08-16: 743 records fetched
+Day 90/183: 2025-08-17
+✅ Departure 2025-08-17: 792 records fetched
+Day 91/183: 2025-08-18
+✅ Departure 2025-08-18: 801 records fetched
+Day 92/183: 2025-08-19
+✅ Departure 2025-08-19: 783 records fetched
+Day 93/183: 2025-08-20
+✅ Departure 2025-08-20: 793 records fetched
+Day 94/183: 2025-08-21
+✅ Departure 2025-08-21: 805 records fetched
+Day 95/183: 2025-08-22
+✅ Departure 2025-08-22: 813 records fetched
+Day 96/183: 2025-08-23
+✅ Departure 2025-08-23: 729 records fetched
+Day 97/183: 2025-08-24
+✅ Departure 2025-08-24: 777 records fetched
+Day 98/183: 2025-08-25
+✅ Departure 2025-08-25: 790 records fetched
+Day 99/183: 2025-08-26
+✅ Departure 2025-08-26: 791 records fetched
+Day 100/183: 2025-08-27
+✅ Departure 2025-08-27: 788 records fetched
+Day 101/183: 2025-08-28
+✅ Departure 2025-08-28: 808 records fetched
+Day 102/183: 2025-08-29
+✅ Departure 2025-08-29: 820 records fetched
+Day 103/183: 2025-08-30
+✅ Departure 2025-08-30: 744 records fetched
+Day 104/183: 2025-08-31
+✅ Departure 2025-08-31: 801 records fetched
+Day 105/183: 2025-09-01
+⚠️ Error 500 on 2025-09-01 (attempt 1/3). Retrying in 1s...
+✅ Departure 2025-09-01: 803 records fetched
+Day 106/183: 2025-09-02
+✅ Departure 2025-09-02: 795 records fetched
+Day 107/183: 2025-09-03
+✅ Departure 2025-09-03: 794 records fetched
+Day 108/183: 2025-09-04
+✅ Departure 2025-09-04: 818 records fetched
+Day 109/183: 2025-09-05
+✅ Departure 2025-09-05: 830 records fetched
+Day 110/183: 2025-09-06
+✅ Departure 2025-09-06: 750 records fetched
+Day 111/183: 2025-09-07
+✅ Departure 2025-09-07: 800 records fetched
+Day 112/183: 2025-09-08
+✅ Departure 2025-09-08: 806 records fetched
+Day 113/183: 2025-09-09
+✅ Departure 2025-09-09: 784 records fetched
+Day 114/183: 2025-09-10
+✅ Departure 2025-09-10: 797 records fetched
+Day 115/183: 2025-09-11
+✅ Departure 2025-09-11: 814 records fetched
+Day 116/183: 2025-09-12
+✅ Departure 2025-09-12: 826 records fetched
+Day 117/183: 2025-09-13
+✅ Departure 2025-09-13: 764 records fetched
+Day 118/183: 2025-09-14
+✅ Departure 2025-09-14: 791 records fetched
+Day 119/183: 2025-09-15
+✅ Departure 2025-09-15: 783 records fetched
+Day 120/183: 2025-09-16
+✅ Departure 2025-09-16: 788 records fetched
+Day 121/183: 2025-09-17
+✅ Departure 2025-09-17: 782 records fetched
+Day 122/183: 2025-09-18
+✅ Departure 2025-09-18: 811 records fetched
+Day 123/183: 2025-09-19
+✅ Departure 2025-09-19: 835 records fetched
+Day 124/183: 2025-09-20
+✅ Departure 2025-09-20: 752 records fetched
+Day 125/183: 2025-09-21
+✅ Departure 2025-09-21: 794 records fetched
+Day 126/183: 2025-09-22
+✅ Departure 2025-09-22: 801 records fetched
+Day 127/183: 2025-09-23
+✅ Departure 2025-09-23: 785 records fetched
+Day 128/183: 2025-09-24
+✅ Departure 2025-09-24: 789 records fetched
+Day 129/183: 2025-09-25
+✅ Departure 2025-09-25: 817 records fetched
+Day 130/183: 2025-09-26
+✅ Departure 2025-09-26: 836 records fetched
+Day 131/183: 2025-09-27
+✅ Departure 2025-09-27: 756 records fetched
+Day 132/183: 2025-09-28
+✅ Departure 2025-09-28: 805 records fetched
+Day 133/183: 2025-09-29
+✅ Departure 2025-09-29: 788 records fetched
+Day 134/183: 2025-09-30
+✅ Departure 2025-09-30: 800 records fetched
+Day 135/183: 2025-10-01
+✅ Departure 2025-10-01: 785 records fetched
+Day 136/183: 2025-10-02
+✅ Departure 2025-10-02: 805 records fetched
+Day 137/183: 2025-10-03
+✅ Departure 2025-10-03: 816 records fetched
+Day 138/183: 2025-10-04
+✅ Departure 2025-10-04: 736 records fetched
+Day 139/183: 2025-10-05
+✅ Departure 2025-10-05: 792 records fetched
+Day 140/183: 2025-10-06
+✅ Departure 2025-10-06: 777 records fetched
+Day 141/183: 2025-10-07
+✅ Departure 2025-10-07: 754 records fetched
+Day 142/183: 2025-10-08
+✅ Departure 2025-10-08: 773 records fetched
+Day 143/183: 2025-10-09
+✅ Departure 2025-10-09: 776 records fetched
+Day 144/183: 2025-10-10
+✅ Departure 2025-10-10: 803 records fetched
+Day 145/183: 2025-10-11
+✅ Departure 2025-10-11: 715 records fetched
+Day 146/183: 2025-10-12
+✅ Departure 2025-10-12: 784 records fetched
+Day 147/183: 2025-10-13
+✅ Departure 2025-10-13: 770 records fetched
+Day 148/183: 2025-10-14
+✅ Departure 2025-10-14: 753 records fetched
+Day 149/183: 2025-10-15
+✅ Departure 2025-10-15: 771 records fetched
+Day 150/183: 2025-10-16
+✅ Departure 2025-10-16: 766 records fetched
+Day 151/183: 2025-10-17
+✅ Departure 2025-10-17: 786 records fetched
+Day 152/183: 2025-10-18
+⚠️ Error 404 on 2025-10-18 (attempt 1/3). Retrying in 1s...
+✅ Departure 2025-10-18: 711 records fetched
+Day 153/183: 2025-10-19
+✅ Departure 2025-10-19: 771 records fetched
+Day 154/183: 2025-10-20
+✅ Departure 2025-10-20: 766 records fetched
+Day 155/183: 2025-10-21
+✅ Departure 2025-10-21: 752 records fetched
+Day 156/183: 2025-10-22
+✅ Departure 2025-10-22: 753 records fetched
+Day 157/183: 2025-10-23
+✅ Departure 2025-10-23: 768 records fetched
+Day 158/183: 2025-10-24
+✅ Departure 2025-10-24: 802 records fetched
+Day 159/183: 2025-10-25
+✅ Departure 2025-10-25: 721 records fetched
+Day 160/183: 2025-10-26
+✅ Departure 2025-10-26: 709 records fetched
+Day 161/183: 2025-10-27
+✅ Departure 2025-10-27: 703 records fetched
+Day 162/183: 2025-10-28
+✅ Departure 2025-10-28: 625 records fetched
+Day 163/183: 2025-10-29
+✅ Departure 2025-10-29: 659 records fetched
+Day 164/183: 2025-10-30
+✅ Departure 2025-10-30: 684 records fetched
+Day 165/183: 2025-10-31
+✅ Departure 2025-10-31: 748 records fetched
+Day 166/183: 2025-11-01
+✅ Departure 2025-11-01: 664 records fetched
+Day 167/183: 2025-11-02
+✅ Departure 2025-11-02: 701 records fetched
+Day 168/183: 2025-11-03
+✅ Departure 2025-11-03: 717 records fetched
+Day 169/183: 2025-11-04
+✅ Departure 2025-11-04: 599 records fetched
+Day 170/183: 2025-11-05
+✅ Departure 2025-11-05: 646 records fetched
+Day 171/183: 2025-11-06
+✅ Departure 2025-11-06: 672 records fetched
+Day 172/183: 2025-11-07
+✅ Departure 2025-11-07: 735 records fetched
+Day 173/183: 2025-11-08
+✅ Departure 2025-11-08: 646 records fetched
+Day 174/183: 2025-11-09
+✅ Departure 2025-11-09: 734 records fetched
+Day 175/183: 2025-11-10
+✅ Departure 2025-11-10: 711 records fetched
+Day 176/183: 2025-11-11
+✅ Departure 2025-11-11: 579 records fetched
+Day 177/183: 2025-11-12
+✅ Departure 2025-11-12: 627 records fetched
+Day 178/183: 2025-11-13
+✅ Departure 2025-11-13: 653 records fetched
+Day 179/183: 2025-11-14
+✅ Departure 2025-11-14: 723 records fetched
+Day 180/183: 2025-11-15
+✅ Departure 2025-11-15: 648 records fetched
+Day 181/183: 2025-11-16
+✅ Departure 2025-11-16: 1 records fetched
+Day 182/183: 2025-11-17
+✅ Departure 2025-11-17: 1 records fetched
+Day 183/183: 2025-11-18
+✅ Departure 2025-11-18: 1 records fetched
+✅ Completed: 131556 arrivals and 137720 departures fetched.
+⏩ Skipping download step (RUN_DOWNLOAD=False). Using existing JSON files.
+⏩ Skipping download step (RUN_DOWNLOAD=False). Using existing JSON files.
+⏩ Skipping download step (RUN_DOWNLOAD=False). Using existing JSON files.
