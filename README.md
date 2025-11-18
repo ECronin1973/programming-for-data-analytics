@@ -15,7 +15,7 @@ The repository is organised into three main sections. Each section has its own R
 
 - **Final Project 2025/2026**  
   A comprehensive project integrating concepts from across the module into a single, cohesive analysis.  
-  ➡️ See the README inside the `Final Project` folder for methodology, datasets, and outputs.
+  ➡️ See the README inside the `Project` folder for methodology, datasets, and outputs.
 
 - **MyWork 2025/2026**  
   Exploratory and practice notebooks not submitted for assessment. These illustrate experimentation, progress, and additional learning.  
