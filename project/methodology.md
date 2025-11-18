@@ -20,7 +20,7 @@ This project investigates flight rerouting events at Dublin Airport and their re
 
 ## 3. Data Cleaning & Normalisation
 - **Time Alignment:** Join flights with nearest weather record within ±60 minutes.
-- **Unit Conversion:** Normalize wind speed (knots → km/h), rainfall (mm), temperature (°C).
+- **Unit Conversion:** Normalise wind speed (knots → km/h), rainfall (mm), temperature (°C).
 - **Derived Features:** Compute headwind and crosswind components relative to runway orientation.
 - **Reason Taxonomy:** Standardise reroute reasons into categories (crosswind, tailwind, rain/wet, low visibility, ATC/traffic, other).
 - **Missing Data:** Explicit NaN handling; “unknown” category for missing reroute reasons.

@@ -1,5 +1,5 @@
 # Requirements for Programming For Data Analytics Repository
-# Covers both 'my-work' examples and the 'big-project' final project
+# Covers both 'my-work' examples and the final project
 # Python version: 3.9+
 
 # Core data analysis libraries

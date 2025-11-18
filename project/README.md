@@ -1,6 +1,6 @@
 # ✈️ Flight Rerouting Analysis at Dublin Airport
 
-This README is for the **big-project** component of the repository. It focuses exclusively on the Dublin Airport rerouting analysis: aims, structure, setup, and how to run. Detailed methodology, visuals rationale, and assessment alignment are documented in `docs/methodology.md` within this project folder. The project aligns with the Programming for Data Analytics module brief and final project guidance.
+This README is for the **project** component of the repository. It focuses exclusively on the Dublin Airport rerouting analysis: aims, structure, setup, and how to run. Detailed methodology, visuals rationale, and assessment alignment are documented in `docs/methodology.md` within this project folder. The project aligns with the Programming for Data Analytics module brief and final project guidance.
 
 ---
 
