@@ -1,50 +1,50 @@
-# ✈️ Flight Rerouting Analysis at Dublin Airport
+# ✈️ Flight Punctuality Analysis at Dublin Airport
 
-This README is for the **project** component of the repository. It focuses exclusively on the Dublin Airport rerouting analysis: aims, structure, setup, and how to run. Detailed methodology, visuals rationale, and assessment alignment are documented in `docs/methodology.md` within this project folder. The project aligns with the Programming for Data Analytics module brief and final project guidance.
+This README is for the **project** component of the repository. It focuses on the Dublin Airport punctuality analysis: aims, structure, setup, and how to run. Detailed methodology, visualisation rationale, and assessment alignment are documented in `docs/methodology.md` within this project folder. The project aligns with the Programming for Data Analytics module brief and final project guidance.
 
 ---
 
 ## 📖 Overview
-The project investigates flight rerouting events at Dublin Airport and their relationship to local weather conditions. It identifies patterns in rerouting decisions, analyses contributing factors (e.g., wind and rainfall), and forecasts potential rerouting events using Met Éireann data. The notebook and supporting modules emphasise modularity, reproducibility, and reviewer‑friendly documentation.
+The project investigates flight punctuality at Dublin Airport and its relationship to local weather conditions.  
+It identifies patterns in delays and cancellations, analyses contributing factors (e.g., wind, rainfall, visibility), and forecasts potential disruption using Met Éireann data. The notebook and supporting modules emphasise modularity, reproducibility, and reviewer‑friendly documentation.
 
 ---
 
 ## Planned Objectives
 1. **Data Acquisition**
-   - Gather flight activity data from Dublin Airport dashboards and trackers.
-   - Download historical weather data from Met Éireann (wind, rain, temperature).
-   - Collect forecast data for Dublin region for the upcoming week.
+   - Gather flight activity data (arrivals, departures, delays, cancellations) from Dublin Airport dashboards and APIs.
+   - Download historical weather data from Met Éireann (wind, rain, temperature, pressure).
+   - Collect forecast data for the Dublin region for the upcoming week.
 
 2. **Data Cleaning & Normalisation**
    - Align flight events with nearest weather records.
    - Normalise units (wind speed, rainfall, temperature).
-   - Standardise reroute reasons into categories (crosswind, tailwind, rain/wet, low visibility, ATC/traffic, other).
+   - Create derived features such as heavy rain, strong wind, gusty conditions, and seasonal categories.
 
 3. **Analysis**
-   - Explore frequency of reroutes by reason, runway, and time of day.
-   - Cross‑reference reroutes with weather conditions (wind speed/direction, rainfall).
-   - Derive crosswind/headwind components relative to runway orientation.
-   - Identify trends and correlations between rerouting and weather.
+   - Explore frequency and severity of delays by airline, time of day, and season.
+   - Cross‑reference cancellations with weather conditions (wind speed/direction, rainfall, visibility proxies).
+   - Identify trends and correlations between punctuality and adverse weather.
 
 4. **Visualisation**
    - Generate Python plots (Matplotlib/Seaborn) for exploratory analysis.
-   - Create interactive JavaScript charts (Plotly) for reroute reasons and heat maps.
-   - Produce probability timelines for forecasted reroute risk.
+   - Create interactive JavaScript charts (Plotly) for delay distributions and heat maps.
+   - Produce probability timelines for forecasted delay risk.
 
 5. **Forecasting**
-   - Train baseline models (logistic regression, gradient boosting) to predict rerouting.
+   - Train baseline models (regression, gradient boosting) to predict delay minutes or cancellation probability.
    - Apply models to next‑week Met Éireann forecasts.
-   - Present reroute risk scenarios (optimistic/central/pessimistic).
+   - Present delay risk scenarios (optimistic/central/pessimistic).
 
 ---
 
 ## Repository Structure
-- `notebooks/flight_reroute_dub.ipynb` — main notebook with analysis and plots.
+- `notebooks/flight_punctuality_dub.ipynb` — main notebook with analysis and plots.
 - `data/` — raw and processed datasets (flight events, weather).
 - `src/` — modular Python scripts:
   - `data_loaders.py` — load and normalise datasets.
-  - `features.py` — feature engineering (crosswind, headwind).
-  - `modeling.py` — training and evaluation of reroute prediction models.
+  - `features.py` — feature engineering (weather flags, time features).
+  - `modeling.py` — training and evaluation of delay prediction models.
   - `viz_js.py` — JavaScript/Plotly visualisation snippets.
 - `docs/` — supporting documentation:
   - `methodology.md` — detailed methodology.
@@ -57,7 +57,7 @@ The project investigates flight rerouting events at Dublin Airport and their rel
 - Packages: pandas, numpy, matplotlib, seaborn, scikit‑learn, plotly
 - Data sources:
   - Met Éireann historical and forecast datasets
-  - Dublin Airport flight activity dashboards
+  - Dublin Airport flight activity dashboards/APIs
 
 ---
 
@@ -68,8 +68,7 @@ The project investigates flight rerouting events at Dublin Airport and their rel
    pip install -r requirements.txt
    ```
 3. place raw data CSVs in the `data/` folder.
-4. Open and run the `notebooks/flight_reroute_dub.ipynb` notebook step‑by‑step.
-
+4. Open and run the `notebooks/flight_punctuality_dub.ipynb` notebook step‑by‑step.
 ---
 
 ## Assessment Alignment
@@ -83,8 +82,8 @@ The project investigates flight rerouting events at Dublin Airport and their rel
 
 ## Limitations & Notes
 
-- Public flight dashboards may not expose all reroute reasons; annotated CSVs supplement.
-- Forecast uncertainty acknowledged; reroute projections are indicative, not operational guarantees.
+- Public flight dashboards may not expose all delay reasons; analysis relies on available status fields.
+- Forecast uncertainty acknowledged; delay projections are indicative, not operational guarantees.
 - Visibility data may require proxies (pressure + rain + time‑of‑day).
 
 ## License
