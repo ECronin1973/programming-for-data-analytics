@@ -89,6 +89,56 @@ It identifies patterns in delays and cancellations, analyses contributing factor
 ## Issues Encountered
 - Generated .json files for dublin Airport were too large to include in the repository. Users must download these files directly from the Dublin Airport data portal.  I made five commits, but ran into issues each time in VSCode due to the large file upload attempt earlier. Unfortunately, I looked at solutions and ended up accidentally dropping the last five commits and reset everything using 'git reset --hard origin/main', which removed most of my work today. Thankfully, I had a backup and was able to restore everything.
 
+```plain
+🔎 Missing values per column:
+delay            83248
+delay_calc       81381
+runway           36325
+act              36325
+season           19838
+msl              19838
+wdsp             19838
+rain             19838
+temp             19838
+terminal          6239
+est               5953
+flight_iata       1309
+airline           1203
+status               0
+sched                0
+datetime_hour        0
+datetime             0
+is_cancelled         0
+type                 0
+dtype: int64
+
+📊 Percentage of missing values per column:
+flight_iata       0.49
+airline           0.45
+status            0.00
+sched             0.00
+est               2.21
+act              13.49
+delay            30.92
+terminal          2.32
+runway           13.49
+delay_calc       30.22
+datetime_hour     0.00
+is_cancelled      0.00
+type              0.00
+datetime          0.00
+temp              7.37
+rain              7.37
+wdsp              7.37
+msl               7.37
+season            7.37
+dtype: float64
+
+⚠️ Columns with missing values: ['delay', 'delay_calc', 'runway', 'act', 'season', 'msl', 'wdsp', 'rain', 'temp', 'terminal', 'est', 'flight_iata', 'airline']
+```
+
+
+
 ## License
 
 This project is for educational purposes as part of the Higher Diploma in Data Analytics coursework.
