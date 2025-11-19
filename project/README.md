@@ -86,6 +86,9 @@ It identifies patterns in delays and cancellations, analyses contributing factor
 - Forecast uncertainty acknowledged; delay projections are indicative, not operational guarantees.
 - Visibility data may require proxies (pressure + rain + time‑of‑day).
 
+## Issues Encountered
+- Generated .json files for dublin Airport were too large to include in the repository. Users must download these files directly from the Dublin Airport data portal.  I made five commits, but ran into issues each time in VSCode due to the large file upload attempt earlier. Unfortunately, I looked at solutions and ended up accidentally dropping the last five commits and reset everything using 'git reset --hard origin/main', which removed most of my work today. Thankfully, I had a backup and was able to restore everything.
+
 ## License
 
 This project is for educational purposes as part of the Higher Diploma in Data Analytics coursework.
