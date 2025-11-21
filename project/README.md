@@ -137,6 +137,26 @@ dtype: float64
 ⚠️ Columns with missing values: ['delay', 'delay_calc', 'runway', 'act', 'season', 'msl', 'wdsp', 'rain', 'temp', 'terminal', 'est', 'flight_iata', 'airline']
 ```
 
+20/11/2025 - After slicing the data to the overlapping date range between flight and weather datasets, the following counts were observed:
+
+```plain
+✈️ Flights in sliced range: 6771
+🌦️ Weather observations in sliced range: 120
+🔗 Matched flights with weather: 782
+📈 Match rate: 11.55%
+
+21/11/2025 - After refining the matching logic to ensure accurate datetime alignment, the following improved counts were observed:
+
+```plain
+✅ Step 23a Summary (5-Day Slice)
+📆 Flight range:  2025-10-27 → 2025-10-31
+📆 Weather range: 2025-10-27 → 2025-10-31
+✈️ Flights in sliced range: 6771
+🌦️ Weather observations in sliced range: 120
+🔗 Matched flights with weather: 6771
+📈 Match rate: 100.00%
+🔎 Weather datetime match rate: 100.0%
+🔎 Season assignment rate:     100.0%
 
 
 ## License
