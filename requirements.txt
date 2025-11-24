@@ -17,3 +17,7 @@ joblib>=1.0
 
 # Notebook environment
 notebook>=6.5
+ipython>=7.0
+
+# File format support
+pyarrow>=6.0   # for Parquet I/O
