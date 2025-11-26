@@ -209,6 +209,7 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+<<<<<<< HEAD
 
 # -------------------------
 # Large model artifacts
@@ -234,3 +235,5 @@ project/models/*.ckpt
 project/models/*.zip
 project/catboost_info/
 
+=======
+>>>>>>> origin/main
