@@ -210,18 +210,27 @@ marimo/_static/
 marimo/_lsp/
 __marimo__/
 
-# Ignore large model files
+# -------------------------
+# Large model artifacts
+# -------------------------
+
+# Pickle and joblib models
 project/models/*.pkl
+project/models/*.joblib
 
-# Ignore individual model files
-step35b1_xgb.pkl
-step35b2_lgbm.pkl
-step35b3_cat.pkl
-step35_rf.pkl
-step36_rf_tuned.pkl
-step36_xgb_tuned.pkl
-step36_lgbm_tuned.pkl
-step36_cat_tuned.pkl
+# TensorFlow / Keras / PyTorch models
+project/models/*.h5
+project/models/*.hdf5
+project/models/*.pt
+project/models/*.pth
 
-# Ignore cleaned repository backup
-clean-repo/*
+# Scikit-learn / generic serialized models
+project/models/*.sav
+
+# Any other binary model outputs
+project/models/*.bin
+project/models/*.model
+project/models/*.ckpt
+project/models/*.zip
+project/catboost_info/
+
