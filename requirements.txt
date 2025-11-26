@@ -21,3 +21,8 @@ ipython>=7.0
 
 # File format support
 pyarrow>=6.0   # for Parquet I/O
+
+# Gradient Boosted Trees libraries
+xgboost>=1.6
+lightgbm>=3.3
+catboost>=1.0
