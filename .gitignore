@@ -222,3 +222,6 @@ step36_rf_tuned.pkl
 step36_xgb_tuned.pkl
 step36_lgbm_tuned.pkl
 step36_cat_tuned.pkl
+
+# Ignore cleaned repository backup
+clean-repo/
