@@ -212,3 +212,13 @@ __marimo__/
 
 # Ignore large model files
 project/models/*.pkl
+
+# Ignore individual model files
+step35b1_xgb.pkl
+step35b2_lgbm.pkl
+step35b3_cat.pkl
+step35_rf.pkl
+step36_rf_tuned.pkl
+step36_xgb_tuned.pkl
+step36_lgbm_tuned.pkl
+step36_cat_tuned.pkl
