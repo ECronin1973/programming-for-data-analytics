@@ -224,4 +224,4 @@ step36_lgbm_tuned.pkl
 step36_cat_tuned.pkl
 
 # Ignore cleaned repository backup
-clean-repo/
+clean-repo/*
