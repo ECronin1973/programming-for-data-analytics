@@ -214,23 +214,7 @@ __marimo__/
 # Large model artifacts
 # -------------------------
 
-# Pickle and joblib models
-project/models/*.pkl
-project/models/*.joblib
-
-# TensorFlow / Keras / PyTorch models
-project/models/*.h5
-project/models/*.hdf5
-project/models/*.pt
-project/models/*.pth
-
-# Scikit-learn / generic serialized models
-project/models/*.sav
-
-# Any other binary model outputs
-project/models/*.bin
-project/models/*.model
-project/models/*.ckpt
-project/models/*.zip
-project/catboost_info/
+#  Dublin Airport data outputs (too large for repo upload)
+dub_arrival_history.json
+dub_departure_history.json
 
