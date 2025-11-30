@@ -214,11 +214,12 @@ __marimo__/
 # Large model artifacts
 # -------------------------
 
-#  Dublin Airport data outputs (too large for repo upload)
+# Dublin Airport data outputs (too large for repo upload)
 dub_arrival_history.json
 dub_departure_history.json
 
-# CatBoost model info directory
+# CatBoost training artifacts (not needed in repo)
 catboost_info/
-project/catboost_info
-project/catboost_info/learn_error.tsv
+learn_error.tsv
+time_left.tsv
+catboost_training.json
