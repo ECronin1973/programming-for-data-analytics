@@ -218,3 +218,7 @@ __marimo__/
 dub_arrival_history.json
 dub_departure_history.json
 
+# CatBoost model info directory
+catboost_info/
+project/catboost_info
+project/catboost_info/learn_error.tsv
