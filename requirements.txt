@@ -14,10 +14,20 @@ plotly>=5.0
 # Machine learning libraries
 scikit-learn>=1.0
 joblib>=1.0
+catboost>=1.0   # gradient boosting model used in benchmarking
 
 # Notebook environment
 notebook>=6.5
 ipython>=7.0
+jupyterlab>=3.0   # optional, for modern notebook interface
 
 # File format support
-pyarrow>=6.0   # for Parquet I/O
+pyarrow>=6.0      # for Parquet I/O
+
+# Data cleaning / wrangling
+openpyxl>=3.0     # Excel file support
+data-wrangler>=1.0.0  # ATU coursework integration (if used)
+
+# Utility libraries
+pathlib>=1.0      # for filesystem paths (built-in in Python 3.9+, but listed for clarity)
+requests>=2.25    # for API calls (flight/weather data)
