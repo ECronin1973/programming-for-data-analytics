@@ -1,5 +1,40 @@
 # ✈️ Flight Delay Prediction Using Weather Data
 
+## Table of Contents
+
+1. [Objective](#1-objective)  
+2. [Assessment Criteria Mapping](#2-assessment-criteria-mapping)  
+3. [Workflow Outline](#3-workflow-outline)  
+   - [Weather Acquisition and Cleaning](#1-weather-acquisition-and-cleaning-steps-2-to-10i)  
+   - [Flight Data Acquisition](#2-flight-data-acquisition-step-11)  
+   - [Flight Batching](#3-flight-batching-steps-12-to-13)  
+   - [Arrivals Workflow](#4-arrivals-workflow-steps-14-to-17)  
+   - [Departures Workflow](#5-departures-workflow-steps-18-to-23)  
+   - [Integration](#6-integration-steps-24-to-29)  
+   - [Weather Impact Plots](#7-weather-impact-plots-steps-30a-to-30d)  
+   - [Correlation Analysis](#8-correlation-analysis-steps-31a-to-31c)  
+   - [Modelling](#9-modelling-steps-32-to-39)  
+   - [Conclusion](#10-conclusion)  
+4. [Data Sources](#4-data-sources)  
+5. [Key Functions / Components](#5-key-functions--components)  
+6. [Cleaning & Auditing Highlights](#6-cleaning--auditing-highlights)  
+7. [Exploratory Analysis](#7-exploratory-analysis)  
+8. [Integrated Risk Scoring](#8-integrated-risk-scoring)  
+9. [Modelling & Metrics](#9-modelling--metrics)  
+10. [Findings](#10-findings)  
+11. [Limitations](#11-limitations)  
+12. [Future Enhancements](#12-future-enhancements)  
+13. [How to Run](#13-how-to-run)  
+14. [Repository Structure](#14-repository-structure-project-segment)  
+15. [Reproducibility & Consistency](#15-reproducibility--consistency)  
+    - [Large Batch File Handling](#large-batch-file-handling)  
+    - [GitHub File Size Considerations](#-github-file-size-considerations)  
+16. [Research & Attribution (Inline Usage)](#16-research--attribution-inline-usage)  
+17. [Conclusion](#17-conclusion)  
+18. [Quick Start Summary](#18-quick-start-summary)
+
+---
+
 ## 1. Objective
 Integrate hourly Dublin Airport weather data with arrivals & departures delay data (May–Oct 2025) to:
 - Acquire, clean, audit, merge multi‑source datasets.
@@ -17,7 +52,7 @@ Integrate hourly Dublin Airport weather data with arrivals & departures delay da
 
 ## 3. Workflow Outline
 
-### 1. Weather Acquisition & Cleaning (Steps 2–10i)
+### 1. Weather Acquisition and Cleaning (Steps 2 to 10i)
 - Imported hourly weather data from Met Éireann.  
 - Detected headers, parsed datetime fields, and coerced numeric values for consistency.  
 - Dropped redundant indicator columns and audited missing values.  
@@ -29,38 +64,38 @@ Integrate hourly Dublin Airport weather data with arrivals & departures delay da
 - Implemented a **dry‑run option** to avoid unnecessary API calls during testing.  
 - Logged cumulative JSON responses to ensure reproducibility and transparency.
 
-### 3. Flight Batching (Steps 12–13)
+### 3. Flight Batching (Steps 12 to 13)
 - Extracted schema from raw flight data.  
 - Split large JSON files into monthly batches for GitHub compatibility.  
 - Audited file sizes to maintain reproducibility and prevent oversized commits.
 
-### 4. Arrivals Workflow (Steps 14–17)
+### 4. Arrivals Workflow (Steps 14 to 17)
 - Inspected and cleaned arrival delay data.  
 - Reconstructed delay fields, applied hourly flooring, and converted categorical variables.  
 - Combined monthly batches into a unified arrivals dataset.  
 - Audited results to ensure schema consistency and reproducibility.
 
-### 5. Departures Workflow (Steps 18–23)
+### 5. Departures Workflow (Steps 18 to 23)
 - Mirrored the arrivals workflow for departures to maintain **schema parity**.  
 - Cleaned, reconstructed, and combined departure delay data.  
 - Ensured consistency across both arrivals and departures datasets.
 
-### 6. Integration (Steps 24–29)
+### 6. Integration (Steps 24 to 29)
 - Aligned arrivals, departures, and weather data on an **hourly basis**.  
 - Verified flooring accuracy and merged datasets into a single unified table.  
 - Produced the final dataset for modelling and analysis.
 
-### 7. Weather Impact Plots (Steps 30a–30d)
+### 7. Weather Impact Plots (Steps 30a to 30d)
 - Generated scatterplots and regression lines to show how individual weather variables (e.g., visibility, humidity) impact delays.  
 - Reported $R^2$ values to quantify explanatory power.  
 - Provided reviewer‑friendly visual context before correlation analysis.
 
-### 8. Correlation Analysis (Steps 31a–31c)
+### 8. Correlation Analysis (Steps 31a to 31c)
 - Created heatmaps to show correlations between weather features and delays.  
 - Compared arrivals vs departures to highlight differences in sensitivity.  
 - Identified visibility and humidity as dominant predictors.
 
-### 9. Modelling (Steps 32–39)
+### 9. Modelling (Steps 32 to 39)
 - Conducted readiness audit and feature selection.  
 - Split data into training and testing sets.  
 - Built baseline **Linear Regression** models (transparent but weak explanatory power).  
@@ -614,14 +649,37 @@ The following resources were consulted and applied directly within the notebook.
 | **Aviation Edge API Documentation** | Raw flight acquisition (Step 11) | Provided schema and query details for retrieving arrivals and departures data. Supported reproducible API calls and dry‑run logging. |
 | **GitHub Large‑Files Guidance** | Batching strategy justification (Steps 12–13) | Informed the decision to split raw JSON flight data into monthly batches. Ensured repository compatibility and reproducibility for large datasets. |
 
----
-
 ### 📑 Reviewer Takeaway
 This section demonstrates that every major step in the workflow was **grounded in authoritative resources**. By citing documentation inline and explaining its use, the project maintains transparency, reproducibility, and reviewer confidence. Each resource directly shaped the cleaning, visualisation, modelling, or operationalisation stages of the notebook.
 
+---
 
-## 17. Conclusion (Concise)
-Weather explains a limited slice of delay variance (≤11% arrivals, ≤6% departures). Visibility & humidity are principal drivers; temperature & rain minor. Nonlinear models (Random Forest) improve over linear baseline yet remain constrained without operational features. Workflow delivers transparent, reproducible foundation for richer future integration.
+## 17. Conclusion
+
+This project delivered a transparent, reproducible workflow for integrating Dublin Airport flight delays with hourly weather data. Each stage produced clear insights:
+
+- **Weather Cleaning & Exploration:**  
+  Weather data was successfully parsed, cleaned, and audited. Plots revealed skewed rainfall distributions, seasonal temperature cycles, directional wind regimes, and strong inverse relationships between humidity and visibility. Risk scoring quantified adverse conditions such as low visibility, strong winds, and heavy rainfall.
+
+- **Flight Data Acquisition & Batching:**  
+  Raw arrivals and departures data were acquired via the Aviation Edge API and split into monthly batches to remain GitHub‑compatible. Plots highlighted daily traffic variability, hourly delay peaks, and airline‑level differences in delay performance.
+
+- **Integration & Flooring:**  
+  Weather and flight datasets were aligned on an hourly basis using flooring. While this ensured deterministic merges and schema parity, it had an **adverse effect on results**: sub‑hour delays were collapsed into hourly bins, reducing variance, weakening correlations, and constraining predictive ceilings. Short‑lived weather events (fog patches, sudden rainfall) were dampened, limiting explanatory power.
+
+- **Correlation Analysis:**  
+  Heatmaps and scatterplots confirmed visibility and humidity as the strongest predictors of arrival delays, while temperature and rainfall played minor roles. Departures showed weaker associations, underscoring the influence of non‑weather operational factors.
+
+- **Modelling:**  
+  Linear Regression provided a transparent baseline but explained negligible variance. Random Forest captured non‑linear effects, improving explanatory power and ranking visibility and humidity as dominant drivers (≈50–60% combined importance). CatBoost offered modest gains for arrivals but underperformed for departures. Hyperparameter tuning delivered incremental improvements, yet predictive ceilings remained low without operational features.
+
+- **External Factors:**  
+  The limited explanatory power (≤11% arrivals, ≤6% departures) reflects the absence of critical operational drivers such as airline schedules, traffic density, ATC constraints, and turnaround times. These factors must be integrated in future work to achieve richer predictive capacity.
+
+### 📑 Overall Takeaway
+Weather‑only modelling sets a clear upper bound on predictive accuracy. Visibility and humidity dominate delay variance, departures are less weather‑sensitive, and flooring reduced temporal granularity, further constraining results. Despite these limitations, the project delivered a **transparent, reproducible foundation** that met all assessment requirements: structured acquisition, cleaning, exploratory analysis, correlation, modelling, and benchmarking. It provides a solid platform for future integration of operational datasets, finer temporal precision, and advanced ensemble approaches.
+
+---
 
 ## 18. Quick Start Summary
 1. Install dependencies.
@@ -631,22 +689,5 @@ Weather explains a limited slice of delay variance (≤11% arrivals, ≤6% depar
 5. Review plots, metrics, risk tables.
 6. Extend feature set for improved predictive capacity.
 
-## 19. Minimal Code Snippet (Example – Weather Cleaning Core)
-```python
-def clean_data(df):
-    df["date"] = pd.to_datetime(df["date"], errors="coerce")
-    df = df.drop(columns=["ind","ind.1","ind.2","ind.3","ind.4"], errors="ignore")
-    for col in ["wdsp","wddir","vis","clht","clamt","temp","rain","rhum","vappr"]:
-        if col in df.columns:
-            df[col] = pd.to_numeric(df[col], errors="coerce")
-    return df
-```
-
-## 20. Metrics Formulae
-- Explained variance: $R^2 = 1 - \frac{\sum (y_i - \hat{y}_i)^2}{\sum (y_i - \bar{y})^2}$
-- RMSE: $\text{RMSE} = \sqrt{\frac{1}{n}\sum (y_i - \hat{y}_i)^2}$
-
-## 21. Final Reviewer Takeaway
-Complete end‑to‑end pipeline delivered; predictive ceiling constrained by feature scope—not implementation quality. Foundation is extensible, transparent, and meets assessment structure.
-
 ---
+# END
