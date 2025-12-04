@@ -175,11 +175,104 @@ These functions and components form the **technical backbone of the project**. T
 ---
 
 ## 6. Cleaning & Auditing Highlights
-- Dual datetime parsing fallbacks.
-- Hourly flooring validation (minutes arrays → `[0]`).
-- Missingness tables per stage.
-- Schema text exports for oversized raw JSONs.
-- Controlled NaN coercion for mixed-type weather columns.
+
+### Forms of Missing Data
+Across the literature, missing data is consistently classified into three main types:  
+- [**MCAR (Missing Completely at Random):**](https://www.researchgate.net/publication/392514236_Understanding_and_Managing_Missing_Data_A_Practical_Guide_to_MCAR_MAR_and_MNAR_Mechanisms) the absence is unrelated to any variable, often due to random technical errors.  
+- [**MAR (Missing at Random):**](https://www.researchgate.net/publication/392514236_Understanding_and_Managing_Missing_Data_A_Practical_Guide_to_MCAR_MAR_and_MNAR_Mechanisms) missingness depends on observed variables, such as survey responses skipped by certain groups.  
+- [**MNAR (Missing Not at Random):**](https://www.researchgate.net/publication/392514236_Understanding_and_Managing_Missing_Data_A_Practical_Guide_to_MCAR_MAR_and_MNAR_Mechanisms) the missingness is tied to the unobserved value itself, e.g., exam scores missing because students didn’t attend.  
+
+### Published Strategies from Leading Authorities
+- **DataCamp** [Top Techniques to Handle Missing Values Every Data Scientist Should Know](https://www.datacamp.com/tutorial/techniques-to-handle-missing-data-values) outline that missingness can appear as blanks, coded placeholders, or systemic gaps.  
+- **Quora** [Effective strategies for handling missing data in data science](https://www.quora.com/What-are-some-effective-strategies-for-handling-missing-data-in-a-dataset-within-the-field-of-data-science) state that survey non‑responses and operational errors are common; MAR is most frequent, MNAR most problematic.  
+- **GeeksforGeeks** [Handling Missing Values in Machine Learning](https://www.geeksforgeeks.org/machine-learning/handling-missing-values-machine-learning/) state that technical flags like NaN, NULL, or “UNKNOWN” require classification before using `dropna` or `fillna`.  
+- **Python Data Science Handbook** [Handling Missing Data](https://jakevdp.github.io/PythonDataScienceHandbook/03.04-missing-values.html) states that Pandas uses sentinel values (NaN, None), simplifying handling but limiting representable ranges.  
+- **MachineLearningPlus** [Missing Data Imputation Approaches](https://www.machinelearningplus.com/machine-learning/missing-data-imputation-how-to-handle-missing-values-in-python/)state NMAR cases (e.g., avoided responses) are hardest to handle and require mechanism awareness.  
+- **Towards Data Science** [Handling Missing Data](https://towardsdatascience.com/handling-missing-data-f998715fb73f/) state entry errors and omissions are frequent; dropping rows assumes MCAR, which is rarely true.  
+- **Analytics Vidhya** [5 Effective Strategies to Handle Missing Values in Data Analysis](https://www.analyticsvidhya.com/blog/2021/10/handling-missing-value/) state that corrupted data and human error are added factors; sometimes missingness itself can be treated as a feature.  
+- **Kaggle** [A Guide to Handling Missing Values in Python](https://www.kaggle.com/code/parulpandey/a-guide-to-handling-missing-values-in-python) state that detection can be numeric or visual (e.g., Missingno), stressing diagnosis before handling.  
+
+### Handling Strategies & Limitations
+Common strategies include:  
+- **Deletion** (listwise/pairwise) – simple but risks bias unless MCAR.  
+- **Simple imputation** (mean, median, mode) – preserves dataset size but distorts variance.  
+- **Advanced imputation** (regression, k‑NN, MICE) – more robust but computationally heavy.  
+- **Algorithmic handling** (e.g., XGBoost) – model‑specific, not universally applicable.  
+- **Sentinel substitution** (NaN/None) – practical but constrains values.  
+- **Treating missingness as a feature** – can capture signal but risks overfitting.  
+
+Limitations are consistent across sources: deletion discards information, naive imputation introduces bias, and advanced methods demand careful validation. The consensus is that the choice of strategy must balance dataset integrity, statistical power, and model requirements, with explicit documentation of trade‑offs for reviewer transparency.
+
+---
+
+### Cleaning Approach Taken in This Project
+
+In this project, the cleaning strategy was deliberately conservative and transparent, prioritising reproducibility and reviewer clarity over complex imputation. The focus was on ensuring datasets were consistent, auditable, and compatible with weather data aggregated at hourly intervals.
+
+### Dataset Missingness Classification and Handling
+
+| Dataset        | Missingness Type(s) | Handling Strategy Applied                          | Limitation / Trade‑off                                      |
+|----------------|----------------------|---------------------------------------------------|-------------------------------------------------------------|
+| **Weather Data** | Mostly **MCAR** (random technical errors, mixed‑type numeric fields, malformed datetime formats) | Robust datetime parsing with fallbacks, safe numeric coercion, dropping redundant indicator columns | Random gaps treated as noise; excluded records reduced sample size slightly |
+| **Flight Arrivals** | Primarily **MAR** (missing actual times linked to flight status or airline reporting) + some **MNAR** (systematic absence of actual times) | Imputed missing actual times from scheduled values; reconstructed delays; removed “unknown” status flights | Imputation skewed delays by underestimating true values; exclusion reduced dataset size |
+| **Flight Departures** | Primarily **MAR** (missing actual times tied to operational metadata) + some **MNAR** (systematic gaps in reporting) | Same approach as arrivals: imputation from scheduled times, delay reconstruction, categorical conversion | Bias introduced by imputation; flooring times reduced real‑time granularity |
+| **Integrated Dataset (Flights + Weather)** | Combination of **MCAR** (random weather gaps) and **MAR/MNAR** (flight reporting issues) | Hourly flooring of all times to align with weather totals; schema parity across arrivals/departures | Reduced temporal precision; sub‑hour disruptions masked for compatibility with weather data |
+
+
+---
+
+**Weather Data Cleaning**  
+- **Datetime parsing with fallbacks:** Supported multiple formats (`YYYY-MM-DD HH:MM:SS` and `DD-MMM-YYYY HH:MM`) to avoid silent failures.  
+- **Seasonal filtering:** Retained only May–October data for the latest year to match the study period.  
+- **Dropping redundant indicator columns:** Removed noisy fields (`ind`, `ind.1`, etc.) to reduce clutter.  
+- **Safe numeric coercion:** Converted mixed‑type columns (visibility, rainfall, temperature) using `pd.to_numeric(errors="coerce")`.  
+- **Special handling of wind speed (`wdsp`):** Explicit conversion due to frequent mixed types.  
+- **Auditing:** Produced missingness tables and schema exports to document gaps transparently.  
+
+---
+
+**Flight Arrivals Data Cleaning**  
+- **Drop unused technical columns:** Removed codeshared identifiers, airline codes, gate/runway/baggage details, and other metadata not required for analysis.  
+- **Parse datetime columns:** Converted scheduled and actual arrival times into proper datetime objects, with fallback parsing for alternative formats.  
+- **Remove flights with unknown status:** Excluded records marked as “unknown” to avoid unreliable entries.  
+- **Convert categorical fields:** Standardised fields such as flight type, status, and airline name into categorical variables.  
+- **Impute missing actual arrival times:** Where actual times were missing, they were filled with scheduled times. This ensured continuity but introduced bias, as delays computed afterwards were artificially reduced.  
+- **Reconstruct missing delays:** Calculated delays in minutes by subtracting scheduled from actual times. Because actual times were sometimes imputed from scheduled values, this skewed potential results by underestimating true delays.  
+- **Round times to hourly bins:** Floored both scheduled and actual arrival times to hourly intervals. This reduced real‑time granularity but was necessary to align flights with weather hourly totals.  
+- **Audit imputation:** Added flags to indicate where times or delays were imputed, ensuring transparency for reviewers.  
+
+---
+
+**Flight Departures Data Cleaning**  
+- **Drop unused technical columns:** Removed codeshared identifiers, airline codes, gate/runway/baggage details, and other metadata not required for analysis.  
+- **Parse datetime columns:** Converted scheduled and actual departure times into proper datetime objects with robust error handling.  
+- **Remove flights with unknown status:** Excluded unreliable records marked as “unknown.”  
+- **Convert categorical fields:** Standardised fields such as flight type, status, and airline name into categorical variables.  
+- **Impute missing actual departure times:** Where actual times were missing, they were filled with scheduled times. As with arrivals, this introduced bias by reducing observed delays.  
+- **Reconstruct missing delays:** Computed delays in minutes from scheduled vs actual times, filling gaps where official delay values were missing.  
+- **Round times to hourly bins:** Floored both scheduled and actual departure times to hourly intervals, reducing real‑time detail but ensuring compatibility with weather data.  
+- **Drop intermediate audit flags:** Removed temporary imputation markers for reviewer‑friendly outputs.  
+- **Enforce final dtypes:** Ensured `computed_delay` was stored as `float64` (fractional minutes) and `departure.delay` as `int64` (whole minutes).  
+
+---
+
+### Cleaning Steps, Purpose, and Limitations
+
+| Step                          | Purpose                                                                 | Limitation / Trade‑off                                                                 |
+|-------------------------------|-------------------------------------------------------------------------|----------------------------------------------------------------------------------------|
+| **Drop unused technical columns** | Remove irrelevant metadata (codeshared IDs, gates, baggage, etc.)        | No major limitation; reduces clutter but discards potentially useful operational detail |
+| **Parse datetime columns**    | Standardise scheduled/actual times into consistent datetime objects      | Parsing errors coerced to NaT; some records excluded                                    |
+| **Remove flights with unknown status** | Ensure dataset reliability by excluding uncertain records              | May reduce sample size; excludes potentially valid but incomplete flights               |
+| **Convert categorical fields**| Improve efficiency and consistency in analysis                          | None significant; simplifies storage and processing                                     |
+| **Impute missing actual times** | Fill NaN actual times with scheduled times to maintain continuity       | Skews delay calculations by underestimating true delays                                 |
+| **Reconstruct delays**        | Compute delays in minutes from scheduled vs actual times                 | Dependent on imputed actual times; introduces bias if actual data was missing           |
+| **Round times to hourly bins**| Align flights with weather hourly totals for integration                 | Reduces real‑time granularity; masks sub‑hour disruptions                               |
+| **Audit imputation flags**    | Document where values were imputed for reviewer transparency             | Adds intermediate columns; later dropped for cleaner outputs                            |
+| **Enforce final dtypes**      | Ensure delays stored as integers and computed_delay as floats            | None significant; improves reproducibility and clarity                                  |
+
+
+📑 **Reviewer Takeaway:**  
+Published methods often rely on deletion, imputation, or complex modelling. In this project, the focus was on **clear parsing, safe conversions, and transparent auditing**. Filling missing actual times with scheduled values kept the dataset complete but reduced the accuracy of delay calculations. Rounding times to hourly bins lowered real‑time detail, yet was necessary to match flight records with weather data.
 
 ---
 
@@ -636,6 +729,7 @@ The following resources were consulted and applied directly within the notebook.
 
 | Resource | Applied In | Role in Workflow |
 |----------|------------|------------------|
+| [**Project Specification Document**](https://vlegalwaymayo.atu.ie/pluginfile.php/1804303/mod_resource/content/2/Project%20Description.pdf) | Entire workflow | Provided the foundational requirements and assessment criteria. Guided the overall structure, deliverables, and evaluation metrics for the project. |
 | **Pandas IO / Missing Data Documentation** | Weather & flight cleaning (Steps 2–6, 14–19) | Guided handling of missing values, schema consistency, and robust data import/export operations. Ensured reproducible cleaning pipelines for both weather and flight datasets. |
 | **NumPy Documentation** | Weather cleaning and transformations (Steps 2–6) | Supported numerical coercion, array handling, and efficient calculations across weather variables. |
 | **Python Standard Library (os, json)** | Flight batching and API handling (Steps 11–13) | `os` managed file paths and reproducibility for saving plots and batched JSON files; `json` parsed raw API responses into structured formats for cleaning and batching. |
