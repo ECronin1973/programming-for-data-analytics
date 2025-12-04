@@ -382,18 +382,25 @@ This builds transparency and trust by showing reviewers the datasets in their or
 
 - **Flight activity JSON files (arrivals & departures):**  
   - Provide detailed operational records including scheduled times, actual times, statuses, and identifiers.  
-  - Form the foundation for analysing **delay patterns** and quantifying operational outcomes.  
-  - Manual inspection highlights the nested structure and technical fields requiring cleaning before analysis.  
+  - Manual inspection revealed **mixed content types**:  
+    - Delay minutes sometimes stored as strings instead of integers.  
+    - Null values represented inconsistently (`null`, `"null"`, or missing entirely).  
+  - Cleaning required explicit **dtype conversions** (e.g., `astype(int)` for delay fields) and imputation flags to mark reconstructed values.  
 
 - **Historic weather CSV files:**  
   - Provide meteorological variables such as wind speed, visibility, temperature, precipitation, and cloud height.  
-  - Supply the **environmental context** needed to explore correlations between weather conditions and flight delays.  
-  - Manual inspection confirms column names, data types, and temporal alignment with flight activity data.  
+  - Manual inspection showed **numeric values stored as strings** (e.g., `"12.5"` instead of `float`).  
+  - Some columns contained **missing entries**, especially visibility during fog events.  
+  - Cleaning steps coerced numeric fields (`pd.to_numeric(errors="coerce")`) and flagged missingness for later imputation or risk scoring.  
 
 - **Data Wrangler visualisation:**  
   - Used to interactively explore both flight and weather datasets.  
   - Provides schema previews, column type checks, and sample row inspection in a reviewer‑friendly interface.  
   - Ensures both sources are understood before transformations, supporting reproducibility and transparency.  
+  - For arrivals data, the visualisation highlighted **all identified missing content**, making gaps and imputed fields visible before cleaning.  
+
+![Data Wrangler Screenshot](plots/data_wrangler_summary_img.png)  
+*Figure 1: Missing content identified in the arrivals dataset using Data Wrangler.*
 
 ### Resources
 - [Data Wrangler GitHub Repository](https://github.com/microsoft/vscode-data-wrangler) – code‑centric data viewing and cleaning tool integrated into VS Code.  
@@ -403,8 +410,17 @@ This builds transparency and trust by showing reviewers the datasets in their or
 - [GeeksforGeeks – Working with JSON in Python](https://www.geeksforgeeks.org/python/working-with-json-data-in-python/) – practical examples for nested JSON structures.  
 - [GeeksforGeeks – Reading CSV Files in Python](https://www.geeksforgeeks.org/pandas/reading-csv-files-in-python/) – step‑by‑step guide for handling CSVs.  
 
-📑 **Reviewer Takeaway:**  
-This section demonstrates initial transparency by visually inspecting both **flight activity data** (operational outcomes) and **weather data** (environmental context). Together, these sources establish the dual foundation of the project: operational delays explained through meteorological conditions.  
+### 📑 Reviewer Takeaway
+This section demonstrates initial transparency by visually inspecting both **flight activity data** (operational outcomes) and **weather data** (environmental context).  
+
+- It shows reviewers the **raw structure** before any transformations, building trust in the workflow.  
+- It establishes the **dual foundation** of the project: operational delays explained through meteorological conditions.  
+- It documents how inspection outcomes directly informed later steps, including:
+  - **Schema exports** (`arrivals_schema.txt`, `departures_schema.txt`)  
+  - **dtype corrections** to ensure accurate modelling  
+  - **missingness audits** that guided imputation and cleaning strategies  
+
+By linking raw inspection to downstream workflow decisions, this section ensures that cleaning and modelling choices are **traceable, reproducible, and reviewer‑friendly**.
 
 ---
 
