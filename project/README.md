@@ -290,23 +290,55 @@ A **schema** is a formal blueprint that defines how data is structured — inclu
 In analytics, schemas ensure consistency, accuracy, and reproducibility by making clear how datasets should be interpreted and integrated.
 
 ### Purpose in This Project
-- **Schema Definitions:** Captured directly in the code cell where `arrivals_cols`, `departures_cols`, and `weather_cols` are defined.  
-- **Column Subsets:** Applied immediately in the same cell (`df_arrivals_clean`, `df_departures_clean`, `df_weather_clean`) to enforce schema consistency.  
-- **Cleaned Dataset:** Provides a reproducible, reviewer‑friendly CSV (`dublin_airport_clean.csv`) that integrates weather and flight delay data after cleaning.  
-- **Reviewer Transparency:** These artefacts document how missingness and dtype issues were handled, ensuring clarity for assessment.
+- **Schema Documentation (Step 12):** Raw JSON structures for arrivals and departures are flattened and saved to text files (`arrivals_schema.txt`, `departures_schema.txt`). These are **record‑only artefacts** that provide reviewers with a transparent snapshot of the raw keys, even though they are not applied in the workflow.  
+- **Schema Enforcement (Steps 6, 16, 21):** Authoritative schemas (`weather_cols`, `arrivals_cols`, `departures_cols`) are defined and applied immediately after cleaned data is loaded or concatenated. This ensures that only validated fields are retained for integration.  
+- **Audit Integration:** Coverage audits (e.g., flights missing weather matches, NaT checks) are performed alongside schema enforcement, documenting any rows lost due to alignment issues.  
+- **Cleaned Dataset Views:** Produces reproducible DataFrames (`df_weather_clean`, `df_arrivals_clean`, `df_departures_clean`) that serve as the single source of truth for integration.  
+- **Reviewer Transparency:** Artefacts document how missingness, dtype handling, and coverage mismatches were resolved, ensuring clarity for assessment.
 
 ### Workflow Role
-- **Arrivals Data:** Schema definition documents datetime parsing, imputation of missing actual times, and reconstructed delays.  
-- **Departures Data:** Schema definition mirrors arrivals, ensuring schema parity and consistent handling of categorical fields.  
-- **Integrated Dataset:** The cleaned CSV aligns arrivals, departures, and weather data on hourly bins, supporting correlation analysis and modelling.
+- **Weather Data (Step 6):**  
+  - Schema defined in `weather_cols`.  
+  - Applied immediately after loading the cleaned CSV (`dublin_airport_clean.csv`).  
+  - Ensures only validated weather variables (rain, temp, humidity, visibility, etc.) are retained.  
+
+- **Arrivals Data (Step 16):**  
+  - Schema defined in `arrivals_cols`.  
+  - Applied directly after concatenating all cleaned arrival batches.  
+  - Captures datetime parsing, imputation of missing actual times, and reconstructed delays.  
+  - Frozen into `df_arrivals_clean` for integration.  
+
+- **Departures Data (Step 21):**  
+  - Schema defined in `departures_cols`.  
+  - Applied directly after concatenating all cleaned departure batches.  
+  - Mirrors arrivals schema for parity, ensuring consistent handling of categorical fields.  
+  - Frozen into `df_departures_clean` using `reindex` for fault‑tolerant enforcement.  
+
+- **Integrated Dataset:**  
+  - The unified dataset (234,909 records: 113,520 arrivals + 121,389 departures) aligns flights with weather conditions and risk features.  
+  - Supports correlation analysis and modelling of weather impacts on delays.
 
 ### Example Artefacts
-- Code cell defining `arrivals_cols`, `departures_cols`, and `weather_cols` — authoritative schema reference.  
-- `dublin_airport_clean.csv` – cleaned, integrated dataset combining arrivals, departures, and weather features (e.g., visibility, humidity, temperature, rainfall, risk score).
+- `arrivals_schema.txt` and `departures_schema.txt` — record‑only schema documentation of raw JSON keys (Step 12).  
+- Code cells defining `weather_cols`, `arrivals_cols`, and `departures_cols` — authoritative schema references applied after cleaning.  
+- Audit outputs (e.g., “Arrivals missing weather match: 14,448”) — transparent record of exclusions during schema enforcement.  
+- `dublin_airport_clean.csv` – cleaned, integrated dataset combining arrivals, departures, weather variables, and derived risk scores.
+
+### Resources
+- [Pandas Documentation – `json_normalize`](https://pandas.pydata.org/docs/reference/api/pandas.json_normalize.html)  
+  *Confirms the method used to flatten nested JSON structures into tabular form for inspection.*  
+- [GitHub Documentation – Managing Large Files](https://docs.github.com/en/repositories/working-with-files/managing-large-files)  
+  *Explains GitHub’s 100 MB file size limit, justifying monthly batching of arrivals and departures.*  
+- [Python JSON Module Documentation](https://docs.python.org/3/library/json.html)  
+  *Provides reliable methods for loading and saving JSON data, ensuring reproducibility in batching.*  
 
 ### 📑 Reviewer Takeaway
-Schemas are defined and enforced **in‑code**, not as separate text files. This ensures the repository remains lightweight while still **transparent and reproducible**.  
-Reviewers can verify structure, dtype handling, and missingness classification directly from the schema code cell without requiring full raw datasets.
+Schemas serve two roles in this workflow:  
+- **Documentation (Step 12):** Text files record the raw JSON structure for transparency.  
+- **Enforcement (Steps 6, 16, 21):** Applied in‑code after cleaning to guarantee reproducible, validated datasets.  
+
+Audits provide transparency about rows excluded due to coverage mismatches, while schema enforcement guarantees consistency across arrivals, departures, and weather datasets.  
+Reviewers can verify structure, dtype handling, and missingness classification directly from the schema code cells and audit outputs without requiring full raw datasets.
 
 ---
 ## 7. Core Functions and Components
