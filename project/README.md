@@ -289,32 +289,24 @@ This environment setup ensured that all workflows were reproducible, cross‑pla
 A **schema** is a formal blueprint that defines how data is structured — including field names, data types, and relationships between elements.  
 In analytics, schemas ensure consistency, accuracy, and reproducibility by making clear how datasets should be interpreted and integrated.
 
-### Published Resources
-- [DataCamp – What is a Database Schema?](https://www.datacamp.com/tutorial/database-schema)  
-  Explains schema as a blueprint for organizing data, covering conceptual, logical, and physical schemas.  
-- [Sifflet Data – Data Schema Explained](https://www.siffletdata.com/blog/data-schema)  
-  Defines schema as the foundation of a data system, setting expectations for each dataset.  
-- [PlainSignal – What is a Data Schema in Analytics?](https://plainsignal.com/glossary/schema)  
-  Describes schema as a formal blueprint for analytics data, ensuring consistent interpretation across tools.  
-
 ### Purpose in This Project
-- **Schema Exports:** Capture column names, data types, and structural metadata for both arrivals and departures datasets.  
+- **Schema Definitions:** Captured directly in the code cell where `arrivals_cols`, `departures_cols`, and `weather_cols` are defined.  
+- **Column Subsets:** Applied immediately in the same cell (`df_arrivals_clean`, `df_departures_clean`, `df_weather_clean`) to enforce schema consistency.  
 - **Cleaned Dataset:** Provides a reproducible, reviewer‑friendly CSV (`dublin_airport_clean.csv`) that integrates weather and flight delay data after cleaning.  
 - **Reviewer Transparency:** These artefacts document how missingness and dtype issues were handled, ensuring clarity for assessment.
 
 ### Workflow Role
-- **Arrivals Data:** Schema export documents datetime parsing, imputation of missing actual times, and reconstructed delays.  
-- **Departures Data:** Schema export mirrors arrivals, ensuring schema parity and consistent handling of categorical fields.  
+- **Arrivals Data:** Schema definition documents datetime parsing, imputation of missing actual times, and reconstructed delays.  
+- **Departures Data:** Schema definition mirrors arrivals, ensuring schema parity and consistent handling of categorical fields.  
 - **Integrated Dataset:** The cleaned CSV aligns arrivals, departures, and weather data on hourly bins, supporting correlation analysis and modelling.
 
 ### Example Artefacts
-- `arrivals_schema.txt` – lists arrivals dataset columns and dtypes, including imputation flags.  
-- `departures_schema.txt` – lists departures dataset columns and dtypes, mirroring arrivals for consistency.  
+- Code cell defining `arrivals_cols`, `departures_cols`, and `weather_cols` — authoritative schema reference.  
 - `dublin_airport_clean.csv` – cleaned, integrated dataset combining arrivals, departures, and weather features (e.g., visibility, humidity, temperature, rainfall, risk score).
 
 ### 📑 Reviewer Takeaway
-Schema exports and the cleaned dataset ensure the repository remains lightweight while still **transparent and reproducible**.  
-They allow reviewers to verify structure, dtype handling, and missingness classification without requiring full raw datasets.
+Schemas are defined and enforced **in‑code**, not as separate text files. This ensures the repository remains lightweight while still **transparent and reproducible**.  
+Reviewers can verify structure, dtype handling, and missingness classification directly from the schema code cell without requiring full raw datasets.
 
 ---
 ## 7. Core Functions and Components
