@@ -67,7 +67,11 @@ Inside the notebook:
    - [Weather Impact Plots](#9-weather-impact-plots)
    - [Correlation Analysis](#10-correlation-analysis)  
    - [Modelling](#11-modelling)
-    - [Conclusion](#12-conclusion) 
+   - [Conclusion](#12-conclusion)
+   - [Database Integration](#13-database-integration)  
+     - [Step 27 – Audit Databases](#step27--audit-databases)  
+     - [Step 29 – Merged Flights + Weather Database](#step29--merged-flights--weather-database)  
+     - [Database Example Queries](#database-example-queries)
 4. [Data Sources & Roles in Workflow](#4-data-sources--roles-in-workflow)  
 5. [Environment and Dependencies](#5-environment-and-dependencies)  
 6. [Initial Visual Inspection](#6-initial-visual-inspection)  
@@ -249,6 +253,56 @@ This section outlines the end‑to‑end workflow, from acquiring raw data to mo
 - Proposed future enhancements (adding operational features, richer weather data, ensemble stacking, dashboard deployment).  
 
 📑 *Reviewer takeaway:* The workflow delivered reproducible insights, highlighted limitations, and proposed clear paths for future improvement.
+
+---
+
+### 13. Database Integration
+
+To strengthen reproducibility and transparency, the workflow persists cleaned and merged datasets into SQLite databases. These serve as durable audit artifacts and analysis engines.
+
+### Step 27 – Audit Databases
+- **Tables created:**  
+  - `weather` – cleaned hourly weather records (visibility, humidity, wind, precipitation, etc.).  
+  - `arrivals` – cleaned arrivals dataset with reconstructed delay fields and schema enforcement.  
+  - `departures` – cleaned departures dataset with schema parity to arrivals.  
+- **Purpose:**  
+  - Provides independent audit artifacts for each dataset.  
+  - Enables reviewers to query raw‑aligned but cleaned data without rerunning the notebook.  
+  - Documents missingness (e.g., flights without weather matches, NaT checks).
+
+### Step 29 – Merged Flights + Weather Database
+- **Table created:**  
+  - `flights_weather` – unified dataset combining arrivals, departures, and weather on an hourly join key.  
+- **Purpose:**  
+  - Operationalises the merged dataset into a persistent table for downstream analysis.  
+  - Enables SQL‑driven plots (e.g., delays by hour, delays vs visibility, delay distributions).  
+  - Demonstrates the database as an **active analysis engine**, not just storage.  
+  - Plots are saved into `project/plots/` for reproducibility.
+
+### Database Example Queries
+Reviewers can independently verify results by running SQL queries such as:
+
+```sql
+-- Average delay by hour of day
+SELECT strftime('%H', date_hour) AS hour, flight_type, AVG(computed_delay) AS avg_delay
+FROM flights_weather
+GROUP BY flight_type, hour
+ORDER BY hour;
+```
+
+![Average Delay by Hour Plot](plots/s29b_dbase_avg_delay_by_hour.png)
+  *Figure: Example of Plot when full code cell is run - Average Delay by Hour of Day for Arrivals vs Departures*
+
+```sql
+--Average delay by Day of Week
+SELECT strftime('%w', date_hour) AS day_of_week, AVG(computed_delay) AS avg_delay
+FROM flights_weather
+GROUP BY day_of_week
+ORDER BY day_of_week;
+```
+
+![Average delay by Day of Week Plot](plots/s29b_dbase_avg_delay_by_day.png)
+  *Figure: Example of Plot when full code cell is run - Average Delay by Day of Week*
 
 ---
 
