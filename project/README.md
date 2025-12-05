@@ -56,41 +56,44 @@ Inside the notebook:
 1. [Objective and Approach](#1-objective-and-approach)  
 2. [Assessment Criteria Mapping](#2-assessment-criteria-mapping)  
 3. [Workflow Overview](#3-workflow-overview)  
-   - [Weather Acquisition](#1-weather-acquisition-and-cleaning)  
-   - [Flight Data Acquisition](#2-flight-data-acquisition)  
-   - [Flight Batching](#3-flight-batching)  
-   - [Arrivals Workflow](#4-arrivals-workflow)  
-   - [Departures Workflow](#5-departures-workflow)  
-   - [Integration](#6-integration)  
-   - [Weather Impact Plots](#7-weather-impact-plots)  
-   - [Correlation Analysis](#8-correlation-analysis)  
-   - [Modelling](#9-modelling)  
+   - [Initial Visual Inspection](#1-initial-visual-inspection)  
+   - [Dataset Missingness Classification and Handling](#2-dataset-missingness-classification-and-handling)  
+   - [Cleaning Approach](#3-cleaning-approach)  
+   - [Schema and Audit Exports](#4-schema-and-audit-exports)  
+   - [Flight Batching](#5-flight-batching)  
+   - [Arrivals Workflow](#6-arrivals-workflow)  
+   - [Departures Workflow](#7-departures-workflow)  
+   - [Integration](#8-integration)  
+   - [Weather Impact Plots](#9-weather-impact-plots)
+   - [Correlation Analysis](#10-correlation-analysis)  
+   - [Modelling](#11-modelling)
+    - [Conclusion](#12-conclusion) 
 4. [Data Sources & Roles in Workflow](#4-data-sources--roles-in-workflow)  
 5. [Environment and Dependencies](#5-environment-and-dependencies)  
-6. [Schema and Audit Exports](#6-schema-and-audit-exports)  
-7. [Core Functions and Components](#7-core-functions-and-components)  
-8. [Cleaning and Auditing Strategy](#8-cleaning-and-auditing-strategy)  
-9. [Initial Visual Inspection](#9-initial-visual-inspection-)  
-10. [Importance of Data Types (dtypes) in This Project](#10-importance-of-data-types-dtypes-in-this-project)  
-11. [Dataset Missingness Classification and Handling](#11-dataset-missingness-classification-and-handling)  
-12. [Cleaning Approach Taken in This Project](#12-cleaning-approach-taken-in-this-project)  
-13. [Cleaning Steps, Purpose, and Limitations](#12a-cleaning-steps-purpose-and-limitations)  
-14. [Exploratory Data Analysis (EDA)](#13-exploratory-data-analysis-eda)  
-   - [Example Plots and Purposes](#example-plots-and-purposes)
-15. [Integrated Risk Scoring](#14-integrated-risk-scoring-framework)  
-16. [Modelling & Metrics](#15-modelling-results-and-metrics)  
-17. [Findings](#16-key-findings)  
-18. [Limitations](#17-project-limitations)  
-19. [Future Enhancements](#18-proposed-future-enhancements)  
-20. [Reproducibility & Consistency](#19-reproducibility-and-consistency-strategy)  
+6. [Initial Visual Inspection](#6-initial-visual-inspection)  
+7. [Dataset Missingness Classification and Handling](#7-dataset-missingness-classification-and-handling)  
+8. [Cleaning Approach Taken in This Project](#8-cleaning-approach-taken-in-this-project)  
+   - [Cleaning Steps, Purpose, and Limitations](#8a-cleaning-steps-purpose-and-limitations)  
+   - [Importance of Data Types (dtypes)](#8b-importance-of-data-types-dtypes-in-this-project)  
+9. [Schema and Audit Exports](#9-schema-and-audit-exports)  
+10. [Core Functions and Components](#10-core-functions-and-components)  
+11. [Exploratory Data Analysis (EDA)](#13-exploratory-data-analysis-eda)  
+    - [Example Plots and Purposes](#example-plots-and-purposes)  
+12. [Integrated Risk Scoring Framework](#14-integrated-risk-scoring-framework)  
+13. [Modelling Results and Metrics](#15-modelling-results-and-metrics)  
+14. [Key Findings](#16-key-findings)  
+15. [Project Limitations](#17-project-limitations)  
+16. [Proposed Future Enhancements](#18-proposed-future-enhancements)  
+17. [Reproducibility and Consistency Strategy](#19-reproducibility-and-consistency-strategy)  
     - [Large Batch File Handling](#large-batch-file-handling)  
     - [GitHub File Size Considerations](#github-file-size-considerations)  
-21. [Research & Attribution](#20-research-and-attribution)  
-22. [Difficulties Experienced and Lessons Learned](#21-difficulties-experienced-and-lessons-learned)  
-23. [Conclusion and Overall Takeaway](#22-conclusion-and-overall-takeaway)  
-24. [Quick Start Summary](#23-quick-start-summary)
-25. [References](#24-references)
-26. [Ethical & Transparency Considerations](#26-ethical--transparency-considerations)
+18. [Research and Attribution](#20-research-and-attribution)  
+19. [Difficulties Experienced and Lessons Learned](#21-difficulties-experienced-and-lessons-learned)  
+20. [Conclusion and Overall Takeaway](#22-conclusion-and-overall-takeaway)  
+21. [Quick Start Summary](#23-quick-start-summary)  
+22. [References](#24-references)  
+23. [Ethical & Transparency Considerations](#25-ethical--transparency-considerations)  
+
 
 ---
 
@@ -304,7 +307,7 @@ This environment setup ensured that all workflows were reproducible, cross‑pla
 
 ---
 
-### 6. Initial Visual Inspection 🔍
+### 6. Initial Visual Inspection
 
 Before any automated cleaning or batching, the workflow began with a **manual visual inspection of the raw datasets**.  
 This step was critical for transparency, allowing reviewers to see the data in its original form and understand the challenges that shaped the technical approach.  
@@ -465,6 +468,8 @@ Cleaned Data
 - Flight data (MAR/MNAR): Systematic gaps in actual times required cautious imputation from scheduled values, with flags to mark reconstructed delays.
 - Integrated dataset: Hourly flooring was applied to align flights with weather, a necessary compromise that reduced temporal precision but ensured compatibility.
 
+---
+
 ### 8a Cleaning Steps, Purpose, and Limitations
 
 | Step                          | Purpose                                                                 | Limitation / Trade‑off                                                                 |
@@ -482,7 +487,9 @@ Cleaned Data
 📑 **Reviewer Takeaway:**  
 This project emphasised **clear parsing, safe conversions, and transparent auditing**. Imputation ensured dataset continuity but underestimated true delays, while hourly flooring reduced granularity yet was necessary for integration with weather data. These measures demonstrate reproducibility and transparency, directly supporting the **40% code and 40% documentation criteria**.
 
-## 8b. Importance of Data Types (dtypes) in This Project
+---
+
+## 8b. Importance of Data Types (dtypes) in this project
 
 Alongside the cleaning steps, dtype handling was a critical foundation for ensuring that cleaned datasets remained consistent and usable for downstream modelling.
 
@@ -964,7 +971,7 @@ These resources were consulted for conceptual clarity on schema design and data 
 
 ---
 
-## 26. Ethical & Transparency Considerations
+## 25. Ethical & Transparency Considerations
 
 ### Data Ethics
 - **API Usage:** All Aviation Edge API queries were logged with a dry‑run option to avoid unnecessary calls and respect rate limits.  
