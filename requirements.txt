@@ -1,6 +1,6 @@
 # Requirements for Programming For Data Analytics Repository
 # Covers both coursework examples and the final Dublin Airport project
-# Python version: 3.11 (tested locally and in CI/CD)
+# Tested with Python 3.11 (locally and in CI/CD)
 
 # Core data analysis libraries
 pandas==2.3.0
@@ -8,7 +8,7 @@ numpy==2.0.0
 
 # Visualisation libraries
 matplotlib==3.9.0
-seaborn==0.13.0
+seaborn==0.13.2   # upgraded to latest stable release
 
 # Machine learning libraries
 scikit-learn==1.5.0
@@ -24,10 +24,5 @@ jupyterlab==4.2.0   # optional, for modern notebook interface
 pyarrow==17.0.0      # for Parquet I/O
 openpyxl==3.1.2      # Excel file support
 
-# Data cleaning / wrangling
-# Data Wrangler is a VS Code extension, not a pip package.
-# No pip dependency required here.
-
 # Utility libraries
 requests==2.32.0     # for API calls (flight/weather data)
-pathlib              # built-in in Python 3.11+, listed for clarity

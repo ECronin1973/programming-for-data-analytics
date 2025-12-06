@@ -232,6 +232,26 @@ This section outlines the end‑to‑end workflow, from acquiring raw data to mo
 
 📑 *Reviewer takeaway:* Correlation analysis confirmed visibility and humidity as the strongest predictors of delays.
 
+### 10. Extended Data Analysis
+- Step 10a – Boxplots for Outlier Detection  
+- Step 10b – Daily Aggregates (Mean/Max/Min)  
+- Step 10c – Rainfall Intensity Timeline  
+- Step 10d – Humidity vs Visibility Scatter  
+- Step 10e – Rolling Averages (7‑Day Temperature)  
+- Step 10f – Singular Scatterplots for Key Relationships  
+- Step 10g – Wind Speed and Direction Analysis  
+- Step 10h – Integrated Weather Risk Factors for Flight Delays  
+- Step 10i - Weather Codes Analysis
+- Analysed categorical weather codes (fog, mist, precipitation) using WMO standards.  
+- Summarised frequency and distribution of codes across May–Oct 2025.  
+- Integrated codes into risk scoring framework for categorical context.
+
+**weather codes frequency table:**
+![Weather Codes Frequency Table](plots/s10i_weather_codes_counts_table.png)
+*Figure: Frequency of Weather Codes from May to Oct 2025*
+
+📑 *Reviewer takeaway:* Weather codes (fog, mist, precipitation categories) were analysed using WMO standards.This provided categorical context for delay prediction, ensuring consistency across weather records and strengthening risk scoring. Tables summarised frequency and distribution of codes, making environmental conditions transparent for reviewers.
+
 ---
 
 ### 11. Modelling
@@ -253,6 +273,16 @@ This section outlines the end‑to‑end workflow, from acquiring raw data to mo
 - Proposed future enhancements (adding operational features, richer weather data, ensemble stacking, dashboard deployment).  
 
 📑 *Reviewer takeaway:* The workflow delivered reproducible insights, highlighted limitations, and proposed clear paths for future improvement.
+
+---
+
+### 13. Database Integration
+- Step 27: Audit databases created (`weather`, `arrivals`, `departures`).  
+- Step 29: Merged flights–weather database (`flights_weather`).  
+- Purpose: preserves cleaned datasets individually and operationalises the merged dataset for query‑driven plots.  
+- Example SQL queries documented for reproducibility, with plots saved into `project/plots/`.  
+
+📑 *Reviewer takeaway:* Databases are used at two critical checkpoints — first for audit, then for analysis — ensuring transparency, reproducibility, and auditability across the workflow.
 
 ---
 
