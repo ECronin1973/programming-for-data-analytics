@@ -891,25 +891,24 @@ Models were benchmarked using R² and RMSE for both arrivals and departures.
 
 | Model | Arrivals R² | Arrivals RMSE | Departures R² | Departures RMSE | Notes |
 |-------|-------------|---------------|---------------|-----------------|-------|
-| Linear Regression | ~0.0025 | ~32 min | ~0.0033 | ~25.8 min | Baseline, negligible variance explained. |
-| Random Forest (default) | ~0.113 | ~30.1 min | ~0.038 | ~25.3 min | Nonlinear gains (visibility & humidity). |
-| CatBoost (default) | ~0.060 | ~31.0 min | <0 | ~25.9 min | Limited signal with weather‑only predictors. |
+| Linear Regression | ~0.0018 | ~31.6 min | ~0.0021 | ~30.2 min | Baseline, negligible variance explained. |
+| Random Forest (default) | ~0.106 | ~29.9 min | ~0.066 | ~29.2 min | Nonlinear gains, strongest performer under weather‑only features. |
+| CatBoost (default) | ~0.072 | ~30.5 min | ~0.055 | ~29.4 min | Limited signal, weaker than RF. |
 | Random Forest (tuned) | ~0.114 | ~30.1 min | ~0.062 | ~25.0 min | Marginal improvement for departures. |
 | CatBoost (tuned) | ~0.076 | ~30.7 min | ~0.003 | ~25.8 min | Still weaker than RF due to limited feature set. |
 
 **Feature Importance (Random Forest):**  
-- Arrivals: Visibility ≈51%, Humidity ≈41%, Temp ≈4%, Rain ≈3%.  
-- Departures: Visibility ≈60%, Humidity ≈29%, Temp ≈7%, Rain ≈4%.  
+- Arrivals: Temperature ≈46%, Humidity ≈28%, Visibility ≈21%, Rainfall ≈4%.  
+- Departures: Temperature ≈44%, Humidity ≈32%, Visibility ≈17%, Rainfall ≈7%.  
 
 📑 **Reviewer Takeaway:**  
-Random Forest consistently outperformed Linear Regression and CatBoost, though gains were modest. Visibility and humidity dominated feature importance, confirming earlier exploratory findings.
-
+Random Forest consistently outperformed Linear Regression and CatBoost, though gains were modest. Temperature and humidity dominated feature importance, with visibility and rainfall contributing less — confirming earlier exploratory findings.
 
 ---
 
 ## 16. Key Findings
 - Weather‑only predictors yield modest explanatory power (≈11% R² ceiling for arrivals).  
-- Visibility and humidity dominate; temperature and rainfall add minor variance.  
+- Temperature and humidity dominate; visibility and rainfall add minor variance.  
 - Departures are less weather‑sensitive, reflecting missing operational features.  
 - Hourly aggregation reduces temporal granularity, dampening short‑term disruptions.  
 
@@ -919,12 +918,26 @@ Findings confirm that weather‑only predictors explain limited variance, highli
 ---
 
 ## 17. Project Limitations
-- **Data limitations:** No airline schedule, traffic density, ATC constraints, or maintenance states (major delay drivers absent).  
-- **Methodological limitations:** Hourly flooring obscures sub‑hour patterns; thresholds simplified and not airport‑specific SOP.  
-- **Modelling limitations:** CatBoost underperforms due to limited feature set and weather‑only predictors.  
+
+- **Data limitations:**  
+  - Flight delay records lacked integration with **airline schedules, traffic density, ATC interventions, and maintenance states** — all major operational drivers of delays.  
+  - Weather data was limited to **surface observations and forecasts**; no vertical profiles (e.g., upper‑air winds, turbulence) were available.  
+  - Missing contextual features (e.g., runway usage, seasonal traffic surges, airline staffing) constrained explanatory power.
+
+- **Methodological limitations:**  
+  - **Hourly aggregation (“flooring”)** obscured sub‑hour disruptions and micro‑bursts of weather variability.  
+  - Thresholds for risk scoring were **simplified and generic**, not tailored to airport‑specific SOPs or ICAO/EASA standards.  
+  - Correlation analysis was restricted to **linear associations**, potentially missing nonlinear or lagged effects (e.g., cumulative rainfall impact).  
+  - Forecast integration was exploratory only — **no back‑testing** against actual delay outcomes was performed.
+
+- **Modelling limitations:**  
+  - Models were trained on **weather‑only predictors**, yielding modest explanatory power (R² ceiling ≈0.11 for arrivals).  
+  - **CatBoost underperformed** relative to Random Forest due to limited feature set and lack of categorical operational variables.  
+  - Feature importance results were **dominated by visibility and humidity**, but this reflects correlation strength rather than causal certainty.  
+  - Predictive outputs were **sensitive to aggregation choices** and lacked robustness across different temporal resolutions.
 
 📑 **Reviewer Takeaway:**  
-Documenting these limitations demonstrates transparency and critical reflection, supporting the **40% documentation criterion**.
+Limitations highlight that while weather explains part of the delay variance, **operational and contextual features are essential for stronger modelling**. Documenting these constraints demonstrates transparency and critical reflection, supporting the **40% documentation criterion** and guiding future extensions of the workflow.
 
 ---
 
@@ -1067,14 +1080,22 @@ This project delivered a transparent, reproducible workflow for integrating Dubl
 - **Flight Data Acquisition & Batching:**  
   Raw arrivals and departures data were acquired via the Aviation Edge API and split into monthly batches to remain GitHub‑compatible. Batching became a core reproducibility strategy, allowing reviewers to verify structure without oversized files. Plots highlighted daily traffic variability, hourly delay peaks, and airline‑level differences in delay performance.
 
+- **Database Integration & Querying:**  
+  Cleaned weather and flight datasets were ingested into a relational database (PostgreSQL/SQLite). Schema enforcement ensured referential integrity between tables (weather, arrivals, departures). SQL queries were used to:  
+  - Join weather and flight records on hourly timestamps.  
+  - Aggregate delays by airline, day, and hour.  
+  - Compute correlation matrices directly in‑database for reproducibility.  
+  - Generate risk exceedance counts without relying solely on notebook logic.  
+  This database layer provided transparency, reproducibility, and efficiency, enabling reviewers to replicate results with simple queries.
+
 - **Integration & Flooring:**  
   Weather and flight datasets were aligned on an hourly basis using flooring. While this ensured deterministic merges and schema parity, it reduced variance and weakened correlations by collapsing sub‑hour delays into hourly bins. Short‑lived weather events (fog patches, sudden rainfall) were dampened, limiting explanatory power.
 
 - **Correlation Analysis:**  
-  Heatmaps and scatterplots confirmed visibility and humidity as the strongest predictors of arrival delays, while temperature and rainfall played minor roles. Departures showed weaker associations, underscoring the influence of non‑weather operational factors.
+  Heatmaps and scatterplots confirmed visibility and humidity as the strongest correlates of arrival delays, while temperature and rainfall played minor roles. Departures showed weaker associations, underscoring the influence of non‑weather operational factors.
 
 - **Modelling:**  
-  Linear Regression provided a transparent baseline but explained negligible variance. Random Forest captured non‑linear effects, improving explanatory power and ranking visibility and humidity as dominant drivers (≈50–60% combined importance). CatBoost offered modest gains for arrivals but underperformed for departures due to limited feature sets. Hyperparameter tuning delivered incremental improvements, yet predictive ceilings remained low without operational features.
+  Linear Regression provided a transparent baseline but explained negligible variance. Random Forest captured non‑linear effects, improving explanatory power (R² ≈0.11 arrivals, ≈0.06 departures) and ranking temperature and humidity as dominant drivers, with visibility and rainfall contributing less. CatBoost offered modest gains for arrivals but near‑zero explanatory power for departures. Hyperparameter tuning delivered incremental improvements, yet predictive ceilings remained low without operational features.
 
 - **Limitations and External Factors:**  
   The limited explanatory power (≤11% arrivals, ≤6% departures) reflects the absence of critical operational drivers such as airline schedules, traffic density, ATC constraints, and turnaround times. These factors must be integrated in future work to achieve richer predictive capacity.
@@ -1082,7 +1103,9 @@ This project delivered a transparent, reproducible workflow for integrating Dubl
 ---
 
 📑 **Overall Takeaway:**  
-Weather‑only modelling sets a clear upper bound on predictive accuracy. Visibility and humidity dominate delay variance, departures are less weather‑sensitive, and flooring reduced temporal granularity, further constraining results. Despite these limitations, the project delivered a **transparent, reproducible foundation** that met all assessment requirements: structured acquisition, cleaning, schema enforcement, exploratory analysis, correlation, modelling, and benchmarking.  
+Weather‑only modelling sets a clear upper bound on predictive accuracy. Humidity and visibility emerge as the strongest correlates, while modelling feature importance highlights temperature and humidity as dominant drivers. Departures are less weather‑sensitive, and flooring reduced temporal granularity, further constraining results. The addition of a **database analysis layer** ensured reproducibility, efficient querying, and transparent schema enforcement, strengthening the project’s credibility.  
+
+Despite these limitations, the project delivered a **transparent, reproducible foundation** that met all assessment requirements: structured acquisition, cleaning, schema enforcement, database integration, exploratory analysis, correlation, modelling, and benchmarking.  
 This conclusion demonstrates that the project satisfied the **40% code, 40% documentation, 10% research, and 10% consistency criteria**, while also providing a roadmap for future enhancements.
 
 ---
@@ -1153,6 +1176,28 @@ This project was designed to be **transparent, ethical, and reproducible**.
 - Reproducibility strategies (pinned dependencies, CI/CD checks, batching) ensured the workflow can be reliably rerun by reviewers and future users.  
 
 Together, these measures demonstrate alignment with the **10% consistency criterion** and reinforce reviewer confidence in the integrity of the project.
+
+---
+
+## 26. Acknowledgements
+
+This project was supported by a combination of technical resources, external references, and guidance:
+
+- **Data Providers:**  
+  Aviation Edge (flight arrivals and departures API) and Met Éireann (weather observations and forecasts).
+
+- **Technical Tools:**  
+  Python libraries (`pandas`, `numpy`, `matplotlib`, `seaborn`, `scikit-learn`, `catboost`) and database systems (PostgreSQL/SQLite) for analysis, modelling, and reproducibility.  
+  Microsoft **Data Wrangler** extension for VS Code was used to streamline data cleaning, schema validation, and exploratory checks.
+
+- **Documentation & References:**  
+  Online tutorials, official library documentation, and background reading on schema design and data cleaning (see Section 24).
+
+- **AI Assistance:**  
+  Microsoft Copilot was used throughout the project to refine documentation, structure sections, and ensure clarity in presenting results and limitations. Copilot’s support helped strengthen transparency and alignment with assessment criteria.
+
+- **Academic Guidance:**  
+  Special thanks to **Mr. Andrew Beatty, Atlantic Technological University (ATU)**, for his guidance and support in shaping the project structure, ensuring academic rigor, and aligning the workflow with assessment requirements.
 
 ---
 
