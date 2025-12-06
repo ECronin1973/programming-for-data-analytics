@@ -2,91 +2,103 @@
 
 ## 1. Project Overview
 This project examines how local weather conditions affect flight punctuality at Dublin Airport.  
-The analysis integrates flight activity data (arrivals, departures, delays, cancellations) with historical and forecast weather data from Met Éireann to identify trends, quantify impacts, and project future delay probabilities.
+The analysis integrates flight activity data (arrivals, departures, delays, cancellations) with hourly weather data from Met Éireann.  
+The workflow emphasises **schema enforcement, database integration, exploratory analysis, correlation, and modelling**, producing a transparent and reproducible foundation for assessing weather impacts on delays.
 
 ---
 
 ## 2. Data Sources
 - **Flight Activity Data**
-  - Dublin Airport dashboards and flight trackers (arrivals, departures, delay and cancellation logs).
-  - API‑based datasets (scheduled vs actual times, delay minutes, flight status).
+  - Acquired via the Aviation Edge API (scheduled vs actual times, delay minutes, flight status).  
+  - Monthly batching ensured GitHub compatibility and reproducibility.  
+
 - **Weather Data**
-  - Historical hourly/daily weather from Met Éireann (wind, rain, temperature, pressure).
-  - Forecast data for the Dublin region (short‑term outlook).
-- **Schema**
-  - `flights`: flight_number, scheduled_arrival, actual_arrival, delay_minutes, status (landed, cancelled, diverted).
-  - `weather_hourly`: timestamp, wind_speed_kmh, wind_dir_deg, gust_kmh, rain_mm, temp_c, pressure_hpa.
+  - Historical hourly weather from Met Éireann (temperature, humidity, visibility, rainfall, wind speed/direction).  
+  - Forecast data for Dublin region (short‑term outlook).  
+
+- **Database Schema (`dublin_airport.db`)**
+  - `flights`: flight_number, scheduled_arrival, actual_arrival, delay_minutes, status (landed, cancelled, diverted).  
+  - `weather_hourly`: timestamp, temp_c, humidity_pct, visibility_m, rain_mm, wind_speed_knots, wind_dir_deg.  
+  - Joined tables aligned on hourly flooring for deterministic merges.  
 
 ---
 
 ## 3. Data Cleaning & Normalisation
-- **Time Alignment:** Join flights with the nearest weather record within ±60 minutes.  
-- **Unit Conversion:** Standardise wind speed (knots → km/h), rainfall (mm), temperature (°C).  
-- **Derived Features:** Create flags for heavy rain, strong wind, gusty conditions, and seasonal categories.  
-- **Missing Data:** Explicit NaN handling; “unknown” status for incomplete flight records.  
+- **Schema Enforcement:** Flight and weather tables validated against authoritative schemas; missingness audits exported.  
+- **Time Alignment:** Flooring to hourly bins ensured reproducible joins, though short‑lived events were dampened.  
+- **Unit Conversion:** Standardised wind speed (knots → km/h), rainfall (mm), temperature (°C).  
+- **Derived Features:** Flags for heavy rain, strong wind, low visibility, seasonal categories.  
+- **Missing Data:** Explicit NaN handling; imputation flags (`imputed_flag`) documented in schema exports.  
 
 ---
 
 ## 4. Analysis Techniques
 - **Exploratory Data Analysis (EDA):**
-  - Distribution of delays by time of day, airline, and season.  
-  - Scatter plots of wind speed vs delay minutes.  
-  - Box plots of rainfall and visibility split by cancellation status.  
-- **Heat Maps:**
-  - Hour‑of‑day × wind‑direction delay rates.  
-  - Delay severity across wind‑speed bands.  
-- **Forecasting:**
-  - Regression and gradient‑boosted models predicting delay minutes or cancellation probability.  
-  - Features: wind speed, gusts, rainfall, hour, day of week.  
-  - Apply trained model to next‑week Met Éireann forecasts.
+  - Weather distributions (temperature, rainfall, wind speed, humidity, visibility).  
+  - Scatterplots (humidity vs visibility, temperature vs humidity).  
+  - Correlation heatmaps (arrivals + weather, departures + weather).  
+  - Operational context plots (wind roses, WMO weather codes, risk score distributions).  
+
+- **Delay Analysis (Post‑Merge):**
+  - Daily arrivals vs departures volumes.  
+  - Hourly delay patterns.  
+  - Airline‑level delay comparisons.  
+  - Boxplots of delays under different weather categories.  
+
+- **Modelling:**
+  - Benchmarked Linear Regression, Random Forest, and CatBoost.  
+  - Metrics: R² and RMSE for arrivals and departures.  
+  - Random Forest consistently outperformed, with arrivals R² ≈0.11 and departures ≈0.06.  
+  - Feature importance highlighted **temperature and humidity** as dominant drivers, with visibility and rainfall contributing less.  
 
 ---
 
 ## 5. Visualisation
-- **Python (Matplotlib/Seaborn):** Quick EDA plots, density plots, box plots.  
-- **JavaScript (Plotly):**
-  - Interactive bar charts of delay distributions.  
-  - Heat maps of delay rates by wind direction and time.  
-  - Probability timelines for forecasted delay risk.  
+- **Python (Matplotlib/Seaborn):** Histograms, scatterplots, boxplots, correlation heatmaps.  
+- **Auto‑generated PNGs:** Saved systematically to `plots/` (`sXX_<descriptor>.png`) for reproducibility.  
+- **Database Queries:** SQL used to aggregate delays, compute risk exceedances, and validate joins.  
 
 ---
 
 ## 6. Insights & Deliverables
-- Identify weather conditions most associated with delays and cancellations (e.g., strong crosswinds, heavy rain).  
-- Highlight temporal patterns (peak delays during evening arrivals).  
-- Forecast delay risk windows for the next week based on Met Éireann data.  
-- Provide interactive charts and concise explanations in the notebook.  
+- Visibility and humidity emerged as the strongest correlates of delays; rainfall and temperature weaker.  
+- Departures showed lower weather sensitivity, reflecting missing operational drivers.  
+- Hourly flooring reduced temporal granularity, dampening short‑term disruption signals.  
+- Deliverables included: cleaned datasets, database (`dublin_airport.db`), EDA plots, correlation matrices, feature importance charts, and documented limitations.  
 
 ---
 
 ## 7. Repository Layout
-- `notebooks/flight_punctuality_dub.ipynb` — main notebook with analysis and plots.  
-- `data/` — raw and processed CSVs (flight events, weather).  
-- `src/` — modular Python scripts (data loaders, feature engineering, modeling, JS viz).  
-- `README.md` — overview, setup instructions, imports required.  
-- `docs/methodology.md` — this document.  
+- `project.ipynb` — main notebook with full workflow (acquire → clean → integrate → database → model → conclude).  
+- `README.md` — summary, assessment alignment, quick start instructions.  
+- `data/` — cleaned CSVs, batched flight JSONs, risk tables.  
+- `plots/` — auto‑generated PNG artefacts (EDA, correlations, modelling).  
+- `docs/methodology.md` — extended methodological narrative (this file).  
+- `dublin_airport.db` — root‑level SQLite database with merged weather + flight tables, enforced schemas, and query outputs.  
+- `requirements.txt` — Python dependencies pinned for reproducibility.  
 
 ---
 
 ## 8. Further Angles
+- Incorporating airline schedules, traffic density, and ATC interventions.  
 - Gust vs sustained wind impact on delays.  
-- Traffic density and ATC‑related cancellations.  
 - Visibility proxies (pressure + rain + time‑of‑day).  
 - Scenario bands for forecast uncertainty (optimistic/central/pessimistic).  
 
 ---
 
 ## 9. Assessment Alignment
-- **Code (40%)**: Modular, efficient, reusable functions; clear feature engineering; JS + Python plots.  
-- **Documentation (40%)**: Succinct explanations, plots with captions, limitations noted.  
-- **Research (10%)**: Sources cited inline (Met Éireann, flight dashboards).  
-- **Consistency (10%)**: Clean repo, meaningful commits, notebook saved with outputs.  
+- **Code (40%)**: Structured notebook, schema enforcement, reproducible plots, database queries.  
+- **Documentation (40%)**: Clear explanations, plots with captions, limitations noted, reviewer takeaways.  
+- **Research (10%)**: Sources cited inline (Met Éireann, Aviation Edge API, WMO codes).  
+- **Consistency (10%)**: Clean repo, meaningful commits, notebook saved with outputs, reproducible database.  
 
 ---
 
 ## 10. Limitations
-- Public flight dashboards may not expose all delay reasons; analysis relies on available status fields.  
-- Forecast uncertainty acknowledged; delay projections are indicative, not operational guarantees.  
-- Visibility data may require proxies; documented clearly.  
+- Weather‑only predictors explain limited variance (≤11% arrivals, ≤6% departures).  
+- Hourly flooring obscures sub‑hour disruptions.  
+- Forecast integration exploratory only; no back‑testing against actual delay outcomes.  
+- Operational drivers (airline schedules, traffic density, ATC constraints) absent, limiting predictive capacity.  
 
 ---

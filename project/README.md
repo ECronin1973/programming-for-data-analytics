@@ -42,12 +42,15 @@ Inside the notebook:
 
 | Path                          | Purpose                                                                 |
 |-------------------------------|-------------------------------------------------------------------------|
-| `project/project.ipynb`       | Full workflow (acquire → clean → integrate → model → conclude).         |
-| `project/README.md`           | Summary & assessment alignment (this file).                            |
-| `project/data/`               | Cleaned CSVs, batched flight JSONs, risk tables (already included).     |
-| `project/plots/`              | Auto‑generated PNG artefacts (EDA, correlations, modelling).            |
-| `project/docs/methodology.md` | Extended methodological narrative.                                     |
+| `project.ipynb`               | Full workflow (acquire → clean → integrate → database → model → conclude). |
+| `README.md`                   | Summary & assessment alignment (this file).                            |
+| `data/`                       | Cleaned CSVs, batched flight JSONs, risk tables (already included).     |
+| `plots/`                      | Auto‑generated PNG artefacts (EDA, correlations, modelling).            |
+| `docs/methodology.md`         | Extended methodological narrative.                                     |
+| `dublin_airport.db`           | Root‑level SQLite database containing merged weather + flight tables, enforced schemas, and query outputs. |
 | `requirements.txt`            | Python dependencies pinned for reproducibility.                        |
+
+---
 
 ---
 
