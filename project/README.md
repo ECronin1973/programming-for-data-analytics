@@ -277,62 +277,81 @@ This section outlines the end‑to‑end workflow, from acquiring raw data to mo
 ---
 
 ### 13. Database Integration
-- Step 27: Audit databases created (`weather`, `arrivals`, `departures`).  
-- Step 29: Merged flights–weather database (`flights_weather`).  
-- Purpose: preserves cleaned datasets individually and operationalises the merged dataset for query‑driven plots.  
-- Example SQL queries documented for reproducibility, with plots saved into `project/plots/`.  
+To strengthen reproducibility and transparency, the workflow persists cleaned and merged datasets into SQLite databases.  
+These serve as **durable audit artifacts** and **analysis engines**, enabling reviewers to independently verify results, reproduce plots, and query the merged dataset without rerunning the full notebook.
+
+- **Step 27:** Audit databases created (`weather`, `arrivals`, `departures`).  
+- **Step 29:** Merged flights–weather database (`flights_weather`).  
+- **Purpose:** Preserves cleaned datasets individually and operationalises the merged dataset for query‑driven plots.  
+- **Example SQL queries:** Documented for reproducibility, with plots saved into `project/plots/`.  
 
 📑 *Reviewer takeaway:* Databases are used at two critical checkpoints — first for audit, then for analysis — ensuring transparency, reproducibility, and auditability across the workflow.
 
 ---
 
-### 13. Database Integration
-
-To strengthen reproducibility and transparency, the workflow persists cleaned and merged datasets into SQLite databases. These serve as durable audit artifacts and analysis engines.
-
-### Step 27 – Audit Databases
+#### Step 27 in notebook – Audit Databases
 - **Tables created:**  
   - `weather` – cleaned hourly weather records (visibility, humidity, wind, precipitation, etc.).  
   - `arrivals` – cleaned arrivals dataset with reconstructed delay fields and schema enforcement.  
   - `departures` – cleaned departures dataset with schema parity to arrivals.  
+
 - **Purpose:**  
   - Provides independent audit artifacts for each dataset.  
   - Enables reviewers to query raw‑aligned but cleaned data without rerunning the notebook.  
   - Documents missingness (e.g., flights without weather matches, NaT checks).
 
-### Step 29 – Merged Flights + Weather Database
+---
+
+#### Step 29 in notebook– Merged Flights + Weather Database
 - **Table created:**  
   - `flights_weather` – unified dataset combining arrivals, departures, and weather on an hourly join key.  
+
 - **Purpose:**  
   - Operationalises the merged dataset into a persistent table for downstream analysis.  
-  - Enables SQL‑driven plots (e.g., delays by hour, delays vs visibility, delay distributions).  
+  - Enables SQL‑driven plots (e.g., delays by hour, delays by day, delay distributions, delays vs rainfall).  
   - Demonstrates the database as an **active analysis engine**, not just storage.  
   - Plots are saved into `project/plots/` for reproducibility.
 
-### Database Example Queries
-Reviewers can independently verify results by running SQL queries such as:
+---
 
+### Database Example Queries & Plots
+
+**Average Delay by Day of Week**
 ```sql
--- Average delay by hour of day
-SELECT strftime('%H', date_hour) AS hour, flight_type, AVG(computed_delay) AS avg_delay
-FROM flights_weather
-GROUP BY flight_type, hour
-ORDER BY hour;
-```
-
-![Average Delay by Hour Plot](plots/s29b_dbase_avg_delay_by_hour.png)
-  *Figure: Example of Plot when full code cell is run - Average Delay by Hour of Day for Arrivals vs Departures*
-
-```sql
---Average delay by Day of Week
 SELECT strftime('%w', date_hour) AS day_of_week, AVG(computed_delay) AS avg_delay
 FROM flights_weather
 GROUP BY day_of_week
 ORDER BY day_of_week;
 ```
 
-![Average delay by Day of Week Plot](plots/s29b_dbase_avg_delay_by_day.png)
-  *Figure: Example of Plot when full code cell is run - Average Delay by Day of Week*
+![Average Delay by Day of Week](plots/s29b_dbase_avg_delay_by_day.png)
+  *figure of average delay by day of week (0=Sunday, 6=Saturday)*
+
+**Distribution of Flight Delays**
+```sql
+SELECT computed_delay
+FROM flights_weather
+WHERE computed_delay IS NOT NULL;
+```
+
+![Distribution of Flight Delays](plots/s29b_dbase_delay_distribution.png)
+
+**Average Delay by Rainfall Bin**
+```sql
+SELECT CASE
+    WHEN rain = 0 THEN '0 mm'
+    WHEN rain > 0 AND rain <= 2 THEN '0-2 mm'
+    WHEN rain > 2 AND rain <= 5 THEN '2-5 mm'
+    ELSE '>5 mm'
+END AS rain_bin,
+AVG(computed_delay) AS avg_delay
+FROM flights_weather
+WHERE rain IS NOT NULL
+GROUP BY rain_bin
+ORDER BY rain_bin;
+```
+
+![Average Delay by Rainfall Bin](plots/s29b_dbase_avg_delay_by_rain.png)
 
 ---
 
@@ -758,44 +777,101 @@ By centralising definitions inside `project/project.ipynb`, the workflow remains
 
 ## 13. Exploratory Data Analysis (EDA)
 
-Exploratory Data Analysis was performed after cleaning and schema enforcement to explore the **distribution, variability, and relationships** within the weather dataset before merging with flight delays.  
-Visualisations served both as a diagnostic check and as a narrative tool, ensuring transparency for reviewers and guiding later modelling choices.
+Exploratory Data Analysis was performed after cleaning and schema enforcement to explore the **distribution, variability, and relationships** within the weather dataset.  
+Most plots were generated **before merging with flight delays** to understand the weather data in isolation.  
+Additional plots involving **delay outcomes** were produced **after the merge**, since they required the integrated dataset.  
 
-### Categories of Plots
-- **Distributions:** Histograms, boxplots, daily temperature profiles, rainfall totals, wind speed distributions.  
-- **Relationships:** Scatterplots (temperature vs humidity, humidity vs visibility, temperature vs vapour pressure), correlation heatmaps.  
-- **Operational Context:** Wind roses, WMO weather codes, risk score distributions.  
-- **Delay Analysis:** Daily arrivals vs departures, average hourly delays, airline comparisons, weather impact plots, correlation matrices, feature importance.
-
+Visualisations served both as a diagnostic check and as a narrative tool, ensuring transparency for reviewers and guiding later modelling choices.  
 All plots were saved to `project/plots/` with systematic naming conventions (`sXX_<descriptor>.png`) to ensure reproducibility and easy reference.
 
 ---
 
-### Example Plots and Purposes
-- **Distribution of Key Weather Variables**
-![Distribution of Key Weather Variables Plot](plots/s6b_distributions_combined.png)
+### 📊 Weather Distributions (Pre‑Merge)
+
+- **Distribution of Key Weather Variables**  
+  ![Distribution of Key Weather Variables Plot](plots/s6b_distributions_combined.png)  
   *Purpose:* Illustrates spread and skewness of weather variables, confirming suitability for statistical comparison.
 
-- **Temperature Distribution**
-![Temperature Distribution Plot](plots/s6b_temp.png)
-  *Purpose:* Shows variability and outliers, providing baseline context for regression models
-  
+- **Temperature Distribution**  
+  ![Temperature Distribution Plot](plots/s6b_temp.png)  
+  *Purpose:* Shows variability and outliers, providing baseline context for regression models.
+
+- **Rainfall Totals (Histogram)**  
+  ![Rainfall Totals Plot](plots/s6b_rain.png)  
+  *Purpose:* Highlights frequency of heavy rainfall events, useful for threshold‑based risk scoring.
+
+- **Wind Speed Distribution**  
+  ![Wind Speed Distribution Plot](plots/s6b_wdsp.png)  
+  *Purpose:* Provides operational context for runway usage and hazard thresholds.
+
+---
+
+### 🔗 Weather Relationships (Pre‑Merge)
+
 - **Humidity vs Visibility (Scatter)**  
-![Humidity vs Visibility Plot](plots/s10d_humidity_vs_visibility.png)
-  *Purpose:* Demonstrates inverse relationship, confirming humidity as a dominant predictor of delays.  
+  ![Humidity vs Visibility Plot](plots/s10d_humidity_vs_visibility.png)  
+  *Purpose:* Demonstrates inverse relationship, confirming humidity as a dominant predictor of delays.
 
-- **Correlation Matrix (Arrivals + Weather)**
-![Correlation Matrix Plot](plots/s31a_correlation_matrix_arrivals_weather.png)
-  *Purpose:* Highlights visibility and humidity as strongest drivers of arrival delays.  
+- **Temperature vs Humidity (Scatter)**  
+  ![Temperature vs Humidity Plot](plots/s10f_temp_vs_rhum.png)  
+  *Purpose:* Shows seasonal clustering and interdependence of weather variables.
 
-- **Feature Importance (Random Forest)**
-![Feature Importance Plot](plots/s37_feature_importance_arrivals_departures.png) 
+---
+
+### 🌦️ Operational Context (Pre‑Merge)
+
+- **Wind Rose (Observed Conditions)**  
+  ![Wind Rose Plot](plots/s10g_windrose_2025-05-01.png)  
+  *Purpose:* Visualises prevailing wind directions and speeds, critical for runway operations (Month of May 2025).
+
+- **WMO Weather Codes Frequency**  
+  ![Weather Codes Plot](plots/s10i_weather_codes_counts_table.png)  
+  *Purpose:* Screenshot of produced table which shows distribution of coded weather events (fog, rain, storms), contextualising delay risks.
+
+- **Risk Score Distribution (Threshold Exceedances)**  
+  ![Risk Score Distribution Plot](plots/s10h_risk_score_distribution.png)  
+  *Purpose:* Quantifies exceedances of operational thresholds (visibility <2000 m, wind ≥25 knots, rainfall ≥25 mm).
+
+---
+
+### ✈️ Delay Analysis (Post‑Merge)
+
+- **Correlation Matrix (Arrivals + Weather)**  
+  ![Correlation Matrix Plot](plots/s31f_correlation_matrix_arrivals_weather.png)  
+  *Purpose:* Highlights visibility and humidity as strongest drivers of arrival delays.
+
+- **Correlation Heatmap (Departures + Weather)**  
+  ![Correlation Heatmap Plot](plots/s31g_correlation_matrix_departures_weather.png)  
+  *Purpose:* Confirms similar patterns for departures, reinforcing visibility/humidity as key variables.
+
+- **Daily Arrivals vs Departures**  
+  ![Daily Arrivals vs Departures Plot](plots/s26c_top_airlines_flight_volume.png)  
+  *Purpose:* Provides baseline operational volume context.
+
+- **Average Hourly Delays**  
+  ![Average Hourly Delays Plot](plots/s26b_average_hourly_delay.png)  
+  *Purpose:* Highlights peak delay periods across the day.
+
+- **Airline Comparison (Delay Rates)**  
+  ![Airline Comparison Plot](plots/s26d_top_airlines_average_delay.png)  
+  *Purpose:* Shows variability in delays across carriers, contextualising weather impact.
+
+- **Weather Impact on Delays (Boxplots)**  
+  ![Weather Impact Plot](plots/s10a_boxplots.png)  
+  *Purpose:* Compares delay distributions under different weather categories (clear, fog, rain).
+
+- **Feature Importance (Random Forest)**  
+  ![Feature Importance Plot](plots/s37_feature_importance_arrivals_departures.png)  
   *Purpose:* Ranks weather features by predictive influence, confirming visibility and humidity as dominant drivers.
 
 ---
 
 📑 **Reviewer Takeaway:**  
-EDA confirmed that **visibility and humidity are the strongest predictors of delays**, while rainfall and temperature showed weaker associations. Plots were clear, well‑labelled, and reproducible, demonstrating a range of techniques that directly informed later modelling.
+EDA confirmed that **visibility and humidity are the strongest correlates of delays**, while rainfall and temperature showed weaker associations.  
+- **Pre‑merge plots** provided diagnostic insights into weather distributions, relationships, and operational context.  
+- **Post‑merge plots** demonstrated how weather interacts with flight delays, highlighting hourly peaks, airline variability, and correlation matrices.  
+
+Together, these plots provided a transparent, reproducible foundation for later correlation and risk scoring work.
 
 ---
 
