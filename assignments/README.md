@@ -258,9 +258,11 @@ When the notebook is executed, it will display a pie chart showing the percentag
 ```plaintext
 📌 Total unique email domain types: 3
 📊 Domain frequency table:
-example.org     400
-example.net     350
-example.com     250
+domain
+example.org    341
+example.com    339
+example.net    320
+Name: count, dtype: int64
 ```
 
 ### 📊 Pie Chart Output
@@ -299,6 +301,7 @@ I used [**seaborn**](https://seaborn.pydata.org/) to apply a pastel colour palet
 
 
 END
+
 ---
 
 # 📊 Assignment 05 – Population Analysis by Sex and Age
@@ -663,8 +666,10 @@ The following resources were consulted and integrated throughout the notebook to
 ### 📈 Data Source and Teaching Aids
 
 - [CSO FY006A – Population Dataset](https://ws.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/FY006A/CSV/1.0/en)  
-- ![XKCD #221 – Normal Distribution Comic](https://xkcd.com/221/)  
+![XKCD Comic](https://imgs.xkcd.com/comics/normal_distribution_2x.png)
+*This comic image humorously illustrates the concept of a normal distribution, highlighting the common misconception that data should always fit a perfect bell curve. In reality, many datasets exhibit variations and deviations from this idealized shape, reminding us that statistical distributions can be complex and diverse.*
 - [GitHub Copilot](https://github.com/features/copilot) — used during development
+
 
 # END
 
