@@ -59,17 +59,17 @@ python <input script file name>
 
 ## Table of Contents
 - [Assignment 02 – Bank Holidays](#️-assignment-02--bank-holidays)
-    [Part A: Display All Bank Holidays](#-part-a-display-all-bank-holidays)
-    [Part B: Display Unique Bank Holidays in Northern Ireland](#-part-b-display-unique-bank-holidays-in-northern-ireland)
+    - [Part A: Display All Bank Holidays](#-part-a-display-all-bank-holidays)
+    - [Part B: Display Unique Bank Holidays in Northern Ireland](#-part-b-display-unique-bank-holidays-in-northern-ireland)
 - [Assignment 03 – Email Domain Analysis (Pie Chart)](#️-assignment-03--email-domain-analysis-pie-chart)
-    [Pie Chart of Email Domains](#-pie-chart-output)
+    - [Pie Chart of Email Domains](#-pie-chart-output)
 - [Assignment 05 – Population Analysis](#-assignment-05--population-analysis-by-sex-and-age)
-    [Task A — Sex-Based Age Analysis (70%)](#task-a--sex-based-age-analysis-70)
-    [Task B - Age-Band Sex Comparison (20%)](#task-b----age-band-sex-comparison-20)
-    [Task C - Regional Sex Difference Analysis (10%)](#task-c---regional-sex-difference-analysis-10)
+    - [Task A — Sex-Based Age Analysis (70%)](#task-a--sex-based-age-analysis-70)
+    - [Task B - Age-Band Sex Comparison (20%)](#task-b----age-band-sex-comparison-20)
+    - [Task C - Regional Sex Difference Analysis (10%)](#task-c---regional-sex-difference-analysis-10)
 - [Assignment 06: Climate Data Analysis – Summer 2025, Knock Airport](#-assignment-06-climate-data-analysis--summer-2025-knock-airport)
-    [Temperature Analysis (60% of marks)](#temperature-analysis-60-of-marks)
-    [Windspeed Analysis (40% of marks)](#windspeed-analysis-40-of-marks)
+    - [Temperature Analysis (60% of marks)](#temperature-analysis-60-of-marks)
+    - [Windspeed Analysis (40% of marks)](#windspeed-analysis-40-of-marks)
 
 ---
 
