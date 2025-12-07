@@ -58,10 +58,18 @@ python <input script file name>
 ---
 
 ## Table of Contents
-- [Assignment 02 – Bank Holidays](#assignment-02--bank-holidays)
-- [Assignment 03 – Email Domain Analysis (Pie Chart)](#assignment-03--email-domain-analysis-pie-chart)
-- [Assignment 05 – Population Analysis](#assignment-05--population-analysis)
-- [Assignment 06: Climate Data Analysis – Summer 2025, Knock Airport](#assignment-06-climate-data-analysis-summer-2025-knock-airport)
+- [Assignment 02 – Bank Holidays](#️-assignment-02--bank-holidays)
+    [Part A: Display All Bank Holidays](#-part-a-display-all-bank-holidays)
+    [Part B: Display Unique Bank Holidays in Northern Ireland](#-part-b-display-unique-bank-holidays-in-northern-ireland)
+- [Assignment 03 – Email Domain Analysis (Pie Chart)](#️-assignment-03--email-domain-analysis-pie-chart)
+    [Pie Chart of Email Domains](#-pie-chart-output)
+- [Assignment 05 – Population Analysis](#-assignment-05--population-analysis-by-sex-and-age)
+    [Task A — Sex-Based Age Analysis (70%)](#task-a--sex-based-age-analysis-70)
+    [Task B - Age-Band Sex Comparison (20%)](#task-b----age-band-sex-comparison-20)
+    [Task C - Regional Sex Difference Analysis (10%)](#task-c---regional-sex-difference-analysis-10)
+- [Assignment 06: Climate Data Analysis – Summer 2025, Knock Airport](#-assignment-06-climate-data-analysis--summer-2025-knock-airport)
+    [Temperature Analysis (60% of marks)](#temperature-analysis-60-of-marks)
+    [Windspeed Analysis (40% of marks)](#windspeed-analysis-40-of-marks)
 
 ---
 
@@ -300,7 +308,7 @@ This [matplotlib guide](https://matplotlib.org/stable/gallery/pie_and_polar_char
 I used [**seaborn**](https://seaborn.pydata.org/) to apply a pastel colour palette for improved visual clarity and consistency. The [seaborn documentation](https://seaborn.pydata.org/tutorial/color_palettes.html) provided guidance on selecting and applying colour palettes to matplotlib plots.
 
 
-END
+# END
 
 ---
 
@@ -310,7 +318,7 @@ This assignment explores population data by sex and single year of age using off
 
 ---
 
-## 🎯 Task A — Sex-Based Age Analysis (70%)
+## Task A — Sex-Based Age Analysis (70%)
 
 Write a Jupyter notebook that analyses the differences between the sexes by age in Ireland:
 
@@ -513,7 +521,7 @@ The notebook is designed to be:
 
 ---
 
-## 🧮 Assignment 05 – Part B: Age-Band Sex Comparison (20%)
+## Task B -  Age-Band Sex Comparison (20%)
 
 This section compares the population of males and females within a selected age band (e.g. ages 30–40) and produces both a visual and tabular summary.
 
@@ -566,7 +574,7 @@ In the age band 30–40, females outnumber males by **1,905 people**, which is a
 
 ---
 
-## 🧮 Assignment 05 – Part C: Regional Sex Difference Analysis (10%)
+## Task C - Regional Sex Difference Analysis (10%)
 
 This section identifies which **Administrative County** in Ireland has the **largest population difference between sexes** within the selected age band.
 
@@ -730,7 +738,7 @@ jupyter notebook assignment06-weather.ipynb
 
 ---
 
-## 🌡️ Temperature Analysis (60% of marks)
+## Temperature Analysis (60% of marks)
 
 ### ✅ What Was Done
 - Cleaned and parsed temperature data from Knock Airport
@@ -779,7 +787,7 @@ Monthly mean temperature plot
 
 ---
 
-## 🌬️ Windspeed Analysis (40% of marks)
+## Windspeed Analysis (40% of marks)
 
 ### ✅ What Was Done
 - Cleaned windspeed data and handled missing values
