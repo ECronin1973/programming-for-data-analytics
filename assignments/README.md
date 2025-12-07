@@ -98,8 +98,38 @@ python assignment02-bankholidays.py
 
 ```plaintext
 Bank Holidays in Northern Ireland:
+2025-12-25 - Christmas Day
+2025-12-26 - Boxing Day
+2026-01-01 - New Year’s Day
 2026-03-17 - St Patrick’s Day
+2026-04-03 - Good Friday
+2026-04-06 - Easter Monday
+2026-05-04 - Early May bank holiday
+2026-05-25 - Spring bank holiday
 2026-07-13 - Battle of the Boyne (Orangemen’s Day)
+2026-08-31 - Summer bank holiday
+2026-12-25 - Christmas Day
+2026-12-28 - Boxing Day
+2027-01-01 - New Year’s Day
+2027-03-17 - St Patrick’s Day
+2027-03-26 - Good Friday
+2027-03-29 - Easter Monday
+2027-05-03 - Early May bank holiday
+2027-05-31 - Spring bank holiday
+2027-07-12 - Battle of the Boyne (Orangemen’s Day)
+2027-08-30 - Summer bank holiday
+2027-12-27 - Christmas Day
+2027-12-28 - Boxing Day
+2028-01-03 - New Year’s Day
+2028-03-17 - St Patrick’s Day
+2028-04-14 - Good Friday
+2028-04-17 - Easter Monday
+2028-05-01 - Early May bank holiday
+2028-05-29 - Spring bank holiday
+2028-07-12 - Battle of the Boyne (Orangemen’s Day)
+2028-08-28 - Summer bank holiday
+2028-12-25 - Christmas Day
+2028-12-26 - Boxing Day
 ```
 
 ## 📍 Part B: Display Unique Bank Holidays in Northern Ireland
@@ -134,14 +164,13 @@ When the script is executed, it should print a list of unique bank holidays in N
 
 ```plaintext
 Unique Bank Holidays in Northern Ireland:
-2024-03-18 - St. Patrick's Day
-2024-07-12 - Battle of the Boyne (Orangemen's Day)
-2025-03-17 - St. Patrick's Day
-2025-07-14 - Battle of the Boyne (Orangemen's Day)
-2026-03-17 - St. Patrick's Day
-2026-07-13 - Battle of the Boyne (Orangemen's Day)
-2027-03-17 - St. Patrick's Day
-2027-07-12 - Battle of the Boyne (Orangemen's Day)
+2025-07-14 - Battle of the Boyne (Orangemen’s Day)
+2026-03-17 - St Patrick’s Day
+2026-07-13 - Battle of the Boyne (Orangemen’s Day)
+2027-03-17 - St Patrick’s Day
+2027-07-12 - Battle of the Boyne (Orangemen’s Day)
+2028-03-17 - St Patrick’s Day
+2028-07-12 - Battle of the Boyne (Orangemen’s Day)
 ```
 
 ### 📚 Resources for Completion of Assignment 02
@@ -152,7 +181,7 @@ To successfully complete Assignment 02 (Parts A and B), I consulted a range of a
 
 **Lecture: Representing Data**
 
-I attended the lecture in [Module 4369 – Programming for Data Analytics](https://vlegalwaymayo.atu.ie/course/view.php?id=12815) which introduced the concept of structured data formats such as JSON and explained how APIs are used to deliver real-time data. This was foundational for both retrieving and comparing bank holiday data.
+I viewed the lecture in [Module 4369 – Programming for Data Analytics](https://vlegalwaymayo.atu.ie/course/view.php?id=12815) which introduced the concept of structured data formats such as JSON and explained how APIs are used to deliver real-time data. This was foundational for both retrieving and comparing bank holiday data.
 
 **Assignment Brief**
 
@@ -177,17 +206,11 @@ I read Real Python’s tutorial to understand best practices for working with AP
 Through completing Assignment 02, I developed a practical understanding of how to work with public APIs and structured data formats such as JSON. Specifically, I learned to:
 
 - Use the requests library to retrieve live data from a RESTful API.
-
 - Parse and navigate nested JSON structures to extract relevant information.
-
 - Apply set logic and conditional filtering to compare datasets across multiple regions.
-
 - Structure Python scripts with clear functions, error handling, and readable output.
-
 - Follow best practices for code documentation, modular design, and terminal execution.
-
 - Reference and build upon official documentation and academic resources to support development.
-
 - Present technical work in a clear, well-organised format suitable for peer and expert review.
 
 These skills contribute to a broader foundation in data analytics and software development, particularly in handling real-world data sources and producing maintainable, user-friendly code.
@@ -208,13 +231,9 @@ This task involves writing a Python notebook that loads a CSV file, extracts the
 ### 🎯 Learning Objectives
 
 - Load and inspect structured CSV data using pandas
-
 - Extract domain names from email addresses using string operations and regular expressions
-
 - Count domain frequencies and identify unique domain types
-
 - Generate and style a pie chart using matplotlib and seaborn
-
 - Save visual output for inclusion in reports or submissions
 
 
@@ -248,7 +267,7 @@ example.com     250
 
 The pie chart below visualises the distribution of all email domain types found in the dataset:
 
-![Pie chart of email domains](assignments/plots/assignment-03-pie-chart.jpg)
+![Pie chart of email domains](plots/assignment-03-pie-chart.jpg)
 
 ### 📚 Resources for Completion of Assignment 03
 
@@ -433,11 +452,11 @@ Plots are saved as PNG files and designed for clarity and accessibility.
 
 These are the two main plot outputs produced by the notebook (saved to the root `plots/` folder):
 
-![Parametric bell curves (approx normal) - assignment 05](assignments/plots/assignment05-age-bell-curve.png)
+![Parametric bell curves (approx normal) - assignment 05](plots/assignment05-age-bell-curve.png)
   
 _Parametric bell curves generated using the weighted mean (μ) and weighted standard deviation (σ) for each sex. Useful for a concise, parametric comparison but assumes normality._
 
-![Weighted KDE of age by sex - assignment 05](assignments/plots/assignment05-age-kde.png)  
+![Weighted KDE of age by sex - assignment 05](plots/assignment05-age-kde.png)  
 _Weighted KDE computed from the single-year age counts; this non-parametric curve reveals the actual shape of the distribution (skew, modes, tails) that a simple bell curve may miss._
 
 **Interpretation**: Use the KDE as the primary visual check for the real distribution shape. Use the bell-curve as a compact parametric summary. If the KDE shows strong skew or multiple peaks, prefer the KDE for interpretation and reporting.
@@ -466,8 +485,6 @@ This is exported to `assignment05_age_difference_by_sex.csv` and supports furthe
 | `assignment05-age-kde.png`                   | KDE visualisation                               |
 | `assignment05_age_difference_by_sex.csv`     | Age-wise population difference by sex           |
 | `assignment05-age-mean-difference-bar.png`   | Bar chart of weighted mean age by sex           |
-
----
 
 ---
 
@@ -540,7 +557,7 @@ In the age band 30–40, females outnumber males by **1,905 people**, which is a
 
 ### 📂 Files Produced
 
-- ![Age Group Comparison](assignments/plots/assignment05-age-group-35-sex-comparison.png) - bar chart
+- ![Age Group Comparison](plots/assignment05-age-group-35-sex-comparison.png) - bar chart
 
 - `assignment05_age_difference_by_sex.csv` — tidy age-by-sex table
 
@@ -590,7 +607,7 @@ Each bar represents the absolute population difference in the selected age band.
 
 ### 📂 Files Produced
 
-- ![assignment05-age-group-35-region-sex-diff.png](assignments/plots/assignment05-age-group-35-region-sex-diff.png) — bar chart
+- ![assignment05-age-group-35-region-sex-diff.png](plots/assignment05-age-group-35-region-sex-diff.png) — bar chart
 
 ---
 
@@ -725,7 +742,7 @@ jupyter notebook assignment06-weather.ipynb
 
 **Plots Created:**
 Temperature Data Plot
-![Hourly Temperature](assignments/plots/assignment06_hourly_temperature_pivot_table_2025-07-10_to_2025-07-16.png)
+![Hourly Temperature](plots/assignment06_hourly_temperature_pivot_table_2025-07-10_to_2025-07-16.png)
 
 ### 📊 Hourly Temperature Widget - Interactive Daily Temperature Plot with Hourly Ledger
 An interactive widget was created to visualise hourly temperature data for each day from 10th to 16th July 2025. This allows users to explore temperature fluctuations throughout the day.  This widget provides a dynamic way to analyse temperature trends on an hourly basis but is not visible on Github, it must be downloaded and run locally to view the interactivity.  A static plot option is in notebook where a date can be manually selected to view the hourly temperature for that day and a plot generated.
@@ -734,7 +751,7 @@ An interactive widget was created to visualise hourly temperature data for each 
 - `assignments/data/assignment06_temperature_range.csv` — Hourly temperature data  
 
 **Plots Created:** (Plot Example for 10th July 2025, one created for each day)
-![Hourly Temperature 10.07.2025](assignments/plots/assignment06_hourly_temperature_2025-07-10.png)
+![Hourly Temperature 10.07.2025](plots/assignment06_hourly_temperature_2025-07-10.png)
 ---
 
 ### 📊 The Mean Temperature Each Day
@@ -743,7 +760,7 @@ An interactive widget was created to visualise hourly temperature data for each 
 
 **Plots Created:**
 Daily mean temperature plot
-![Daily Mean Temperature](assignments/plots/assignment06_mean_daily_custom_range.png)
+![Daily Mean Temperature](plots/assignment06_mean_daily_custom_range.png)
 
 ---
 
@@ -753,7 +770,7 @@ Daily mean temperature plot
 
 **Plots Created:**
 Monthly mean temperature plot
-![Monthly Mean Temperature](assignments/plots/assignment06_monthly_mean_by_season_2025.png)
+![Monthly Mean Temperature](plots/assignment06_monthly_mean_by_season_2025.png)
 
 ---
 
@@ -773,7 +790,7 @@ Monthly mean temperature plot
 - `assignments/data/assignment06_windspeed_cleaned_summer_2025.csv` — Cleaned windspeed data  
 
 **Plots Created:**
-![Cleaned windspeed Plot](assignments/plots/assignment06_windspeed_hourly_2025-07-10_to_2025-07-16.png)
+![Cleaned windspeed Plot](plots/assignment06_windspeed_hourly_2025-07-10_to_2025-07-16.png)
 
 ---
 
@@ -783,7 +800,7 @@ Monthly mean temperature plot
 
 **Plots Created:**
 Rolling average windspeed plot
-![Rolling Average Windspeed Plot](assignments/plots/assignment06_windspeed_rolling_24hr_2025-07-10_to_2025-07-16.png) 
+![Rolling Average Windspeed Plot](plots/assignment06_windspeed_rolling_24hr_2025-07-10_to_2025-07-16.png) 
 
 ---
 
@@ -793,7 +810,7 @@ Rolling average windspeed plot
 
 **Plots Created:**
 Daily max windspeed with time
-![Daily max windspeed with time plot](assignments/plots/assignment06_daily_max_windspeed_line_10_16_July_2025.png)
+![Daily max windspeed with time plot](plots/assignment06_daily_max_windspeed_line_10_16_July_2025.png)
 
 ---
 
@@ -804,7 +821,7 @@ Daily max windspeed with time
 
 **Plots Created:**
 Monthly mean of daily max windspeed plot
-![Monthly Mean of Daily Max Windspeed Plot](assignments/plots/assignment06_daily_max_windspeed_with_monthly_mean_July_2025.png)
+![Monthly Mean of Daily Max Windspeed Plot](plots/assignment06_daily_max_windspeed_with_monthly_mean_July_2025.png)
 
 ---
 

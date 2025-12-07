@@ -1,0 +1,20 @@
+# Requirements for Programming For Data Analytics – Assignments Folder
+# Tested with Python 3.11
+
+# Core data analysis libraries
+pandas==2.3.0
+numpy==2.0.0
+scipy==1.14.0        # statistical functions (normal distribution, KDE, variance)
+
+# Visualisation libraries
+matplotlib==3.9.0
+seaborn==0.13.2      # upgraded to latest stable release
+
+# Notebook environment
+notebook==7.2.0
+ipython==8.26.0
+jupyterlab==4.2.0    # optional, for modern notebook interface
+
+# Utility libraries
+python-dateutil==2.9.0.post0   # datetime parsing for time series analysis
+pathlib==1.0.1                 # file path handling
