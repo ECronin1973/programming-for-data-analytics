@@ -396,8 +396,6 @@ To keep the notebook organised, I used a modular design with helper functions de
   Construct a tidy CSV showing population differences by age and sex, including county breakdowns.  
   → [`pandas.DataFrame.to_csv`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_csv.html)
 
----
-
 ### 🧠 Why This Structure?
 
 For this assignment, I separated the helper functions from the main analysis cells. Doing this made the notebook much easier to maintain and extend, and it also kept the workflow clear for anyone reviewing the work. By having the helpers defined at the top, I could reuse them across multiple tasks or datasets without rewriting code.
@@ -410,7 +408,6 @@ Each analysis cell then called these helpers to perform specific tasks — for e
 - [GeeksforGeeks – Python Helper Functions](https://www.geeksforgeeks.org/python-helper-functions/) gave practical examples of how helper functions improve readability.
 - [Wikipedia – DRY Principle](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) reinforced the importance of avoiding repetition and keeping code concise.
 
----
 
 ## 📁 Source File
 
@@ -481,6 +478,7 @@ _Weighted KDE computed from the single-year age counts; this non-parametric curv
 
 **Interpretation**: The KDE should be used as the primary visual check because it reflects the real distribution shape. The bell curve is useful as a concise parametric summary, but if the KDE shows strong skew or multiple peaks, then the KDE gives a more accurate picture for interpretation and reporting.
 
+---
 
 ## 📊 Age Difference Analysis
 
@@ -759,7 +757,6 @@ Next, I calculated the mean temperature for each day in Summer 2025. This highli
 Daily mean temperature plot
 ![Daily Mean Temperature](plots/assignment06_mean_daily_custom_range.png)
 
----
 
 ### 📊 The Mean Temperature Each Month
 Finally, I aggregated the data to monthly averages. This gave a broader view of how July compared to the rest of the summer season and confirmed that July was the standout month for extreme heat.
