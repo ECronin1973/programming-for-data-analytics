@@ -8,7 +8,7 @@ Each assignment demonstrates applied skills in Python programming, data analysis
 ## 📂 Contents
 - Individual assignment notebooks and scripts, each with clear documentation and outputs.
 - Supporting datasets used for analysis.
-- Sub‑README files or notes where required to explain methodology and results.
+- notes where required to explain methodology and results.
 
 ---
 
@@ -75,29 +75,29 @@ python <input script file name>
 
 ## 🏛️ Assignment 02 – Bank Holidays
 
-This repository contains two Python scripts that interact with the UK Government’s public API to retrieve and analyse bank holiday data, with a focus on Northern Ireland.
+For this assignment, I worked with two Python scripts that connect to the UK Government’s public API. The aim was to pull down and analyse bank holiday data, focusing specifically on Northern Ireland.
 
 ### 📍 Part A: Display All Bank Holidays
 
-This task involves writing a Python script that connects to the UK Government’s bank holidays API and displays all holidays listed under Northern Ireland. Some of these dates may also be shared with other UK regions such as England, Wales, or Scotland.
+The first part of the task was fairly straightforward: I had to write a Python script that talks to the UK Government’s bank holidays API and prints out all the holidays for Northern Ireland. Interestingly, some of these dates overlap with holidays in England, Wales, or Scotland, so it was important to recognise that the dataset isn’t unique to one region.
 
 ### 🎯 Learning Objectives
 
-- Interact with a RESTful API using Python and the requests library
+From Part A, I was expected to:
 
-- Parse JSON responses and extract structured data
-
-- Filter and display region-specific information
-
-- Format terminal output for clarity and readability
+- Learn how to connect to a RESTful API using Python and the requests library.
+- Understand how to parse JSON data and extract useful information.
+- Focus on filtering results so they only show Northern Ireland’s holidays.
+- Present the output neatly in the terminal so it’s easy to read.
 
 ### 📁 Source File
 
-This script is located in the root directory of the repository and is saved as:  
+The script for Part A is saved in the root folder of the repo as: 
 `assignment02-bankholidays.py`
 
 ### ▶️ Run the program from the root directory using Python:
 
+To run the program, I just used:
 ```python
 python assignment02-bankholidays.py
 ```
@@ -140,27 +140,29 @@ Bank Holidays in Northern Ireland:
 2028-12-26 - Boxing Day
 ```
 
+*This gave me a full list of holidays, including ones that are shared with other UK regions.*
+
 ## 📍 Part B: Display Unique Bank Holidays in Northern Ireland
 
-This task builds on Part A by enhancing the script to identify bank holidays that are exclusive to Northern Ireland — those not observed in England, Wales, or Scotland. It demonstrates how to compare datasets across regions and apply conditional logic to filter unique entries.
+Part B built directly on Part A. Instead of just listing all holidays, the challenge was to figure out which ones are unique to Northern Ireland. That meant comparing the Northern Ireland dataset against England, Wales, and Scotland, and then filtering out any dates that were shared. This part was more about applying logic and comparison rather than just displaying data.
 
 ## 🎯 Learning Objectives
 
-- Compare structured data across multiple regions
+From Part B, I learned how to:
 
-- Apply set logic to identify unique values
-
-- Implement conditional filtering in Python
-
-- Display filtered results clearly in the terminal
+- Compare structured datasets across multiple regions.
+- Use set logic in Python to identify values that only appear in Northern Ireland.
+- Apply conditional filtering to make sure the results were accurate.
+- Display the unique holidays clearly in the terminal.
 
 ## 📁 Source File
 
-This script is located in the root directory of the repository and is saved as:  
+The script for Part B is also in the root folder and is saved as:
 `assignment02-bankholidays-ni.py`
 
 #### Run the program from the root directory using Python:
 
+To run the program, I used:
 ```python
 python assignment02-bankholidays-ni.py
 
@@ -168,10 +170,10 @@ python assignment02-bankholidays-ni.py
 
 #### Sample Output
 
-When the script is executed, it should print a list of unique bank holidays in Northern Ireland that are not observed in England/Wales or Scotland.
+This showed me which holidays are specific to Northern Ireland and not celebrated elsewhere in the UK.
 
 ```plaintext
-Unique Bank Holidays in Northern Ireland:
+Example of Unique Bank Holidays in Northern Ireland:
 2025-07-14 - Battle of the Boyne (Orangemen’s Day)
 2026-03-17 - St Patrick’s Day
 2026-07-13 - Battle of the Boyne (Orangemen’s Day)
@@ -183,46 +185,52 @@ Unique Bank Holidays in Northern Ireland:
 
 ### 📚 Resources for Completion of Assignment 02
 
-To successfully complete Assignment 02 (Parts A and B), I consulted a range of academic materials, technical documentation, and online tutorials. These resources supported my understanding of JSON data structures, API integration, and data comparison techniques across UK regions.
+To get through both parts of the assignment, I leaned on a mix of academic materials from ATU and online tutorials. These helped me understand JSON structures, how APIs work, and how to compare datasets effectively.
 
 #### 🏫 Academic Materials from ATU
 
 **Lecture: Representing Data**
 
-I viewed the lecture in [Module 4369 – Programming for Data Analytics](https://vlegalwaymayo.atu.ie/course/view.php?id=12815) which introduced the concept of structured data formats such as JSON and explained how APIs are used to deliver real-time data. This was foundational for both retrieving and comparing bank holiday data.
+The lecture from [Module 4369 – Programming for Data Analytics](https://vlegalwaymayo.atu.ie/course/view.php?id=12815) explained JSON and APIs. This was crucial for Part A because I needed to know how the API delivered data before I could parse it.
 
 **Assignment Brief**
 
-I followed the instructions provided in Assignment 2, which outlined the tasks of extracting bank holidays for Northern Ireland and identifying those not shared with other UK regions.
+The brief itself guided me on what exactly to do: first extract Northern Ireland’s holidays, then identify which ones were unique. Without this, I wouldn’t have known how Part B linked to Part A.
 
 **Lab Exercise: Topic 01 – Representing Data**
 
-I completed the lab activities in [Lab 02 Datarepresentation.pdf](https://vlegalwaymayo.atu.ie/pluginfile.php/1590492/mod_url/intro/Lab%2001%20Datarepresentation.pdf?time=1759329869806), which demonstrated how to fetch and process JSON data using Python. This was particularly helpful for implementing loops and filters in Part B.
+The lab exercise [Lab 02 Datarepresentation.pdf](https://vlegalwaymayo.atu.ie/pluginfile.php/1590492/mod_url/intro/Lab%2001%20Datarepresentation.pdf?time=1759329869806), gave me hands-on practice with JSON in Python. This was especially useful for Part B, where I had to loop through data and apply filters.
 
 #### 🌐 Online Tutorials and Best Practices
 
 [W3Schools – Python JSON Guide](https://www.w3schools.com/python/python_json.asp)
 
-I used W3Schools to learn how to convert JSON into Python dictionaries and iterate through data. This supported my implementation of loops and conditional logic.
+This helped me figure out how to convert JSON into Python dictionaries and loop through them. I used this knowledge in both parts, but especially in Part B when I had to apply conditional logic.
 
 [Real Python – API Integration Guide](https://realpython.com/python-requests/)
 
-I read Real Python’s tutorial to understand best practices for working with APIs, including error handling, response validation, and clean output formatting. These techniques improved the robustness and readability of my scripts.
+This tutorial taught me how to handle API requests properly, including error handling and formatting the output. It made my scripts more reliable and easier to read.
 
 ### 🧠 Summary of Learning Outcomes
 
-Through completing Assignment 02, I developed a practical understanding of how to work with public APIs and structured data formats such as JSON. Specifically, I learned to:
+By finishing Assignment 02, I gained practical skills in:
 
-- Use the requests library to retrieve live data from a RESTful API.
-- Parse and navigate nested JSON structures to extract relevant information.
-- Apply set logic and conditional filtering to compare datasets across multiple regions.
-- Structure Python scripts with clear functions, error handling, and readable output.
-- Follow best practices for code documentation, modular design, and terminal execution.
-- Reference and build upon official documentation and academic resources to support development.
-- Present technical work in a clear, well-organised format suitable for peer and expert review.
+- Using Python’s requests library to connect to APIs.
+- Parsing and navigating JSON data.
+- Comparing datasets using set logic and filtering.
+- Writing Python scripts that are clear, structured, and easy to run.
+- Following best practices for documentation and code readability.
+- Using both academic and online resources to support my learning.
 
-These skills contribute to a broader foundation in data analytics and software development, particularly in handling real-world data sources and producing maintainable, user-friendly code.
+Overall, this assignment gave me a solid foundation in working with real-world data sources and reinforced the importance of clean, maintainable code in data analytics.
 
+### 📖 References
+
+- **ATU Lecture: Representing Data** – Helped me understand JSON and APIs, which was essential for Part A.
+- **Assignment Brief** – Provided the step-by-step instructions that linked Part A and Part B together.
+- **ATU Lab Exercise** – Showed me how to fetch and process JSON data, which I applied when filtering unique holidays in Part B.
+- **W3Schools Python JSON Guide** – Guided me on converting JSON into Python dictionaries and looping through data, used in both parts.
+- **Real Python API Integration Guide** – Improved my API handling and output formatting, making my scripts more robust and readable.
 
 # END
 
@@ -230,19 +238,20 @@ These skills contribute to a broader foundation in data analytics and software d
 
 ## 🏛️ Assignment 03 – Email Domain Analysis (Pie Chart)
 
-This repository contains a Jupyter notebook that analyses a dataset of 1,000 individuals to identify and visualise the distribution of email domains. The notebook extracts domain names from email addresses and presents the results in a pie chart using Python libraries.
+The task this time was to work with a dataset of 1,000 individuals and focus on their email addresses. The notebook had to pull out the domain part of each email, count how often each one appeared, and then show the results in a pie chart. Since there were only three unique domains in the dataset, the chart displayed all of them directly without needing to group or simplify the data.
 
 ### 📍 Task: Visualise Email Domains
 
-This task involves writing a Python notebook that loads a CSV file, extracts the domain portion of each email address, counts how frequently each domain appears, and generates a pie chart to display the distribution. The chart includes all domain types found in the dataset, as only three unique domains are present.
+The notebook was designed to load a CSV file, extract the domain portion of each email address, calculate how frequently each domain appeared, and then generate a pie chart to display the distribution. Because the dataset only contained three unique domains, the chart showed them all clearly without any further grouping.
 
 ### 🎯 Learning Objectives
 
-- Load and inspect structured CSV data using pandas
-- Extract domain names from email addresses using string operations and regular expressions
-- Count domain frequencies and identify unique domain types
-- Generate and style a pie chart using matplotlib and seaborn
-- Save visual output for inclusion in reports or submissions
+From this assignment, I was expected to:
+- Learn how to load and inspect structured CSV data using pandas.
+- Understand how to extract domain names from email addresses using string operations and regular expressions.
+- Count domain frequencies and identify unique domain types.
+- Present the results visually by generating and styling a pie chart with matplotlib and seaborn.
+- Save the chart so it could be included in reports or submissions.
 
 
 ## 📁 Source Files
@@ -254,14 +263,14 @@ This task involves writing a Python notebook that loads a CSV file, extracts the
 
 ### ▶️ Run the notebook
 
-▶️ Run the notebook from the root directory using Jupyter:
+To run the notebook from the root directory, I used:
 ```bash
 jupyter notebook assignments/assignment03-pie.ipynb
 ```
 
 ### Sample Output
 
-When the notebook is executed, it will display a pie chart showing the percentage and count of each email domain found in the dataset. Since only three domain types exist, all are shown directly without grouping.
+When executed, the notebook printed a frequency table and displayed a pie chart showing the distribution of email domains.
 
 ```plaintext
 📌 Total unique email domain types: 3
@@ -281,31 +290,45 @@ The pie chart below visualises the distribution of all email domain types found 
 
 ### 📚 Resources for Completion of Assignment 03
 
-To successfully complete Assignment 03, I consulted a range of academic materials, technical documentation, and online tutorials. These resources supported my understanding of data extraction, string manipulation, and visualisation techniques.
+To complete this assignment, I relied on academic materials, technical documentation, and online tutorials. These helped me understand data extraction, string manipulation, and visualisation techniques.
 
 #### 🏫 Academic Materials from ATU
 
 **Lecture: Acquiring Data**
 
-I viewed the lecture in [Module 4369 – Programming for Data Analytics](https://vlegalwaymayo.atu.ie/course/section.php?id=327540), which covered how to acquire and process datasets from various sources. This was foundational for downloading and preparing the CSV file used in this assignment.
+I viewed the lecture in [Module 4369 – Programming for Data Analytics](https://vlegalwaymayo.atu.ie/course/section.php?id=327540), which explained how to acquire and process datasets from different sources. This was essential for preparing the CSV file used in the notebook.
 
 **Assignment Brief**
 
-I followed the instructions provided in [Assignment 3](https://vlegalwaymayo.atu.ie/mod/page/view.php?id=1204040), which outlined the task of extracting email domains and visualising them using a pie chart. The brief helped guide the structure and focus of the notebook.
+I followed the instructions in [Assignment 3](https://vlegalwaymayo.atu.ie/mod/page/view.php?id=1204040), which outlined the task of extracting email domains and visualising them using a pie chart. The brief guided the structure and focus of my notebook.
 
 #### 🌐 Online Tutorials and Best Practices
 
 **pandas Documentation**
 
-I used **pandas** to load the dataset, extract domain names, and count their frequency. The documentation helped clarify the use of [str.extract()](https://pandas.pydata.org/docs/reference/api/pandas.Series.str.extract.html#pandas.Series.str.extract) and [value_counts()](https://pandas.pydata.org/docs/reference/api/pandas.Series.value_counts.html).
+Pandas Documentation – Helped me use str.extract() and value_counts() to extract domain names and count their frequency.
+- [str.extract() explained](https://pandas.pydata.org/docs/reference/api/pandas.Series.str.extract.html#pandas.Series.str.extract)
+- [value_counts() explained](https://pandas.pydata.org/docs/reference/api/pandas.Series.value_counts.html).
 
 **matplotlib Pie Chart Guide**
 
-This [matplotlib guide](https://matplotlib.org/stable/gallery/pie_and_polar_charts/pie_features.html) supported the creation of a styled pie chart, including percentage labels, colour palettes, and layout adjustments.
+The [matplotlib guide](https://matplotlib.org/stable/gallery/pie_and_polar_charts/pie_features.html) supported the creation of a styled pie chart with labels, colours, and layout adjustments.
 
 **seaborn Documentation**
 
-I used [**seaborn**](https://seaborn.pydata.org/) to apply a pastel colour palette for improved visual clarity and consistency. The [seaborn documentation](https://seaborn.pydata.org/tutorial/color_palettes.html) provided guidance on selecting and applying colour palettes to matplotlib plots.
+I used [**seaborn**](https://seaborn.pydata.org/) to apply a pastel colour palette for clarity. The [colour palettes tutorial](https://seaborn.pydata.org/tutorial/color_palettes.html) helped me select and apply consistent colours.
+
+
+### 🧠 Summary of Learning Outcomes
+
+By completing Assignment 03, I learned how to:
+- Load and inspect structured data with pandas.
+- Extract and manipulate strings using regular expressions.
+- Count and compare categorical values in datasets.
+- Visualise categorical distributions with pie charts in matplotlib and seaborn.
+- Produce clear, reproducible notebooks suitable for academic submission.
+
+This assignment strengthened my ability to combine data analysis with visualisation, which is a key skill in data analytics and reporting.
 
 
 # END
@@ -314,36 +337,31 @@ I used [**seaborn**](https://seaborn.pydata.org/) to apply a pastel colour palet
 
 # 📊 Assignment 05 – Population Analysis by Sex and Age
 
-This assignment explores population data by sex and single year of age using official census statistics. It demonstrates how to clean, transform, and analyse demographic data using Python and pandas, with a strong emphasis on clarity, reproducibility, and educational structure.
+For this assignment, I worked with official census statistics to explore population data broken down by sex and single year of age. The main goal was to clean, transform, and analyse demographic data using Python and pandas, while keeping the notebook clear, reproducible, and easy to follow.
 
----
 
 ## Task A — Sex-Based Age Analysis (70%)
 
-Write a Jupyter notebook that analyses the differences between the sexes by age in Ireland:
+The first part of the task focused on looking at differences between males and females across age groups in Ireland. Specifically, I had to:
 
-- Calculate the **weighted mean age** for each sex
-- Measure the **difference between sexes** across single-year age groups
+- Calculate the weighted mean age for each sex.
+- Measure the difference between sexes across single-year age groups.
 
-This part focuses solely on national-level data and does **not** require regional analysis.
-
----
+This analysis was done at the national level only, so regional breakdowns were not required.
 
 ## 📚 Learning Objectives
 
-By completing this task, students will:
+From this task, I was expected to:
 
-- Load and clean raw CSV data using pandas
-- Pivot data to compare population counts by sex across age groups
-- Compute weighted statistics: mean, median, and standard deviation
-- Visualise distributions using parametric bell curves and kernel density estimation (KDE)
-- Export tidy, analysis-ready tables for further use or review
-
----
+- Learn how to load and clean raw CSV data using pandas.
+- Pivot the dataset to compare population counts by sex across age groups.
+- Compute weighted statistics such as mean, median, and standard deviation.
+- Visualise distributions using parametric bell curves and kernel density estimation (KDE).
+- Export tidy, analysis-ready tables that could be reused or reviewed later.
 
 ## 🧰 Notebook Structure and Helper Functions
 
-The notebook follows a modular design with reusable helper blocks defined at the top. These support clarity, maintainability, and pedagogical transparency. Each helper is documented inline and used throughout the analysis cells.
+To keep the notebook organised, I used a modular design with helper functions defined at the top. These helpers made the analysis easier to maintain and ensured the work was transparent and educational. Each helper was documented inline and reused throughout the notebook.
 
 ### 🔧 Key Helpers
 
@@ -382,27 +400,24 @@ The notebook follows a modular design with reusable helper blocks defined at the
 
 ### 🧠 Why This Structure?
 
-Separating helper functions from analysis cells makes the notebook:
+For this assignment, I separated the helper functions from the main analysis cells. Doing this made the notebook much easier to maintain and extend, and it also kept the workflow clear for anyone reviewing the work. By having the helpers defined at the top, I could reuse them across multiple tasks or datasets without rewriting code.
 
-- Easier to maintain and extend
-- More readable for students and reviewers
-- Reusable across multiple assignments or datasets
+Each analysis cell then called these helpers to perform specific tasks — for example, comparing sexes in an age band, plotting distributions, or identifying differences. This modular approach kept the notebook tidy and pedagogically clear, which was important for both learning and reproducibility.
 
-Each analysis cell calls these helpers to perform specific tasks (e.g. comparing sexes in an age band, plotting distributions, identifying regional differences), keeping the workflow modular and pedagogically clear.
 
 #### 📖 References:  
-- [Real Python – Python Modules and Packages](https://realpython.com/python-modules-packages/)  
-- [GeeksforGeeks – Python Helper Functions](https://www.geeksforgeeks.org/python-helper-functions/)  
-- [Wikipedia – DRY Principle](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)
+- [Real Python – Python Modules and Packages](https://realpython.com/python-modules-packages/) helped me understand how to structure reusable code blocks.
+- [GeeksforGeeks – Python Helper Functions](https://www.geeksforgeeks.org/python-helper-functions/) gave practical examples of how helper functions improve readability.
+- [Wikipedia – DRY Principle](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) reinforced the importance of avoiding repetition and keeping code concise.
 
 ---
 
 ## 📁 Source File
 
-This notebook is located at:  
+The notebook for this assignment is saved as: 
 [`assignment05-population.ipynb`](https://github.com/ECronin1973/programming-for-data-analytics/blob/main/assignment05-population.ipynb)
 
----
+
 
 ## How to run the notebook
 
@@ -413,55 +428,49 @@ This notebook is located at:
 jupyter notebook assignment05-population.ipynb
 ```
 
----
+
 ## 🧹 Data Cleaning Steps
 
-The raw dataset is cleaned by:
+Before analysis, the raw dataset was cleaned by:
 
-- Dropping metadata columns not required for analysis
-- Filtering to retain only 'Male' and 'Female' rows
-- Standardising age labels (e.g. converting 'Under 1 year' to `0`)
-- Removing non-numeric age entries and converting types
-- Ensuring all population counts are stored as integers
-
----
+- Dropping metadata columns that weren’t needed.
+- Filtering to keep only rows labelled ‘Male’ and ‘Female’.
+- Standardising age labels (e.g. converting “Under 1 year” to 0).
+- Removing non-numeric age entries and converting types.
+- Ensuring all population counts were stored as integers.
 
 ## 📈 Pivot Table Creation
 
-A pivot table is constructed with:
+Once cleaned, the data was reshaped into a pivot table with:
 
 - **Rows**: Single year of age  
 - **Columns**: Sex ('Male', 'Female')  
 - **Values**: Population counts
 
-This structure enables direct comparison of male and female population counts across age groups.
+This made it easy to directly compare male and female population counts across age groups.
 
----
 
 ## 🧮 Statistical Analysis
 
-The notebook computes the following per sex:
+Finally, the notebook computed several weighted statistics for each sex:
 
 - **Weighted Mean Age** — average age weighted by population count  
 - **Weighted Standard Deviation** — spread of ages around the weighted mean  
 - **Weighted Median Age** — age at which half the population is younger and half is older
 
-Each statistic is saved to CSV for reproducibility and downstream use.
+Each of these statistics was saved to CSV files to ensure reproducibility and allow for downstream use.
 
----
 
 ## 🔍 KDE and Bell Curve Visualisation
 
-Two visualisations are provided:
+As part of the analysis, I produced two different visualisations to show how age is distributed by sex in Ireland. The first was a parametric bell curve, which uses the weighted mean and standard deviation to approximate a normal distribution. The second was a kernel density estimate (KDE), which is based directly on the actual age counts and doesn’t assume the data follows a normal shape.
 
-- **Parametric Bell Curve** — approximates a normal distribution using weighted mean and standard deviation  
-- **Kernel Density Estimate (KDE)** — smoothed density based on actual age counts, without assuming normality
+Both plots were saved as PNG files and designed to be clear and accessible for reporting.
 
-Plots are saved as PNG files and designed for clarity and accessibility.
 
 ### 📸 Visual Outputs
 
-These are the two main plot outputs produced by the notebook (saved to the root `plots/` folder):
+The notebook generated two main plots, saved in the root plots/ folder:
 
 ![Parametric bell curves (approx normal) - assignment 05](plots/assignment05-age-bell-curve.png)
   
@@ -470,22 +479,19 @@ _Parametric bell curves generated using the weighted mean (μ) and weighted stan
 ![Weighted KDE of age by sex - assignment 05](plots/assignment05-age-kde.png)  
 _Weighted KDE computed from the single-year age counts; this non-parametric curve reveals the actual shape of the distribution (skew, modes, tails) that a simple bell curve may miss._
 
-**Interpretation**: Use the KDE as the primary visual check for the real distribution shape. Use the bell-curve as a compact parametric summary. If the KDE shows strong skew or multiple peaks, prefer the KDE for interpretation and reporting.
+**Interpretation**: The KDE should be used as the primary visual check because it reflects the real distribution shape. The bell curve is useful as a concise parametric summary, but if the KDE shows strong skew or multiple peaks, then the KDE gives a more accurate picture for interpretation and reporting.
 
----
 
 ## 📊 Age Difference Analysis
 
-The notebook also computes:
+Another part of the notebook looked at the differences between males and females across single-year age groups. For each age, I calculated the absolute difference in population count and identified which sex had the greater number (‘Male’, ‘Female’, or ‘Equal’).
 
-- Absolute difference in population count between sexes at each age  
-- Which sex has a greater count at each age ('Male', 'Female', or 'Equal')
+The results were exported to assignment05_age_difference_by_sex.csv, which makes it easy to use the data for further visualisation or reporting.
 
-This is exported to `assignment05_age_difference_by_sex.csv` and supports further visualisation or reporting.
-
----
 
 ## 📦 Output Files
+
+The notebook produced several outputs, both CSV tables and plots, to keep the analysis reproducible and clear:
 
 | Filename                                      | Description                                      |
 |----------------------------------------------|--------------------------------------------------|
@@ -497,11 +503,10 @@ This is exported to `assignment05_age_difference_by_sex.csv` and supports furthe
 | `assignment05_age_difference_by_sex.csv`     | Age-wise population difference by sex           |
 | `assignment05-age-mean-difference-bar.png`   | Bar chart of weighted mean age by sex           |
 
----
 
 ## 📚 Dependencies
 
-This notebook requires the following Python libraries:
+To run the notebook successfully, I needed the following Python libraries:
 
 - `pandas` — for data manipulation  
 - `numpy` — for numerical operations  
@@ -509,21 +514,22 @@ This notebook requires the following Python libraries:
 - `seaborn` — for KDE visualisation  
 - Python 3.x environment
 
----
 
 ## 🧠 Pedagogical Design
 
-The notebook is designed to be:
+The notebook was deliberately designed to be:
 
-- **User-friendly** — clear comments, modular structure, and reproducible outputs  
-- **Reviewer-friendly** — explicit validation steps, consistent formatting, and saved artefacts  
-- **Future-proof** — reusable code blocks adaptable to other datasets or assignments
+- User-friendly — with clear comments, a modular structure, and reproducible outputs.
+- Reviewer-friendly — including validation steps, consistent formatting, and saved artefacts for transparency.
+- Future-proof — with reusable code blocks that can be adapted to other datasets or assignments.
 
 ---
 
 ## Task B -  Age-Band Sex Comparison (20%)
 
-This section compares the population of males and females within a selected age band (e.g. ages 30–40) and produces both a visual and tabular summary.
+This part of the assignment looked at how males and females compare within a chosen age band. I set the target age to 35, which meant analysing the band from ages 30–40. The notebook pulled out the relevant rows, added up the totals for each sex, and then showed the difference both in numbers and percentages.
+
+The results were displayed in a table and a bar chart, making it easy to see which sex had the majority at each age. In this band, females consistently outnumbered males, with a total difference of 1,905 people, which works out to about 3.82% of the population in that group
 
 ### ⚙️ What This Cell Does
 
@@ -576,7 +582,12 @@ In the age band 30–40, females outnumber males by **1,905 people**, which is a
 
 ## Task C - Regional Sex Difference Analysis (10%)
 
-This section identifies which **Administrative County** in Ireland has the **largest population difference between sexes** within the selected age band.
+The final part of the assignment extended the analysis to counties in Ireland. Here, I wanted to see which county had the biggest difference between males and females in the same age band (30–40).
+
+The notebook grouped the data by county, calculated the differences, and then plotted the top 10 counties with the largest gaps. Fingal County Council came out on top, with 2,942 more females than males, which is about 5.33% of the population in that band.
+
+The bar chart used colour coding to show whether the majority was male or female, making the differences easy to interpret at a glance.
+
 
 ### ⚙️ What This Cell Does
 
@@ -606,9 +617,7 @@ This section identifies which **Administrative County** in Ireland has the **lar
 
 ### 🧠 Interpretation
 
-📍 **County with largest difference**: Fingal County Council  
-🧮 Male = 26,150, Female = 29,092, Diff (M−F) = −2,942, % of band = **5.33%**  
-🧠 Fingal has the largest gap because it has **2,942 more females than males** in the selected age band.
+In this age band, Fingal County Council had the largest difference, with 2,942 more females than males. This represents about 5.33% of the population in that group.
 
 🎨 **Legend**  
 - 🔵 Blue = Male majority  
@@ -620,21 +629,21 @@ Each bar represents the absolute population difference in the selected age band.
 
 - ![assignment05-age-group-35-region-sex-diff.png](plots/assignment05-age-group-35-region-sex-diff.png) — bar chart
 
----
+
 
 ## 🧠 Personal Reflection
 
-TAssignment 05 was definitely the most challenging one so far. I had to go back through some of the modules I’d already completed earlier in the course to help me figure out how to apply weighted statistics and create KDE visualisations properly. I also leaned on the course notebooks and documentation quite a bit to get things working.
+Assignment 05 was definitely the toughest one so far. I had to revisit earlier modules to remind myself how to apply weighted statistics and create KDE visualisations properly. I leaned heavily on the course notebooks and documentation to get everything working.
 
-I followed a modular approach throughout — selecting the data, aggregating it, visualising the results, and then interpreting what it all meant. Part C was tricky because it involved regional data, so I created a new dataset that broke things down by county to make it more manageable. I also spent time tidying up and simplifying the code cells so the notebook would be easier to follow and more readable overall.
+I kept the notebook modular throughout — selecting the data, aggregating it, visualising the results, and then interpreting what it all meant. Part C was particularly challenging because of the regional breakdowns, so I created a new dataset by county to make the analysis more manageable. I also tidied up the code cells so the notebook would be easier to follow and more readable overall.
 
----
+
 
 ## 🙏 Acknowledgements
 
 This work was partially supported by **GitHub Copilot**, an AI-powered code completion tool developed by GitHub, which assisted in generating parts of the code.
 
----
+
 
 ## 📚 References and Learning Resources
 
@@ -650,7 +659,6 @@ The following resources were consulted and integrated throughout the notebook to
   [Assignment Instructions](https://vlegalwaymayo.atu.ie/mod/page/view.php?id=1362128)  
   Defined the three-part structure and shaped the notebook’s modular design.
 
----
 
 ### 🐍 Python Libraries and Documentation
 
@@ -660,7 +668,6 @@ The following resources were consulted and integrated throughout the notebook to
 - [`seaborn`](https://seaborn.pydata.org/generated/seaborn.kdeplot.html) — KDE plotting  
 - [`matplotlib`](https://matplotlib.org/stable/contents.html) — bar charts and legends
 
----
 
 ### 📊 Statistical Concepts and Visualisation
 
@@ -669,13 +676,13 @@ The following resources were consulted and integrated throughout the notebook to
 - [Weighted Mean & Variance (Wikipedia)](https://en.wikipedia.org/wiki/Weighted_arithmetic_mean)  
 - [Weighted Median (Real Statistics)](https://real-statistics.com/descriptive-statistics/measures-central-tendency/weighted-mean-and-median/)
 
----
 
 ### 📈 Data Source and Teaching Aids
 
-- [CSO FY006A – Population Dataset](https://ws.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/FY006A/CSV/1.0/en)  
 ![XKCD Comic](https://imgs.xkcd.com/comics/normal_distribution_2x.png)
 *This comic image humorously illustrates the concept of a normal distribution, highlighting the common misconception that data should always fit a perfect bell curve. In reality, many datasets exhibit variations and deviations from this idealized shape, reminding us that statistical distributions can be complex and diverse.*
+
+- [CSO FY006A – Population Dataset](https://ws.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/FY006A/CSV/1.0/en)  
 - [GitHub Copilot](https://github.com/features/copilot) — used during development
 
 
@@ -687,31 +694,21 @@ The following resources were consulted and integrated throughout the notebook to
 
 🗂️ Overview
 
-This assignment investigates climate data from Knock Airport during Summer 2025, with a particular focus on the heatwave period from 10th to 16th July 2025 — the hottest week of the season and a record-breaking event for Ireland.
+For this assignment, I analysed climate data from Knock Airport during Summer 2025, with a particular focus on the heatwave between 10–16 July — the hottest week of the season and a record-breaking event for Ireland.
 
-The analysis is structured around two core themes:
+The analysis was built around two main themes:
 
-- **Temperature trends:** Daily and monthly summaries, seasonal comparisons
+Temperature trends — daily and monthly summaries, seasonal comparisons.
 
-- **Windspeed behaviour:** Hourly patterns, rolling averages, daily peaks
+Windspeed behaviour — hourly patterns, rolling averages, and daily peaks.
 
-Due to the size of the dataset, the data was segmented by season to simplify processing. However, the primary analytical window is the week of 10–16 July, chosen because it coincides with:
-
-- Ireland’s highest recorded temperatures of the year
-
-- Knock Airport’s highest July temperature on record (28.7°C)
-
-- A short-lived heatwave driven by the Azores High
-
-This focused timeframe allows for detailed exploration of weather extremes and their implications for aviation, energy, and public safety.
+Because the dataset was quite large, I segmented the data by season to make it easier to process. The week of 10–16 July was chosen as the main analytical window since it coincided with Ireland’s highest recorded temperatures of the year, Knock Airport’s highest July temperature on record (28.7°C), and a short-lived heatwave driven by the Azores High. This gave me the chance to explore weather extremes and think about their implications for aviation, energy, and public safety.
 
 #### 📌 Climate Context
 
-“Ireland is experiencing the effects of climate change, and our climate projections show that our climate is going to become warmer.” — Met Éireann climatologist Paul Moore
+Met Éireann climatologist Paul Moore noted: “Ireland is experiencing the effects of climate change, and our climate projections show that our climate is going to become warmer.”
 
-According to The Irish Times, Summer 2025 was Ireland’s warmest season since records began in 1900, with sustained heat and elevated nighttime temperatures. The week of July 10–16 saw peak temperatures of 31°C, marking a national heatwave.
-
-Knock Airport was among the affected stations, recording 28.7°C, its highest July temperature on record.
+According to The Irish Times, Summer 2025 was Ireland’s warmest season since records began in 1900, with sustained heat and unusually high nighttime temperatures. The week of July 10–16 saw peaks of 31°C, marking a national heatwave. Knock Airport was one of the affected stations, recording 28.7°C — its highest July temperature on record.
 
 #### Sources:
 
@@ -719,11 +716,11 @@ Knock Airport was among the affected stations, recording 28.7°C, its highest Ju
 
 [BreakingNews.ie – July 2025 heatwave summary](https://www.breakingnews.ie/ireland/july-2025-heatwave-summary)
 
----
+
 
 ## 📁 Source File
 
-This notebook is located at:  
+The notebook for this assignment is saved as: 
 [`assignment06-weather.ipynb`](https://github.com/ECronin1973/programming-for-data-analytics/blob/main/assignment06-weather.ipynb)
 
 ## How to run the notebook
@@ -740,34 +737,21 @@ jupyter notebook assignment06-weather.ipynb
 
 ## Temperature Analysis (60% of marks)
 
-### ✅ What Was Done
-- Cleaned and parsed temperature data from Knock Airport
-- Calculated mean temperature per day and per month
-- Visualised daily and monthly temperature trends
-- Created an interactive widget for hourly temperature exploration
+The first part of the assignment focused on temperature data from Knock Airport. I cleaned the raw dataset and extracted hourly values to analyse how temperatures changed during the July heatwave. This gave me the chance to look at fluctuations across the day as well as broader daily and monthly averages.
 
----
+### 📊 Hourly Temperature Data
+I began by examining hourly temperature readings for each day of the heatwave (10–16 July). This helped me see how temperatures rose and fell throughout the day.
 
-### 📊 The Temperature Data
 **Files Generated:**
-- `assignments/data/assignment06_climate_data.csv` — Raw climate data
-- `assignments/data/assignment06_temperature_range.csv` — Cleaned temperature data  
-
-**Plots Created:**
-Temperature Data Plot
-![Hourly Temperature](plots/assignment06_hourly_temperature_pivot_table_2025-07-10_to_2025-07-16.png)
-
-### 📊 Hourly Temperature Widget - Interactive Daily Temperature Plot with Hourly Ledger
-An interactive widget was created to visualise hourly temperature data for each day from 10th to 16th July 2025. This allows users to explore temperature fluctuations throughout the day.  This widget provides a dynamic way to analyse temperature trends on an hourly basis but is not visible on Github, it must be downloaded and run locally to view the interactivity.  A static plot option is in notebook where a date can be manually selected to view the hourly temperature for that day and a plot generated.
-
-**Files Used:**
 - `assignments/data/assignment06_temperature_range.csv` — Hourly temperature data  
 
 **Plots Created:** (Plot Example for 10th July 2025, one created for each day)
 ![Hourly Temperature 10.07.2025](plots/assignment06_hourly_temperature_2025-07-10.png)
----
+
 
 ### 📊 The Mean Temperature Each Day
+Next, I calculated the mean temperature for each day in Summer 2025. This highlighted how the heatwave compared to surrounding days and showed the daily progression of average temperatures.
+
 **Files Generated:**
 - `assignments/data/assignment06_climate_data_mean_daily_summer_2025.csv` — Daily mean temperatures  
 
@@ -778,6 +762,8 @@ Daily mean temperature plot
 ---
 
 ### 📊 The Mean Temperature Each Month
+Finally, I aggregated the data to monthly averages. This gave a broader view of how July compared to the rest of the summer season and confirmed that July was the standout month for extreme heat.
+
 **Files Generated:**
 - `assignments/data/assignment06_monthly_mean_by_season_2025.csv` — Monthly mean temperatures  
 
@@ -788,26 +774,21 @@ Monthly mean temperature plot
 ---
 
 ## Windspeed Analysis (40% of marks)
-
-### ✅ What Was Done
-- Cleaned windspeed data and handled missing values
-- Calculated 24-hour rolling average windspeed
-- Identified daily max windspeed and time of occurrence
-- Computed monthly mean of daily max windspeed values
-- Visualised hourly, daily, and monthly windspeed trends
-
----
+The second part of the assignment focused on windspeed data. I cleaned the dataset, handled missing values, and then explored different ways of summarising and visualising windspeed behaviour during the July heatwave.
 
 ### 📊 The Windspeed
+I first looked at the cleaned hourly windspeed data to get a sense of overall patterns during the week of 10–16 July 2025.
+
 **Files Generated:**
 - `assignments/data/assignment06_windspeed_cleaned_summer_2025.csv` — Cleaned windspeed data  
 
 **Plots Created:**
 ![Cleaned windspeed Plot](plots/assignment06_windspeed_hourly_2025-07-10_to_2025-07-16.png)
 
----
 
 ### 📊 The Rolling 24-Hour Average Windspeed
+To smooth out short-term fluctuations, I calculated a 24-hour rolling average. This helped highlight longer-term trends across the heatwave period.
+
 **Files Generated:**
 - `assignments/data/assignment06_windspeed_rolling_24hr_2025-07-10_to_2025-07-16.csv` — 24-hour rolling average  
 
@@ -815,9 +796,9 @@ Monthly mean temperature plot
 Rolling average windspeed plot
 ![Rolling Average Windspeed Plot](plots/assignment06_windspeed_rolling_24hr_2025-07-10_to_2025-07-16.png) 
 
----
-
 ### 📊 The Maximum Windspeed Each Day and Time
+I then identified the maximum windspeed for each day and recorded the time it occurred. This highlighted extreme conditions and when they happened.
+
 **Files Generated:**
 - `assignments/data/assignment06_daily_max_windspeed_with_time_10_16_July_2025.csv` — Daily max windspeed with time  
 
@@ -825,9 +806,9 @@ Rolling average windspeed plot
 Daily max windspeed with time
 ![Daily max windspeed with time plot](plots/assignment06_daily_max_windspeed_line_10_16_July_2025.png)
 
----
-
 ### 📊 The Mean of the Maximum Windspeed Each Month
+Finally, I aggregated the daily maximum values to monthly averages. This gave a broader view of how July compared to the rest of the summer.
+
 **Files Generated:**
 - `assignments/data/assignment06_daily_max_windspeed_July_2025.csv` — Daily max windspeed for July
 - `assignments/data/assignment06_monthly_mean_of_daily_max_windspeed_July_2025.csv` — Monthly mean of daily max wind
@@ -836,19 +817,13 @@ Daily max windspeed with time
 Monthly mean of daily max windspeed plot
 ![Monthly Mean of Daily Max Windspeed Plot](plots/assignment06_daily_max_windspeed_with_monthly_mean_July_2025.png)
 
----
-
 ### 🧠 Personal Reflection
 
-This assignment was both challenging and rewarding. I got to use the full data science process — starting with collecting raw data, then cleaning it, organising it, and creating visualisations — all based on real climate data from Knock Airport. I focused on the heatwave that happened between 10–16 July 2025, which meant I had to carefully filter the data and understand it in context.
+This assignment was both challenging and rewarding. I had to apply the full data science process — collecting raw data, cleaning it, organising it, and then creating visualisations — all based on real climate data. Focusing on the July heatwave meant I had to carefully filter the dataset and interpret the findings in context.
 
-From my last assignment, I learned how to use helper functions to break the code into smaller parts. This made it easier to read and manage. I used that approach again here, and it helped me deal with the different steps needed to transform and visualise the data.
+From my previous assignment, I learned how useful helper functions are for breaking code into smaller parts. I used that approach again here, which made the notebook easier to follow. I revisited course materials on time series analysis, rolling averages, and seasonal patterns, and worked on improving the notebook layout so each task was clearly explained and backed up with saved outputs.
 
-I went back over the course materials to refresh my knowledge of time series analysis, rolling averages, and seasonal patterns. I also improved the layout of my notebook to match the assessment goals, making sure each task was clearly explained, completed, and backed up with saved results. I paid special attention to missing windspeed data and worked on creating clear plots that showed important trends and extreme values.
-
-I used Copilot to help with some of the coding, which gave me a good starting point. I spent a lot of time adjusting the code to make sure it was accurate and met all the assignment requirements.
-
----
+Handling missing windspeed data was a particular challenge, but I managed to produce clear plots that highlighted important trends and extreme values. I also used Copilot to help with some of the coding, which gave me a good starting point, though I spent time refining the code to make sure it was accurate and met all the assignment requirements.
 
 ### 📚 Resources and Learning Materials
 
