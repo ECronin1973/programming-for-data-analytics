@@ -90,12 +90,12 @@ From Part A, I was expected to:
 - Focus on filtering results so they only show Northern Ireland’s holidays.
 - Present the output neatly in the terminal so it’s easy to read.
 
-### 📁 Source File
+## 📁 Source File
 
 The script for Part A is saved in the root folder of the repo as: 
 `assignment02-bankholidays.py`
 
-### ▶️ Run the program from the root directory using Python:
+## ▶️ Run the program from the root directory using Python:
 
 To run the program, I just used:
 ```python
@@ -160,7 +160,7 @@ From Part B, I learned how to:
 The script for Part B is also in the root folder and is saved as:
 `assignment02-bankholidays-ni.py`
 
-#### Run the program from the root directory using Python:
+## Run the program from the root directory using Python:
 
 To run the program, I used:
 ```python
@@ -183,7 +183,7 @@ Example of Unique Bank Holidays in Northern Ireland:
 2028-07-12 - Battle of the Boyne (Orangemen’s Day)
 ```
 
-### Resources for Completion of Assignment 02
+## Resources for Completion of Assignment 02
 
 To get through both parts of the assignment, I leaned on a mix of academic materials from ATU and online tutorials. These helped me understand JSON structures, how APIs work, and how to compare datasets effectively.
 
@@ -240,11 +240,11 @@ Overall, this assignment gave me a solid foundation in working with real-world d
 
 The task this time was to work with a dataset of 1,000 individuals and focus on their email addresses. The notebook had to pull out the domain part of each email, count how often each one appeared, and then show the results in a pie chart. Since there were only three unique domains in the dataset, the chart displayed all of them directly without needing to group or simplify the data.
 
-### 📍 Task: Visualise Email Domains
+## 📍 Task: Visualise Email Domains
 
 The notebook was designed to load a CSV file, extract the domain portion of each email address, calculate how frequently each domain appeared, and then generate a pie chart to display the distribution. Because the dataset only contained three unique domains, the chart showed them all clearly without any further grouping.
 
-### 🎯 Learning Objectives
+## 🎯 Learning Objectives
 
 From this assignment, I was expected to:
 - Learn how to load and inspect structured CSV data using pandas.
@@ -261,7 +261,7 @@ From this assignment, I was expected to:
 | `assignments/assignment03-pie.ipynb` | Main notebook for Assignment 03. Loads the dataset, extracts email domains, counts them, and creates a pie chart. |
 | `assignments/data/assignment03_people.csv` | Dataset of 1,000 individuals. The `Email` column is used to extract domain names. |
 
-### ▶️ Run the notebook
+## ▶️ Run the notebook
 
 To run the notebook from the root directory, I used:
 ```bash
@@ -288,7 +288,7 @@ The pie chart below visualises the distribution of all email domain types found 
 
 ![Pie chart of email domains](plots/assignment-03-pie-chart.jpg)
 
-### 📚 Resources for Completion of Assignment 03
+## 📚 Resources for Completion of Assignment 03
 
 To complete this assignment, I relied on academic materials, technical documentation, and online tutorials. These helped me understand data extraction, string manipulation, and visualisation techniques.
 
@@ -396,7 +396,7 @@ To keep the notebook organised, I used a modular design with helper functions de
   Construct a tidy CSV showing population differences by age and sex, including county breakdowns.  
   → [`pandas.DataFrame.to_csv`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_csv.html)
 
-### 🧠 Why This Structure?
+## 🧠 Why This Structure?
 
 For this assignment, I separated the helper functions from the main analysis cells. Doing this made the notebook much easier to maintain and extend, and it also kept the workflow clear for anyone reviewing the work. By having the helpers defined at the top, I could reuse them across multiple tasks or datasets without rewriting code.
 
@@ -672,7 +672,7 @@ The following resources were consulted and integrated throughout the notebook to
 
 ## 📘 Assignment 06: Climate Data Analysis – Summer 2025, Knock Airport
 
-### 🗂️ Overview
+## 🗂️ Overview
 
 For this assignment, I analysed climate data from Knock Airport during Summer 2025, with a particular focus on the heatwave between 10–16 July — the hottest week of the season and a record-breaking event for Ireland.
 
@@ -683,7 +683,7 @@ The analysis was built around two main themes:
 
 Because the dataset was quite large, I segmented the data by season to make it easier to process. The week of 10–16 July was chosen as the main analytical window since it coincided with Ireland’s highest recorded temperatures of the year, Knock Airport’s highest July temperature on record (28.7°C), and a short-lived heatwave driven by the Azores High. This gave me the chance to explore weather extremes and think about their implications for aviation, energy, and public safety.
 
-#### 📌 Climate Context
+## 📌 Climate Context
 
 Met Éireann climatologist Paul Moore noted: “Ireland is experiencing the effects of climate change, and our climate projections show that our climate is going to become warmer.”
 
@@ -794,7 +794,7 @@ Finally, I aggregated the daily maximum values to monthly averages. This gave a 
 Monthly mean of daily max windspeed plot
 ![Monthly Mean of Daily Max Windspeed Plot](plots/assignment06_daily_max_windspeed_with_monthly_mean_July_2025.png)
 
-### 🧠 Personal Reflection
+## 🧠 Personal Reflection
 
 This assignment was both challenging and rewarding. I had to apply the full data science process — collecting raw data, cleaning it, organising it, and then creating visualisations — all based on real climate data. Focusing on the July heatwave meant I had to carefully filter the dataset and interpret the findings in context.
 
@@ -802,7 +802,7 @@ From my previous assignment, I learned how useful helper functions are for break
 
 Handling missing windspeed data was a particular challenge, but I managed to produce clear plots that highlighted important trends and extreme values. I also used Copilot to help with some of the coding, which gave me a good starting point, though I spent time refining the code to make sure it was accurate and met all the assignment requirements.
 
-### 📚 Resources and Learning Materials
+## 📚 Resources and Learning Materials
 
 This section lists the key resources consulted and integrated throughout the assignment to support implementation, conceptual understanding, and reviewer transparency.
 
