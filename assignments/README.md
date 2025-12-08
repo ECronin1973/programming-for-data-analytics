@@ -73,11 +73,11 @@ python <input script file name>
 
 ---
 
-## 🏛️ Assignment 02 – Bank Holidays
+## Assignment 02 – Bank Holidays
 
 For this assignment, I worked with two Python scripts that connect to the UK Government’s public API. The aim was to pull down and analyse bank holiday data, focusing specifically on Northern Ireland.
 
-### 📍 Part A: Display All Bank Holidays
+## Part A: Display All Bank Holidays
 
 The first part of the task was fairly straightforward: I had to write a Python script that talks to the UK Government’s bank holidays API and prints out all the holidays for Northern Ireland. Interestingly, some of these dates overlap with holidays in England, Wales, or Scotland, so it was important to recognise that the dataset isn’t unique to one region.
 
@@ -142,7 +142,7 @@ Bank Holidays in Northern Ireland:
 
 *This gave me a full list of holidays, including ones that are shared with other UK regions.*
 
-## 📍 Part B: Display Unique Bank Holidays in Northern Ireland
+## Part B: Display Unique Bank Holidays in Northern Ireland
 
 Part B built directly on Part A. Instead of just listing all holidays, the challenge was to figure out which ones are unique to Northern Ireland. That meant comparing the Northern Ireland dataset against England, Wales, and Scotland, and then filtering out any dates that were shared. This part was more about applying logic and comparison rather than just displaying data.
 
@@ -183,7 +183,7 @@ Example of Unique Bank Holidays in Northern Ireland:
 2028-07-12 - Battle of the Boyne (Orangemen’s Day)
 ```
 
-### 📚 Resources for Completion of Assignment 02
+### Resources for Completion of Assignment 02
 
 To get through both parts of the assignment, I leaned on a mix of academic materials from ATU and online tutorials. These helped me understand JSON structures, how APIs work, and how to compare datasets effectively.
 
@@ -402,19 +402,15 @@ For this assignment, I separated the helper functions from the main analysis cel
 
 Each analysis cell then called these helpers to perform specific tasks — for example, comparing sexes in an age band, plotting distributions, or identifying differences. This modular approach kept the notebook tidy and pedagogically clear, which was important for both learning and reproducibility.
 
-
 #### 📖 References:  
 - [Real Python – Python Modules and Packages](https://realpython.com/python-modules-packages/) helped me understand how to structure reusable code blocks.
 - [GeeksforGeeks – Python Helper Functions](https://www.geeksforgeeks.org/python-helper-functions/) gave practical examples of how helper functions improve readability.
 - [Wikipedia – DRY Principle](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) reinforced the importance of avoiding repetition and keeping code concise.
 
-
 ## 📁 Source File
 
 The notebook for this assignment is saved as: 
 [`assignment05-population.ipynb`](https://github.com/ECronin1973/programming-for-data-analytics/blob/main/assignment05-population.ipynb)
-
-
 
 ## How to run the notebook
 
@@ -424,7 +420,6 @@ The notebook for this assignment is saved as:
 ```bash
 jupyter notebook assignment05-population.ipynb
 ```
-
 
 ## 🧹 Data Cleaning Steps
 
@@ -446,7 +441,6 @@ Once cleaned, the data was reshaped into a pivot table with:
 
 This made it easy to directly compare male and female population counts across age groups.
 
-
 ## 🧮 Statistical Analysis
 
 Finally, the notebook computed several weighted statistics for each sex:
@@ -456,7 +450,6 @@ Finally, the notebook computed several weighted statistics for each sex:
 - **Weighted Median Age** — age at which half the population is younger and half is older
 
 Each of these statistics was saved to CSV files to ensure reproducibility and allow for downstream use.
-
 
 ## 🔍 KDE and Bell Curve Visualisation
 
@@ -501,7 +494,6 @@ The notebook produced several outputs, both CSV tables and plots, to keep the an
 | `assignment05_age_difference_by_sex.csv`     | Age-wise population difference by sex           |
 | `assignment05-age-mean-difference-bar.png`   | Bar chart of weighted mean age by sex           |
 
-
 ## 📚 Dependencies
 
 To run the notebook successfully, I needed the following Python libraries:
@@ -511,7 +503,6 @@ To run the notebook successfully, I needed the following Python libraries:
 - `matplotlib` — for plotting  
 - `seaborn` — for KDE visualisation  
 - Python 3.x environment
-
 
 ## 🧠 Pedagogical Design
 
@@ -627,21 +618,15 @@ Each bar represents the absolute population difference in the selected age band.
 
 - ![assignment05-age-group-35-region-sex-diff.png](plots/assignment05-age-group-35-region-sex-diff.png) — bar chart
 
-
-
 ## 🧠 Personal Reflection
 
 Assignment 05 was definitely the toughest one so far. I had to revisit earlier modules to remind myself how to apply weighted statistics and create KDE visualisations properly. I leaned heavily on the course notebooks and documentation to get everything working.
 
 I kept the notebook modular throughout — selecting the data, aggregating it, visualising the results, and then interpreting what it all meant. Part C was particularly challenging because of the regional breakdowns, so I created a new dataset by county to make the analysis more manageable. I also tidied up the code cells so the notebook would be easier to follow and more readable overall.
 
-
-
 ## 🙏 Acknowledgements
 
 This work was partially supported by **GitHub Copilot**, an AI-powered code completion tool developed by GitHub, which assisted in generating parts of the code.
-
-
 
 ## 📚 References and Learning Resources
 
@@ -657,7 +642,6 @@ The following resources were consulted and integrated throughout the notebook to
   [Assignment Instructions](https://vlegalwaymayo.atu.ie/mod/page/view.php?id=1362128)  
   Defined the three-part structure and shaped the notebook’s modular design.
 
-
 ### 🐍 Python Libraries and Documentation
 
 - [`pandas`](https://pandas.pydata.org/) — data cleaning, pivoting, and exporting  
@@ -666,14 +650,12 @@ The following resources were consulted and integrated throughout the notebook to
 - [`seaborn`](https://seaborn.pydata.org/generated/seaborn.kdeplot.html) — KDE plotting  
 - [`matplotlib`](https://matplotlib.org/stable/contents.html) — bar charts and legends
 
-
 ### 📊 Statistical Concepts and Visualisation
 
 - [Kernel Density Estimation (Wikipedia)](https://en.wikipedia.org/wiki/Kernel_density_estimation)  
 - [Normal Distribution (Wikipedia)](https://en.wikipedia.org/wiki/Normal_distribution)  
 - [Weighted Mean & Variance (Wikipedia)](https://en.wikipedia.org/wiki/Weighted_arithmetic_mean)  
 - [Weighted Median (Real Statistics)](https://real-statistics.com/descriptive-statistics/measures-central-tendency/weighted-mean-and-median/)
-
 
 ### 📈 Data Source and Teaching Aids
 
@@ -690,15 +672,14 @@ The following resources were consulted and integrated throughout the notebook to
 
 ## 📘 Assignment 06: Climate Data Analysis – Summer 2025, Knock Airport
 
-🗂️ Overview
+### 🗂️ Overview
 
 For this assignment, I analysed climate data from Knock Airport during Summer 2025, with a particular focus on the heatwave between 10–16 July — the hottest week of the season and a record-breaking event for Ireland.
 
 The analysis was built around two main themes:
 
-Temperature trends — daily and monthly summaries, seasonal comparisons.
-
-Windspeed behaviour — hourly patterns, rolling averages, and daily peaks.
+- Temperature trends — daily and monthly summaries, seasonal comparisons.
+- Windspeed behaviour — hourly patterns, rolling averages, and daily peaks.
 
 Because the dataset was quite large, I segmented the data by season to make it easier to process. The week of 10–16 July was chosen as the main analytical window since it coincided with Ireland’s highest recorded temperatures of the year, Knock Airport’s highest July temperature on record (28.7°C), and a short-lived heatwave driven by the Azores High. This gave me the chance to explore weather extremes and think about their implications for aviation, energy, and public safety.
 
@@ -713,7 +694,6 @@ According to The Irish Times, Summer 2025 was Ireland’s warmest season since r
 [Irish Times – Summer of 2025 becomes warmest on record](https://www.irishtimes.com/environment/2025/09/01/summer-of-2025-becomes-warmest-on-record-met-eireann/)
 
 [BreakingNews.ie – July 2025 heatwave summary](https://www.breakingnews.ie/ireland/july-2025-heatwave-summary)
-
 
 
 ## 📁 Source File
