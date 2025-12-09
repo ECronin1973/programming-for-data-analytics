@@ -15,6 +15,12 @@ notebook==7.2.0
 ipython==8.26.0
 jupyterlab==4.2.0    # optional, for modern notebook interface
 
+# Interactivity and rendering
+ipywidgets==8.1.2          # interactive sliders, dropdowns, etc.
+jupyterlab-widgets==3.0.10 # required for ipywidgets in JupyterLab
+widgetsnbextension==4.0.10 # required for ipywidgets in classic Notebook
+jinja2==3.1.4              # templating engine used by Jupyter
+
 # Utility libraries
 python-dateutil==2.9.0.post0   # datetime parsing for time series analysis
-pathlib==1.0.1                 # file path handling
+requests==2.31.0               # HTTP requests for data fetching
