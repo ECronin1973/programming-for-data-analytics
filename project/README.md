@@ -387,8 +387,6 @@ Following the initial inspection, the next stage was to **diagnose and classify 
 This step was not about fixing values yet, but about understanding the *mechanisms of missingness* so that later cleaning decisions could be justified and reproducible.  
 Inspection revealed that missingness patterns differed significantly between weather and flight data, and that these gaps were often tied to operational or environmental context.
 
----
-
 ### Theoretical Background
 Across the literature, missing data is classified into three main types:  
 - **MCAR (Missing Completely at Random):** absence unrelated to any variable, often due to random technical errors.  
@@ -397,15 +395,11 @@ Across the literature, missing data is classified into three main types:
 
 Published strategies emphasise that deletion, naive imputation, and advanced methods all carry trade‑offs. Transparent documentation of these trade‑offs is essential for reproducibility.
 
----
-
 ### Weather Data
 - **Observed issues:** Random gaps in visibility and precipitation readings, malformed datetime entries, and numeric values stored as strings.  
 - **Classification:** Mostly **MCAR**, caused by technical recording errors or sensor dropouts.  
 - **Implication:** These gaps could be treated as noise, but excluding them would slightly reduce sample size.  
 - **Diagnostic insight:** Highlighted the need for safe numeric coercion and robust datetime parsing in later cleaning.
-
----
 
 ### Flight Arrivals
 - **Observed issues:** Missing actual arrival times, especially for flights marked “unknown” or cancelled.  
@@ -413,23 +407,17 @@ Published strategies emphasise that deletion, naive imputation, and advanced met
 - **Implication:** Missingness was not random — it reflected operational realities.  
 - **Diagnostic insight:** Any imputation would risk underestimating true delays, so conservative handling would be required.
 
----
-
 ### Flight Departures
 - **Observed issues:** Similar to arrivals, with gaps in actual departure times and categorical inconsistencies in status fields.  
 - **Classification:** Mostly **MAR**, with some **MNAR** tied to reporting gaps.  
 - **Implication:** Missingness patterns mirrored arrivals, reinforcing the need for schema parity.  
 - **Diagnostic insight:** Flooring and categorical conversion would later be necessary to align departures with arrivals.
 
----
-
 ### Integrated Dataset (Flights + Weather)
 - **Observed issues:** Alignment gaps when merging hourly flight records with weather observations.  
 - **Classification:** A combination of **MCAR** (random weather gaps) and **MAR/MNAR** (systematic flight reporting issues).  
 - **Implication:** Hourly flooring was required to ensure compatibility, though this reduced temporal precision.  
 - **Diagnostic insight:** Sub‑hour disruptions would be masked, but integration demanded a consistent time granularity.
-
----
 
 ### Resources
 - [MCAR vs MAR vs MNAR: Understanding Types of Missing Data](https://www.linkedin.com/pulse/mcar-vs-mar-mnar-why-missing-isnt-all-same-datasets-fahim-ahamed-alxee)  
@@ -471,7 +459,7 @@ Cleaned Data
 
 ---
 
-### 8a Cleaning Steps, Purpose, and Limitations
+### Table showing Cleaning Steps, Purpose, and Limitations
 
 | Step                          | Purpose                                                                 | Limitation / Trade‑off                                                                 |
 |-------------------------------|-------------------------------------------------------------------------|----------------------------------------------------------------------------------------|
@@ -508,8 +496,6 @@ Data types (dtypes) define how values are stored and processed in Python librari
 
 *📑 Lesson learned: dtype inspection had to be integrated into the cleaning pipeline from the start, supported by tools like Data Wrangler for schema previews.*
 
----
-
 ### Common Data Types and Their Applications
 
 | Data Type | Description | Typical Use Cases | Project Application |
@@ -521,9 +507,7 @@ Data types (dtypes) define how values are stored and processed in Python librari
 | **bool** | True/False values. | Flags, binary indicators. | Risk scoring flags (e.g., visibility < 2000m). |
 | **category** | Optimised storage for repeated string values. | Large categorical datasets. | Airline names, flight types, weather event codes. |
 
----
-
-### Published Sources
+### Resources
 - **Pandas Documentation – Missing Data & dtypes**  
   [Pandas User Guide: Missing Data](https://pandas.pydata.org/docs/user_guide/missing_data.html) – explains sentinel values (NaN, None) and dtype handling for consistency.  
 - **NumPy Documentation**  
@@ -545,8 +529,6 @@ By linking inspection, missingness classification, dtype enforcement, and cleani
 A **schema** is a formal blueprint that defines how data is structured — including field names, data types, and relationships between elements.  
 In analytics, schemas ensure consistency, accuracy, and reproducibility by making clear how datasets should be interpreted and integrated.
 
----
-
 ### Purpose in This Project
 - **Schema Documentation (record‑only artefacts):**  
   Raw JSON structures for arrivals and departures were flattened and saved to text files (`arrivals_schema.txt`, `departures_schema.txt`).  
@@ -565,39 +547,21 @@ In analytics, schemas ensure consistency, accuracy, and reproducibility by makin
 - **Reviewer Transparency:**  
   Artefacts document how missingness, dtype handling, and coverage mismatches were resolved, ensuring clarity for assessment.
 
----
 
-### Workflow Role
-- **Weather Data:**  
-  - Schema defined in `weather_cols`.  
-  - Applied immediately after loading the cleaned CSV (`dublin_airport_clean.csv`).  
-  - Ensures only validated weather variables (rain, temp, humidity, visibility, etc.) are retained.  
+## 🔄 Schema Enforcement in Workflow
 
-- **Arrivals Data:**  
-  - Schema defined in `arrivals_cols`.  
-  - Applied directly after concatenating all cleaned arrival batches.  
-  - Captures datetime parsing, imputation of missing actual times, and reconstructed delays.  
-  - Frozen into `df_arrivals_clean` for integration.  
-
-- **Departures Data:**  
-  - Schema defined in `departures_cols`.  
-  - Applied directly after concatenating all cleaned departure batches.  
-  - Mirrors arrivals schema for parity, ensuring consistent handling of categorical fields.  
-  - Frozen into `df_departures_clean` using `reindex` for fault‑tolerant enforcement.  
-
-- **Integrated Dataset:**  
-  - The unified dataset (234,909 records: 113,520 arrivals + 121,389 departures) aligns flights with weather conditions and risk features.  
-  - Supports correlation analysis and modelling of weather impacts on delays.
-
----
+| Dataset | Schema | Application | Purpose |
+|:--------|:-------|:------------|:--------|
+| **🌦️ Weather Data** | `weather_cols` | Applied immediately after loading the cleaned CSV (`dublin_airport_clean.csv`) | Ensures only validated weather variables (rain, temp, humidity, visibility, etc.) are retained |
+| **🛬 Arrivals Data** | `arrivals_cols` | Applied directly after concatenating all cleaned arrival batches | Captures datetime parsing, imputes missing actual times, reconstructs delays, and freezes into `df_arrivals_clean` for integration |
+| **🛫 Departures Data** | `departures_cols` | Applied directly after concatenating all cleaned departure batches | Mirrors arrivals schema for parity, ensures consistent handling of categorical fields, and freezes into `df_departures_clean` using `reindex` for fault‑tolerant enforcement |
+| **🔗 Integrated Dataset** | Unified schema | Combines arrivals (113,520) + departures (121,389) with weather data (total 234,909 records) | Aligns flights with weather conditions and risk features; supports correlation analysis and modelling of weather impacts on delays |
 
 ### Example Artefacts
 - `arrivals_schema.txt` and `departures_schema.txt` — record‑only schema documentation of raw JSON keys.  
 - Code cells defining `weather_cols`, `arrivals_cols`, and `departures_cols` — authoritative schema references applied after cleaning.  
 - Audit outputs (e.g., “Arrivals missing weather match: 14,448”) — transparent record of exclusions during schema enforcement.  
 - `dublin_airport_clean.csv` – cleaned, integrated dataset combining arrivals, departures, weather variables, and derived risk scores.
-
----
 
 ### Resources
 - [Pandas Documentation – `json_normalize`](https://pandas.pydata.org/docs/reference/api/pandas.json_normalize.html)  
@@ -617,52 +581,43 @@ Reviewers can verify structure, dtype handling, and missingness classification d
 
 ---
 
-## 10. Core Functions and Components
+## 🔧 10. Core Functions and Components
 
 The notebook defines several **core functions and reusable components** that structure the workflow.  
 Each plays a specific role in ensuring data quality, reproducibility, and reviewer‑friendly outputs.
 
 ---
 
-### Cleaning Functions
-- **`clean_data` (weather & arrivals)**  
-  - Parses datetime fields and applies seasonal filters.  
-  - Converts numeric values safely and removes noisy indicator columns.  
-  - Provides a consistent cleaning pipeline for both weather and arrivals datasets.  
-  - Handles missing data and schema consistency to keep the workflow transparent.  
+### 🧹 Cleaning Functions
 
-- **`clean_departures`**  
-  - Tailored cleaning function for departure data.  
-  - Reconstructs delay fields, applies hourly flooring, and converts categorical variables.  
-  - Mirrors the arrivals workflow to maintain schema parity.  
-  - Ensures departures data integrates smoothly with arrivals and weather.
+| Function | Role | Key Actions |
+|:---------|:-----|:------------|
+| **`clean_data` (weather & arrivals)** | Provides a consistent cleaning pipeline for weather and arrivals datasets | - Parses datetime fields and applies seasonal filters<br>- Converts numeric values safely<br>- Removes noisy indicator columns<br>- Handles missing data and enforces schema consistency |
+| **`clean_departures`** | Tailored cleaning for departure data, mirroring arrivals workflow | - Reconstructs delay fields<br>- Applies hourly flooring<br>- Converts categorical variables<br>- Ensures departures integrate smoothly with arrivals and weather |
 
 ---
 
-### Visualisation Components
-- **`plot_monthly_wind_roses`**  
-  - Generates polar plots of wind regimes for each month.  
-  - Highlights operational thresholds (≥20/25 knots).  
-  - Provides clear visualisations of directional wind patterns.  
-  - Supports operational context by linking weather conditions to runway usage and planning.
+### 📊 Visualisation Components
+
+| Function | Role | Key Actions |
+|:---------|:-----|:------------|
+| **`plot_monthly_wind_roses`** | Provides clear visualisations of directional wind patterns | - Generates polar plots of wind regimes for each month<br>- Highlights operational thresholds (≥20/25 knots)<br>- Links weather conditions to runway usage and planning |
 
 ---
 
-### Modelling Components
-- **`tune_catboost`**  
-  - Implements a safe manual loop for CatBoost hyperparameter tuning.  
-  - Avoids integration issues with `GridSearchCV` while ensuring reproducibility.  
-  - Selects best models based on R² scores, with safeguards against invalid runs.  
-  - Documents parameter choices and runtime trade‑offs for transparency.
+### 🤖 Modelling Components
+
+| Function | Role | Key Actions |
+|:---------|:-----|:------------|
+| **`tune_catboost`** | Implements safe manual loop for CatBoost hyperparameter tuning | - Avoids integration issues with `GridSearchCV`<br>- Selects best models based on R² scores<br>- Safeguards against invalid runs<br>- Documents parameter choices and runtime trade‑offs |
 
 ---
 
-### Risk Scoring Block
-- **Composite index (Step 10h)**  
-  - Built from adverse‑condition thresholds (e.g., visibility < 2000 m, wind ≥ 25 knots, heavy rain ≥ 25 mm).  
-  - Produces histograms and exceedance tables summarising combined weather hazards.  
-  - Provides operational insight into how multiple adverse conditions interact.  
-  - Strengthens transparency by quantifying risk in a reproducible format.
+### ⚠️ Risk Scoring Block
+
+| Component | Role | Key Actions |
+|:----------|:-----|:------------|
+| **Composite index (Step 10h)** | Quantifies adverse weather conditions in a reproducible format | - Built from thresholds (visibility < 2000 m, wind ≥ 25 knots, heavy rain ≥ 25 mm)<br>- Produces histograms and exceedance tables<br>- Provides operational insight into combined hazards<br>- Strengthens transparency by documenting risk scoring |
 
 ---
 
@@ -670,6 +625,7 @@ Each plays a specific role in ensuring data quality, reproducibility, and review
 These functions and components form the **technical backbone of the project**.  
 They ensure that cleaning, visualisation, modelling, and risk scoring are **modular, reproducible, and transparent**.  
 By centralising definitions inside `project/project.ipynb`, the workflow remains easy to audit, extend, and adapt for future enhancements.
+
 
 ---
 
