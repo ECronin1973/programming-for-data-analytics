@@ -62,21 +62,38 @@ The assignments showcase:
     conda activate programming-for-data-analytics
     ```
 
-3. Open notebooks in Jupyter or VS Code:
+
+3. Check file permissions
+
+```bash
+ls -l
+```
+
+4. Make scripts executable (if needed)
+
+```bash
+chmod +x assignment02-bankholidays.py
+chmod +x assignment02-bankholidays-ni.py
+chmod +x assignments/assignment03-pie.ipynb
+chmod +x assignments/assignment05-population.ipynb
+chmod +x assignments/assignment06-weather.ipynb
+```
+
+5. Open notebooks in Jupyter or VS Code:
     ```bash
     jupyter notebook
    ```
   Then select the relevant .ipynb file.  There are three notebooks available to run assignment03-pie.ipynb, assignment05-population.ipynb and assignment06-weather.ipynb.
 
-4. Run all cells in order to reproduce the analysis and outputs
+6. Run all cells in order to reproduce the analysis and outputs
 
-5. Run assignment02 Scripts directly from the command line where applicable:
+7. Run assignment02 Scripts directly from the command line where applicable:
     ```bash
     python assignment02-bankholidays.py
     python assignment02-bankholidays-ni.py
     ```
 
-6. **Outputs (plots, CSVs)** are automatically saved in the plots/ or data/ subfolders as specified in each assignment.
+8. **Outputs (plots, CSVs)** are automatically saved in the plots/ or data/ subfolders as specified in each assignment.
 
 ---
 
