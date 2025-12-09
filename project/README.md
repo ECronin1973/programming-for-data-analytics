@@ -38,7 +38,19 @@ set AVIATION_EDGE_API_KEY=YOUR_KEY   # Windows
 export AVIATION_EDGE_API_KEY=YOUR_KEY # macOS/Linux
 ```
 
-3. Open `project/project.ipynb` in Jupyter Notebook or JupyterLab.
+3. Check file permissions
+
+```bash
+ls -l
+```
+
+4. Make scripts executable (if needed)
+
+```bash
+chmod +x project.ipynb
+```
+
+5. Open `project/project.ipynb` in Jupyter Notebook or JupyterLab.
 Inside the notebook:
 - Set RUN_DOWNLOAD / RUN_BATCHING flags as required.
 - Execute cells sequentially; outputs and plots are saved automatically to project/plots/.
