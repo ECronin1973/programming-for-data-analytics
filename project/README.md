@@ -151,176 +151,57 @@ The table below maps project outputs to the assessment criteria:
 
 This section outlines the end‑to‑end workflow, from acquiring raw data to modelling and conclusions. Each stage was designed to be reproducible, transparent, and aligned with module requirements.
 
----
+## 📊 Workflow Overview
 
-### 1. Initial Visual Inspection
-- Manually inspected raw flight JSON and weather CSV files.  
-- Identified dtype inconsistencies (e.g., delay minutes stored as strings), null representations (`null`, `"null"`, missing), and noisy indicator columns.  
-- Used **Data Wrangler** to preview schemas, column types, and missingness in a reviewer‑friendly interface.  
+| Step | Title | Key Actions | Reviewer Takeaway |
+|------|-------|-------------|-------------------|
+| 🔍 1 | Initial Visual Inspection | - Inspected raw flight JSON & weather CSV<br>- Identified dtype inconsistencies & nulls<br>- Used **Data Wrangler** for schema preview | Early inspection built transparency and trust, showing raw structure before transformations |
+| 📉 2 | Dataset Missingness Classification | - Classified missingness (MCAR, MAR, MNAR)<br>- Synthesised published strategies<br>- Adopted conservative handling (deletion/flagging) | Missingness was documented and handled transparently, with trade‑offs clearly explained |
+| 🧹 3 | Cleaning Approach | - Corrected typos & normalised formats<br>- Coerced numeric values<br>- Removed duplicates & noisy columns | Cleaning improved quality and usability while maintaining transparency and reproducibility |
+| 📑 4 | Schema and Audit Exports | - Defined authoritative schemas<br>- Applied schemas after cleaning<br>- Exported JSON schemas<br>- Documented audits | Schema enforcement guaranteed consistency; exports provided transparent artefacts |
+| 📦 5 | Flight Batching | - Split JSON files into monthly batches<br>- Audited file sizes for reproducibility | Batching kept the repository lightweight and version‑friendly |
+| 🛬 6 | Arrivals Workflow | - Cleaned/reconstructed arrival delay fields<br>- Applied hourly flooring<br>- Concatenated batches<br>- Enforced schema | Arrivals data was cleaned, schema‑aligned, and standardised for integration |
+| 🛫 7 | Departures Workflow | - Mirrored arrivals workflow<br>- Cleaned/reconstructed departure delay fields<br>- Ensured schema parity | Departures workflow matched arrivals, enabling direct comparison |
+| 🔗 8 | Integration | - Integrated arrivals, departures, weather data hourly<br>- Verified flooring accuracy<br>- Produced unified table | Integration produced a unified, schema‑compliant dataset for correlation and modelling |
+| 📈 9 | Weather Impact Plots | - Generated scatterplots & regression lines<br>- Reported R² values | Visualisations highlighted weather impacts, providing context before correlation analysis |
+| 🔥 10 | Correlation Analysis | - Created heatmaps of correlations<br>- Compared arrivals vs departures<br>- Identified visibility & humidity as dominant predictors | Correlation analysis confirmed visibility and humidity as strongest predictors of delays |
+| 📊 10a–10i | Extended Data Analysis | - Boxplots for outliers<br>- Daily aggregates<br>- Rainfall timeline<br>- Humidity vs visibility scatter<br>- Rolling averages<br>- Wind speed/direction<br>- Integrated weather risk factors<br>- Weather codes frequency analysis (WMO standards) | Extended plots provided categorical context and deeper insights into environmental conditions |
+| 🤖 11 | Modelling | - Baseline Linear Regression<br>- Random Forest (feature importance)<br>- CatBoost (modest gains)<br>- Hyperparameter tuning<br>- Summarised metrics (R², RMSE) | Random Forest outperformed baseline regression; CatBoost added modest improvements |
+| 📝 12 | Conclusion | - Synthesised findings<br>- Highlighted limitations<br>- Outlined practical value<br>- Proposed future enhancements | Delivered reproducible insights, highlighted limitations, and proposed clear paths for improvement |
 
-📑 *Reviewer takeaway:* Early inspection built transparency and trust, showing reviewers the raw structure before transformations.
 
----
+### 10a–10i Extended Data Analysis Plots
 
-### 2. Dataset Missingness Classification and Handling
-- Classified missingness into MCAR, MAR, and MNAR.  
-- Synthesised published strategies (DataCamp, Kaggle, Analytics Vidhya, etc.).  
-- Adopted conservative handling (deletion or flagging) to prioritise reproducibility over complex imputation.  
+- **Boxplots**: Outlier detection in delays  
+- **Daily Aggregates**: Mean/Max/Min delay trends  
+- **Rainfall Timeline**: Intensity across study period  
+- **Humidity vs Visibility Scatter**: Key predictor relationship  
+- **Rolling Averages**: 7‑day temperature smoothing  
+- **Wind Speed/Direction**: Impact on departures  
+- **Weather Codes**: Frequency analysis (fog, mist, precipitation) using WMO standards  
 
-📑 *Reviewer takeaway:* Missingness was documented and handled transparently, with trade‑offs clearly explained.
-
----
-
-### 3. Cleaning Approach
-- Applied conservative cleaning within the boundaries of missingness handling.  
-- Corrected typos and normalised formats.  
-- Coerced numeric values safely.  
-- Removed duplicates and dropped irrelevant/noisy columns.  
-- Produced cleaned datasets ready for schema enforcement.  
-
-📑 *Reviewer takeaway:* Cleaning improved quality and usability while maintaining transparency and reproducibility.
-
----
-
-### 4. Schema and Audit Exports
-- Defined authoritative schemas (`weather_cols`, `arrivals_cols`, `departures_cols`).  
-- Applied schemas after cleaning to enforce structure: column names, types, and constraints.  
-- Exported raw JSON schemas (`arrivals_schema.txt`, `departures_schema.txt`) for transparency.  
-- Documented audits (e.g., flights missing weather matches) to show coverage exclusions.  
-
-📑 *Reviewer takeaway:* Schema enforcement guaranteed structural consistency, while exports provided transparent artefacts for reviewers.
-
----
-
-### 5. Flight Batching
-- Split large JSON files into monthly batches for GitHub compatibility.  
-- Audited file sizes to maintain reproducibility and prevent oversized commits.  
-
-📑 *Reviewer takeaway:* Batching kept the repository lightweight and version‑friendly.
-
----
-
-### 6. Arrivals Workflow
-- Cleaned and reconstructed arrival delay fields.  
-- Applied hourly flooring and categorical conversions.  
-- Concatenated monthly batches into a unified arrivals dataset.  
-- Enforced schema and audited results for consistency.  
-
-📑 *Reviewer takeaway:* Arrivals data was cleaned, schema‑aligned, and standardised for integration.
-
----
-
-### 7. Departures Workflow
-- Mirrored arrivals workflow to maintain **schema parity**.  
-- Cleaned, reconstructed, and combined departure delay data.  
-- Ensured consistency across arrivals and departures datasets.  
-
-📑 *Reviewer takeaway:* Departures workflow matched arrivals, enabling direct comparison.
-
----
-
-### 8. Integration
-- With cleaned and schema‑aligned datasets, arrivals, departures, and weather data were integrated on an **hourly basis**.  
-- Verified flooring accuracy and merged datasets into a single unified table.  
-
-📑 *Reviewer takeaway:* Integration produced a unified, schema‑compliant dataset for correlation and modelling.
-
----
-
-### 9. Weather Impact Plots
-- Generated scatterplots and regression lines to show how weather variables (e.g., visibility, humidity) impact delays.  
-- Reported R² values to quantify explanatory power.  
-
-📑 *Reviewer takeaway:* Visualisations highlighted weather impacts, providing context before correlation analysis.
-
----
-
-### 10. Correlation Analysis
-- Created heatmaps of correlations between weather features and delays.  
-- Compared arrivals vs departures to highlight sensitivity differences.  
-- Identified visibility and humidity as dominant predictors.  
-
-📑 *Reviewer takeaway:* Correlation analysis confirmed visibility and humidity as the strongest predictors of delays.
-
-### 10. Extended Data Analysis
-- Step 10a – Boxplots for Outlier Detection  
-- Step 10b – Daily Aggregates (Mean/Max/Min)  
-- Step 10c – Rainfall Intensity Timeline  
-- Step 10d – Humidity vs Visibility Scatter  
-- Step 10e – Rolling Averages (7‑Day Temperature)  
-- Step 10f – Singular Scatterplots for Key Relationships  
-- Step 10g – Wind Speed and Direction Analysis  
-- Step 10h – Integrated Weather Risk Factors for Flight Delays  
-- Step 10i - Weather Codes Analysis
-- Analysed categorical weather codes (fog, mist, precipitation) using WMO standards.  
-- Summarised frequency and distribution of codes across May–Oct 2025.  
-- Integrated codes into risk scoring framework for categorical context.
+![Weather Codes Frequency Table](plots/s10i_weather_codes_counts_table.png)  
+  *Figure: Frequency of Weather Codes from May to Oct 2025*
 
 **weather codes frequency table:**
 ![Weather Codes Frequency Table](plots/s10i_weather_codes_counts_table.png)
-*Figure: Frequency of Weather Codes from May to Oct 2025*
+  *Figure: Frequency of Weather Codes from May to Oct 2025*
 
 📑 *Reviewer takeaway:* Weather codes (fog, mist, precipitation categories) were analysed using WMO standards.This provided categorical context for delay prediction, ensuring consistency across weather records and strengthening risk scoring. Tables summarised frequency and distribution of codes, making environmental conditions transparent for reviewers.
 
 ---
 
-### 11. Modelling
-- Conducted readiness audit and feature selection.  
-- Built baseline **Linear Regression** models (transparent but weak).  
-- Applied **Random Forest** (stronger non‑linear performance, feature importance analysis).  
-- Introduced **CatBoost** (modest gains for arrivals).  
-- Tuned hyperparameters with GridSearchCV (Random Forest) and manual loop (CatBoost).  
-- Summarised metrics (R², RMSE) for arrivals and departures.  
+## 🗄️ 13. Database Integration
 
-📑 *Reviewer takeaway:* Modelling demonstrated predictive techniques, with Random Forest outperforming baseline regression.
-
----
-
-### 12. Conclusion
-- Synthesised findings across weather, flight, and merged datasets.  
-- Highlighted limitations (weather‑only scope, aggregation sensitivity).  
-- Outlined practical value (transparent workflow, reproducible modelling, operationalisation with forecasts).  
-- Proposed future enhancements (adding operational features, richer weather data, ensemble stacking, dashboard deployment).  
-
-📑 *Reviewer takeaway:* The workflow delivered reproducible insights, highlighted limitations, and proposed clear paths for future improvement.
-
----
-
-### 13. Database Integration
 To strengthen reproducibility and transparency, the workflow persists cleaned and merged datasets into SQLite databases.  
 These serve as **durable audit artifacts** and **analysis engines**, enabling reviewers to independently verify results, reproduce plots, and query the merged dataset without rerunning the full notebook.
 
-- **Step 27:** Audit databases created (`weather`, `arrivals`, `departures`).  
-- **Step 29:** Merged flights–weather database (`flights_weather`).  
-- **Purpose:** Preserves cleaned datasets individually and operationalises the merged dataset for query‑driven plots.  
-- **Example SQL queries:** Documented for reproducibility, with plots saved into `project/plots/`.  
+| Step | Title | Tables Created | Purpose | Reviewer Takeaway |
+|------|-------|----------------|---------|-------------------|
+| 📂 27 | Audit Databases | - `weather` → cleaned hourly weather records (visibility, humidity, wind, precipitation)<br>- `arrivals` → cleaned arrivals dataset with reconstructed delay fields<br>- `departures` → cleaned departures dataset with schema parity | - Provides independent audit artifacts for each dataset<br>- Enables reviewers to query cleaned data without rerunning the notebook<br>- Documents missingness (e.g., flights without weather matches, NaT checks) | Databases act as audit checkpoints, ensuring transparency and reproducibility of cleaned datasets |
+| 🔗 29 | Merged Flights + Weather Database | - `flights_weather` → unified dataset combining arrivals, departures, and weather on hourly join key | - Operationalises merged dataset into a persistent table<br>- Enables SQL‑driven plots (delays by hour/day, distributions, delays vs rainfall)<br>- Demonstrates database as an **active analysis engine**<br>- Plots saved into `project/plots/` | Integration database supports reproducible analysis and plot generation directly from SQL queries |
 
 📑 *Reviewer takeaway:* Databases are used at two critical checkpoints — first for audit, then for analysis — ensuring transparency, reproducibility, and auditability across the workflow.
-
----
-
-#### Step 27 in notebook – Audit Databases
-- **Tables created:**  
-  - `weather` – cleaned hourly weather records (visibility, humidity, wind, precipitation, etc.).  
-  - `arrivals` – cleaned arrivals dataset with reconstructed delay fields and schema enforcement.  
-  - `departures` – cleaned departures dataset with schema parity to arrivals.  
-
-- **Purpose:**  
-  - Provides independent audit artifacts for each dataset.  
-  - Enables reviewers to query raw‑aligned but cleaned data without rerunning the notebook.  
-  - Documents missingness (e.g., flights without weather matches, NaT checks).
-
----
-
-#### Step 29 in notebook– Merged Flights + Weather Database
-- **Table created:**  
-  - `flights_weather` – unified dataset combining arrivals, departures, and weather on an hourly join key.  
-
-- **Purpose:**  
-  - Operationalises the merged dataset into a persistent table for downstream analysis.  
-  - Enables SQL‑driven plots (e.g., delays by hour, delays by day, delay distributions, delays vs rainfall).  
-  - Demonstrates the database as an **active analysis engine**, not just storage.  
-  - Plots are saved into `project/plots/` for reproducibility.
 
 ---
 
