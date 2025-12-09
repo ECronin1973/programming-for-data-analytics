@@ -630,22 +630,6 @@ All plots were saved to `project/plots/` with systematic naming conventions (`sX
   ![Risk Score Distribution Plot](plots/s10h_risk_score_distribution.png)  
   *Purpose:* Quantifies exceedances of operational thresholds (visibility <2000 m, wind ≥25 knots, rainfall ≥25 mm).
 
-### 10a–10i Extended Data Analysis Plots
-
-| Plot Type | Purpose | Example Output |
-|:----------|:--------|:---------------|
-| **📦 Boxplots** | Detect outliers in flight delays | Highlights extreme delay values |
-| **📅 Daily Aggregates** | Show mean/max/min delay trends | Daily delay trend lines |
-| **🌧️ Rainfall Timeline** | Visualise rainfall intensity across study period | Delay vs rainfall timeline |
-| **🌫️ Humidity vs Visibility Scatter** | Explore key predictor relationship | Scatterplot showing correlation |
-| **🌡️ Rolling Averages** | Smooth 7‑day temperature trends | Rolling average temperature plot |
-| **💨 Wind Speed/Direction** | Assess impact on departures | Wind rose plots | 
-
-### 📑 Reviewer Takeaway  
-Weather codes (fog, mist, precipitation categories) were analysed using WMO standards.  
-This provided categorical context for delay prediction, ensuring consistency across weather records and strengthening risk scoring.  
-Tables summarised frequency and distribution of codes, making environmental conditions transparent for reviewers.
-
 ---
 
 ### ✈️ Delay Analysis (Post‑Merge)
