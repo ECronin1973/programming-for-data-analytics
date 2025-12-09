@@ -206,7 +206,7 @@ These serve as **durable audit artifacts** and **analysis engines**, enabling re
 ### Database Example Queries & Plots
 The following example SQL queries demonstrate how plots were generated directly from the merged `flights_weather` database.
 
-**Average Delay by Day of Week**
+### Average Delay by Day of Week
 This query computes the average delay for each day of the week (0=Sunday, 6=Saturday):
 ```sql
 SELECT strftime('%w', date_hour) AS day_of_week, AVG(computed_delay) AS avg_delay
@@ -219,7 +219,7 @@ The following plot is generated from this query:
 ![Average Delay by Day of Week](plots/s29b_dbase_avg_delay_by_day.png)
   *Chart shows the average delay by day of week (0=Sunday, 6=Saturday)*
 
-**Distribution of Flight Delays**
+### Distribution of Flight Delays
 This query retrieves all computed delays for histogram plotting:
 ```sql
 SELECT computed_delay
@@ -231,7 +231,7 @@ The following plot is generated from this query:
 ![Distribution of Flight Delays](plots/s29b_dbase_delay_distribution.png)
   *Chart shows how flight delays are spread out across different lengths of time*
 
-**Average Delay by Rainfall Bin**
+### Average Delay by Rainfall Bin
 This query categorises rainfall into bins and computes average delay for each bin:
 ```sql
 SELECT CASE
