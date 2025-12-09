@@ -154,7 +154,7 @@ This section outlines the end‑to‑end workflow, from acquiring raw data to mo
 ## 📊 Workflow Overview
 
 | Step | Title | Key Actions | Reviewer Takeaway |
-|------|-------|-------------|-------------------|
+|:-----|:------|:------------|:------------------|
 | 🔍 1 | Initial Visual Inspection | - Inspected raw flight JSON & weather CSV<br>- Identified dtype inconsistencies & nulls<br>- Used **Data Wrangler** for schema preview | Early inspection built transparency and trust, showing raw structure before transformations |
 | 📉 2 | Dataset Missingness Classification | - Classified missingness (MCAR, MAR, MNAR)<br>- Synthesised published strategies<br>- Adopted conservative handling (deletion/flagging) | Missingness was documented and handled transparently, with trade‑offs clearly explained |
 | 🧹 3 | Cleaning Approach | - Corrected typos & normalised formats<br>- Coerced numeric values<br>- Removed duplicates & noisy columns | Cleaning improved quality and usability while maintaining transparency and reproducibility |
@@ -180,12 +180,10 @@ This section outlines the end‑to‑end workflow, from acquiring raw data to mo
 - **Wind Speed/Direction**: Impact on departures  
 - **Weather Codes**: Frequency analysis (fog, mist, precipitation) using WMO standards  
 
-![Weather Codes Frequency Table](plots/s10i_weather_codes_counts_table.png)  
-  *Figure: Frequency of Weather Codes from May to Oct 2025*
+One example from this section is shown below which displays weather codes frequency:
 
-**weather codes frequency table:**
-![Weather Codes Frequency Table](plots/s10i_weather_codes_counts_table.png)
-  *Figure: Frequency of Weather Codes from May to Oct 2025*
+![Weather Codes Frequency Table](plots/s10i_weather_codes_counts_table.png)  
+  *Figure: Screenshot Weather Codes from May to Oct 2025 showing frequency of various weather conditions*
 
 📑 *Reviewer takeaway:* Weather codes (fog, mist, precipitation categories) were analysed using WMO standards.This provided categorical context for delay prediction, ensuring consistency across weather records and strengthening risk scoring. Tables summarised frequency and distribution of codes, making environmental conditions transparent for reviewers.
 
@@ -197,7 +195,7 @@ To strengthen reproducibility and transparency, the workflow persists cleaned an
 These serve as **durable audit artifacts** and **analysis engines**, enabling reviewers to independently verify results, reproduce plots, and query the merged dataset without rerunning the full notebook.
 
 | Step | Title | Tables Created | Purpose | Reviewer Takeaway |
-|------|-------|----------------|---------|-------------------|
+|:-----|:------|:---------------|:--------|:------------------|
 | 📂 27 | Audit Databases | - `weather` → cleaned hourly weather records (visibility, humidity, wind, precipitation)<br>- `arrivals` → cleaned arrivals dataset with reconstructed delay fields<br>- `departures` → cleaned departures dataset with schema parity | - Provides independent audit artifacts for each dataset<br>- Enables reviewers to query cleaned data without rerunning the notebook<br>- Documents missingness (e.g., flights without weather matches, NaT checks) | Databases act as audit checkpoints, ensuring transparency and reproducibility of cleaned datasets |
 | 🔗 29 | Merged Flights + Weather Database | - `flights_weather` → unified dataset combining arrivals, departures, and weather on hourly join key | - Operationalises merged dataset into a persistent table<br>- Enables SQL‑driven plots (delays by hour/day, distributions, delays vs rainfall)<br>- Demonstrates database as an **active analysis engine**<br>- Plots saved into `project/plots/` | Integration database supports reproducible analysis and plot generation directly from SQL queries |
 
@@ -206,8 +204,10 @@ These serve as **durable audit artifacts** and **analysis engines**, enabling re
 ---
 
 ### Database Example Queries & Plots
+The following example SQL queries demonstrate how plots were generated directly from the merged `flights_weather` database.
 
 **Average Delay by Day of Week**
+This query computes the average delay for each day of the week (0=Sunday, 6=Saturday):
 ```sql
 SELECT strftime('%w', date_hour) AS day_of_week, AVG(computed_delay) AS avg_delay
 FROM flights_weather
@@ -215,19 +215,24 @@ GROUP BY day_of_week
 ORDER BY day_of_week;
 ```
 
+The following plot is generated from this query:
 ![Average Delay by Day of Week](plots/s29b_dbase_avg_delay_by_day.png)
-  *figure of average delay by day of week (0=Sunday, 6=Saturday)*
+  *Chart shows the average delay by day of week (0=Sunday, 6=Saturday)*
 
 **Distribution of Flight Delays**
+This query retrieves all computed delays for histogram plotting:
 ```sql
 SELECT computed_delay
 FROM flights_weather
 WHERE computed_delay IS NOT NULL;
 ```
 
+The following plot is generated from this query:
 ![Distribution of Flight Delays](plots/s29b_dbase_delay_distribution.png)
+  *Chart shows how flight delays are spread out across different lengths of time*
 
 **Average Delay by Rainfall Bin**
+This query categorises rainfall into bins and computes average delay for each bin:
 ```sql
 SELECT CASE
     WHEN rain = 0 THEN '0 mm'
@@ -242,19 +247,21 @@ GROUP BY rain_bin
 ORDER BY rain_bin;
 ```
 
+The following plot is generated from this query:
 ![Average Delay by Rainfall Bin](plots/s29b_dbase_avg_delay_by_rain.png)
+  *Chart shows the average flight delay for different ranges of rainfall*
 
 ---
 
 ## 4. Data Sources & Roles in Workflow
 
 | Source | Purpose | Role in Workflow |
-|--------|---------|------------------|
-| **Met Éireann hourly (hly532.csv)** | Provides environmental predictors including temperature, rainfall, visibility, relative humidity, wind speed/direction, and cloud height. | Supplied the core weather dataset. Cleaned and audited in **Steps 3–4**, then used for exploratory plots (distributions, boxplots, rolling averages, wind roses) and integrated into the merged dataset for modelling. Visibility and humidity emerged as the strongest predictors of delays. |
-| **Aviation Edge API (DUB)** | Supplies raw arrivals and departures data for Dublin Airport, including scheduled vs actual times and delay context. | Queried in **Step 2** with dry‑run logging for reproducibility. Batched into monthly JSON files (**Step 5**) to ensure GitHub compatibility. Cleaned and reconstructed in the arrivals (**Step 6**) and departures workflows (**Step 7**), then merged with weather data for predictive modelling (**Step 8**). |
-| **WMO Code Tables** | Standardises categorisation of weather events (present and past codes). | Applied during weather cleaning (**Step 3**) to classify conditions such as fog, mist, or precipitation. Enabled categorical analysis and risk scoring, ensuring consistency across weather records and providing operational context for delay analysis. |
-| **Risk Scoring Framework (derived)** | Composite index built from thresholds (e.g., visibility < 2000 m, wind ≥ 25 knots, heavy rain ≥ 25 mm). | Developed in **Step 9** to quantify adverse conditions. Produced histograms and exceedance tables summarising combined weather hazards, later used to contextualise modelling results. |
-| **Schema & Audit Exports (derived)** | Text exports of schema and missingness audits from raw JSON flight data. | Ensured reproducibility and transparency in **Step 4**. Allowed reviewers to verify data integrity and understand how large raw files were structured before batching. |
+|:-------|:--------|:-----------------|
+| **🌦️ Met Éireann hourly (hly532.csv)** | Provides environmental predictors including temperature, rainfall, visibility, relative humidity, wind speed/direction, and cloud height. | Supplied the core weather dataset. Cleaned and audited in **Steps 3–4**, then used for exploratory plots (distributions, boxplots, rolling averages, wind roses) and integrated into the merged dataset for modelling. Visibility and humidity emerged as the strongest predictors of delays. |
+| **✈️ Aviation Edge API (DUB)** | Supplies raw arrivals and departures data for Dublin Airport, including scheduled vs actual times and delay context. | Queried in **Step 2** with dry‑run logging for reproducibility. Batched into monthly JSON files (**Step 5**) to ensure GitHub compatibility. Cleaned and reconstructed in the arrivals (**Step 6**) and departures workflows (**Step 7**), then merged with weather data for predictive modelling (**Step 8**). |
+| **🌍 WMO Code Tables** | Standardises categorisation of weather events (present and past codes). | Applied during weather cleaning (**Step 3**) to classify conditions such as fog, mist, or precipitation. Enabled categorical analysis and risk scoring, ensuring consistency across weather records and providing operational context for delay analysis. |
+| **⚠️ Risk Scoring Framework (derived)** | Composite index built from thresholds (e.g., visibility < 2000 m, wind ≥ 25 knots, heavy rain ≥ 25 mm). | Developed in **Step 9** to quantify adverse conditions. Produced histograms and exceedance tables summarising combined weather hazards, later used to contextualise modelling results. |
+| **📑 Schema & Audit Exports (derived)** | Text exports of schema and missingness audits from raw JSON flight data. | Ensured reproducibility and transparency in **Step 4**. Allowed reviewers to verify data integrity and understand how large raw files were structured before batching. |
 
 ### 📑 Reviewer Takeaway
 The project integrates **multiple complementary sources**:  
@@ -273,24 +280,24 @@ This demonstrates effective use of multiple datasets, external APIs, and derived
 To ensure reproducibility and consistency, the project was developed and tested in a controlled Python 3.11 environment.  
 All dependencies were explicitly pinned to stable versions and verified through GitHub Actions.
 
-### Core Environment
+### ⚙️ Core Environment
 - **Python:** 3.11 (tested locally and in CI/CD; chosen for full CatBoost wheel support)  
 - **Editor:** VS Code with Jupyter Notebook integration  
 - **Extensions:** Data Wrangler (for initial inspection and dtype/missingness summaries)
 
-### Key Libraries
+### 📚 Key Libraries
 | Library          | Version (pinned) | Role in Workflow |
-|------------------|------------------|------------------|
-| **pandas**       | 2.3.0            | Data cleaning, schema handling, missing value audits |
-| **numpy**        | 2.0.0            | Numerical coercion, array operations, dtype management |
-| **matplotlib**   | 3.9.0            | Core plotting (histograms, wind roses, regression visuals) |
-| **seaborn**      | 0.13.2           | Statistical visualisations (heatmaps, scatterplots, regression lines) |
-| **scikit-learn** | 1.5.0            | Baseline modelling, Random Forest, GridSearchCV, metrics (R², RMSE) |
-| **catboost**     | 1.2.0            | Gradient boosting models, categorical feature handling |
-| **json** (stdlib)| built-in         | Parsing raw flight JSON files |
-| **csv** (stdlib) | built-in         | Reading historic weather CSV files |
+|:-----------------|:-----------------|:-----------------|
+| **🐼 pandas**       | 2.3.0            | Data cleaning, schema handling, missing value audits |
+| **🔢 numpy**        | 1.26.4           | Numerical coercion, array operations, dtype management (pinned <2.0 for CatBoost compatibility) |
+| **📊 matplotlib**   | 3.9.0            | Core plotting (histograms, wind roses, regression visuals) |
+| **📈 seaborn**      | 0.13.2           | Statistical visualisations (heatmaps, scatterplots, regression lines) |
+| **🤖 scikit-learn** | 1.5.0            | Baseline modelling, Random Forest, GridSearchCV, metrics (R², RMSE) |
+| **🚀 catboost**     | 1.2.5            | Gradient boosting models, categorical feature handling |
+| **📄 json (stdlib)**| built-in         | Parsing raw flight JSON files |
+| **📄 csv (stdlib)** | built-in         | Reading historic weather CSV files |
 
-### Reproducibility Measures
+### 🔄 Reproducibility Measures
 - **requirements.txt** and **environment.yml** pin all versions for consistent installs (pip or conda).  
 - **GitHub Actions** ran weekly automation to verify reproducibility across environments.  
 - **Schema exports** and **audit tables** documented structure and missingness for reviewer transparency.  
