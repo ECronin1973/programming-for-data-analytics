@@ -6,9 +6,17 @@ Each assignment demonstrates applied skills in Python programming, data analysis
 ---
 
 ## 📂 Contents
-- Individual assignment notebooks and scripts, each with clear documentation and outputs.
-- Supporting datasets used for analysis.
-- notes where required to explain methodology and results.
+- **Environment setup**
+  - `requirements.txt` — pip reproducibility
+  - `environment.yml` — conda reproducibility
+- **Assignments**
+  - Jupyter notebooks (`.ipynb`) - interactive analyses with narrative, plots, and outputs
+  - Python scripts (`.py`) - reusable functions or standalone analysis scripts.
+- **Datasets**
+  - Supporting CSVs and raw data used for analysis
+- **Notes / markdown cells)**
+  - Explanations of methodology and results where required
+
 
 ---
 
@@ -27,6 +35,13 @@ The assignments showcase:
 
 ---
 
+### 📑 Reviewer Takeaway
+- Environment setup is centralised at the repository level.
+- Assignment READMEs are lightweight, focusing on analysis, plots, and findings.
+- Scripts and notebooks are clearly distinguished, making the repo easy to navigate.
+
+---
+
 ## ▶️ How to Run
 
 1. Clone the repository and navigate to the `Assignments` folder:
@@ -35,25 +50,33 @@ The assignments showcase:
    cd programming-for-data-analytics/Assignments
     ```
 
-2. Install required packages (see requirements.txt in the root):
+*This action sets the working directory to the root of the repository, where dependencies and program files are located.  Within the Assignments directory, there are two script files and three Jupyter notebooks which are available to run.*  
+
+2. **Install dependencies** (see requirements.txt or environment.yml in the root directory):
 ```bash
 pip install -r ../requirements.txt
 ```
+or
+```bash
+conda env create -f ../environment.yml
+conda activate programming-for-data-analytics
+```
 
-3. Open the assignment notebooks in Jupyter or VS Code:
+3. Open notebooks in Jupyter or VS Code:
 ```bash
 jupyter notebook
 ```
-Then select the relevant .ipynb file.
+Then select the relevant .ipynb file.  There are three notebooks available to run assignment03-pie.ipynb, assignment05-population.ipynb and assignment06-weather.ipynb.
 
 4. Run all cells in order to reproduce the analysis and outputs
 
-5. Run Scripts directly from the command line where applicable:
+5. Run assignment02 Scripts directly from the command line where applicable:
 ```bash
-python <input script file name>
+python assignment02-bankholidays.py
+python assignment02-bankholidays-ni.py
 ```
 
-6. all output files (plots, CSVs) will be automatically saved in the `plots/` or `data/` subfolders as specified in each assignment.
+6. **Outputs (plots, CSVs)** are automatically saved in the plots/ or data/ subfolders as specified in each assignment.
 
 ---
 
@@ -97,10 +120,11 @@ The script for Part A is saved in the root folder of the repo as:
 
 ## ▶️ Run the program from the root directory using Python:
 
-To run the program, I just used:
+To run the program, I used:
 ```python
 python assignment02-bankholidays.py
 ```
+*Results are printed directly to the terminal.*
 
 #### Sample Output
 
@@ -167,6 +191,7 @@ To run the program, I used:
 python assignment02-bankholidays-ni.py
 
 ```
+*Results are printed directly to the terminal.*
 
 #### Sample Output
 
@@ -267,6 +292,7 @@ To run the notebook from the root directory, I used:
 ```bash
 jupyter notebook assignments/assignment03-pie.ipynb
 ```
+*CSV files and plots are autmatically saved to the `data/` and `plots/` subfolders.*
 
 ### Sample Output
 
@@ -412,14 +438,14 @@ Each analysis cell then called these helpers to perform specific tasks — for e
 The notebook for this assignment is saved as: 
 [`assignment05-population.ipynb`](https://github.com/ECronin1973/programming-for-data-analytics/blob/main/assignment05-population.ipynb)
 
-## How to run the notebook
+## ▶️ Run the notebook
 
-1. Ensure you have Python 3.x installed with the required libraries: `pandas`, `numpy`, `matplotlib`, and `seaborn`.
-2. Download the repository and navigate to the root directory.
-3. Run the notebook using Jupyter:
+To run the notebook from the root directory, I used:
 ```bash
-jupyter notebook assignment05-population.ipynb
+jupyter notebook assignments/assignment05-population.ipynb
 ```
+
+*CSV files and plots are autmatically saved to the `data/` and `plots/` subfolders.*
 
 ## 🧹 Data Cleaning Steps
 
@@ -701,15 +727,14 @@ According to The Irish Times, Summer 2025 was Ireland’s warmest season since r
 The notebook for this assignment is saved as: 
 [`assignment06-weather.ipynb`](https://github.com/ECronin1973/programming-for-data-analytics/blob/main/assignment06-weather.ipynb)
 
-## How to run the notebook
+## ▶️ Run the notebook
 
-1. Ensure you have Python 3.x installed with the required libraries: `pandas`, `numpy`, `matplotlib`, and `seaborn`.
-2. Download the repository and navigate to the root directory.
-3. Run the notebook using Jupyter:
+To run the notebook from the root directory, I used:
 ```bash
-jupyter notebook assignment06-weather.ipynb
+jupyter notebook assignments/assignment06-weather.ipynb
 ```
-4. Follow the instructions in the notebook to execute each analysis section.
+
+*CSV files and plots are autmatically saved to the `data/` and `plots/` subfolders.*
 
 ---
 

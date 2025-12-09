@@ -3,7 +3,7 @@
 
 # Core data analysis libraries
 pandas==2.3.0
-numpy==2.0.0
+numpy==1.26.4        # last stable 1.x release and widely supported
 scipy==1.14.0        # statistical functions (normal distribution, KDE, variance)
 
 # Visualisation libraries
