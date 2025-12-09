@@ -7,7 +7,7 @@ It includes:
 - Supporting data files (`project/data/`) including cleaned CSVs, batched flight JSONs, and risk tables.  
 - Generated plots (`project/plots/`) for exploratory analysis, correlation studies, and modelling results.  
 - Documentation (`project/docs/methodology.md`) with extended methodological notes.  
-- A `requirements.txt` file listing all Python dependencies needed to reproduce the workflow.  
+- Environment files (`requirements.txt` and `environment.yml`) listing all Python dependencies needed to reproduce the workflow.  
 
 The project is designed to be **transparent, reproducible, and reviewer‑friendly**, with modular functions, systematic plots, and clear documentation of trade‑offs.
 
@@ -16,11 +16,20 @@ The project is designed to be **transparent, reproducible, and reviewer‑friend
 ### How to Run
 
 Quick Start Checklist:
-1. Install requirements:  
+
+1. **Install requirements**  
+   Using pip:
    ```bash
    pip install -r requirements.txt
    jupyter notebook project/project.ipynb
-  ```
+    ```
+
+Or, using conda (recommended for Python 3.11):
+```bash
+conda env create -f environment.yml
+conda activate data_analytics_env
+jupyter lab
+```
 
 2. (Optional) Set API key for Aviation Edge:
 
@@ -29,13 +38,13 @@ set AVIATION_EDGE_API_KEY=YOUR_KEY   # Windows
 export AVIATION_EDGE_API_KEY=YOUR_KEY # macOS/Linux
 ```
 
-3. Open `project/project.ipynb` in Jupyter Notebook.
+3. Open `project/project.ipynb` in Jupyter Notebook or JupyterLab.
 Inside the notebook:
 - Set RUN_DOWNLOAD / RUN_BATCHING flags as required.
 - Execute cells sequentially; outputs and plots are saved automatically to project/plots/.
 - Notebook is saved with all cells executed so plots and outputs are visible without rerunning.
 
-**Required packages:** 'pandas', 'numpy', 'matplotlib', 'seaborn', 'scikit-learn', 'catboost', 'requests', 'json', 'os'.
+**Required packages:** 'pandas', 'numpy', 'matplotlib', 'seaborn', 'scikit-learn', 'catboost', 'requests'. (Standard library modules like json and os are included automatically with Python and don’t need installation.)
 
 ---
 ## Repository Structure
@@ -48,9 +57,8 @@ Inside the notebook:
 | `plots/`                      | Auto‑generated PNG artefacts (EDA, correlations, modelling).            |
 | `docs/methodology.md`         | Extended methodological narrative.                                     |
 | `dublin_airport.db`           | Root‑level SQLite database containing merged weather + flight tables, enforced schemas, and query outputs. |
-| `requirements.txt`            | Python dependencies pinned for reproducibility.                        |
-
----
+| `requirements.txt`            | Pip dependencies pinned for reproducibility.                        |
+| `environment.yml`             | Conda environment file for Python 3.11 with pinned dependencies.       |
 
 ---
 
@@ -100,7 +108,6 @@ Inside the notebook:
 21. [Quick Start Summary](#23-quick-start-summary)  
 22. [References](#24-references)  
 23. [Ethical & Transparency Considerations](#25-ethical--transparency-considerations)  
-
 
 ---
 
@@ -382,34 +389,34 @@ This demonstrates effective use of multiple datasets, external APIs, and derived
 
 ## 5. Environment and Dependencies
 
-To ensure reproducibility and consistency, the project was developed and tested in a controlled Python environment.  
+To ensure reproducibility and consistency, the project was developed and tested in a controlled Python 3.11 environment.  
 All dependencies were explicitly pinned to stable versions and verified through GitHub Actions.
 
 ### Core Environment
-- **Python:** 3.11 (tested locally and in CI/CD)  
+- **Python:** 3.11 (tested locally and in CI/CD; chosen for full CatBoost wheel support)  
 - **Editor:** VS Code with Jupyter Notebook integration  
 - **Extensions:** Data Wrangler (for initial inspection and dtype/missingness summaries)
 
 ### Key Libraries
-| Library        | Version (pinned) | Role in Workflow |
-|----------------|------------------|------------------|
-| **pandas**     | 2.3.x            | Data cleaning, schema handling, missing value audits |
-| **numpy**      | 2.3.x            | Numerical coercion, array operations, dtype management |
-| **matplotlib** | 3.9.x            | Core plotting (histograms, wind roses, regression visuals) |
-| **seaborn**    | 0.13.x           | Statistical visualisations (heatmaps, scatterplots, regression lines) |
-| **scikit-learn** | 1.5.x          | Baseline modelling, Random Forest, GridSearchCV, metrics (R², RMSE) |
-| **catboost**   | 1.2.x            | Gradient boosting models, categorical feature handling |
-| **python-json** (stdlib) | built-in | Parsing raw flight JSON files |
-| **python-csv** (stdlib) | built-in | Reading historic weather CSV files |
+| Library          | Version (pinned) | Role in Workflow |
+|------------------|------------------|------------------|
+| **pandas**       | 2.3.0            | Data cleaning, schema handling, missing value audits |
+| **numpy**        | 2.0.0            | Numerical coercion, array operations, dtype management |
+| **matplotlib**   | 3.9.0            | Core plotting (histograms, wind roses, regression visuals) |
+| **seaborn**      | 0.13.2           | Statistical visualisations (heatmaps, scatterplots, regression lines) |
+| **scikit-learn** | 1.5.0            | Baseline modelling, Random Forest, GridSearchCV, metrics (R², RMSE) |
+| **catboost**     | 1.2.0            | Gradient boosting models, categorical feature handling |
+| **json** (stdlib)| built-in         | Parsing raw flight JSON files |
+| **csv** (stdlib) | built-in         | Reading historic weather CSV files |
 
 ### Reproducibility Measures
-- **requirements.txt** pinned all versions for consistent installs.  
+- **requirements.txt** and **environment.yml** pin all versions for consistent installs (pip or conda).  
 - **GitHub Actions** ran weekly automation to verify reproducibility across environments.  
 - **Schema exports** and **audit tables** documented structure and missingness for reviewer transparency.  
 - **Batching strategy** ensured large files were split into manageable monthly segments to remain GitHub‑compatible.  
 
 📑 **Reviewer Takeaway:**  
-This environment setup ensured that all workflows were reproducible, cross‑platform compatible, and reviewer‑friendly. Explicit version pins and CI/CD checks reinforced transparency and consistency.
+This environment setup ensured that all workflows were reproducible, cross‑platform compatible, and reviewer‑friendly. Explicit version pins, CI/CD checks, and Python 3.11 compatibility reinforced transparency and consistency.
 
 ---
 

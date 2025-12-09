@@ -1,24 +1,31 @@
 # Requirements for Programming For Data Analytics Repository
-# Covers both coursework examples and the final Dublin Airport project
-# Tested with Python 3.11 (locally and in CI/CD)
+# Covers coursework examples and the Dublin Airport project
+# Tested with Python 3.11
 
 # Core data analysis libraries
 pandas==2.3.0
-numpy==2.0.0
+numpy==1.26.4        # pinned for CatBoost compatibility on Python 3.11
+scipy==1.14.0        # statistical functions (used in coursework examples)
 
 # Visualisation libraries
 matplotlib==3.9.0
-seaborn==0.13.2   # upgraded to latest stable release
+seaborn==0.13.2      # upgraded to latest stable release
 
 # Machine learning libraries
 scikit-learn==1.5.0
 joblib==1.4.0
-catboost==1.2.0   # gradient boosting model used in benchmarking
+catboost==1.2.5      # stable build compatible with NumPy 1.26.x
 
 # Notebook environment
 notebook==7.2.0
 ipython==8.26.0
-jupyterlab==4.2.0   # optional, for modern notebook interface
+jupyterlab==4.2.0    # optional, for modern notebook interface
+
+# Interactivity and rendering
+ipywidgets==8.1.2          # interactive sliders, dropdowns, etc.
+jupyterlab-widgets==3.0.10 # required for ipywidgets in JupyterLab
+widgetsnbextension==4.0.10 # required for ipywidgets in classic Notebook
+jinja2==3.1.4              # templating engine used by Jupyter
 
 # File format support
 pyarrow==17.0.0      # for Parquet I/O
