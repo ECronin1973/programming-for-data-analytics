@@ -639,10 +639,7 @@ All plots were saved to `project/plots/` with systematic naming conventions (`sX
 | **🌧️ Rainfall Timeline** | Visualise rainfall intensity across study period | Delay vs rainfall timeline |
 | **🌫️ Humidity vs Visibility Scatter** | Explore key predictor relationship | Scatterplot showing correlation |
 | **🌡️ Rolling Averages** | Smooth 7‑day temperature trends | Rolling average temperature plot |
-| **💨 Wind Speed/Direction** | Assess impact on departures | Wind rose plots |
-| **🌍 Weather Codes** | Frequency analysis of fog, mist, precipitation (WMO standards) | 
-
-![Weather Codes Frequency Table](plots/s10i_weather_codes_counts_table.png)<br>*Figure: Weather Codes frequency May–Oct 2025* |
+| **💨 Wind Speed/Direction** | Assess impact on departures | Wind rose plots | 
 
 ### 📑 Reviewer Takeaway  
 Weather codes (fog, mist, precipitation categories) were analysed using WMO standards.  
