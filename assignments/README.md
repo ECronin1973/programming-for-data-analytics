@@ -53,28 +53,28 @@ The assignments showcase:
 *This action sets the working directory to the root of the repository, where dependencies and program files are located.  Within the Assignments directory, there are two script files and three Jupyter notebooks which are available to run.*  
 
 2. **Install dependencies** (see requirements.txt or environment.yml in the root directory):
-```bash
-pip install -r ../requirements.txt
-```
-or
-```bash
-conda env create -f ../environment.yml
-conda activate programming-for-data-analytics
-```
+    ```bash
+    pip install -r ../requirements.txt
+    ```
+  or
+    ```bash
+    conda env create -f ../environment.yml
+    conda activate programming-for-data-analytics
+    ```
 
 3. Open notebooks in Jupyter or VS Code:
-```bash
-jupyter notebook
-```
-Then select the relevant .ipynb file.  There are three notebooks available to run assignment03-pie.ipynb, assignment05-population.ipynb and assignment06-weather.ipynb.
+    ```bash
+    jupyter notebook
+   ```
+  Then select the relevant .ipynb file.  There are three notebooks available to run assignment03-pie.ipynb, assignment05-population.ipynb and assignment06-weather.ipynb.
 
 4. Run all cells in order to reproduce the analysis and outputs
 
 5. Run assignment02 Scripts directly from the command line where applicable:
-```bash
-python assignment02-bankholidays.py
-python assignment02-bankholidays-ni.py
-```
+    ```bash
+    python assignment02-bankholidays.py
+    python assignment02-bankholidays-ni.py
+    ```
 
 6. **Outputs (plots, CSVs)** are automatically saved in the plots/ or data/ subfolders as specified in each assignment.
 
