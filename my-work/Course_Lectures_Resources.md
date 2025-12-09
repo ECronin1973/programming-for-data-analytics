@@ -379,3 +379,36 @@ APIs
 
 ### SQLite
 - [sqlite3 — DB-API 2.0 interface for SQLite databases — Python 3.13.0 documentation](https://docs.python.org/3/library/sqlite3.html)
+
+### Visualisation
+
+#### Tutorials
+[Python Plotting With Matplotlib (Guide) – Real Python](https://realpython.com/python-matplotlib-guide/)
+
+[Python_Matplotlib_Cheat_Sheet.pdf (data camp)](https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Python_Matplotlib_Cheat_Sheet.pdf)
+
+#### Books
+[learn-python-with-shyam/cheatsheet/Pandas-Cookbook-eBook.pdf at master · shyamkumarchauhan/learn-python-with-shyam (github.com) (pandas cookbook, very handy)](https://github.com/shyamkumarchauhan/learn-python-with-shyam/blob/master/cheatsheet/Pandas-Cookbook-eBook.pdf)
+
+#### Matplotlib docs
+[Tutorials — Matplotlib 3.9.2 documentation](https://matplotlib.org/stable/tutorials/index.html)
+
+#### Anatomy
+[showcase example code: anatomy.py — Matplotlib 2.0.2 documentation](https://matplotlib.org/2.0.2/examples/showcase/anatomy.html)
+
+#### Gallery (for inspiration)
+[Plot types — Matplotlib 3.9.2 documentation](https://matplotlib.org/stable/api/plot_types/index.html)
+Examples — Matplotlib 3.9.2 documentation
+
+#### Multiple axis
+[Arranging multiple Axes in a Figure — Matplotlib 3.9.2 documentation](https://matplotlib.org/stable/users/explain/axes/arranging_axes.html#arranging-axes)
+
+#### other languages eg JavaScript
+[D3 by Observable | The JavaScript library for bespoke data visualization (d3js.org)](https://d3js.org/)
+
+[Apache ECharts](https://echarts.apache.org/en/index.html)
+
+[A Visualization Grammar | Vega](https://vega.github.io/vega/)
+
+[Home | deck.gl](https://deck.gl/)
+
