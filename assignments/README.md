@@ -42,7 +42,7 @@ The assignments showcase:
 
 ---
 
-## ▶️ How to Run
+### ▶️ How to Run the Assignments (single-file environment.yml)
 
 1. Clone the repository and navigate to the `Assignments` folder:
    ```bash
@@ -50,26 +50,39 @@ The assignments showcase:
    cd programming-for-data-analytics/Assignments
     ```
 
-*This action sets the working directory to the root of the repository, where dependencies and program files are located.  Within the Assignments directory, there are two script files and three Jupyter notebooks which are available to run.*  
+*This sets the working directory to the repository’s assignments folder, which contains two Python scripts and three Jupyter notebooks.*  
 
-2. **Install dependencies** (see requirements.txt or environment.yml in the root directory):
-    ```bash
-    pip install -r ../requirements.txt
-    ```
-  or
-    ```bash
-    conda env create -f ../environment.yml
-    conda activate programming-for-data-analytics
-    ```
+### 2. Create the conda environment
+This project uses a single environment.yml file to install all required packages. Run the following from the assignments folder:
+```bash
+conda env create -f ../environment.yml -n assignments
+```
 
+# or update if it already exists
+```bash
+# If the env already exists and you want to recreate it cleanly:
+conda env remove -n assignments
+conda env create -f ../environment.yml -n assignments
+```
 
-3. Check file permissions
+# 3. Activate the environment and register the kernel 
+After creation, activate the environment and ensure the Jupyter kernel is available in VS Code or Jupyter:
+```bash
+conda activate assignments
+python -m pip install --upgrade pip
+python -m pip install ipykernel
+python -m ipykernel install --user --name assignments --display-name "Python (assignments)"
+```
+
+**Tip:** If conda env create fails because of strict pins, remove exact '=version' pins for problematic packages (for example matplotlib=3.9.0) or use mamba with -c conda-forge for faster, more reliable solving.
+
+4. Check file permissions
 
 ```bash
 ls -l
 ```
 
-4. Make scripts executable (if needed)
+5. Make scripts executable (if needed)
 
 ```bash
 chmod +x assignment02-bankholidays.py
@@ -78,16 +91,21 @@ chmod +x assignments/assignment03-pie.ipynb
 chmod +x assignments/assignment05-population.ipynb
 chmod +x assignments/assignment06-weather.ipynb
 ```
+(Notebook files do not require executable permissions.)
 
-5. Open notebooks in Jupyter or VS Code:
-    ```bash
+6. Open and run notebooks 
+
+Open notebooks in Jupyter or VS Code:
+   ```bash
     jupyter notebook
    ```
-  Then select the relevant .ipynb file.  There are three notebooks available to run assignment03-pie.ipynb, assignment05-population.ipynb and assignment06-weather.ipynb.
 
-6. Run all cells in order to reproduce the analysis and outputs
+- In VS Code open the notebook and select the kernel Python (assignments) from the kernel picker (top-right)
+- Run the Setup / Initialization cell once (see notebook) to import libraries and verify the environment.
+- Then select the relevant .ipynb file.  There are three notebooks available to run assignment03-pie.ipynb, assignment05-population.ipynb and assignment06-weather.ipynb.
+- Run all cells in order to reproduce the analysis and outputs
 
-7. Run assignment02 Scripts directly from the command line where applicable:
+7. Run assignment02 Scripts directly from the command line (where applicable):
     ```bash
     python assignment02-bankholidays.py
     python assignment02-bankholidays-ni.py
@@ -95,6 +113,8 @@ chmod +x assignments/assignment06-weather.ipynb
 
 8. **Outputs (plots, CSVs)** are automatically saved in the plots/ or data/ subfolders as specified in each assignment.
 
+> ℹ️ **Note:** Use `environment.yml` to build the environment.  
+> `requirements.txt` is provided for reference only and should not be executed directly.
 ---
 
 ## Table of Contents
