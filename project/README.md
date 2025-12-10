@@ -697,6 +697,48 @@ This framework quantified adverse weather conditions using schema‑aligned thre
 
 ## 14. Modelling Results and Metrics
 
+### 🌐 What Are LLMs?
+Large Language Models (LLMs) are advanced machine learning systems trained on vast amounts of text data. They excel at recognising patterns, relationships, and structures in language, enabling them to generate, interpret, and analyze complex information. While LLMs are not directly used in this project’s predictive modelling, they provide the conceptual backdrop: modern AI systems can capture nonlinear relationships and hidden dependencies in data — the same principle applied here with structured models like Linear Regression, Random Forest, and CatBoost.
+
+- [IBM: What are Large Language Models (LLMs)?](https://www.ibm.com/think/topics/large-language-models) – Defines LLMs as deep learning models trained on immense datasets, capable of understanding and generating natural language
+- [Google Developers: Introduction to Large Language Models](https://developers.google.com/machine-learning/resources/intro-llms) – Explains transformers, self-attention, and applications such as summarisation, translation, and question answering
+- [Dun & Bradstreet (DNB): Exploring Large Language Model Capabilities](https://www.dnb.com/en-us/resources/ai/what-are-large-language-models-or-llms.html) – Highlights how LLMs recognise patterns in unstructured data and provide contextually relevant responses across industries
+
+### 📖 Background to the Models
+
+#### Linear Regression:
+- A classical statistical model that assumes a linear relationship between predictors and outcomes.
+- Serves as a baseline benchmark to measure how much variance can be explained by simple linear trends.
+- In aviation delay prediction, it highlights whether weather variables alone can linearly explain delays.
+
+#### Random Forest:
+- An ensemble learning method that builds multiple decision trees and averages their predictions.
+- Known for robustness, ability to capture nonlinear interactions, and interpretability via feature importance.
+- Particularly useful in flight/weather contexts where variables like temperature, humidity, and visibility interact in complex ways.
+
+#### CatBoost:
+- A gradient boosting algorithm optimized for handling categorical features and reducing overfitting.
+- Excels in tabular datasets with mixed feature types, though in this project the dataset was mostly numerical.
+- Its inclusion ensured benchmarking against a state-of-the-art boosting approach widely used in predictive analytics.
+
+#### ✈️ Why These Models Are Useful for Flight/Weather Analysis
+Flight delays are influenced by multiple interacting factors: weather conditions, operational constraints, and airport congestion.
+- Linear Regression provides transparency and a baseline.
+- Random Forest captures nonlinear weather effects (e.g., humidity interacting with visibility).
+- CatBoost tests whether boosting methods can extract subtle signals from limited features.
+- Studies confirm that ensemble methods like Random Forest and CatBoost are widely applied in aviation delay prediction because they handle heterogeneous, imbalanced data and improve reliability. https://ceur-ws.org/Vol-4055/icaiw_waai_10.pdf 
+
+#### 📊 What They Brought to the Project
+- **Linear Regression:** Showed negligible explanatory power (R² ≈ 0.002), confirming delays are not linearly driven by weather alone.
+- **Random Forest:** Consistently outperformed other models, with temperature and humidity emerging as dominant predictors. Tuned versions improved departure predictions (RMSE reduced to ~25 min).
+- **CatBoost:** Delivered weaker results than Random Forest, reflecting the dataset’s limited categorical features. Still valuable as a benchmark for boosting approaches.
+
+#### Consideration of Neural Networks
+Neural Networks were considered but ultimately not implemented due to:
+- Neural networks (e.g., TensorFlow/Keras models) could have been useful if your dataset were large, diverse, and contained complex nonlinear relationships. However, for structured tabular weather data with relatively few features, Random Forest often outperforms neural networks because it is more robust, easier to tune, and interpretable. 
+- [Random Forest significantly outperforms neural net for my regression task - Reddit](https://www.reddit.com/r/learnmachinelearning/comments/umvcne/random_forest_significantly_outperforms_neural/)
+
+#### ✅ Results Summary
 Models were benchmarked using R² and RMSE for both arrivals and departures.
 
 | Model | Arrivals R² | Arrivals RMSE | Departures R² | Departures RMSE | Notes |
@@ -712,7 +754,13 @@ Models were benchmarked using R² and RMSE for both arrivals and departures.
 - Departures: Temperature ≈44%, Humidity ≈32%, Visibility ≈17%, Rainfall ≈7%.  
 
 ### 📑 Reviewer Takeaway  
-Random Forest consistently outperformed Linear Regression and CatBoost, though gains were modest. Temperature and humidity dominated feature importance, with visibility and rainfall contributing less — confirming earlier exploratory findings.
+Random Forest proved most effective, confirming that nonlinear ensemble methods are better suited to weather-driven delay prediction. Temperature and humidity dominated importance, aligning with exploratory analysis.
+
+Sources:
+
+- [Momtaz et al., Scalable Arrival Flight Delay Prediction: Multi-airport Benchmarking of Random Forest, XGBoost and CatBoost](https://ceur-ws.org/Vol-4055/icaiw_waai_10.pdf)
+- [Hatıpoğlu & Tosun, Predictive Modeling of Flight Delays at an Airport Using Machine Learning Methods](https://www.mdpi.com/2076-3417/14/13/5472)
+- [DataScienceBase, CatBoost vs Other Algorithms](https://datasciencebase.com/catboost-vs-other-algorithms/)
 
 ---
 
@@ -762,10 +810,13 @@ Limitations highlight that while weather explains part of the delay variance, **
 
 ---
 
-## 17. Proposed Future Enhancements
+## 17. Future Role of LLMs and Proposed Enhancements  
 
-The following enhancements are designed to directly address the limitations identified in the **Key Findings** and **Conclusion** sections.  
-They extend the workflow beyond weather‑only predictors, improving predictive accuracy, operational relevance, and reviewer usability.
+### 🔮 Extending Beyond Structured Models  
+While this project focused on structured models (Linear Regression, Random Forest, CatBoost) applied to tabular weather data, **Large Language Models (LLMs)** offer a powerful avenue for future expansion. They can incorporate unstructured sources such as textual weather reports (METARs, TAFs), pilot logs, or air traffic control communications. LLMs excel at extracting meaning from natural language, enabling them to transform qualitative weather descriptions (e.g., “low visibility due to fog”) into structured features that complement numerical data. By fusing these textual insights with traditional weather variables, LLMs could enrich predictive models, uncover hidden dependencies, and improve accuracy in real-world operational contexts. This integration would allow future systems to move beyond purely numerical weather metrics, capturing the nuance of human and textual reporting alongside ensemble methods.  
+
+### 🚀 Proposed Future Enhancements  
+The following enhancements are designed to directly address the limitations identified in the **Key Findings** and **Conclusion** sections. They extend the workflow beyond weather‑only predictors, improving predictive accuracy, operational relevance, and reviewer usability.  
 
 | Enhancement | Addresses Limitation | Impact |
 |:------------|:---------------------|:-------|
@@ -775,15 +826,42 @@ They extend the workflow beyond weather‑only predictors, improving predictive 
 | **🤖 Advanced ensemble stacking (RF + CatBoost)** | Modelling weakness | Improves robustness by combining strengths of multiple models, enhancing variance capture and predictive stability |
 | **🗄️ Database layer (PostgreSQL / SQLite)** | Scaling & reproducibility | Provides queryable reproducibility, supports larger datasets, and enables integration with external systems |
 | **📊 Dashboard (interactive forecast + risk ledger)** | Usability | Operationalises outputs into a stakeholder‑friendly interface, enabling real‑time forecasts and risk monitoring |
+| **🤖 LLM integration (METARs, pilot logs, ATC comms)** | Lack of unstructured data | Adds qualitative insights, enriching predictors with textual weather and operational context |
 
-### 📑 Reviewer Takeaway
+### 📑 Reviewer Takeaway  
 These enhancements directly tackle the limitations identified earlier:  
+
 - **Operational features** and **ATC metrics** strengthen explanatory power by adding missing drivers.  
 - **Sub‑hour precision** restores temporal granularity lost in hourly aggregation.  
 - **Ensemble stacking** improves modelling resilience and accuracy.  
-- **Database integration** and **dashboards** elevate reproducibility and usability, aligning with higher‑mark features such as transparency, scalability, and stakeholder engagement.  
+- **Database integration** and **dashboards** elevate reproducibility and usability.  
+- **LLM integration** bridges structured and unstructured data, enabling richer, context-aware forecasting.  
 
-Together, they provide a clear roadmap for evolving the project from a **research prototype** into a **practical, operational forecasting tool**.
+Together, they provide a clear roadmap for evolving the project from a **research prototype** into a **practical, operational forecasting tool** that leverages both structured ensemble methods and cutting-edge language models.  
+
+## 📊 Visual Roadmap  
+
+```mermaid
+flowchart TD
+    A[Current Project: Weather-only Predictors] --> B[Structured Models: Linear Regression, Random Forest, CatBoost]
+    B --> C[Feature Importance: Temp, Humidity, Visibility, Rainfall]
+    C --> D[Proposed Enhancements]
+    D --> D1[✈️ Operational Features]
+    D --> D2[📡 ATC / Capacity Metrics]
+    D --> D3[⏱️ Sub-hour Precision]
+    D --> D4[🤖 Ensemble Stacking]
+    D --> D5[🗄️ Database Layer]
+    D --> D6[📊 Interactive Dashboard]
+    D --> D7[🤖 LLM Integration: METARs, Pilot Logs, ATC Comms]
+    D7 --> E[Future System: Hybrid Structured + LLM Forecasting]
+    E --> F[Operational Tool: Real-time Forecasts & Risk Monitoring]
+```
+
+This diagram illustrates:  
+- The **starting point** (weather-only predictors and structured models).  
+- The **enhancement pathway** (operational features, ATC metrics, precision, stacking, database, dashboard).  
+- The **integration of LLMs** to handle unstructured data.  
+- The **end goal**: a hybrid forecasting system operationalised into a real-time tool.  
 
 ---
 
@@ -853,50 +931,31 @@ This demonstrates effective use of external resources, directly supporting the *
 
 ---
 
-## 20. Difficulties Experienced and Lessons Learned
+## 20. Difficulties Experienced and Lessons Learned  
 
-Throughout the project, several challenges were encountered. The following list summarises these difficulties along with the lessons learned from each experience:
+Throughout the project, several challenges were encountered. The following list summarises these difficulties along with the lessons learned from each experience:  
 
-1. **Initial Analysis and Planning**  
-   - *Difficulty:* Mapping out what would be required in the document versus what could be left out.  
-   - *Lesson:* Careful scoping at the start is essential to avoid wasted effort and ensure alignment with assessment criteria.
+| Difficulty | Lesson Learned | Impact |
+|------------|----------------|--------|
+| **Initial Analysis and Planning** | Careful scoping at the start is essential to avoid wasted effort and ensure alignment with assessment criteria. | Improved focus and efficiency in documentation. |
+| **Saving Files vs Leaving in Memory** | Leaving more in memory reduced clutter and improved reproducibility, while only key outputs were saved. | Cleaner repository and easier reviewer navigation. |
+| **File Size Issues (Repository Uploads)** | Large files must be batched or excluded from version control to avoid repository corruption and workflow disruption. | Prevented repository crashes and loss of commit history. |
+| **Unmonitored JSON File Sizes** | Always audit file sizes before committing or uploading, especially when working with APIs that generate large nested structures. | Avoided repeated upload failures and repository resets. |
+| **Data Type Compatibility** | Correct dtype handling is critical for reliable modelling. Poor treatment of dtypes can severely impact merging and training. | Ensured stable model training and accurate results. |
+| **Model Training and Runtime** | CatBoost underperformed compared to Random Forest, reinforcing that weather alone is insufficient for strong predictive modelling. | Highlighted the need for richer feature sets beyond weather data. |
+| **Python Version Compatibility (CatBoost)** | Reverting to Python 3.11.14 resolved runtime errors since CatBoost was not supported in Python 3.12. README was updated to highlight this requirement. | Ensured reproducibility and clear reviewer guidance. |
+| **Library Version Conflicts (Pandas)** | Careful dependency management is essential. Pinning compatible versions in the environment file ensured stability and reproducibility. | Prevented workflow breakages and maintained consistent results. |
+| **Instructor Guidance (Batching)** | An online meeting introduced batching, which solved file size issues and improved reproducibility. | Enabled smoother handling of large datasets. |
+| **Improved Visualisation (Data Wrangler)** | Discovered **Data Wrangler**, which improved schema previews, dtype inspection, and reviewer‑friendly transparency. | Enhanced clarity and usability of data exploration. |
+| **Dataset Limitations** | Refined the project objective to focus on correlations between weather and delays, while suggesting further studies to incorporate operational and scheduling variables. | Delivered a realistic scope while identifying pathways for future research. |
 
-2. **Saving Files vs Leaving in Memory**  
-   - *Difficulty:* Deciding whether to persist intermediate files or keep everything in memory for reproducibility.  
-   - *Lesson:* Leaving more in memory reduced clutter and improved reproducibility, while only key outputs were saved.
+### 📑 Key Takeaways  
+- **Environment management matters:** Compatibility issues with Python (3.12 vs 3.11.14) and Pandas highlighted the importance of pinning versions and documenting requirements clearly.  
+- **Reproducibility is critical:** Decisions around saving files, batching, and dependency management ensured reviewers could replicate results without workflow failures.  
+- **Feature limitations shape outcomes:** Weather-only predictors constrained model performance, reinforcing the need for operational and scheduling features in future work.  
+- **Transparency improves usability:** Tools like Data Wrangler and clear README updates enhanced reviewer experience and project clarity.  
 
-3. **File Size Issues (Repository Uploads)**  
-   - *Difficulty:* The dataset was initially saved in its entirety, causing huge upload problems. This required wiping the repository and rebuilding from a backup, which led to loss of commit history.  
-   - *Lesson:* Large files must be batched or excluded from version control to avoid repository corruption and workflow disruption.
-
-4. **Unmonitored JSON File Sizes**  
-   - *Difficulty:* JSON files were not checked for size, leading to the same upload issue.  
-   - *Lesson:* Always audit file sizes before committing or uploading, especially when working with APIs that generate large nested structures.
-
-5. **Data Type Compatibility**  
-   - *Difficulty:* Extremely poor model training results occurred due to incompatible data types.  
-   - *Lesson:* Learned first‑hand that not properly treating dtypes — and not knowing what a type should be when downloaded — can have huge consequences when merging datasets. Correct dtype handling is critical for reliable modelling.
-
-6. **Model Training and Runtime**  
-   - *Difficulty:* Training CatBoost models was time‑consuming and produced weak results with weather‑only features.  
-   - *Lesson:* CatBoost underperformed compared to Random Forest, reinforcing that weather alone is insufficient for strong predictive modelling.
-
-7. **Instructor Guidance (Batching)**  
-   - *Difficulty:* Managing large datasets without batching.  
-   - *Lesson:* An online meeting with the course instructor introduced batching, which solved file size issues and improved reproducibility.
-
-8. **Improved Visualisation (Data Wrangler)**  
-   - *Difficulty:* Initial visualisation methods were limited.  
-   - *Lesson:* Discovered **Data Wrangler**, which was adapted into the workflow to improve schema previews, dtype inspection, and reviewer‑friendly transparency.
-
-9. **Dataset Limitations**  
-   - *Difficulty:* The dataset was limited, as delays are influenced by many external factors (e.g., weather at other locations, strikes, operational constraints).  
-   - *Lesson:* The project objective was refined to focus on correlations between weather and delays, while suggesting further studies to incorporate operational and scheduling variables for richer predictive capacity.
-
----
-
-### 📑 Reviewer Takeaway
-These difficulties highlight the importance of **planning, reproducibility, file management, dtype awareness, and tool adoption** in data analytics projects. Each challenge led to practical workflow improvements — from batching large files to integrating Data Wrangler for inspection — ensuring transparency and strengthening the final conclusions.
+Overall, the project demonstrated that **technical stability, reproducibility, and scope management** are just as important as modelling choices in delivering a credible and reviewer‑friendly analysis.  
 
 ---
 
