@@ -412,3 +412,23 @@ Examples — Matplotlib 3.9.2 documentation
 
 [Home | deck.gl](https://deck.gl/)
 
+
+### Neural Networks
+
+- [Neural Networks and Deep Learning – Real Python](https://realpython.com/neural-networks-deep-learning-python/)
+- [Neural Networks and Deep Learning | Coursera](https://www.coursera.org/learn/neural-networks-deep-learning)
+- [Neural Networks and Deep Learning (nndl.github.io)](http://nndl.github.io/)
+- [Deep Learning with Python (Manning Publications)](https://www.manning.com/books/deep-learning-with-python)
+- [Deep Learning with Python and Keras (Packt)](https://www.packtpub.com/product/deep-learning-with-python-and-keras/9781788621755)
+- [Deep Learning with Python, Second Edition (Manning Publications)](https://www.manning.com/books/deep-learning-with-python-second-edition)
+- [Deep Learning with Python and Keras, Second Edition (Packt)](https://www.packtpub.com/product/deep-learning-with-python-and-keras-second-edition/9781838823412)
+- [Keras Documentation](https://keras.io/)
+
+#### TensorFlow
+[TensorFlow](https://www.tensorflow.org/)  (There are a lot of tutorials here)
+
+#### LLMs
+[LLMs from 3 Brown 1 Blue](https://www.youtube.com/watch?v=LPZh9BOjkQs)
+
+#### Virtual Environments
+[Virtual Environments lecture from the next module Lecture: Virtual Environments](https://atlantictu-my.sharepoint.com/personal/andrew_beatty_atu_ie/_layouts/15/stream.aspx?id=%2Fpersonal%2Fandrew%5Fbeatty%5Fatu%5Fie%2FDocuments%2Farchive%2FWSAA%202025%20%28private%29%2Fvideos%2FWSAA6%2E1%20Virtual%20Environments%2Emp4&ga=1&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2E2cc9173e%2D032a%2D441d%2D91d0%2De7dffb4a8481)
