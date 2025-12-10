@@ -17,40 +17,31 @@ The project is designed to be **transparent, reproducible, and reviewer‑friend
 
 Quick Start Checklist:
 
-1. **Install requirements**  
-   Using pip:
-   ```bash
-   pip install -r requirements.txt
-   jupyter notebook project/project.ipynb
-    ```
+1. Create the conda environment (recommended for Python 3.11):
 
-Or, using conda (recommended for Python 3.11):
 ```bash
 conda env create -f environment.yml
 conda activate data_analytics_env
-jupyter lab
 ```
+(Alternatively, you can use pip: pip install -r requirements.txt, but conda is preferred for reproducibility.)
 
-2. (Optional) Set API key for Aviation Edge:
+2. Register the Jupyter kernel:
+After activating the environment:
+```bash
+python -m pip install ipykernel
+python -m ipykernel install --user --name=data_analytics_env --display-name "Python (project)"
+```
+*This ensures the kernel appears in Jupyter/VS Code as Python (project).*
+
+3. (Optional) Set API key for Aviation Edge:
 
 ```bash
 set AVIATION_EDGE_API_KEY=YOUR_KEY   # Windows
 export AVIATION_EDGE_API_KEY=YOUR_KEY # macOS/Linux
 ```
 
-3. Check file permissions
-
-```bash
-ls -l
-```
-
-4. Make scripts executable (if needed)
-
-```bash
-chmod +x project.ipynb
-```
-
-5. Open `project/project.ipynb` in Jupyter Notebook or JupyterLab.
+4. Open `project/project.ipynb`. 
+Open `project/project.ipynb` in Jupyter Notebook or JupyterLab.
 Inside the notebook:
 - Set RUN_DOWNLOAD / RUN_BATCHING flags as required.
 - Execute cells sequentially; outputs and plots are saved automatically to project/plots/.
