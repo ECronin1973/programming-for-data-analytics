@@ -689,7 +689,8 @@ I kept the notebook modular throughout — selecting the data, aggregating it, v
 
 ## 🙏 Acknowledgements
 
-This work was partially supported by **GitHub Copilot**, an AI-powered code completion tool developed by GitHub, which assisted in generating parts of the code.
+- **AI Assistance:**  
+  Microsoft Copilot was used throughout the project to refine documentation, structure sections, and ensure clarity in presenting results and limitations. Copilot’s support helped strengthen transparency and alignment with assessment criteria.
 
 ## 📚 References and Learning Resources
 
