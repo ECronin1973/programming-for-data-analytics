@@ -1,53 +1,66 @@
 # ✈️ Flight Delay Prediction Using Weather Data
 
 ## Repository Overview
-This repository presents a complete workflow for predicting Dublin Airport flight delays using hourly weather data (May–Oct 2025).  
-It includes:
-- A Jupyter notebook (`project/project.ipynb`) with the full pipeline (data acquisition → cleaning → integration → analysis → modelling → conclusions).  
-- Supporting data files (`project/data/`) including cleaned CSVs, batched flight JSONs, and risk tables.  
-- Generated plots (`project/plots/`) for exploratory analysis, correlation studies, and modelling results.  
-- Documentation (`project/docs/methodology.md`) with extended methodological notes.  
-- Environment files (`requirements.txt` and `environment.yml`) listing all Python dependencies needed to reproduce the workflow.  
+This repository offers a complete workflow for predicting flight delays at Dublin Airport, using hourly weather data from May to October 2025.
+- Jupyter notebook (project/project.ipynb) containing the full pipeline: data acquisition, cleaning, integration, analysis, modelling, and conclusions.
+- Supporting data files in project/data/: cleaned CSVs, batched flight JSONs, and risk tables.
+- Generated plots in project/plots/: exploratory, correlation, and modelling results.
+- Documentation in project/docs/methodology.md: detailed methodology and workflow notes.
+- Environment specification files (requirements.txt and environment.yml) listing all Python dependencies required to reproduce the workflow.
 
-The project is designed to be **transparent, reproducible, and reviewer‑friendly**, with modular functions, systematic plots, and clear documentation of trade‑offs.
+The project prioritises transparency, reproducibility, and accessibility through modular functions, systematic plots, and clear documentation of trade-offs.
 
 ---
 
-### How to Run
+### ▶️ How to run the project (single-file environment.yml)
 
-Quick Start Checklist:
+1. Clone the repository and navigate to the `project` folder:
+   ```bash
+   git clone https://github.com/EdwardCronin1973/programming-for-data-analytics.git
+   cd project
+    ```
 
-1. Create the conda environment (recommended for Python 3.11):
+*This sets the working directory to the repository’s project folder, which contains the main Jupyter notebook and supporting files.*  
 
+2. Create the conda environment
+This project uses a single environment.yml file to install all required packages. Run the following from the project folder:
 ```bash
-conda env create -f environment.yml
-conda activate data_analytics_env
+conda env create -f ../environment.yml -n project
 ```
-(Alternatively, you can use pip: pip install -r requirements.txt, but conda is preferred for reproducibility.)
 
-2. Register the Jupyter kernel:
-After activating the environment:
+#### or update if it already exists
 ```bash
+# If the env already exists and you want to recreate it cleanly:
+conda env remove -n project
+conda env create -f ../environment.yml -n project
+```
+
+3. Activate the environment and register the kernel 
+After creation, activate the environment and ensure the Jupyter kernel is available in VS Code or Jupyter:
+```bash
+conda activate project
+python -m pip install --upgrade pip
 python -m pip install ipykernel
-python -m ipykernel install --user --name=data_analytics_env --display-name "Python (project)"
+python -m ipykernel install --user --name=pda_project_env --display-name "Python (project)"
 ```
-*This ensures the kernel appears in Jupyter/VS Code as Python (project).*
 
-3. (Optional) Set API key for Aviation Edge:
+**Tip:** If conda env create fails because of strict pins, remove exact '=version' pins for problematic packages (for example matplotlib=3.9.0) or use mamba with -c conda-forge for faster, more reliable solving.
+
+4. (Optional) Set the API key for Aviation Edge:
 
 ```bash
 set AVIATION_EDGE_API_KEY=YOUR_KEY   # Windows
 export AVIATION_EDGE_API_KEY=YOUR_KEY # macOS/Linux
 ```
 
-4. Open `project/project.ipynb`. 
-Open `project/project.ipynb` in Jupyter Notebook or JupyterLab.
-Inside the notebook:
-- Set RUN_DOWNLOAD / RUN_BATCHING flags as required.
-- Execute cells sequentially; outputs and plots are saved automatically to project/plots/.
-- Notebook is saved with all cells executed so plots and outputs are visible without rerunning.
+- Open project/project.ipynb.
+- Open project/project.ipynb in Jupyter Notebook or JupyterLab.
 
-**Required packages:** 'pandas', 'numpy', 'matplotlib', 'seaborn', 'scikit-learn', 'catboost', 'requests'. (Standard library modules like json and os are included automatically with Python and don’t need installation.)
+**Inside the notebook:**
+- Execute the cells in order; outputs and plots are saved automatically to project/plots/.
+- The notebook includes all executed code cells, so plots and outputs can be viewed without rerunning.
+
+Required packages: pandas, numpy, matplotlib, seaborn, scikit-learn, catboost, and requests. Standard library packages such as json and os are included with Python and do not require installation.
 
 ---
 ## Repository Structure
@@ -100,29 +113,29 @@ Inside the notebook:
 ---
 
 ### 1. Objective and Approach
-This notebook was developed as part of the **Programming for Data Analytics Big Project 2025/2026**.  
+This notebook forms part of the **Programming for Data Analytics Big Project 2025/2026**.
 
-The aim is to demonstrate the ability to acquire, clean, and analyse data, apply techniques covered in the module, and present meaningful insights supported by clear visualisations.
+The objective is to demonstrate data acquisition, data cleaning, and analysis, to apply module techniques, and to present meaningful insights supported by clear visualisations.
 
-### 🎯 Approach
-- Acquired and integrated **two complementary datasets**: historic weather records and flight delay data.  
-- Cleaned and normalised both datasets, then merged them into a unified framework.  
-- Conducted **correlation analysis** to explore relationships between weather conditions and flight delays.  
-- Extended the analysis with machine learning models (Linear Regression, Random Forest, CatBoost) to benchmark predictive performance.  
-- Produced visualisations and summary tables at each stage to ensure clarity and reproducibility.
+### Approach
+- Two complementary datasets were acquired and integrated: historic weather records and flight delay data.
+- Both datasets were cleaned and normalised, then merged into a unified framework.
+- Correlation analysis was conducted to explore relationships between weather conditions and flight delays.
+- Machine learning models (Linear Regression, Random Forest, CatBoost) were used to benchmark predictive performance.
+- Visualisations and summary tables were produced at each stage to ensure clarity and reproducibility.
 
-### 📊 Goals
-- Identify which weather variables most strongly influence flight delays.  
-- Demonstrate how predictive models can extend correlation analysis, even with modest accuracy.  
-- Provide a transparent, reproducible workflow with clear documentation and reviewer‑friendly outputs.
+### Goals
+- Identify the weather variables that most strongly influence flight delays.
+- Demonstrate how predictive models can extend correlation analysis, even when predictive accuracy is modest.
+- Provide a transparent and reproducible workflow with clear documentation and outputs accessible to reviewers.
 
-### 📑 Reviewer Takeaway
-  This project integrates weather and flight delay data into a transparent, reproducible workflow. It demonstrates data acquisition, cleaning, correlation analysis, and predictive modelling, aligning with module requirements and assessment criteria (40% code, 40% documentation, 10% research, 10% consistency).
+### Reviewer Takeaway
+This project integrates weather and flight delay data into a transparent and reproducible workflow. It demonstrates data acquisition, cleaning, correlation analysis, and predictive modelling, aligning with module requirements and assessment criteria: 40% code, 40% documentation, 10% research, and 10% consistency.
 
 ---
 
 ## 2. Assessment Criteria Mapping
-The table below maps project outputs to the assessment criteria:
+The following table presents the mapping of project outputs to the corresponding assessment criteria:
 
 | Criterion | Implementation Summary |
 |-----------|------------------------|
@@ -131,38 +144,37 @@ The table below maps project outputs to the assessment criteria:
 | **10% Research** | Each major step cites specific sources with contextual use (data acquisition, cleaning, time series, modelling, tuning, interpretation). |
 | **10% Consistency** | Hourly flooring for weather/flight alignment, schema parity across arrivals/departures, reproducible batching, pinned dependencies, CI/CD checks. |
 
-### 📑 Reviewer Takeaway
-  Assessment criteria are explicitly mapped to workflow outputs, ensuring transparency and alignment with module expectations.
+### Reviewer Takeaway
+The assessment criteria are explicitly mapped to workflow outputs, thereby ensuring transparency and alignment with the expectations of the module.
 
 ---
+
 ## 3. Workflow Overview
 
-This section outlines the end‑to‑end workflow, from acquiring raw data to modelling and conclusions. Each stage was designed to be reproducible, transparent, and aligned with module requirements.
-
-## 📊 Workflow Overview
+This section presents the complete workflow, from raw data acquisition through modelling and conclusions. Each stage is structured to ensure reproducibility, transparency, and alignment with module requirements.
 
 | Step | Title | Key Actions | Reviewer Takeaway |
 |:-----|:------|:------------|:------------------|
-| 🔍 1 | Initial Visual Inspection | - Inspected raw flight JSON & weather CSV<br>- Identified dtype inconsistencies & nulls<br>- Used **Data Wrangler** for schema preview | Early inspection built transparency and trust, showing raw structure before transformations |
-| 📉 2 | Dataset Missingness Classification | - Classified missingness (MCAR, MAR, MNAR)<br>- Synthesised published strategies<br>- Adopted conservative handling (deletion/flagging) | Missingness was documented and handled transparently, with trade‑offs clearly explained |
-| 🧹 3 | Cleaning Approach | - Corrected typos & normalised formats<br>- Coerced numeric values<br>- Removed duplicates & noisy columns | Cleaning improved quality and usability while maintaining transparency and reproducibility |
-| 📑 4 | Schema and Audit Exports | - Defined authoritative schemas<br>- Applied schemas after cleaning<br>- Exported JSON schemas<br>- Documented audits | Schema enforcement guaranteed consistency; exports provided transparent artefacts |
-| 📦 5 | Flight Batching | - Split JSON files into monthly batches<br>- Audited file sizes for reproducibility | Batching kept the repository lightweight and version‑friendly |
-| 🛬 6 | Arrivals Workflow | - Cleaned/reconstructed arrival delay fields<br>- Applied hourly flooring<br>- Concatenated batches<br>- Enforced schema | Arrivals data was cleaned, schema‑aligned, and standardised for integration |
-| 🛫 7 | Departures Workflow | - Mirrored arrivals workflow<br>- Cleaned/reconstructed departure delay fields<br>- Ensured schema parity | Departures workflow matched arrivals, enabling direct comparison |
-| 🔗 8 | Integration | - Integrated arrivals, departures, weather data hourly<br>- Verified flooring accuracy<br>- Produced unified table | Integration produced a unified, schema‑compliant dataset for correlation and modelling |
-| 📈 9 | Weather Impact Plots | - Generated scatterplots & regression lines<br>- Reported R² values | Visualisations highlighted weather impacts, providing context before correlation analysis |
-| 🔥 10 | Correlation Analysis | - Created heatmaps of correlations<br>- Compared arrivals vs departures<br>- Identified visibility & humidity as dominant predictors | Correlation analysis confirmed visibility and humidity as strongest predictors of delays |
-| 📊 10a–10i | Extended Data Analysis | - Boxplots for outliers<br>- Daily aggregates<br>- Rainfall timeline<br>- Humidity vs visibility scatter<br>- Rolling averages<br>- Wind speed/direction<br>- Integrated weather risk factors<br>- Weather codes frequency analysis (WMO standards) | Extended plots provided categorical context and deeper insights into environmental conditions |
-| 🤖 11 | Modelling | - Baseline Linear Regression<br>- Random Forest (feature importance)<br>- CatBoost (modest gains)<br>- Hyperparameter tuning<br>- Summarised metrics (R², RMSE) | Random Forest outperformed baseline regression; CatBoost added modest improvements |
-| 📝 12 | Conclusion | - Synthesised findings<br>- Highlighted limitations<br>- Outlined practical value<br>- Proposed future enhancements | Delivered reproducible insights, highlighted limitations, and proposed clear paths for improvement |
+| 🔍 1 | Initial Visual Inspection | - Inspected raw flight JSON and weather CSV files<br>- Identified data type inconsistencies and null values<br>- Utilised **Data Wrangler** for schema preview | Early inspection enhanced transparency by revealing the raw data structure prior to transformation |
+| 📉 2 | Dataset Missingness Classification | - Classified missingness (MCAR, MAR, MNAR)<br>- Synthesised published strategies<br>- Applied conservative handling (deletion or flagging) | Missingness was documented and addressed transparently, with trade-offs explicitly detailed |
+| 🧹 3 | Cleaning Approach | - Corrected typographical errors and normalised data formats<br>- Coerced values to numeric types<br>- Removed duplicates and extraneous columns | Cleaning enhanced data quality and usability while preserving transparency and reproducibility |
+| 📑 4 | Schema and Audit Exports | - Defined authoritative schemas<br>- Applied schemas following data cleaning<br>- Exported JSON schema files<br>- Documented audit processes | Schema enforcement ensured consistency, and exports served as transparent artefacts |
+| 📦 5 | Flight Batching | - Partitioned JSON files into monthly batches<br>- Audited file sizes to support reproducibility | Batching maintained a lightweight and version-friendly repository |
+| 🛬 6 | Arrivals Workflow | - Cleaned and reconstructed arrival delay fields<br>- Applied hourly flooring<br>- Concatenated data batches<br>- Enforced schema compliance | Arrivals data was cleaned, schema-aligned, and standardised for integration |
+| 🛫 7 | Departures Workflow | - Replicated arrivals workflow<br>- Cleaned and reconstructed departure delay fields<br>- Ensured schema consistency | Departures workflow mirrored arrivals, facilitating direct comparison |
+| 🔗 8 | Integration | - Integrated arrivals, departures, and weather data on an hourly basis<br>- Verified accuracy of hourly flooring<br>- Generated a unified data table | Integration resulted in a unified, schema-compliant dataset suitable for correlation and modelling |
+| 📈 9 | Weather Impact Plots | - Generated scatterplots and regression lines<br>- Reported R² values | Visualisations illustrated weather impacts, offering context prior to correlation analysis |
+| 🔥 10 | Correlation Analysis | - Created correlation heatmaps<br>- Compared arrivals and departures<br>- Identified visibility and humidity as primary predictors | Correlation analysis confirmed visibility and humidity as the strongest predictors of delays |
+| 📊 10a–10i | Extended Data Analysis | - Generated boxplots to identify outliers<br>- Calculated daily aggregates<br>- Constructed rainfall timelines<br>- Produced humidity versus visibility scatterplots<br>- Computed rolling averages<br>- Analysed wind speed and direction<br>- Integrated weather risk factors<br>- Conducted weather code frequency analysis using WMO standards | Extended visualisations provided categorical context and deeper insights into environmental conditions |
+| 🤖 11 | Modelling | - Established baseline using linear regression<br>- Applied Random Forest to assess feature importance<br>- Implemented CatBoost for incremental gains<br>- Performed hyperparameter tuning<br>- Summarised performance metrics (R², RMSE) | Random Forest outperformed baseline regression, while CatBoost provided modest improvements |
+| 📝 12 | Conclusion | - Synthesised key findings<br>- Identified study limitations<br>- Outlined practical implications<br>- Proposed future enhancements | The conclusion delivered reproducible insights, acknowledged limitations, and recommended clear avenues for improvement |
 
 ---
 
 ## 4. Database Integration
 
-To strengthen reproducibility and transparency, the workflow persists cleaned and merged datasets into SQLite databases.  
-These serve as **durable audit artifacts** and **analysis engines**, enabling reviewers to independently verify results, reproduce plots, and query the merged dataset without rerunning the full notebook.
+To enhance reproducibility and transparency, the workflow stores cleaned and merged datasets in SQLite databases.
+These databases function as durable audit artifacts and analysis engines, allowing reviewers to independently verify results, reproduce plots, and query the merged dataset without executing the entire notebook.
 
 | Step | Title | Tables Created | Purpose | Reviewer Takeaway |
 |:-----|:------|:---------------|:--------|:------------------|
@@ -170,15 +182,15 @@ These serve as **durable audit artifacts** and **analysis engines**, enabling re
 | 🔗 29 | Merged Flights + Weather Database | - `flights_weather` → unified dataset combining arrivals, departures, and weather on hourly join key | - Operationalises merged dataset into a persistent table<br>- Enables SQL‑driven plots (delays by hour/day, distributions, delays vs rainfall)<br>- Demonstrates database as an **active analysis engine**<br>- Plots saved into `project/plots/` | Integration database supports reproducible analysis and plot generation directly from SQL queries |
 
 ### 📑 Reviewer Takeaway 
-Databases are used at two critical checkpoints — first for audit, then for analysis — ensuring transparency, reproducibility, and auditability across the workflow.
+Databases are employed at two critical checkpoints: initially for audit purposes and subsequently for analysis. This approach ensures transparency, reproducibility, and auditability throughout the workflow.
 
 ---
 
 ### 4b. Database Example Queries & Plots
-The following example SQL queries demonstrate how plots were generated directly from the merged `flights_weather` database.
+The following example SQL queries illustrate the process used to generate plots directly from the merged `flights_weather` database.
 
 ### Average Delay by Day of Week
-This query computes the average delay for each day of the week (0=Sunday, 6=Saturday):
+This query calculates the average flight delay for each day of the week, where 0 represents Sunday and 6 represents Saturday:
 ```sql
 SELECT strftime('%w', date_hour) AS day_of_week, AVG(computed_delay) AS avg_delay
 FROM flights_weather
@@ -186,24 +198,24 @@ GROUP BY day_of_week
 ORDER BY day_of_week;
 ```
 
-The following plot is generated from this query:
+The plot below was generated using the results of this query:
 ![Average Delay by Day of Week](plots/s29b_dbase_avg_delay_by_day.png)
-  *Chart shows the average delay by day of week (0=Sunday, 6=Saturday)*
+  *The chart displays the average flight delay for each day of the week, with 0 corresponding to Sunday and 6 to Saturday.*
 
 ### Distribution of Flight Delays
-This query retrieves all computed delays for histogram plotting:
+This query retrieves all computed flight delays to facilitate histogram plotting:
 ```sql
 SELECT computed_delay
 FROM flights_weather
 WHERE computed_delay IS NOT NULL;
 ```
 
-The following plot is generated from this query:
+The plot below was generated using the results of this query:
 ![Distribution of Flight Delays](plots/s29b_dbase_delay_distribution.png)
-  *Chart shows how flight delays are spread out across different lengths of time*
+  *The chart illustrates the distribution of flight delays across various time intervals.*
 
 ### Average Delay by Rainfall Bin
-This query categorises rainfall into bins and computes average delay for each bin:
+This query categorises rainfall amounts into discrete bins and calculates the average flight delay for each bin:
 ```sql
 SELECT CASE
     WHEN rain = 0 THEN '0 mm'
@@ -218,9 +230,9 @@ GROUP BY rain_bin
 ORDER BY rain_bin;
 ```
 
-The following plot is generated from this query:
+The plot below was generated using the results of this query:
 ![Average Delay by Rainfall Bin](plots/s29b_dbase_avg_delay_by_rain.png)
-  *Chart shows the average flight delay for different ranges of rainfall*
+  *The chart displays the average flight delay corresponding to different ranges of rainfall.*
 
 ---
 
@@ -228,33 +240,32 @@ The following plot is generated from this query:
 
 | Source | Purpose | Role in Workflow |
 |:-------|:--------|:-----------------|
-| **🌦️ Met Éireann hourly (hly532.csv)** | Provides environmental predictors including temperature, rainfall, visibility, relative humidity, wind speed/direction, and cloud height. | Supplied the core weather dataset. Cleaned and audited in **Steps 3–4**, then used for exploratory plots (distributions, boxplots, rolling averages, wind roses) and integrated into the merged dataset for modelling. Visibility and humidity emerged as the strongest predictors of delays. |
-| **✈️ Aviation Edge API (DUB)** | Supplies raw arrivals and departures data for Dublin Airport, including scheduled vs actual times and delay context. | Queried in **Step 2** with dry‑run logging for reproducibility. Batched into monthly JSON files (**Step 5**) to ensure GitHub compatibility. Cleaned and reconstructed in the arrivals (**Step 6**) and departures workflows (**Step 7**), then merged with weather data for predictive modelling (**Step 8**). |
-| **🌍 WMO Code Tables** | Standardises categorisation of weather events (present and past codes). | Applied during weather cleaning (**Step 3**) to classify conditions such as fog, mist, or precipitation. Enabled categorical analysis and risk scoring, ensuring consistency across weather records and providing operational context for delay analysis. |
-| **⚠️ Risk Scoring Framework (derived)** | Composite index built from thresholds (e.g., visibility < 2000 m, wind ≥ 25 knots, heavy rain ≥ 25 mm). | Developed in **Step 9** to quantify adverse conditions. Produced histograms and exceedance tables summarising combined weather hazards, later used to contextualise modelling results. |
-| **📑 Schema & Audit Exports (derived)** | Text exports of schema and missingness audits from raw JSON flight data. | Ensured reproducibility and transparency in **Step 4**. Allowed reviewers to verify data integrity and understand how large raw files were structured before batching. |
+| **🌦️ Met Éireann hourly (hly532.csv)** | Supplies environmental predictors such as temperature, rainfall, visibility, relative humidity, wind speed and direction, and cloud height. | Serves as the core weather dataset. Cleaned and audited in **Steps 3–4**, then used for exploratory plots (distributions, boxplots, rolling averages, wind roses) and integrated into the merged dataset for modelling. Visibility and humidity were identified as the strongest predictors of delays. |
+| **✈️ Aviation Edge API (DUB)** | Supplies raw arrivals and departures data for Dublin Airport, including scheduled and actual times as well as delay context. | Queried in **Step 2** with dry‑run logging to ensure reproducibility. Batched into monthly JSON files (**Step 5**) for GitHub compatibility. Cleaned and reconstructed in the arrivals (**Step 6**) and departures workflows (**Step 7**), then merged with weather data for predictive modelling (**Step 8**). |
+| **🌍 WMO Code Tables** | Standardises categorisation of weather events (present and past codes). | Applied during weather cleaning (**Step 3**) to classify conditions such as fog, mist, or precipitation. Facilitated categorical analysis and risk scoring, ensured consistency across weather records, and provided operational context for delay analysis. |
+| **⚠️ Risk Scoring Framework (derived)** | Composite index constructed from thresholds (e.g., visibility < 2000 m, wind ≥ 25 knots, heavy rain ≥ 25 mm). | Developed in **Step 9** to quantify adverse conditions. Generated histograms and exceedance tables summarising combined weather hazards, which were subsequently used to contextualise modelling results. |
+| **📑 Schema & Audit Exports (derived)** | Text exports of schema and missingness audits from raw JSON flight data. | Ensured reproducibility and transparency in **Step 4**. Enabled reviewers to verify data integrity and understand the structure of large raw files prior to batching. |
 
 ### 📑 Reviewer Takeaway
-The project integrates **multiple complementary sources**:  
-- **Met Éireann** provided the environmental context.  
-- **Aviation Edge API** supplied operational flight delay data.  
-- **WMO Code Tables** standardised weather event categorisation.  
+This project integrates multiple complementary data sources:
+- **Met Éireann** supplied the environmental context.
+- **Aviation Edge API** supplied operational flight delay data.
+- **WMO Code Tables** standardised weather event categorisation.
 - Derived **risk scores and schema audits** strengthened transparency and reproducibility.  
 
-Together, these sources enabled a **merged dataset** that supported exploratory analysis, correlation studies, and predictive modelling of flight delays.  
-This demonstrates effective use of multiple datasets, external APIs, and derived features, aligning with module expectations for **data acquisition and research**.
+- Collectively, these sources enabled the creation of a merged dataset that supported exploratory analysis, correlation studies, and predictive modelling of flight delays.
+- This approach demonstrates effective integration of multiple datasets, external APIs, and derived features, aligning with module expectations for data acquisition and research.
 
 ---
 
 ## 6. Environment and Dependencies
 
-To ensure reproducibility and consistency, the project was developed and tested in a controlled Python 3.11 environment.  
-All dependencies were explicitly pinned to stable versions and verified through GitHub Actions.
+The project was developed and tested within a controlled Python 3.11 environment to ensure reproducibility and consistency.
 
 ### ⚙️ Core Environment
-- **Python:** 3.11 (tested locally and in CI/CD; chosen for full CatBoost wheel support)  
-- **Editor:** VS Code with Jupyter Notebook integration  
-- **Extensions:** Data Wrangler (for initial inspection and dtype/missingness summaries)
+- **Python:** 3.11 (tested locally; selected to ensure full CatBoost wheel support)
+- **Editor:** Visual Studio Code with Jupyter Notebook integration
+- **Extensions:** Data Wrangler (used for initial data inspection and summarising data types and missing values)
 
 ### 📚 Key Libraries
 | Library          | Version (pinned) | Role in Workflow |
@@ -269,21 +280,20 @@ All dependencies were explicitly pinned to stable versions and verified through 
 | **📄 csv (stdlib)** | built-in         | Reading historic weather CSV files |
 
 ### 🔄 Reproducibility Measures
-- **requirements.txt** and **environment.yml** pin all versions for consistent installs (pip or conda).  
-- **GitHub Actions** ran weekly automation to verify reproducibility across environments.  
-- **Schema exports** and **audit tables** documented structure and missingness for reviewer transparency.  
-- **Batching strategy** ensured large files were split into manageable monthly segments to remain GitHub‑compatible.  
+- **requirements.txt** and **environment.yml** files specify all package versions to ensure consistent installations using pip or conda.
+- **Schema exports** and **audit tables** documented data structure and missing values to enhance reviewer transparency.
+- **Batching strategy** divided large files into manageable monthly segments to maintain compatibility with GitHub.
 
 ### 📑 Reviewer Takeaway 
-This environment setup ensured that all workflows were reproducible, cross‑platform compatible, and reviewer‑friendly. Explicit version pins, CI/CD checks, and Python 3.11 compatibility reinforced transparency and consistency.
+This environment configuration ensured that all workflows were reproducible, cross-platform compatible, and accessible for reviewers. Explicit version pinning, and Python 3.11 compatibility reinforced transparency and consistency.
 
 ---
 
 ### 7. Initial Visual Inspection
 
-Before any automated cleaning or batching, the workflow began with a **manual visual inspection of the raw datasets**.  
+Prior to automated cleaning or batching, the workflow commenced with a manual visual inspection of the raw datasets.
 This step was critical for transparency, allowing reviewers to see the data in its original form and understand the challenges that shaped the technical approach.  
-Inspection revealed several inconsistencies and hidden complexities that made the datasets difficult to process without systematic cleaning and schema enforcement.
+The inspection identified multiple inconsistencies and underlying complexities, which rendered the datasets difficult to process without systematic cleaning and schema enforcement.
 
 #### Flight activity JSON files (arrivals & departures):  
   - Contained detailed operational records including scheduled times, actual times, statuses, and identifiers.  
@@ -291,29 +301,29 @@ Inspection revealed several inconsistencies and hidden complexities that made th
     - Delay minutes were sometimes stored as strings instead of integers, making calculations unreliable.  
     - Null values appeared in multiple inconsistent forms (`null`, `"null"`, or missing entirely), complicating automated parsing.  
     - Some records had incomplete or contradictory fields, requiring reconstruction of delay values.  
-  - These issues meant that a straightforward load into Pandas would fail or produce misleading results.  
-  - Cleaning therefore required explicit **dtype conversions** (e.g., `astype(int)` for delay fields), imputation flags to mark reconstructed values, and schema enforcement to guarantee consistency.
+  - These issues prevented straightforward loading into Pandas and risked producing misleading results.
+  - As a result, cleaning required explicit data type conversions (such as applying `astype(int)` to delay fields), the use of imputation flags to indicate reconstructed values, and schema enforcement to ensure consistency.
 
   ![Flight JSON Screenshot](plots/inspection_arrival_history_json.png)  
   *Figure 1: Raw arrivals JSON inspection showing inconsistent delay field formats.*
 
 #### Historic weather CSV files:  
   - Provided meteorological variables such as wind speed, visibility, temperature, precipitation, and cloud height.  
-  - Visual inspection revealed **systematic formatting problems**:  
+  - Visual inspection identified systematic formatting problems:
     - Numeric values were stored as strings (e.g., `"12.5"` instead of `float`), preventing direct statistical analysis.  
-    - Missing entries were concentrated in critical fields such as visibility, often during fog events — precisely the conditions most relevant to delay prediction.  
+    - Missing entries were concentrated in critical fields such as visibility, frequently during fog events, which are the conditions most relevant to delay prediction.
     - Some columns contained redundant indicators or placeholder codes that needed to be dropped.  
-  - These irregularities made the dataset unsuitable for direct modelling and required coercion (`pd.to_numeric(errors="coerce")`), missingness audits, and risk scoring to quantify adverse conditions.
+  - These irregularities rendered the dataset unsuitable for direct modelling and necessitated coercion (using `pd.to_numeric(errors="coerce")`), missingness audits, and risk scoring to quantify adverse conditions.
 
   ![Weather CSV Screenshot](plots/inspection_weather_dataset.png)  
   *Figure 2: Raw weather CSV inspection showing string‑encoded numeric values and missing visibility data.*
 
 #### Data Wrangler visualisation: 
-  - Used to interactively explore both flight and weather datasets before transformations.  
-  - Provided schema previews, column type checks, and sample row inspection in a reviewer‑friendly interface.  
-  - Highlighted the **extent of missing content and dtype inconsistencies**, making gaps visible before cleaning.  
-  - For arrivals data, Data Wrangler clearly showed where delay fields were mis‑typed or missing, reinforcing the need for a structured cleaning pipeline.  
-  - This inspection confirmed that manual fixes alone would not be sufficient — a reproducible technical approach was required to normalise formats, enforce schemas, and document trade‑offs.
+  - Data Wrangler was used to interactively explore both flight and weather datasets prior to any transformations.
+  - The tool provided schema previews, column type checks, and sample row inspection within a reviewer-friendly interface.
+  - Data Wrangler highlighted the extent of missing content and data type inconsistencies, making these gaps visible prior to cleaning.
+  - For arrivals data, Data Wrangler clearly indicated where delay fields were mis-typed or missing, reinforcing the necessity of a structured cleaning pipeline.
+  - This inspection confirmed that manual fixes alone were insufficient. A reproducible technical approach was required to normalise formats, enforce schemas, and document trade-offs.
 
 ![Data Wrangler Screenshot](plots/inspection_data_wrangler_summary.png)  
 *Figure 3: Data Wrangler inspection highlighting missing and inconsistent fields in the arrivals dataset.*
@@ -327,28 +337,28 @@ Inspection revealed several inconsistencies and hidden complexities that made th
 - [GeeksforGeeks – Reading CSV Files in Python](https://www.geeksforgeeks.org/pandas/reading-csv-files-in-python/) – step‑by‑step guide for handling CSVs.  
 
 ### 📑 Reviewer Takeaway 
-This section highlights the importance of **initial transparency** by visually inspecting both **flight activity data** (operational outcomes) and **weather data** (environmental context).  
+This section emphasises the importance of initial transparency through visual inspection of both flight activity data (operational outcomes) and weather data (environmental context).
 
-- It exposes the **raw structure** of the datasets before any transformations, building trust in the workflow.  
-- It establishes the **dual foundation** of the project: operational delays interpreted through meteorological conditions.  
+- This process reveals the raw structure of the datasets prior to any transformations, thereby building trust in the workflow.
+- It establishes the dual foundation of the project, in which operational delays are interpreted through meteorological conditions.
 - It shows how inspection findings directly shaped later technical steps, including:  
   - **Schema documentation and enforcement** (`arrivals_schema.txt`, `departures_schema.txt`)  
   - **dtype corrections** to ensure reliable modelling inputs  
   - **missingness audits** that guided imputation and conservative cleaning strategies  
 
-Inspection revealed that both datasets contained **non‑standard formats, inconsistent nulls, and missing values in critical fields**.  
+Inspection revealed that both datasets contained non-standard formats, inconsistent null representations, and missing values in critical fields.
 These irregularities made the data unsuitable for direct analysis and justified the need for a **systematic, reproducible cleaning and schema enforcement process**.  
-Without this step, downstream correlation and predictive modelling would have been unreliable or misleading.  
+Without this step, subsequent correlation and predictive modelling would have been unreliable or misleading.
 
-By linking raw inspection to subsequent workflow decisions, this section ensures that all cleaning and modelling choices remain **traceable, reproducible, and reviewer‑friendly**.
+By linking raw inspection to subsequent workflow decisions, this section ensures that all cleaning and modelling choices remain traceable, reproducible, and accessible to reviewers.
 
 ---
 
 ## 8. Dataset Missingness Classification and Handling
 
-Following the initial inspection, the next stage was to **diagnose and classify missing data** across both datasets.  
-This step was not about fixing values yet, but about understanding the *mechanisms of missingness* so that later cleaning decisions could be justified and reproducible.  
-Inspection revealed that missingness patterns differed significantly between weather and flight data, and that these gaps were often tied to operational or environmental context.
+After the initial inspection, the subsequent stage involved diagnosing and classifying missing data across both datasets.
+This step focused on understanding the mechanisms of missingness, rather than immediately addressing missing values, to ensure that subsequent cleaning decisions would be justified and reproducible.
+Inspection revealed significant differences in missingness patterns between weather and flight data, with gaps frequently associated with operational or environmental contexts.
 
 ### Theoretical Background
 Across the literature, missing data is classified into three main types:  
@@ -356,12 +366,12 @@ Across the literature, missing data is classified into three main types:
 - **MAR (Missing at Random):** missingness depends on observed variables, such as survey responses skipped by certain groups.  
 - **MNAR (Missing Not at Random):** missingness is tied to the unobserved value itself, e.g., exam scores missing because students did not attend.  
 
-Published strategies emphasise that deletion, naive imputation, and advanced methods all carry trade‑offs. Transparent documentation of these trade‑offs is essential for reproducibility.
+Published strategies indicate that deletion, naive imputation, and advanced methods each involve trade-offs. Transparent documentation of these trade-offs is essential for reproducibility.
 
 ### Weather Data
 - **Observed issues:** Random gaps in visibility and precipitation readings, malformed datetime entries, and numeric values stored as strings.  
 - **Classification:** Mostly **MCAR**, caused by technical recording errors or sensor dropouts.  
-- **Implication:** These gaps could be treated as noise, but excluding them would slightly reduce sample size.  
+- **Implication:** These gaps may be considered noise; however, excluding them would result in a slight reduction in sample size.
 - **Diagnostic insight:** Highlighted the need for safe numeric coercion and robust datetime parsing in later cleaning.
 
 ### Flight Arrivals
@@ -373,14 +383,14 @@ Published strategies emphasise that deletion, naive imputation, and advanced met
 ### Flight Departures
 - **Observed issues:** Similar to arrivals, with gaps in actual departure times and categorical inconsistencies in status fields.  
 - **Classification:** Mostly **MAR**, with some **MNAR** tied to reporting gaps.  
-- **Implication:** Missingness patterns mirrored arrivals, reinforcing the need for schema parity.  
+- **Implication:** Missingness patterns mirrored those observed in arrivals, reinforcing the need for schema parity.
 - **Diagnostic insight:** Flooring and categorical conversion would later be necessary to align departures with arrivals.
 
 ### Integrated Dataset (Flights + Weather)
 - **Observed issues:** Alignment gaps when merging hourly flight records with weather observations.  
 - **Classification:** A combination of **MCAR** (random weather gaps) and **MAR/MNAR** (systematic flight reporting issues).  
-- **Implication:** Hourly flooring was required to ensure compatibility, though this reduced temporal precision.  
-- **Diagnostic insight:** Sub‑hour disruptions would be masked, but integration demanded a consistent time granularity.
+- **Implication:** Hourly flooring was necessary to ensure compatibility, although this approach reduced temporal precision.
+- **Diagnostic insight:** Sub-hour disruptions would be masked; however, integration required a consistent time granularity.
 
 ### Resources
 - [MCAR vs MAR vs MNAR: Understanding Types of Missing Data](https://www.linkedin.com/pulse/mcar-vs-mar-mnar-why-missing-isnt-all-same-datasets-fahim-ahamed-alxee)  
@@ -389,16 +399,16 @@ Published strategies emphasise that deletion, naive imputation, and advanced met
 
 ### 📑 Reviewer Takeaway
 This step confirmed that **weather gaps were largely random (MCAR)**, while **flight data missingness was systematic (MAR/MNAR)**, reflecting operational reporting practices.  
-By classifying missingness before cleaning, and grounding those classifications in published literature, the workflow ensured that later strategies — coercion, imputation, flooring, and schema enforcement — would be **traceable, reproducible, and reviewer‑friendly**.  
+By classifying missingness prior to cleaning and grounding these classifications in published literature, the workflow ensured that subsequent strategies such as coercion, imputation, flooring, and schema enforcement would be traceable, reproducible, and accessible for reviewers.
 Without this diagnostic stage, cleaning could have introduced hidden bias or misrepresented operational realities.
 
 ---
 
 ## 9. Cleaning Approach Taken in This Project
 
-With missingness classified and understood in Step 7, the next stage focused on **data cleaning**.  
-This strategy was deliberately conservative and transparent, prioritising reproducibility and reviewer clarity over complex imputation.  
-Cleaning was applied before schema enforcement, ensuring datasets were consistent, auditable, and compatible with weather data aggregated at hourly intervals.
+After classifying and understanding missingness in Step 7, the subsequent stage addressed data cleaning.
+The adopted strategy was intentionally conservative and transparent, prioritising reproducibility and clarity for reviewers over the use of complex imputation methods.
+Data cleaning was performed prior to schema enforcement to ensure that datasets remained consistent, auditable, and compatible with weather data aggregated at hourly intervals.
 
 ```text
 Raw Data
@@ -406,19 +416,18 @@ Raw Data
    ▼
 [Data Cleaning]
    - Handle missing values
-   - Correct typos / normalize formats
+   - Correct typos / normalise formats
    - Remove duplicates
    - Drop irrelevant or noisy columns
    │
    ▼
 Cleaned Data
-
 ```
 
 **Connection to Missingness Classification**
-- Weather data (MCAR): Random gaps were treated as noise. Records with malformed datetimes or string‑encoded numerics were safely coerced or excluded.
-- Flight data (MAR/MNAR): Systematic gaps in actual times required cautious imputation from scheduled values, with flags to mark reconstructed delays.
-- Integrated dataset: Hourly flooring was applied to align flights with weather, a necessary compromise that reduced temporal precision but ensured compatibility.
+- Weather data (MCAR): Random gaps were considered noise. Records containing malformed datetimes or string-encoded numerics were either safely coerced or excluded.
+- Flight data (MAR/MNAR): Systematic gaps in actual times necessitated cautious imputation using scheduled values, with flags implemented to indicate reconstructed delays.
+- Integrated dataset: Hourly flooring was applied to align flight data with weather data. This compromise reduced temporal precision but ensured dataset compatibility.
 
 ---
 
@@ -437,27 +446,27 @@ Cleaned Data
 | **Enforce final dtypes**      | Ensure delays stored as integers and computed_delay as floats            | None significant; improves reproducibility and clarity                                  |
 
 ### 📑 Reviewer Takeaway
-This project emphasised **clear parsing, safe conversions, and transparent auditing**. Imputation ensured dataset continuity but underestimated true delays, while hourly flooring reduced granularity yet was necessary for integration with weather data. These measures demonstrate reproducibility and transparency, directly supporting the **40% code and 40% documentation criteria**.
+This project emphasised clear parsing, safe data conversions, and transparent auditing. Imputation maintained dataset continuity but resulted in an underestimation of true delays. Although hourly flooring reduced temporal granularity, it was essential for integration with weather data. These measures, taken together, demonstrate reproducibility and transparency, directly supporting the 40% code and 40% documentation criteria.
 
 ---
 
 ## 9b. Importance of Data Types (dtypes) in this project
 
-Alongside the cleaning steps, dtype handling was a critical foundation for ensuring that cleaned datasets remained consistent and usable for downstream modelling.
+In addition to data cleaning procedures, proper handling of data types was fundamental to maintaining consistency and usability of datasets for subsequent modelling tasks.
 
 ### Why Data Types Matter
-Data types (dtypes) define how values are stored and processed in Python libraries such as **NumPy** and **Pandas**. Correct dtype handling is critical for:
+Data types (dtypes) determine how values are stored and processed within Python libraries such as **NumPy** and **Pandas**. Proper dtype management is essential for the following reasons:
 - **Performance:** Efficient memory usage and faster computations.  
 - **Accuracy:** Ensuring calculations behave as expected (e.g., numbers treated as numbers, not strings).  
 - **Compatibility:** Allowing datasets to merge correctly without type conflicts.  
 - **Data Integrity:** Preventing unintended conversions that distort results.  
 
-**Inspection revealed major dtype issues:**
+Inspection identified several significant issues related to data types:
 - Flight JSON files contained mixed types (strings, integers, nulls).  
 - Weather CSV files had numeric values stored as strings.  
-- Poor dtype handling led to weak model training results (e.g., CatBoost negative R²).  
+- Inadequate dtype management resulted in suboptimal model training outcomes, such as negative R² values in CatBoost.
 
-*📑 Lesson learned: dtype inspection had to be integrated into the cleaning pipeline from the start, supported by tools like Data Wrangler for schema previews.*
+A key lesson was that dtype inspection needed to be incorporated into the initial stages of the cleaning pipeline, utilising tools such as Data Wrangler for schema previews.
 
 ### Common Data Types and Their Applications
 
@@ -466,7 +475,7 @@ Data types (dtypes) define how values are stored and processed in Python librari
 | **int64 / int32** | Whole numbers (signed integers). | Counts, IDs, categorical codes. | Flight delay minutes, airline codes, flight IDs. |
 | **float64 / float32** | Decimal numbers with precision. | Continuous variables, measurements. | Weather variables (temperature, rainfall, wind speed, visibility). |
 | **object (string)** | Text values. | Labels, categorical names, metadata. | Flight status (“scheduled”, “cancelled”), airline names, WMO weather codes. |
-| **datetime64[ns]** | Date and time values. | Time series, scheduling, temporal alignment. | Scheduled vs actual flight times, hourly flooring for integration with weather data. |
+| **datetime64[ns]** | Date and time values. | Time series, scheduling, and temporal alignment. | Scheduled vs actual flight times, hourly flooring for integration with weather data. |
 | **bool** | True/False values. | Flags, binary indicators. | Risk scoring flags (e.g., visibility < 2000m). |
 | **category** | Optimised storage for repeated string values. | Large categorical datasets. | Airline names, flight types, weather event codes. |
 
@@ -476,39 +485,39 @@ Data types (dtypes) define how values are stored and processed in Python librari
 - **NumPy Documentation**  
   [NumPy Reference Guide](https://numpy.org/doc/stable/reference/) – details array dtypes, vectorised operations, and performance considerations.  
 - **Dataquest – NumPy and Pandas for Data Analysis**  
-  [NumPy and Pandas for Data Analysis (Dataquest)](https://www.dataquest.io/blog/working-with-dataframes-in-pyspark/) – emphasises Understanding your raw data structure is always a good first step in any data project.
+  [NumPy and Pandas for Data Analysis (Dataquest)](https://www.dataquest.io/blog/working-with-dataframes-in-pyspark/) – highlights that understanding the raw data structure is a crucial initial step in any data project.
 
 
 ### 📑 Reviewer Takeaway
-Correct dtype management was essential for reproducibility and accuracy. By integrating dtype inspection into the cleaning pipeline, the project avoided silent errors, ensured reliable merges, and strengthened modelling outcomes.
+Effective management of data types was vital for ensuring reproducibility and accuracy. Integrating dtype inspection into the cleaning pipeline prevented silent errors, facilitated reliable data merges, and improved modelling results.
 
-By linking inspection, missingness classification, dtype enforcement, and cleaning steps, this stage ensured the workflow remained traceable, reproducible, and reviewer‑friendly.
+The integration of inspection, missingness classification, dtype enforcement, and cleaning procedures ensured that the workflow remained traceable, reproducible, and accessible for review.
 
 ---
 
 ## 10. Schema and Audit Exports
 
 ### What is a Schema?
-A **schema** is a formal blueprint that defines how data is structured — including field names, data types, and relationships between elements.  
-In analytics, schemas ensure consistency, accuracy, and reproducibility by making clear how datasets should be interpreted and integrated.
+A **schema** is a formal blueprint that defines data structure, specifying field names, data types, and relationships between elements.
+In analytics, schemas ensure consistency, accuracy, and reproducibility by explicitly defining how datasets are to be interpreted and integrated.
 
 ### Purpose in This Project
 - **Schema Documentation (record‑only artefacts):**  
   Raw JSON structures for arrivals and departures were flattened and saved to text files (`arrivals_schema.txt`, `departures_schema.txt`).  
-  These artefacts provide reviewers with a transparent snapshot of the raw keys, even though they are not applied directly in the workflow.  
+  These artefacts offer a transparent snapshot of the raw keys, although they are not directly utilised within the workflow.
 
 - **Schema Enforcement (authoritative definitions):**  
-  Authoritative schemas (`weather_cols`, `arrivals_cols`, `departures_cols`) were defined and applied immediately after cleaned data was loaded or concatenated.  
-  This ensured that only validated fields were retained for integration.  
+  Authoritative schemas (`weather_cols`, `arrivals_cols`, `departures_cols`) were defined and applied immediately after the cleaned data was loaded or concatenated.  
+  This process ensured retention of only validated fields for subsequent integration.
 
 - **Audit Integration:**  
-  Coverage audits (e.g., flights missing weather matches, NaT checks) were performed alongside schema enforcement, documenting any rows lost due to alignment issues.  
+  Coverage audits, such as identifying flights missing weather matches and performing NaT checks, were conducted concurrently with schema enforcement to document any rows excluded due to alignment issues.
 
 - **Cleaned Dataset Views:**  
-  Produced reproducible DataFrames (`df_weather_clean`, `df_arrivals_clean`, `df_departures_clean`) that serve as the single source of truth for integration.  
+  Reproducible DataFrames (`df_weather_clean`, `df_arrivals_clean`, `df_departures_clean`) were generated to serve as the authoritative source for integration.
 
 - **Reviewer Transparency:**  
-  Artefacts document how missingness, dtype handling, and coverage mismatches were resolved, ensuring clarity for assessment.
+  Artefacts document the resolution of missing data, data type handling, and coverage mismatches, thereby ensuring clarity for assessment.
 
 
 ### 🔄 Schema Enforcement in Workflow
@@ -517,37 +526,37 @@ In analytics, schemas ensure consistency, accuracy, and reproducibility by makin
 |:--------|:-------|:------------|:--------|
 | **🌦️ Weather Data** | `weather_cols` | Applied immediately after loading the cleaned CSV (`dublin_airport_clean.csv`) | Ensures only validated weather variables (rain, temp, humidity, visibility, etc.) are retained |
 | **🛬 Arrivals Data** | `arrivals_cols` | Applied directly after concatenating all cleaned arrival batches | Captures datetime parsing, imputes missing actual times, reconstructs delays, and freezes into `df_arrivals_clean` for integration |
-| **🛫 Departures Data** | `departures_cols` | Applied directly after concatenating all cleaned departure batches | Mirrors arrivals schema for parity, ensures consistent handling of categorical fields, and freezes into `df_departures_clean` using `reindex` for fault‑tolerant enforcement |
+| **🛫 Departures Data** | `departures_cols` | Applied after concatenating all cleaned departure batches | Mirrors the arrivals schema to ensure parity, applies consistent handling of categorical fields, and finalises `df_departures_clean` using `reindex` for robust enforcement |
 | **🔗 Integrated Dataset** | Unified schema | Combines arrivals (113,520) + departures (121,389) with weather data (total 234,909 records) | Aligns flights with weather conditions and risk features; supports correlation analysis and modelling of weather impacts on delays |
 
 ### Example Artefacts
 - `arrivals_schema.txt` and `departures_schema.txt` — record‑only schema documentation of raw JSON keys.  
 - Code cells defining `weather_cols`, `arrivals_cols`, and `departures_cols` — authoritative schema references applied after cleaning.  
-- Audit outputs (e.g., “Arrivals missing weather match: 14,448”) — transparent record of exclusions during schema enforcement.  
+- Audit outputs (e.g., “Arrivals missing weather match: 14,448”) provide a transparent record of exclusions during schema enforcement.
 - `dublin_airport_clean.csv` – cleaned, integrated dataset combining arrivals, departures, weather variables, and derived risk scores.
 
 ### Resources
 - [Pandas Documentation – `json_normalize`](https://pandas.pydata.org/docs/reference/api/pandas.json_normalize.html)  
   *Confirms the method used to flatten nested JSON structures into tabular form for inspection.*  
 - [GitHub Documentation – Managing Large Files](https://docs.github.com/en/repositories/working-with-files/managing-large-files)  
-  *Explains GitHub’s 100 MB file size limit, justifying monthly batching of arrivals and departures.*  
+  *Details GitHub’s 100 MB file size limit, which necessitates monthly batching of arrivals and departures.*
 - [Python JSON Module Documentation](https://docs.python.org/3/library/json.html)  
-  *Provides reliable methods for loading and saving JSON data, ensuring reproducibility in batching.*  
+  *Outlines reliable methods for loading and saving JSON data, thereby ensuring reproducibility in batching.*
 
 ### 📑 Reviewer Takeaway
-Schemas serve two roles in this workflow:  
+Schemas fulfill two primary roles within this workflow:
 - **Documentation:** Text files record the raw JSON structure for transparency.  
 - **Enforcement:** Applied in‑code after cleaning to guarantee reproducible, validated datasets.  
 
-Audits provide transparency about rows excluded due to coverage mismatches, while schema enforcement guarantees consistency across arrivals, departures, and weather datasets.  
-Reviewers can verify structure, dtype handling, and missingness classification directly from the schema code cells and audit outputs without requiring full raw datasets.
+Audits enhance transparency regarding rows excluded due to coverage mismatches, while schema enforcement ensures consistency across arrivals, departures, and weather datasets.
+Reviewers may verify structure, data type handling, and missingness classification directly from the schema code cells and audit outputs, eliminating the need for access to full raw datasets.
 
 ---
 
 ## 11. Core Functions and Components
 
-The notebook defines several **core functions and reusable components** that structure the workflow.  
-Each plays a specific role in ensuring data quality, reproducibility, and reviewer‑friendly outputs.
+The notebook introduces several core functions and reusable components that organise the workflow.
+Each component serves a distinct role in maintaining data quality, reproducibility, and outputs suitable for review.
 
 ### 🧹 Cleaning Functions
 
@@ -575,63 +584,63 @@ Each plays a specific role in ensuring data quality, reproducibility, and review
 | **Composite index (Step 10h)** | Quantifies adverse weather conditions in a reproducible format | - Built from thresholds (visibility < 2000 m, wind ≥ 25 knots, heavy rain ≥ 25 mm)<br>- Produces histograms and exceedance tables<br>- Provides operational insight into combined hazards<br>- Strengthens transparency by documenting risk scoring |
 
 ### 📑 Reviewer Takeaway  
-These functions and components form the **technical backbone of the project**.  
-They ensure that cleaning, visualisation, modelling, and risk scoring are **modular, reproducible, and transparent**.  
-By centralising definitions inside `project/project.ipynb`, the workflow remains easy to audit, extend, and adapt for future enhancements.
+These functions and components constitute the technical foundation of the project.
+They ensure that data cleaning, visualisation, modelling, and risk scoring processes remain modular, reproducible, and transparent.
+Centralising definitions within `project/project.ipynb` facilitates auditing, extension, and adaptation of the workflow for future enhancements.
 
 ---
 
 ## 12. Exploratory Data Analysis (EDA)
 
-Exploratory Data Analysis was performed after cleaning and schema enforcement to explore the **distribution, variability, and relationships** within the weather dataset.  
-Most plots were generated **before merging with flight delays** to understand the weather data in isolation.  
-Additional plots involving **delay outcomes** were produced **after the merge**, since they required the integrated dataset.  
+Exploratory Data Analysis was conducted following data cleaning and schema enforcement to examine the distribution, variability, and relationships within the weather dataset.
+Most plots were generated prior to merging with flight delay data to facilitate analysis of the weather dataset in isolation.
+Additional plots involving delay outcomes were produced after the datasets were merged, as these analyses required the integrated data.
 
-Visualisations served both as a diagnostic check and as a narrative tool, ensuring transparency for reviewers and guiding later modelling choices.  
-All plots were saved to `project/plots/` with systematic naming conventions (`sXX_<descriptor>.png`) to ensure reproducibility and easy reference.
+Visualisations functioned as both diagnostic tools and narrative aids, promoting transparency for reviewers and informing subsequent modelling decisions.
+All plots were saved in the `project/plots/` directory using systematic naming conventions (`sXX_<descriptor>.png`) to support reproducibility and facilitate reference.
 
 ---
 ### 🌤️ Weather Analysis (Pre‑Merge)
 
 #### Distribution of Key Weather Variables 
   ![Distribution of Key Weather Variables Plot](plots/s6b_distributions_combined.png)  
-  *Purpose:* Illustrates spread and skewness of weather variables, confirming suitability for statistical comparison.
+Purpose: Illustrates the spread and skewness of weather variables, confirming their suitability for statistical comparison.
 
 #### Temperature Distribution 
   ![Temperature Distribution Plot](plots/s6b_temp.png)  
-  *Purpose:* Shows variability and outliers, providing baseline context for regression models.
+Purpose: Depicts variability and outliers, establishing baseline context for subsequent regression models.
 
 #### Rainfall Totals (Histogram) 
   ![Rainfall Totals Plot](plots/s6b_rain.png)  
-  *Purpose:* Highlights frequency of heavy rainfall events, useful for threshold‑based risk scoring.
+Purpose: Highlights the frequency of heavy rainfall events, which is relevant for threshold-based risk scoring.
 
 #### Wind Speed Distribution  
   ![Wind Speed Distribution Plot](plots/s6b_wdsp.png)  
-  *Purpose:* Provides operational context for runway usage and hazard thresholds.
+Purpose: Provides operational context for runway usage and the identification of hazard thresholds.
 
 ### 🔗 Weather Relationships (Pre‑Merge)
 
 #### Humidity vs Visibility (Scatter) 
   ![Humidity vs Visibility Plot](plots/s10d_humidity_vs_visibility.png)  
-  *Purpose:* Demonstrates inverse relationship, confirming humidity as a dominant predictor of delays.
+Purpose: Demonstrates the inverse relationship, confirming humidity as a primary predictor of delays.
 
 #### Temperature vs Humidity (Scatter)  
   ![Temperature vs Humidity Plot](plots/s10f_temp_vs_rhum.png)  
-  *Purpose:* Shows seasonal clustering and interdependence of weather variables.
+Purpose: Illustrates seasonal clustering and the interdependence among weather variables.
 
 ### 🌦️ Operational Context (Pre‑Merge)
 
 #### Wind Rose (Observed Conditions) 
   ![Wind Rose Plot](plots/s10g_windrose_2025-05-01.png)  
-  *Purpose:* Visualises prevailing wind directions and speeds, critical for runway operations (Month of May 2025).
+Purpose: Visualises prevailing wind directions and speeds, which are critical for runway operations during May 2025.
 
 #### WMO Weather Codes Frequency  
   ![Weather Codes Plot](plots/s10i_weather_codes_counts_table.png)  
-  *Purpose:* Screenshot of produced table which shows distribution of coded weather events (fog, rain, storms), contextualising delay risks.
+Purpose: Displays the distribution of coded weather events (fog, rain, storms), providing context for delay risk assessment.
 
 #### Risk Score Distribution (Threshold Exceedances) 
   ![Risk Score Distribution Plot](plots/s10h_risk_score_distribution.png)  
-  *Purpose:* Quantifies exceedances of operational thresholds (visibility <2000 m, wind ≥25 knots, rainfall ≥25 mm).
+Purpose: Quantifies exceedances of operational thresholds, including visibility below 2000 meters, wind speeds of at least 25 knots, and rainfall of at least 25 millimeters.
 
 ---
 
@@ -639,63 +648,63 @@ All plots were saved to `project/plots/` with systematic naming conventions (`sX
 
 #### Correlation Matrix (Arrivals + Weather)  
   ![Correlation Matrix Plot](plots/s31f_correlation_matrix_arrivals_weather.png)  
-  *Purpose:* Highlights visibility and humidity as strongest drivers of arrival delays.
+Purpose: Identifies visibility and humidity as the strongest drivers of arrival delays.
 
 #### Correlation Heatmap (Departures + Weather) 
   ![Correlation Heatmap Plot](plots/s31g_correlation_matrix_departures_weather.png)  
-  *Purpose:* Confirms similar patterns for departures, reinforcing visibility/humidity as key variables.
+Purpose: Confirms similar patterns for departures, reinforcing the importance of visibility and humidity as key variables.
 
 #### Daily Arrivals vs Departures
   ![Daily Arrivals vs Departures Plot](plots/s26c_top_airlines_flight_volume.png)  
-  *Purpose:* Provides baseline operational volume context.
+Purpose: Provides baseline context for operational flight volumes.
 
 #### Average Hourly Delays  
   ![Average Hourly Delays Plot](plots/s26b_average_hourly_delay.png)  
-  *Purpose:* Highlights peak delay periods across the day.
+Purpose: Highlights peak periods of delay throughout the day.
 
 #### Airline Comparison (Delay Rates)  
   ![Airline Comparison Plot](plots/s26d_top_airlines_average_delay.png)  
-  *Purpose:* Shows variability in delays across carriers, contextualising weather impact.
+Purpose: Illustrates variability in delays across carriers, providing context for the impact of weather.
 
 #### Weather Impact on Delays (Boxplots)  
   ![Weather Impact Plot](plots/s10a_boxplots.png)  
-  *Purpose:* Compares delay distributions under different weather categories (clear, fog, rain).
+Purpose: Compares delay distributions across different weather categories, including clear, fog, and rain conditions.
 
 #### Feature Importance (Random Forest)  
   ![Feature Importance Plot](plots/s37_feature_importance_arrivals_departures.png)  
-  *Purpose:* Ranks weather features by predictive influence, confirming visibility and humidity as dominant drivers.
+Purpose: Ranks weather features by predictive influence, confirming visibility and humidity as the dominant factors.
 
 ---
 
 ### 📑 Reviewer Takeaway  
-EDA confirmed that **visibility and humidity are the strongest correlates of delays**, while rainfall and temperature showed weaker associations.  
-- **Pre‑merge plots** provided diagnostic insights into weather distributions, relationships, and operational context.  
-- **Post‑merge plots** demonstrated how weather interacts with flight delays, highlighting hourly peaks, airline variability, and correlation matrices.  
+Exploratory Data Analysis confirmed that visibility and humidity are the strongest correlates of delays, whereas rainfall and temperature exhibited weaker associations.
+Pre-merge plots provided diagnostic insights into weather distributions, relationships, and operational context.
+Post-merge plots demonstrated the interaction between weather and flight delays, highlighting hourly peaks, airline variability, and correlation matrices.
 
-Together, these plots provided a transparent, reproducible foundation for later correlation and risk scoring work.
+Collectively, these plots established a transparent and reproducible foundation for subsequent correlation and risk scoring analyses.
 
 ---
 
 ## 13. Integrated Risk Scoring Framework
 
-Flags were applied to key adverse conditions: wind (≥20, ≥25 knots), extreme temperature (≤0 °C or ≥30 °C), visibility (≤5000 m, ≤2000 m), heavy rain (≥25 mm), and low cloud (≤500 m).  
-The aggregate risk score was calculated as the sum of binary flags. Outputs included histograms and exceedance percentage tables, persisted for reproducibility.
+Flags were assigned to key adverse conditions, including wind (≥20, ≥25 knots), extreme temperature (≤0 °C or ≥30 °C), visibility (≤5000 m, ≤2000 m), heavy rain (≥25 mm), and low cloud (≤500 m).
+The aggregate risk score was determined by summing the binary flags. Outputs comprised histograms and exceedance percentage tables, which were retained to ensure reproducibility.
 
-### 📑 Reviewer Takeaway 
-This framework quantified adverse weather conditions using schema‑aligned thresholds, providing operational insight into how multiple hazards interact. Persisted outputs ensured reproducibility and transparency in risk assessment.
+### 📑 Reviewer Takeaway
+This framework quantified adverse weather conditions using schema-aligned thresholds, offering operational insight into the interaction of multiple hazards. Retained outputs ensured reproducibility and transparency in risk assessment.
 
 ---
 
 ## 14. Modelling Results and Metrics
 
-### 🌐 What Are LLMs?
-Large Language Models (LLMs) are advanced machine learning systems trained on vast amounts of text data. They excel at recognising patterns, relationships, and structures in language, enabling them to generate, interpret, and analyze complex information. While LLMs are not directly used in this project’s predictive modelling, they provide the conceptual backdrop: modern AI systems can capture nonlinear relationships and hidden dependencies in data — the same principle applied here with structured models like Linear Regression, Random Forest, and CatBoost.
+### What Are Large Language Models (LLMs)?
+Large Language Models (LLMs) are advanced machine learning systems trained on extensive text corpora. These models identify patterns, relationships, and structures in language, enabling the generation, interpretation, and analysis of complex information. Although LLMs were not directly employed in this project's predictive modelling, they provide a conceptual foundation. Modern AI systems, including structured models such as Linear Regression, Random Forest, and CatBoost, are designed to capture nonlinear relationships and hidden dependencies in data.
 
 - [IBM: What are Large Language Models (LLMs)?](https://www.ibm.com/think/topics/large-language-models) – Defines LLMs as deep learning models trained on immense datasets, capable of understanding and generating natural language
 - [Google Developers: Introduction to Large Language Models](https://developers.google.com/machine-learning/resources/intro-llms) – Explains transformers, self-attention, and applications such as summarisation, translation, and question answering
 - [Dun & Bradstreet (DNB): Exploring Large Language Model Capabilities](https://www.dnb.com/en-us/resources/ai/what-are-large-language-models-or-llms.html) – Highlights how LLMs recognise patterns in unstructured data and provide contextually relevant responses across industries
 
-### 📖 Background to the Models
+### Background to the Models
 
 #### Linear Regression:
 - A classical statistical model that assumes a linear relationship between predictors and outcomes.
@@ -708,28 +717,28 @@ Large Language Models (LLMs) are advanced machine learning systems trained on va
 - Particularly useful in flight/weather contexts where variables like temperature, humidity, and visibility interact in complex ways.
 
 #### CatBoost:
-- A gradient boosting algorithm optimized for handling categorical features and reducing overfitting.
-- Excels in tabular datasets with mixed feature types, though in this project the dataset was mostly numerical.
+- A gradient boosting algorithm optimised for handling categorical features and reducing overfitting.
+- Excels in tabular datasets with mixed feature types, though in this project, the dataset was mostly numerical.
 - Its inclusion ensured benchmarking against a state-of-the-art boosting approach widely used in predictive analytics.
 
-#### ✈️ Why These Models Are Useful for Flight/Weather Analysis
+#### Relevance of These Models for Flight and Weather Analysis
 Flight delays are influenced by multiple interacting factors: weather conditions, operational constraints, and airport congestion.
 - Linear Regression provides transparency and a baseline.
 - Random Forest captures nonlinear weather effects (e.g., humidity interacting with visibility).
 - CatBoost tests whether boosting methods can extract subtle signals from limited features.
-- Studies confirm that ensemble methods like Random Forest and CatBoost are widely applied in aviation delay prediction because they handle heterogeneous, imbalanced data and improve reliability. https://ceur-ws.org/Vol-4055/icaiw_waai_10.pdf 
+- Studies confirm that ensemble methods such as Random Forest and CatBoost are widely applied in aviation delay prediction, as they effectively handle heterogeneous and imbalanced data while improving reliability. https://ceur-ws.org/Vol-4055/icaiw_waai_10.pdf
 
-#### 📊 What They Brought to the Project
+#### Model Contributions to the Project
 - **Linear Regression:** Showed negligible explanatory power (R² ≈ 0.002), confirming delays are not linearly driven by weather alone.
 - **Random Forest:** Consistently outperformed other models, with temperature and humidity emerging as dominant predictors. Tuned versions improved departure predictions (RMSE reduced to ~25 min).
 - **CatBoost:** Delivered weaker results than Random Forest, reflecting the dataset’s limited categorical features. Still valuable as a benchmark for boosting approaches.
 
-#### Consideration of Neural Networks
+#### Consideration of Neural Network Approaches
 Neural Networks were considered but ultimately not implemented due to:
-- Neural networks (e.g., TensorFlow/Keras models) could have been useful if your dataset were large, diverse, and contained complex nonlinear relationships. However, for structured tabular weather data with relatively few features, Random Forest often outperforms neural networks because it is more robust, easier to tune, and interpretable. 
+- Neural networks (e.g., TensorFlow or Keras models) may be advantageous for large, diverse datasets with complex nonlinear relationships. However, for structured tabular weather data with relatively few features, Random Forest typically outperforms neural networks due to greater robustness, ease of tuning, and interpretability.
 - [Random Forest significantly outperforms neural net for my regression task - Reddit](https://www.reddit.com/r/learnmachinelearning/comments/umvcne/random_forest_significantly_outperforms_neural/)
 
-#### ✅ Results Summary
+#### Results Summary
 Models were benchmarked using R² and RMSE for both arrivals and departures.
 
 | Model | Arrivals R² | Arrivals RMSE | Departures R² | Departures RMSE | Notes |
@@ -744,21 +753,21 @@ Models were benchmarked using R² and RMSE for both arrivals and departures.
 - Arrivals: Temperature ≈46%, Humidity ≈28%, Visibility ≈21%, Rainfall ≈4%.  
 - Departures: Temperature ≈44%, Humidity ≈32%, Visibility ≈17%, Rainfall ≈7%.  
 
-### 📑 Reviewer Takeaway  
-Random Forest proved most effective, confirming that nonlinear ensemble methods are better suited to weather-driven delay prediction. Temperature and humidity dominated importance, aligning with exploratory analysis.
+### Reviewer Takeaway
+Random Forest demonstrated the highest effectiveness, confirming that nonlinear ensemble methods are better suited for weather-driven delay prediction. Temperature and humidity emerged as the most influential variables, consistent with the exploratory analysis.
 
 Sources:
 
 - [Momtaz et al., Scalable Arrival Flight Delay Prediction: Multi-airport Benchmarking of Random Forest, XGBoost and CatBoost](https://ceur-ws.org/Vol-4055/icaiw_waai_10.pdf)
-- [Hatıpoğlu & Tosun, Predictive Modeling of Flight Delays at an Airport Using Machine Learning Methods](https://www.mdpi.com/2076-3417/14/13/5472)
+- [Hatıpoğlu & Tosun, Predictive Modelling of Flight Delays at an Airport Using Machine Learning Methods](https://www.mdpi.com/2076-3417/14/13/5472)
 - [DataScienceBase, CatBoost vs Other Algorithms](https://datasciencebase.com/catboost-vs-other-algorithms/)
 
 ---
 
 ## 15. Key Findings
 
-The analysis produced several important insights into the relationship between weather and flight delays.  
-These findings highlight both the strengths and limitations of a weather‑only modelling approach.
+The analysis yielded several key insights regarding the relationship between weather conditions and flight delays.
+These findings illustrate both the strengths and limitations inherent in a weather-only modelling approach.
 
 | Finding | Detail | Implication |
 |:--------|:-------|:------------|
@@ -768,14 +777,15 @@ These findings highlight both the strengths and limitations of a weather‑only 
 | **Hourly aggregation limits granularity** | Aggregating data to hourly bins reduced ability to capture short‑term disruptions | Highlights trade‑off between reproducibility and temporal precision |
 
 ### 📑 Reviewer Takeaway  
-Findings confirm that **weather‑only predictors explain limited variance** in flight delays.  
-- **Arrivals** are moderately sensitive to temperature and humidity.  
-- **Departures** show weaker weather dependence, pointing to missing operational features.  
-- **Hourly aggregation** ensured reproducibility but dampened short‑term signal strength.  
+The findings confirm that weather-only predictors account for a limited proportion of variance in flight delays.
+- Arrivals demonstrate moderate sensitivity to temperature and humidity.
+- Departures exhibit weaker dependence on weather, indicating the absence of key operational features.
+- Hourly aggregation enhanced reproducibility but reduced the ability to detect short-term variations.
 
-Overall, the results underscore the need to **integrate operational data** (airline schedules, runway assignments, staffing levels) alongside weather to achieve stronger predictive performance.  
-This sets the stage for the **Conclusion** section, where future enhancements and operational integration are proposed.
+Overall, the results emphasise the necessity of integrating operational data, such as airline schedules, runway assignments, and staffing levels, with weather variables to improve predictive performance.
+These findings provide a foundation for the Conclusion section, which will propose future enhancements and the integration of operational data.
 
+---
 
 ## 16. Project Limitations
 
@@ -797,17 +807,17 @@ This sets the stage for the **Conclusion** section, where future enhancements an
   - Predictive outputs were **sensitive to aggregation choices** and lacked robustness across different temporal resolutions.
 
 ### 📑 Reviewer Takeaway
-Limitations highlight that while weather explains part of the delay variance, **operational and contextual features are essential for stronger modelling**. Documenting these constraints demonstrates transparency and critical reflection, supporting the **40% documentation criterion** and guiding future extensions of the workflow.
+The limitations indicate that, although weather accounts for some delay variance, operational and contextual features are essential for more robust modelling. Documenting these constraints demonstrates transparency and critical reflection, supports the 40% documentation criterion, and informs future workflow extensions.
 
 ---
 
 ## 17. Future Role of LLMs and Proposed Enhancements  
 
 ### 🔮 Extending Beyond Structured Models  
-While this project focused on structured models (Linear Regression, Random Forest, CatBoost) applied to tabular weather data, **Large Language Models (LLMs)** offer a powerful avenue for future expansion. They can incorporate unstructured sources such as textual weather reports (METARs, TAFs), pilot logs, or air traffic control communications. LLMs excel at extracting meaning from natural language, enabling them to transform qualitative weather descriptions (e.g., “low visibility due to fog”) into structured features that complement numerical data. By fusing these textual insights with traditional weather variables, LLMs could enrich predictive models, uncover hidden dependencies, and improve accuracy in real-world operational contexts. This integration would allow future systems to move beyond purely numerical weather metrics, capturing the nuance of human and textual reporting alongside ensemble methods.  
+Although the current project focused on structured models such as Linear Regression, Random Forest, and CatBoost applied to tabular weather data, Large Language Models (LLMs) present significant opportunities for future development. LLMs can incorporate unstructured data sources, including textual weather reports (METARs, TAFs), pilot logs, and air traffic control communications. These models are adept at extracting meaning from natural language, enabling the transformation of qualitative weather descriptions, such as “low visibility due to fog,” into structured features that complement numerical data. Integrating these textual insights with traditional weather variables has the potential to enrich predictive models, reveal hidden dependencies, and enhance accuracy in operational contexts. This approach would enable future systems to transcend purely numerical weather metrics by capturing the nuances present in human and textual reporting, in conjunction with ensemble methods.
 
 ### 🚀 Proposed Future Enhancements  
-The following enhancements are designed to directly address the limitations identified in the **Key Findings** and **Conclusion** sections. They extend the workflow beyond weather‑only predictors, improving predictive accuracy, operational relevance, and reviewer usability.  
+The following enhancements are intended to address the limitations identified in the Key Findings and Conclusion sections. These improvements extend the workflow beyond weather-only predictors, thereby increasing predictive accuracy, operational relevance, and usability for reviewers.
 
 | Enhancement | Addresses Limitation | Impact |
 |:------------|:---------------------|:-------|
@@ -828,7 +838,9 @@ These enhancements directly tackle the limitations identified earlier:
 - **Database integration** and **dashboards** elevate reproducibility and usability.  
 - **LLM integration** bridges structured and unstructured data, enabling richer, context-aware forecasting.  
 
-Together, they provide a clear roadmap for evolving the project from a **research prototype** into a **practical, operational forecasting tool** that leverages both structured ensemble methods and cutting-edge language models.  
+Collectively, these enhancements establish a clear roadmap for advancing the project from a research prototype to a practical, operational forecasting tool that leverages both structured ensemble methods and advanced language models.
+
+---
 
 ## 📊 Visual Roadmap  
 
@@ -858,16 +870,16 @@ This diagram illustrates:
 
 ## 18. Reproducibility and Consistency Strategy
 
-- Dry‑run toggles prevent forced API dependency.  
-- Monthly batching reduces large‑file friction.  
-- Explicit header detection and schema exports.  
-- Hourly bin audits guarantee deterministic merges.  
-- Parameter grids documented; tuned models reproducible.  
-- Plots named systematically: `sXX_<descriptor>.png`.  
+- Dry-run toggles are implemented to avoid mandatory API dependencies.
+- Monthly batching is used to minimise issues associated with large files.
+- Explicit header detection and schema exports are performed to ensure data integrity.
+- Hourly bin audits are conducted to ensure deterministic data merges.
+- Parameter grids are documented, ensuring that tuned models are reproducible.
+- Plots are named systematically using the format `sXX_<descriptor>.png`.
 
 ### Large Batch File Handling
-Raw JSON files from the Aviation Edge API were very large and exceeded GitHub file size limits.  
-To remain compatible, the workflow included a batching mechanism that split data into monthly segments. Schema exports and missingness audits were saved instead of oversized raw files, allowing reviewers to verify structure without needing full raw data.
+Raw JSON files obtained from the Aviation Edge API were substantial in size and surpassed GitHub's file size limitations.
+To maintain compatibility, the workflow incorporated a batching mechanism that divided data into monthly segments. Schema exports and missingness audits were stored in place of oversized raw files, enabling reviewers to verify data structure without requiring access to the complete raw dataset.
 
 #### GitHub File Size Considerations
 [GitHub guidance](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github) highlights:  
@@ -884,19 +896,19 @@ To remain compatible, the workflow included a batching mechanism that split data
   - `RUN_BATCHING = True` only if using your own dataset locally.  
 
 ### 📑 Reviewer Takeaway 
-This strategy kept the repository lightweight, reproducible, and reviewer‑friendly.  
-- **Batching** ensured large raw files remained GitHub‑compatible without losing transparency.  
-- **Schema and audit exports** provided verifiable structure and missingness records in place of oversized data.  
-- **Deterministic merges and systematic naming** guaranteed that outputs could be reproduced exactly.  
+This strategy ensured that the repository remained lightweight, reproducible, and accessible for reviewers.
+- **Batching** maintained GitHub compatibility for large raw files while preserving transparency.
+- **Schema and audit exports** offered verifiable structural and missingness records as substitutes for oversized data files.
+- **Deterministic merges and systematic naming** ensured that outputs could be reproduced with precision.
 
-Together, these measures demonstrated consistency and reproducibility, directly supporting the **10% consistency criterion** and giving reviewers confidence that the workflow can be rerun and audited without friction.
+Collectively, these measures demonstrated consistency and reproducibility, directly supporting the **10% consistency criterion** and providing reviewers with confidence that the workflow can be rerun and audited efficiently.
 
 ---
 
 ## 19. Research and Attribution
 
-The following resources were consulted and applied directly within the notebook.  
-Each citation is tied to a specific workflow step, ensuring transparency and reproducibility for reviewers.
+The following resources were consulted and directly integrated into the notebook workflow.
+Each citation corresponds to a specific workflow step, thereby supporting transparency and reproducibility for reviewers.
 
 | Resource | Applied In | Role in Workflow |
 |----------|------------|------------------|
@@ -915,16 +927,16 @@ Each citation is tied to a specific workflow step, ensuring transparency and rep
 | [**GitHub Large‑Files Guidance**](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github) | Batching strategy justification (Step 19) | Informed the decision to split raw JSON flight data into monthly batches. Ensured repository compatibility and reproducibility for large datasets. |
 
 ### 📑 Reviewer Takeaway
-Every major step in the workflow was **grounded in authoritative resources**.  
-By citing documentation inline and explaining its use, the project maintained transparency, reproducibility, and reviewer confidence.  
+Every major step in the workflow was grounded in authoritative resources.
+Inline citation of documentation and explicit explanation of its application maintained transparency, reproducibility, and reviewer confidence.
 Each resource directly shaped cleaning, schema enforcement, visualisation, modelling, or operationalisation stages of the notebook.  
-This demonstrates effective use of external resources, directly supporting the **10% research criterion**.
+This approach demonstrates effective use of external resources and directly supports the 10% research criterion.
 
 ---
 
 ## 20. Difficulties Experienced and Lessons Learned  
 
-Throughout the project, several challenges were encountered. The following list summarises these difficulties along with the lessons learned from each experience:  
+Several challenges were encountered during the project. The following list summarises these difficulties and the corresponding lessons learned from each experience.
 
 | Difficulty | Lesson Learned | Impact |
 |------------|----------------|--------|
@@ -934,64 +946,64 @@ Throughout the project, several challenges were encountered. The following list 
 | **Unmonitored JSON File Sizes** | Always audit file sizes before committing or uploading, especially when working with APIs that generate large nested structures. | Avoided repeated upload failures and repository resets. |
 | **Data Type Compatibility** | Correct dtype handling is critical for reliable modelling. Poor treatment of dtypes can severely impact merging and training. | Ensured stable model training and accurate results. |
 | **Model Training and Runtime** | CatBoost underperformed compared to Random Forest, reinforcing that weather alone is insufficient for strong predictive modelling. | Highlighted the need for richer feature sets beyond weather data. |
-| **Python Version Compatibility (CatBoost)** | Reverting to Python 3.11.14 resolved runtime errors since CatBoost was not supported in Python 3.12. README was updated to highlight this requirement. | Ensured reproducibility and clear reviewer guidance. |
+| **Python Version Compatibility (CatBoost)** | Reverting to Python 3.11.14 resolved runtime errors since CatBoost was not supported in Python 3.12. The README was updated to highlight this requirement. | Ensured reproducibility and clear reviewer guidance. |
 | **Library Version Conflicts (Pandas)** | Careful dependency management is essential. Pinning compatible versions in the environment file ensured stability and reproducibility. | Prevented workflow breakages and maintained consistent results. |
 | **Instructor Guidance (Batching)** | An online meeting introduced batching, which solved file size issues and improved reproducibility. | Enabled smoother handling of large datasets. |
 | **Improved Visualisation (Data Wrangler)** | Discovered **Data Wrangler**, which improved schema previews, dtype inspection, and reviewer‑friendly transparency. | Enhanced clarity and usability of data exploration. |
 | **Dataset Limitations** | Refined the project objective to focus on correlations between weather and delays, while suggesting further studies to incorporate operational and scheduling variables. | Delivered a realistic scope while identifying pathways for future research. |
 
-### 📑 Key Takeaways  
-- **Environment management matters:** Compatibility issues with Python (3.12 vs 3.11.14) and Pandas highlighted the importance of pinning versions and documenting requirements clearly.  
-- **Reproducibility is critical:** Decisions around saving files, batching, and dependency management ensured reviewers could replicate results without workflow failures.  
-- **Feature limitations shape outcomes:** Weather-only predictors constrained model performance, reinforcing the need for operational and scheduling features in future work.  
-- **Transparency improves usability:** Tools like Data Wrangler and clear README updates enhanced reviewer experience and project clarity.  
+### Key Takeaways
+- Environment management is essential: Compatibility issues with Python (3.12 vs 3.11.14) and Pandas highlighted the importance of pinning versions and clearly documenting requirements.
+- Reproducibility is critical: Decisions regarding file saving, batching, and dependency management ensured that reviewers could replicate results without workflow failures.
+- Feature limitations shape outcomes: Reliance on weather-only predictors constrained model performance, reinforcing the need for operational and scheduling features in future work.
+- Transparency improves usability: Tools such as Data Wrangler and clear README updates enhanced reviewer experience and project clarity.
 
-Overall, the project demonstrated that **technical stability, reproducibility, and scope management** are just as important as modelling choices in delivering a credible and reviewer‑friendly analysis.  
+Overall, the project demonstrated that technical stability, reproducibility, and scope management are as important as modelling choices in delivering a credible and reviewer-friendly analysis.
 
 ---
 
 ## 21. Conclusion and Overall Takeaway
 
-This project delivered a transparent, reproducible workflow for integrating Dublin Airport flight delays with hourly weather data. Each stage produced clear insights:
+The project established a transparent and reproducible workflow for integrating Dublin Airport flight delays with hourly weather data. Each stage yielded distinct insights:
 
 - **Weather Cleaning & Exploration:**  
-  Weather data was successfully parsed, cleaned, and audited, guided by schema enforcement and missingness classification. Plots revealed skewed rainfall distributions, seasonal temperature cycles, directional wind regimes, and strong inverse relationships between humidity and visibility. Risk scoring quantified adverse conditions such as low visibility, strong winds, and heavy rainfall.
+  Weather data underwent parsing, cleaning, and auditing, guided by schema enforcement and missingness classification. Visualisations revealed skewed rainfall distributions, seasonal temperature cycles, directional wind regimes, and strong inverse relationships between humidity and visibility. Risk scoring quantified adverse conditions, including low visibility, strong winds, and heavy rainfall.
 
 - **Flight Data Acquisition & Batching:**  
-  Raw arrivals and departures data were acquired via the Aviation Edge API and split into monthly batches to remain GitHub‑compatible. Batching became a core reproducibility strategy, allowing reviewers to verify structure without oversized files. Plots highlighted daily traffic variability, hourly delay peaks, and airline‑level differences in delay performance.
+  Arrivals and departures data were obtained via the Aviation Edge API and partitioned into monthly batches to ensure compatibility with GitHub. Batching served as a key reproducibility strategy, enabling reviewers to verify data structure without handling oversized files. Visualisations highlighted daily traffic variability, hourly delay peaks, and airline-level differences in delay performance.
 
 - **Database Integration & Querying:**  
-  Cleaned weather and flight datasets were ingested into a relational database (PostgreSQL/SQLite). Schema enforcement ensured referential integrity between tables (weather, arrivals, departures). SQL queries were used to:  
+  Cleaned weather and flight datasets were imported into a relational database (PostgreSQL or SQLite). Schema enforcement maintained referential integrity between tables (weather, arrivals, departures). SQL queries were employed to:
   - Join weather and flight records on hourly timestamps.  
   - Aggregate delays by airline, day, and hour.  
   - Compute correlation matrices directly in‑database for reproducibility.  
   - Generate risk exceedance counts without relying solely on notebook logic.  
-  This database layer provided transparency, reproducibility, and efficiency, enabling reviewers to replicate results with simple queries.
+  The database layer enhanced transparency, reproducibility, and efficiency, allowing reviewers to replicate results using straightforward queries.
 
 - **Integration & Flooring:**  
-  Weather and flight datasets were aligned on an hourly basis using flooring. While this ensured deterministic merges and schema parity, it reduced variance and weakened correlations by collapsing sub‑hour delays into hourly bins. Short‑lived weather events (fog patches, sudden rainfall) were dampened, limiting explanatory power.
+  Weather and flight datasets were aligned on an hourly basis using flooring. This approach ensured deterministic merges and schema consistency but reduced variance and weakened correlations by aggregating sub-hour delays into hourly bins. Short-lived weather events, such as fog patches and sudden rainfall, were dampened, limiting explanatory power.
 
 - **Correlation Analysis:**  
-  Heatmaps and scatterplots confirmed visibility and humidity as the strongest correlates of arrival delays, while temperature and rainfall played minor roles. Departures showed weaker associations, underscoring the influence of non‑weather operational factors.
+  Heatmaps and scatterplots identified visibility and humidity as the strongest correlates of arrival delays, whereas temperature and rainfall had minor effects. Departures exhibited weaker associations, highlighting the influence of non-weather operational factors.
 
 - **Modelling:**  
-  Linear Regression provided a transparent baseline but explained negligible variance. Random Forest captured non‑linear effects, improving explanatory power (R² ≈0.11 arrivals, ≈0.06 departures) and ranking temperature and humidity as dominant drivers, with visibility and rainfall contributing less. CatBoost offered modest gains for arrivals but near‑zero explanatory power for departures. Hyperparameter tuning delivered incremental improvements, yet predictive ceilings remained low without operational features.
+  Linear regression established a transparent baseline but explained minimal variance. Random Forest models captured non-linear effects, improving explanatory power (R² approximately 0.11 for arrivals and 0.06 for departures) and ranking temperature and humidity as primary drivers, with visibility and rainfall contributing less. CatBoost provided modest gains for arrivals but demonstrated near-zero explanatory power for departures. Hyperparameter tuning yielded incremental improvements; however, predictive performance remained limited without operational features.
 
 - **Limitations and External Factors:**  
-  The limited explanatory power (≤11% arrivals, ≤6% departures) reflects the absence of critical operational drivers such as airline schedules, traffic density, ATC constraints, and turnaround times. These factors must be integrated in future work to achieve richer predictive capacity.
+  The limited explanatory power (≤11% for arrivals, ≤6% for departures) reflects the absence of critical operational drivers, including airline schedules, traffic density, air traffic control constraints, and turnaround times. Incorporating these factors in future work is necessary to achieve greater predictive capacity.
 
 
 #### 📑 **Overall Takeaway:**  
-Weather‑only modelling sets a clear upper bound on predictive accuracy. Humidity and visibility emerge as the strongest correlates, while modelling feature importance highlights temperature and humidity as dominant drivers. Departures are less weather‑sensitive, and flooring reduced temporal granularity, further constraining results. The addition of a **database analysis layer** ensured reproducibility, efficient querying, and transparent schema enforcement, strengthening the project’s credibility.  
+Weather‑only modelling sets a clear upper bound on predictive accuracy. Humidity and visibility emerge as the strongest correlates, while modelling feature importance highlights temperature and humidity as dominant drivers. Departures are less weather‑sensitive, and the flooring reduces temporal granularity, further constraining results. The addition of a **database analysis layer** ensured reproducibility, efficient querying, and transparent schema enforcement, strengthening the project’s credibility.  
 
-Despite these limitations, the project delivered a **transparent, reproducible foundation** that met all assessment requirements: structured acquisition, cleaning, schema enforcement, database integration, exploratory analysis, correlation, modelling, and benchmarking.  
-This conclusion demonstrates that the project satisfied the **40% code, 40% documentation, 10% research, and 10% consistency criteria**, while also providing a roadmap for future enhancements.
+Despite these limitations, the project established a transparent and reproducible foundation that fulfilled all assessment requirements, including structured acquisition, data cleaning, schema enforcement, database integration, exploratory analysis, correlation analysis, modelling, and benchmarking.
+This conclusion demonstrates that the project satisfied the criteria of 40% code, 40% documentation, 10% research, and 10% consistency, while also outlining a roadmap for future enhancements.
 
 ---
 
 ## 22. Quick Start Summary
 
-This summary provides a step‑by‑step checklist for reproducing the project:
+The following summary presents a step-by-step checklist for reproducing the project:
 
 1. Install dependencies.  
 2. Open the notebook.  
@@ -1032,48 +1044,50 @@ These resources were consulted for conceptual clarity on schema design and data 
 
 ---
 
-## 24. Ethical & Transparency Considerations
+## 24. Ethical and Transparency Considerations
 
 ### Data Ethics
-- **API Usage:** All Aviation Edge API queries were logged with a dry‑run option to avoid unnecessary calls and respect rate limits.  
-- **Privacy:** No personally identifiable information (PII) was collected or stored. Flight records were aggregated at the operational level only.  
-- **Bias Awareness:** Weather‑only predictors limit explanatory scope. Results were interpreted cautiously to avoid overstating predictive accuracy.
+- **API Usage:** All Aviation Edge API queries were logged using a dry-run option to minimise unnecessary calls and ensure compliance with rate limits.
+- **Privacy:** No personally identifiable information (PII) was collected or stored. Flight records were aggregated exclusively at the operational level.
+- **Bias Awareness:** The use of weather-only predictors limited the explanatory scope. Results were interpreted conservatively to avoid overstating predictive accuracy.
 
 ### Transparency
 - **Imputation Decisions:** All imputations (e.g., reconstructing actual times from scheduled times) were flagged in schema exports (`imputed_flag` columns).  
-- **Schema Documentation vs Enforcement:** Arrivals and departures schemas were exported to text files for transparency, while authoritative schemas were enforced in‑code to guarantee reproducibility.  
+- **Schema Documentation and Enforcement:** Arrivals and departures schemas were exported to text files to enhance transparency, while authoritative schemas were enforced in code to ensure reproducibility.
 - **Audit Trails:** Missingness audits and risk scoring thresholds were documented in markdown cells, making trade‑offs explicit.  
-- **Reproducibility:** Dependencies were pinned in `requirements.txt` and verified through GitHub Actions. Large files were batched for GitHub compatibility and reviewer transparency.
+- **Reproducibility:** Dependencies were pinned in `requirements.txt` and verified using GitHub Actions. Large files were batched to maintain GitHub compatibility and facilitate reviewer transparency.
 
-### 📑 Reviewer Takeaway
-This project was designed to be **transparent, ethical, and reproducible**.  
-- Ethical safeguards ensured responsible API use and avoided privacy risks.  
-- Transparency measures (schema exports, audit tables, imputation flags) made cleaning decisions explicit.  
+### Reviewer Takeaway
+The project was designed to be transparent, ethical, and reproducible.
+- Ethical safeguards ensured responsible API usage and mitigated privacy risks.
+- Transparency measures, including schema exports, audit tables, and imputation flags, made data cleaning decisions explicit.
 - Reproducibility strategies (pinned dependencies, CI/CD checks, batching) ensured the workflow can be reliably rerun by reviewers and future users.  
 
-Together, these measures demonstrate alignment with the **10% consistency criterion** and reinforce reviewer confidence in the integrity of the project.
+Collectively, these measures demonstrate alignment with the 10% consistency criterion and reinforce reviewer confidence in the integrity of the project.
 
 ---
 
 ## 25. Acknowledgements
 
-This project was supported by a combination of technical resources, external references, and guidance:
+This project was supported by a combination of technical resources, external references, and academic guidance:
 
 - **Data Providers:**  
   Aviation Edge (flight arrivals and departures API) and Met Éireann (weather observations and forecasts).
 
 - **Technical Tools:**  
-  Python libraries (`pandas`, `numpy`, `matplotlib`, `seaborn`, `scikit-learn`, `catboost`) and database systems (PostgreSQL/SQLite) for analysis, modelling, and reproducibility.  
-  Microsoft **Data Wrangler** extension for VS Code was used to streamline data cleaning, schema validation, and exploratory checks.
+  Python libraries (`pandas`, `numpy`, `matplotlib`, `seaborn`, `scikit-learn`, `catboost`) and database systems (PostgreSQL and SQLite) were utilised for analysis, modelling, and reproducibility.
+  The Microsoft Data Wrangler extension for Visual Studio Code was employed to streamline data cleaning, schema validation, and exploratory checks.
 
 - **Documentation & References:**  
-  Online tutorials, official library documentation, and background reading on schema design and data cleaning (see Section 24).
+  Online tutorials, official library documentation, and background literature on schema design and data cleaning were consulted (see Section 24).
 
-- **AI Assistance:**  
-  Microsoft Copilot was used throughout the project to refine documentation, structure sections, and ensure clarity in presenting results and limitations. Copilot’s support helped strengthen transparency and alignment with assessment criteria.
+- **AI   Microsoft Copilot was utilised throughout the project to refine documentation, structure sections, and ensure clarity in presenting results and limitations. This support contributed to enhanced transparency and alignment with assessment criteria.
+
+- **Grammarly Editor Assistance**
+Grammarly was used to proofread and enhance the readability of the documentation, ensuring clear communication of complex concepts.
 
 - **Academic Guidance:**  
-  Special thanks to **Mr. Andrew Beatty, Atlantic Technological University (ATU)**, for his guidance and support in shaping the project structure, ensuring academic rigor, and aligning the workflow with assessment requirements.
+  Special thanks are extended to Mr. Andrew Beatty, Atlantic Technological University (ATU), for his guidance and support in shaping the project structure, ensuring academic rigor, and aligning the workflow with assessment requirements.
 
 ---
 
