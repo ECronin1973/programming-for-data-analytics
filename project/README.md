@@ -99,7 +99,7 @@ Required packages: pandas, numpy, matplotlib, seaborn, scikit-learn, catboost, a
 14. [Modelling Results and Metrics](#14-modelling-results-and-metrics)  
 15. [Key Findings](#15-key-findings)  
 16. [Project Limitations](#16-project-limitations)  
-17. [Proposed Future Enhancements](#17-proposed-future-enhancements)  
+17. [Proposed Future Enhancements](#17-future-role-of-llms-and-proposed-enhancements)  
 18. [Reproducibility and Consistency Strategy](#18-reproducibility-and-consistency-strategy)  
     - [Large Batch File Handling](#large-batch-file-handling)  
     - [GitHub File Size Considerations](#github-file-size-considerations)  
@@ -108,7 +108,7 @@ Required packages: pandas, numpy, matplotlib, seaborn, scikit-learn, catboost, a
 21. [Conclusion and Overall Takeaway](#21-conclusion-and-overall-takeaway)  
 22. [Quick Start Summary](#22-quick-start-summary)  
 23. [References](#23-references)  
-24. [Ethical & Transparency Considerations](#24-ethical--transparency-considerations)  
+24. [Ethical & Transparency Considerations](#24-ethical-and-transparency-considerations)  
 
 ---
 
